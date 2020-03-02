@@ -10,10 +10,108 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_02_095305) do
+ActiveRecord::Schema.define(version: 2020_03_02_172121) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "answers", force: :cascade do |t|
+    t.bigint "question_id"
+    t.bigint "guest_id"
+    t.boolean "content", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["guest_id"], name: "index_answers_on_guest_id"
+    t.index ["question_id"], name: "index_answers_on_question_id"
+  end
+
+  create_table "editions", force: :cascade do |t|
+    t.bigint "event_id"
+    t.string "name"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.integer "host_id"
+    t.string "start_address"
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
+    t.text "notes"
+    t.integer "status", default: 0
+    t.float "avg_rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_editions_on_event_id"
+  end
+
+  create_table "event_tags", force: :cascade do |t|
+    t.bigint "tag_id"
+    t.bigint "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_event_tags_on_event_id"
+    t.index ["tag_id"], name: "index_event_tags_on_tag_id"
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "name", null: false
+    t.integer "budget", null: false
+    t.string "frequency", null: false
+    t.float "avg_rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
+  create_table "guests", force: :cascade do |t|
+    t.bigint "member_id"
+    t.bigint "edition_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["edition_id"], name: "index_guests_on_edition_id"
+    t.index ["member_id"], name: "index_guests_on_member_id"
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.bigint "edition_id"
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["edition_id"], name: "index_items_on_edition_id"
+  end
+
+  create_table "members", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_members_on_event_id"
+    t.index ["user_id"], name: "index_members_on_user_id"
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.bigint "edition_id"
+    t.string "content", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["edition_id"], name: "index_questions_on_edition_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.bigint "guest_id"
+    t.float "edition_rating", null: false
+    t.float "host_rating", null: false
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["guest_id"], name: "index_reviews_on_guest_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +121,25 @@ ActiveRecord::Schema.define(version: 2020_03_02_095305) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.date "date_of_birth"
+    t.float "host_avg_rating"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "answers", "guests"
+  add_foreign_key "answers", "questions"
+  add_foreign_key "editions", "events"
+  add_foreign_key "event_tags", "events"
+  add_foreign_key "event_tags", "tags"
+  add_foreign_key "events", "users"
+  add_foreign_key "guests", "editions"
+  add_foreign_key "guests", "members"
+  add_foreign_key "items", "editions"
+  add_foreign_key "members", "events"
+  add_foreign_key "members", "users"
+  add_foreign_key "questions", "editions"
+  add_foreign_key "reviews", "guests"
 end
