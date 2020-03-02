@@ -54,6 +54,9 @@
 <row name="password" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
+<row name="date_of_birth" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
 <row name="host_avg_rating" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -93,17 +96,17 @@
 <part>id</part>
 </key>
 </table>
-<table x="908" y="229" name="answers">
+<table x="983" y="227" name="answers">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="question_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="questions" row="id" />
-</row>
 <row name="guest_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="guests" row="id" />
+</row>
+<row name="question_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="questions" row="id" />
 </row>
 <row name="content" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
@@ -112,7 +115,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="392" y="435" name="events">
+<table x="391" y="382" name="events">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -144,13 +147,16 @@
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="events" row="id" />
 </row>
-<row name="host" null="1" autoincrement="0">
+<row name="name" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="start_date" null="1" autoincrement="0">
+<row name="host_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="end_date" null="1" autoincrement="0">
+<row name="start_time" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="end_time" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="start_address" null="1" autoincrement="0">
@@ -168,9 +174,6 @@
 <row name="notes" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="items" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
 <row name="active" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -181,7 +184,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="851" y="451" name="questions">
+<table x="824" y="381" name="questions">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -196,7 +199,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="102" y="630" name="tags">
+<table x="265" y="599" name="tags">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -207,23 +210,23 @@
 <part>id</part>
 </key>
 </table>
-<table x="119" y="443" name="event_tags">
+<table x="114" y="432" name="event_tags">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="tag_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="tags" row="id" />
-</row>
 <row name="event_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="events" row="id" />
+</row>
+<row name="tag_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="tags" row="id" />
 </row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="813" y="42" name="reviews">
+<table x="855" y="68" name="reviews">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -244,8 +247,29 @@
 <part>id</part>
 </key>
 </table>
-<table x="625" y="257" name="dragons">
+<table x="1112" y="526" name="dragons">
 <row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="event_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="name" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="818" y="603" name="items">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="edition_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="editions" row="id" />
+</row>
+<row name="name" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
