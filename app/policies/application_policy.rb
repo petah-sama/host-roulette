@@ -6,8 +6,10 @@ class ApplicationPolicy
     @record = record
   end
 
+=begin   confirmar index?
+=end
   def index?
-    false
+    @user = user
   end
 
   def show?

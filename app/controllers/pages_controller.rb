@@ -3,4 +3,15 @@ class PagesController < ApplicationController
 
   def home
   end
+
+  def index
+
+    if params[:query].present?
+      @events = policy_scope(Event).where(user:current_user).search_by_name(params[:query])
+      authorize @events
+    else
+      @events = policy_scope(Event).where(user:current_user)
+      authorize @events
+    end
+  end
 end
