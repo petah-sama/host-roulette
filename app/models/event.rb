@@ -8,4 +8,14 @@ class Event < ApplicationRecord
   validates :name, presence: true
   validates :budget, presence: true
   validates :frequency, presence: true
+
+
+  include PgSearch::Model
+  pg_search_scope :search_by_name,
+    against: [ :name ],
+    using: {
+      tsearch: { prefix: true }
+    }
+
+
 end

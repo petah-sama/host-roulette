@@ -5,4 +5,6 @@ class Edition < ApplicationRecord
   has_many :guests
   has_many :questions
   has_many :items
+
+
 end
