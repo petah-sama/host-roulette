@@ -1,0 +1,10 @@
+<h1>Friend's List 👫</h1>
+<% @friends.each do |friend| %>
+  <ul class="list-group list-group-flush">
+  <% if friend.first_name && friend.last_name %>
+    <li class="list-group-item"><%= friend.first_name %> <%= friend.last_name %></li>
+  <% else %>
+    <li class="list-group-item"><%= friend.email %></li>
+  <% end %>
+  </ul>
+<% end %>
