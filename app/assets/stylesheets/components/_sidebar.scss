@@ -1,0 +1,43 @@
+.sidenav {
+  height: 100%;
+  width: 240px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #931621;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+#paths a {
+  font-family: 'Montserrat';
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: lighter;
+  margin: 15px auto;
+  padding: 6px 8px 6px 16px;
+  text-align: center;
+  display: block;
+  transition: color 0.5s ease;
+  &:hover {
+    color: white;
+  }
+  .link-active :hover{
+    color: red;
+  }
+}
+
+.sidenav img {
+  width: 230px;
+  height: 200px;
+  display: block;
+  margin-top: 0px;
+  margin-bottom: 50px;
+  padding: 0px 8px 0px 26px;
+}
+
+
+
+
