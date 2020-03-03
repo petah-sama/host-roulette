@@ -17,4 +17,7 @@ class PagesController < ApplicationController
   def friends
     @friends = current_user.friends
   end
+
+  def past_events
+  end
 end

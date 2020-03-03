@@ -56,7 +56,8 @@ puts 'Creating editions'
 Edition.create(name: 'Event A #1', event_id: Event.all[0].id)
 Edition.create(name: 'Event B #1', event_id: Event.all[1].id)
 Edition.create(name: 'Event C #1', event_id: Event.all[2].id)
-Edition.create(name: 'Event D #1', event_id: Event.all[3].id)
+Edition.create(name: 'Event D #2', event_id: Event.all[3].id)
+Edition.create(name: 'Event D #1', event_id: Event.all[3].id, status: 2)
 
 # GUEST
 puts 'GUEST GUEST GUEST!!!!!'
