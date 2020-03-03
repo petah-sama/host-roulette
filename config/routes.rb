@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
+  resources :users, only: [:show]
   root to: 'pages#home'
+
 
   resources :events do
     resources :members, only: %i[index new create destroy]
