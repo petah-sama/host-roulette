@@ -13,4 +13,8 @@ class PagesController < ApplicationController
       authorize @events
     end
   end
+
+  def friends
+    @friends = current_user.friends
+  end
 end
