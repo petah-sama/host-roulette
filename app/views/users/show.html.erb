@@ -3,5 +3,6 @@
 <%= @user.email %>
 <%= @user.date_of_birth %>
 <%= @user.host_avg_rating %>
-
-
+<% if @user.photo.attached? %>
+<%= cl_image_tag @user.photo.key, height: 600, width: 320, crop: :fill %>
+<% end %>
