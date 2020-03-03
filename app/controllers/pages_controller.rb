@@ -5,12 +5,11 @@ class PagesController < ApplicationController
   end
 
   def index
-
     if params[:query].present?
-      @events = policy_scope(Event).where(user:current_user).search_by_name(params[:query])
+      @events = policy_scope(Event).includes(:members).where(members: { user:current_user }).search_by_name(params[:query])
       authorize @events
     else
-      @events = policy_scope(Event).where(user:current_user)
+      @events = policy_scope(Event).includes(:members).where(members: { user:current_user })
       authorize @events
     end
   end
