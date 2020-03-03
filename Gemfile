@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 ruby '2.6.5'
 
 gem 'pundit'
+gem 'cloudinary', '~> 1.12.0'
 
 gem 'bootsnap', require: false
 gem 'devise'
