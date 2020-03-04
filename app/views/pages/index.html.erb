@@ -14,9 +14,16 @@
       <%= render 'pages/filters/pending-editions' %>
     </div>
   </div>
+  <div class = 'col-4'>
+    <div class="stats-container m-4 p-3">
+      <h1> Hosting </h1>
+      <h4>  <%= @editions.size %> of 5 </h4>
+    </div>
 
-  <div class="stats-container col-4">
-    <%= render 'pages/stats/stats-events' %>
+    <div class="stats-container m-4 p-3">
+      <h1> Pending </h1>
+      <h4>  <%= @editions.size %> of 5 </h4>
+    </div>
   </div>
   
   
