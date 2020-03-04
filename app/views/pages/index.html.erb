@@ -1,6 +1,15 @@
 <h1>Dashboard</h1>
 
-
-<% @events.each do |event| %>
-  <%= event.name %>
-<% end %>
+<div class="dashboard-card-container d-flex">
+  <% @events.each do |event| %>
+  <div class="dashboard-card col-8">
+    <% event.editions.each do |edition| %>
+      <% unless edition.archived? %>
+        <p><%= edition.name %></p>
+        <p>Status:<%= edition.status %></p>
+        <p>Guests:<%= edition.guests.size %></p>
+        <% end %>
+    <% end %>
+    </div>
+  <% end %>
+</div>
