@@ -16,7 +16,9 @@
     <%= render 'shared/sidebar' %>
     <%= render 'shared/flashes' %>
 
-    <%= yield %>
+    <div class="container-margin">
+      <%= yield %>
+    </div>
 
     <%= jquery_include_tag :google %>
     <%= javascript_include_tag 'application' %>
