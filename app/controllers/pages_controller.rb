@@ -20,4 +20,8 @@ class PagesController < ApplicationController
 
   def past_events
   end
+
+  def calendar
+    @editions = Edition.all
+  end
 end
