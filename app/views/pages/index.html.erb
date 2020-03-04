@@ -1,16 +1,56 @@
 <h1>Dashboard</h1>
-
-<div class="dashboard-card-container d-flex">
-  <% @events.each do |event| %>
-  <div class="dashboard-card col-8">
-    <% event.editions.each do |edition| %>
-      <% unless edition.archived? %>
-        <p><%= edition.name %></p>
-        <p>Status:<%= edition.status %></p>
-        <p>Guests:<%= edition.guests.size %></p>
-        <%=  link_to 'Show', event_edition_path(event, edition) %>
-      <% end %>
-    <% end %>
+<div class="content-container d-flex">
+  <div class="card-container col-8">
+    <div class="custom-control custom-switch">
+      <input type="checkbox" name ='checkbox' class="custom-control-input toggleButton" id="customSwitch1" unchecked>
+      <label class="custom-control-label" id ='label-active' for="customSwitch1">All</label>
     </div>
-  <% end %>
+
+    <div class="active-cards " id= 'active-cards'>
+      <%= render 'pages/filters/active-editions' %>
+    </div>
+
+    <div class="pending-cards" id= 'pending-cards'>
+      <%= render 'pages/filters/pending-editions' %>
+    </div>
+  </div>
+
+  <div class="stats-container col-4">
+    <%= render 'pages/stats/stats-events' %>
+  </div>
+  
+  
+     <%=  link_to 'Show', event_edition_path(event, edition) %>
+
 </div>
+
+
+<script>
+
+
+  var filterHost = document.getElementById('filter-by-host');
+  //Ainda vai ser preciso criar o filtro de host//
+
+  var list = document.querySelectorAll("active-card");
+  var filterActive = document.getElementById('filter-by-state');
+
+  var checkbox = document.querySelector('input[name=checkbox]')
+  var x = document.getElementById("active-cards");
+  var labelActive = document.getElementById("label-active")
+  checkbox.addEventListener('change', function() {
+    if (checkbox.checked) {
+      labelActive.innerHTML = "Pending first";
+      x.style.display = "block";
+    } else {
+      labelActive.innerHTML = "All";
+      x.style.display = "none";
+    }
+  });
+
+
+
+
+
+
+
+</script>
