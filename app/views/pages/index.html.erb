@@ -1,28 +1,12 @@
 <h1>Dashboard</h1>
 
-<div class="custom-control custom-switch">
-  <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
-  <label class="custom-control-label" for="customSwitch1">Toggle this switch element</label>
+<button  onclick="hidingPending()" class = 'btn btn-primary' id = "filter-by-state">All</button>
+
+
+<div class="active-cards" id= 'active-cards'>
+  <%= render 'pages/filters/active-editions' %>
 </div>
 
-
-
-
-<div class="dashboard-card-container">
-<% @editions.each do |edition| %>
-  <div class="dashboard-card col-8">
-      <% unless edition.archived? %>
-        <p><%= edition.name %></p>
-        <p>Status:<%= edition.status %></p>
-        <div>
-          Guests: <% edition.guests.each do |guest|%>
-          <%= guest.member.user.first_name %>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
-  <% end %>
+<div class="pending-cards" id= 'pending-cards'>
+  <%= render 'pages/filters/pending-editions' %>
 </div>
-
-
-

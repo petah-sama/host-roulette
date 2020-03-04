@@ -1,16 +1,19 @@
 
-<div class="dashboard-card-container">
-<% @editions.each do |edition| %>
-  <div class="dashboard-card col-8">
-      <% unless edition.pending? %>
-        <p><%= edition.name %></p>
-        <p>Status:<%= edition.status %></p>
-        <div>
-          Guests: <% edition.guests.each do |guest|%>
-          <%= guest.member.user.first_name %>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
-  <% end %>
+<div class = 'pending-cards'>
+  <div class="dashboard-card-container">
+  <% @editions.each do |edition| %>
+    <% if edition.pending? %>
+      <div class="dashboard-card col-8">
+          <p><%= edition.name %></p>
+          <p>Status:<%= edition.status %></p>
+          <div>
+            Guests: <% edition.guests.each do |guest|%>
+            <%= guest.member.user.first_name %>
+            <% end %>
+          </div>
+      </div>
+    <% end %>
+
+    <% end %>
+  </div>
 </div>
