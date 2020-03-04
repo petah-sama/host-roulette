@@ -21,31 +21,38 @@
     </div>
 
     <%= jquery_include_tag :google %>
-    <%= javascript_include_tag 'application' %>
-    <%= javascript_pack_tag 'application' %>
-
     <script src="jquery.min.js"></script>
     <script src="owlcarousel/owl.carousel.min.js"></script>
 
+    <%= javascript_include_tag 'application' %>
+    <%= javascript_pack_tag 'application' %>
+
+
     <script>
-      $("#blog-carousel").owlCarousel({
-          ltr:true,
-          lazyLoad: true,
-          items: 1,
-          center: true,
-          margin: 10,
-          responsiveClass: true,
-          responsive: {
-              0: {
-                  items: 1,
-              },
-              500: {
-                  items: 1,
-              },
-              5000: {
-                  items: 1,
-              }
+      $("#form-carousel").owlCarousel({
+        ltr:true,
+        dots: false,
+        nav: true,
+        navText: ["back", "next"],
+        navContainerClass: 'd-flex justify-content-between',
+        navClass: ["owl-prev btn btn-success", "owl-next btn btn-primary"],
+        touchDrag: true,
+        mouseDrag: true,
+        items: 1,
+        center: true,
+        margin: 24,
+        responsiveClass: true,
+        responsive: {
+          0: {
+              items: 1,
+          },
+          500: {
+              items: 1,
+          },
+          5000: {
+              items: 1,
           }
+        }
       });
     </script>
   </body>
