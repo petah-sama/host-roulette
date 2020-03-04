@@ -14,4 +14,5 @@ class GuestsController < ApplicationController
   def destroy
     authorize @guest
   end
+
 end
