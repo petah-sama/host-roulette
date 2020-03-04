@@ -1,43 +1,46 @@
-<div class="col-6 m-auto">
+<div class="col-6 m-auto main-container">
 
   <h1>Create new event!</h1>
-  <div id="blog-carousel" class="owl-carousel owl-theme">
-    <div class="owl-content">
-      <div class="card h-100 ">
-        <div class="card-body">
-          <h5 class="card-title ellipsis"></h5>
-          <div class="card-text">
-            <%= simple_form_for @event do |f| %>
-            <%= f.input :name %>
+
+  <%= simple_form_for @event do |f| %>
+
+    <div id="blog-carousel" class="owl-carousel owl-theme">
+      <div class="owl-content">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title ellipsis"></h5>
+            <div class="card-text">
+              <%= f.input :name %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="owl-content">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title ellipsis"></h5>
+            <div class="card-text">
+              <%= f.input :budget %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="owl-content">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title ellipsis"></h5>
+            <div class="card-text">
+              <%= f.input :frequency %>
+              <%= f.submit class: 'btn btn-primary' %>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="owl-content">
-      <div class="card h-100 ">
-        <div class="card-body">
-          <h5 class="card-title ellipsis"></h5>
-          <div class="card-text">
-            <%= f.input :budget %>
-          </div>
-        </div>
-      </div>
-    </div>
+  <% end %>
 
-    <div class="owl-content">
-      <div class="card h-100 ">
-        <div class="card-body">
-          <h5 class="card-title ellipsis"></h5>
-          <div class="card-text">
-            <%= f.input :frequency %>
-            <%= f.submit class: 'btn btn-primary' %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
 </div>
 
