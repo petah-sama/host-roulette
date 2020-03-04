@@ -1,2 +1,18 @@
 <h1>Your Past Events</h1>
 
+<div class="dashboard-card-container d-flex">
+  <div class="dashboard-card col-8">
+  <% @past_editions.each do |edition| %>
+    <p><%= edition.name %></p>
+    <p>Status:<%= edition.status %></p>
+    <p>Friends in this edition:<% edition.guests.each do |guest| %>
+        <% if guest.member.user.first_name %>
+          <%= guest.member.user.first_name %>
+        <% else %>
+          <%= guest.member.user.email %>
+        <% end %>
+      <% end %>
+    </p>
+  <% end %>
+  </div>
+</div>

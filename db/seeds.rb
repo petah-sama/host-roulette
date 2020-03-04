@@ -74,6 +74,10 @@ Guest.create(edition_id: Edition.all[3].id, member_id: Member.all[7].id)
 Guest.create(edition_id: Edition.all[3].id, member_id: Member.all[9].id)
 Guest.create(edition_id: Edition.all[3].id, member_id: Member.all[10].id)
 
+Guest.create(edition_id: Edition.all[4].id, member_id: Member.all[7].id)
+Guest.create(edition_id: Edition.all[4].id, member_id: Member.all[10].id)
+
+
 # TAGS
 puts 'TAAAAAAGZ'
 Tag.create(name: 'snow')
