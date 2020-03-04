@@ -29,6 +29,8 @@ class EditionsController < ApplicationController
 
   private
 
+
+
   def fetch_edition
     @edition = Edition.find(params[:id])
     authorize @edition

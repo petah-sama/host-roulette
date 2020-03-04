@@ -1,9 +1,8 @@
 
-<div class = 'pending-cards'>
   <div class="dashboard-card-container">
   <% @editions.each do |edition| %>
     <% if edition.pending? %>
-      <div class="dashboard-card col-8">
+      <div class="dashboard-card">
           <p><%= edition.name %></p>
           <p>Status:<%= edition.status %></p>
           <div>
@@ -16,4 +15,3 @@
 
     <% end %>
   </div>
-</div>
