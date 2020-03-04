@@ -8,7 +8,8 @@
         <p><%= edition.name %></p>
         <p>Status:<%= edition.status %></p>
         <p>Guests:<%= edition.guests.size %></p>
-        <% end %>
+        <%=  link_to 'Show', event_edition_path(event, edition) %>
+      <% end %>
     <% end %>
     </div>
   <% end %>
