@@ -1,4 +1,42 @@
+/* For the function */
+.msf_hide {
+  display: none;
+}
+
+.msf_show, .msf_showhide {
+  display: block;
+  height: 320px;
+}
+
+.msf_bullet_o {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.msf_bullet_o > div  {
+  height: 15px;
+  width: 15px;
+  margin: 0px 10px;
+  border-radius: 100px;
+  z-index: 2;
+}
+
+.msf_bullet {
+  background-color: $info;
+}
+
+.msf_bullet_active {
+  background-color: $primary !important;
+}
+
+
+/* Just for decoration */
 .event-card {
   background-color: $white;
   border-radius: 5px;
+}
+
+.event-slide {
+  height: 100%;
 }

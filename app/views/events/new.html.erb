@@ -1,51 +1,74 @@
-<div class="col-6 event-card mt-5 mx-auto p-4">
-
-  <h1>Create new event!</h1>
-
+<div class="event-card col-6 mx-auto mt-5 p-4">
+  <h2>Create a BLOODY event!</h2>
   <%= simple_form_for @event do |f| %>
 
-    <div id="form-carousel" class="owl-carousel owl-theme">
-
-      <div class="owl-content">
-        <div class="card-body p-0">
-          <h5 class="card-title ellipsis"></h5>
-          <div class="card-text">
-            <%= f.input :name %>
-          </div>
+  <fieldset class="field-slide msf_hide">
+    <div class="event-slide d-flex flex-column justify-content-between">
+      <%= f.input :name, label: 'What do you want to call it?' %>
+      <div>
+        <div class="d-flex justify-content-end">
+          <input type="button" name="back" value="Back" id="button-back1" class="btn btn-success">
+          <input type="button" name="next" value="Next" id="button-next1" class="btn btn-primary">
         </div>
+        <div class="msf_bullet_o mt-4"></div>
       </div>
-
-      <div class="owl-content">
-        <div class="card-body p-0">
-          <h5 class="card-title ellipsis"></h5>
-          <div class="card-text">
-            <%= f.input :budget %>
-          </div>
-        </div>
-      </div>
-
-      <div class="owl-content">
-        <div class="card-body p-0">
-          <h5 class="card-title ellipsis"></h5>
-          <div class="card-text">
-            <%= f.input :frequency %>
-          </div>
-        </div>
-      </div>
-
-      <div class="owl-content">
-        <div class="card-body p-0">
-          <h5 class="card-title ellipsis"></h5>
-          <div class="card-text">
-            <p>INVITE MEMBERS</p>
-            <%= f.submit class: 'btn btn-primary' %>
-          </div>
-        </div>
-      </div>
-
     </div>
+  </fieldset>
+
+  <fieldset class="field-slide msf_hide">
+    <div class="event-slide d-flex flex-column justify-content-between">
+      <div class="tag-choices">
+        <%= f.association :tags, as: :check_boxes, item_wrapper_class: 'tag-choice' %>
+      </div>
+      <div>
+        <div class="d-flex justify-content-between">
+          <input type="button" name="back" value="Back" id="button-back2" class="btn btn-success">
+          <input type="button" name="next" value="Next" id="button-next2" class="btn btn-primary">
+        </div>
+        <div class="msf_bullet_o mt-4"></div>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset class="field-slide msf_hide">
+    <div class="event-slide d-flex flex-column justify-content-between">
+      <%= f.input :budget, as: :range, min: "0", max: "600", label: 'How much do you want to spend?' %>
+      <div>
+        <div class="d-flex justify-content-between">
+          <input type="button" name="back" value="Back" id="button-back3" class="btn btn-success">
+          <input type="button" name="next" value="Next" id="button-next3" class="btn btn-primary">
+        </div>
+        <div class="msf_bullet_o mt-4"></div>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset class="field-slide msf_hide">
+    <div class="event-slide d-flex flex-column justify-content-between">
+      <%= f.input :frequency, label: 'What should be the frequency of the event?' %>
+      <div>
+        <div class="d-flex justify-content-between">
+          <input type="button" name="back" value="Back" id="button-back4" class="btn btn-success">
+          <input type="button" name="next" value="Next" id="button-next4" class="btn btn-primary">
+          <%= f.submit 'Create', class: 'btn btn-danger' %>
+        </div>
+        <div class="msf_bullet_o mt-4"></div>
+      </div>
+    </div>
+  </fieldset>
+
+  <!-- <fieldset class="msf_hide">
+    <div class="event-slide d-flex flex-column justify-content-between">
+      <h2>Membeeeeeers</h2>
+      <div>
+        <div class="d-flex justify-content-between">
+          <input type="button" name="back" value="Back" id="button-back5" class="btn btn-success">
+          <input type="button" name="next" value="Next" id="button-next5" class="btn btn-primary">
+        </div>
+        <div class="msf_bullet_o mt-4"></div>
+      </div>
+    </div>
+  </fieldset> -->
 
   <% end %>
-
 </div>
-

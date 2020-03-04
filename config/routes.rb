@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
+
+
   resources :users, only: [:show]
   root to: 'pages#home'
   get 'dashboard', to: 'pages#index'
@@ -21,4 +23,6 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  get '/events/:id/join', to: 'events#join'
 end
