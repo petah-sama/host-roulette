@@ -1,43 +1,48 @@
-<div class="col-6 m-auto main-container">
+<div class="col-6 event-card mt-5 mx-auto p-4">
 
   <h1>Create new event!</h1>
 
   <%= simple_form_for @event do |f| %>
 
-    <div id="blog-carousel" class="owl-carousel owl-theme">
+    <div id="form-carousel" class="owl-carousel owl-theme">
+
       <div class="owl-content">
-        <div class="card h-100">
-          <div class="card-body">
-            <h5 class="card-title ellipsis"></h5>
-            <div class="card-text">
-              <%= f.input :name %>
-            </div>
+        <div class="card-body p-0">
+          <h5 class="card-title ellipsis"></h5>
+          <div class="card-text">
+            <%= f.input :name %>
           </div>
         </div>
       </div>
 
       <div class="owl-content">
-        <div class="card h-100">
-          <div class="card-body">
-            <h5 class="card-title ellipsis"></h5>
-            <div class="card-text">
-              <%= f.input :budget %>
-            </div>
+        <div class="card-body p-0">
+          <h5 class="card-title ellipsis"></h5>
+          <div class="card-text">
+            <%= f.input :budget %>
           </div>
         </div>
       </div>
 
       <div class="owl-content">
-        <div class="card h-100">
-          <div class="card-body">
-            <h5 class="card-title ellipsis"></h5>
-            <div class="card-text">
-              <%= f.input :frequency %>
-              <%= f.submit class: 'btn btn-primary' %>
-            </div>
+        <div class="card-body p-0">
+          <h5 class="card-title ellipsis"></h5>
+          <div class="card-text">
+            <%= f.input :frequency %>
           </div>
         </div>
       </div>
+
+      <div class="owl-content">
+        <div class="card-body p-0">
+          <h5 class="card-title ellipsis"></h5>
+          <div class="card-text">
+            <p>INVITE MEMBERS</p>
+            <%= f.submit class: 'btn btn-primary' %>
+          </div>
+        </div>
+      </div>
+
     </div>
 
   <% end %>

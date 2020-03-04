@@ -19,6 +19,8 @@ class PagesController < ApplicationController
   end
 
   def past_events
+    @events = policy_scope(Event).includes(:members).where(members: { user:current_user })
+    @past_editions = Edition.where(event_id: @events, status: 2)
   end
 
   def calendar

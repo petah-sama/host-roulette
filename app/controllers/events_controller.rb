@@ -19,8 +19,7 @@ class EventsController < ApplicationController
 
     @edition = Edition.new
     @edition.event = @event
-    next_edition_id = @event.editions.last.id + 1
-    @edition.name = "#{@event.name} #{next_edition_id}"
+    @edition.name = "#{@event.name} #1"
     authorize @edition
 
     if @event.save && @edition.save
