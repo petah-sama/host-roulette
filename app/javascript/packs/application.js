@@ -10,3 +10,5 @@ const tagForm = document.querySelector("#new_event");
 if (tagForm) {
   tagFunctionality();
 };
+
+import { roulette } from '../components/roulette';
