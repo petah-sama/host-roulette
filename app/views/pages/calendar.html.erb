@@ -1,1 +1,9 @@
- <%= render partial: 'editions/calendar' %>
+<%= month_calendar events: @editions do |date, editions| %>
+        <%= date.day %>
+        <% editions.each do |edition| %>
+    <div>
+      <%= edition.name %>
+    </div>
+      <% end %>
+  <% end %>
+
