@@ -5,16 +5,16 @@ class EventPolicy < ApplicationPolicy
     end
   end
 
+  def show?
+    true
+  end
+
   def new?
     true
   end
 
-  def show?
-    check_user
-  end
-
   def create?
-    check_user
+    true
   end
 
   def update?

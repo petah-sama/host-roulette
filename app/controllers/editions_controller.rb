@@ -4,10 +4,12 @@ class EditionsController < ApplicationController
   end
 
   def show
-    authorize @edition
+    fetch_edition
   end
 
   def new
+    @edition = Edition.new
+    authorize @edition
   end
 
   def create
@@ -22,6 +24,13 @@ class EditionsController < ApplicationController
   end
 
   def destroy
+    authorize @edition
+  end
+
+  private
+
+  def fetch_edition
+    @edition = Edition.find(params[:id])
     authorize @edition
   end
 end
