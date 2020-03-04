@@ -6,11 +6,15 @@ class EditionPolicy < ApplicationPolicy
   end
 
   def show?
-    check_user
+    true
+  end
+
+  def new?
+    true
   end
 
   def create?
-    check_user
+    true
   end
 
   def update?
