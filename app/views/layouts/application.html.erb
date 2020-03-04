@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Host Roulette</title>
+    <link rel="stylesheet" href="owlcarousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="owlcarousel/owl.theme.default.min.css">
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
@@ -16,7 +18,33 @@
 
     <%= yield %>
 
+    <%= jquery_include_tag :google %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
+
+    <script src="jquery.min.js"></script>
+    <script src="owlcarousel/owl.carousel.min.js"></script>
+
+    <script>
+      $("#blog-carousel").owlCarousel({
+          ltr:true,
+          lazyLoad: true,
+          items: 1,
+          center: true,
+          margin: 10,
+          responsiveClass: true,
+          responsive: {
+              0: {
+                  items: 1,
+              },
+              500: {
+                  items: 1,
+              },
+              5000: {
+                  items: 1,
+              }
+          }
+      });
+    </script>
   </body>
 </html>

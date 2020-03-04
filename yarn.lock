@@ -3812,7 +3812,7 @@ jest-worker@^25.1.0:
     merge-stream "^2.0.0"
     supports-color "^7.0.0"
 
-jquery@>=1.12.4, jquery@^3.4.1:
+jquery@^3.4.1:
   version "3.4.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.4.1.tgz#714f1f8d9dde4bdfa55764ba37ef214630d80ef2"
   integrity sha512-36+AdBzCL+y6qjw5Tx7HgzeGCzC81MDDgaUP8ld2zhx58HdqXGoBd+tHdrBMiyjGQs0Hxs/MLZTu/eHNJJuWPw==
@@ -6751,13 +6751,6 @@ supports-color@^7.0.0:
   integrity sha512-oRSIpR8pxT1Wr2FquTNnGet79b3BWljqOuoW/h4oBhxJ/HUbX5nX6JSruTkvXDCFMwDPvsaTTbvMLKZWSy0R5g==
   dependencies:
     has-flag "^4.0.0"
-
-survey-jquery@^1.5.12:
-  version "1.5.12"
-  resolved "https://registry.yarnpkg.com/survey-jquery/-/survey-jquery-1.5.12.tgz#91d63d9adbd5d641df891b506709c25963458423"
-  integrity sha512-p3iMwKAe7Yb2JSqmsuPBcUxW7KxE6Ey+0iguYmEq6P176JxAR1A60Z+2ICRLSq9erv8X0voawVjygBnCudJ+6g==
-  dependencies:
-    jquery ">=1.12.4"
 
 svgo@^1.0.0:
   version "1.3.2"
