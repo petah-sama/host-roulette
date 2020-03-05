@@ -9,6 +9,11 @@
   text-align:center;
 }
 
+.notifications {
+  display: flex;
+  justify-content: space-between;
+}
+
 .notification-container {
   text-align:center;
   width:90%;
