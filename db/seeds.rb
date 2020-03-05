@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # DESTROY EVERYTHING
-puts 'Xau pessoal!'
+puts 'Xau pessoal 👋👋👋'
 Item.destroy_all
 Guest.destroy_all
 Member.destroy_all
@@ -18,7 +18,7 @@ Tag.destroy_all
 User.destroy_all
 
 # USER
-puts 'Creating peeps'
+puts 'Creating peeps 💁💁‍♀️💁💁‍♀️'
 User.create(email: 'test1@t.com', password: '111111')
 User.create(email: 'test2@t.com', password: '111111')
 User.create(email: 'test3@t.com', password: '111111')
@@ -28,14 +28,14 @@ User.create(email: 'test6@t.com', password: '111111', first_name: 'Alexandra', l
 
 
 # EVENT
-puts 'Creating events'
+puts 'Creating events 🎭🎤🎪'
 Event.create(name: 'Event A', budget: 50, frequency: 'Every 2 months', user_id: User.all[0].id)
 Event.create(name: 'Event B', budget: 110, frequency: 'Every year', user_id: User.all[1].id)
 Event.create(name: 'Event C', budget: 39470, frequency: 'Every week', user_id: User.all[2].id)
 Event.create(name: 'Event D', budget: 200, frequency: 'Every 4 months', user_id: User.all[3].id)
 
 # MEMBER
-puts 'MEMMMMMMBEEEEERS!!!!!'
+puts 'MEMMMMMMBEEEEERS 👨‍👩‍👧‍👦'
 Member.create(event_id: Event.all[0].id, user_id: User.all[0].id)
 Member.create(event_id: Event.all[0].id, user_id: User.all[1].id)
 
@@ -52,7 +52,7 @@ Member.create(event_id: Event.all[3].id, user_id: User.all[4].id)
 Member.create(event_id: Event.all[3].id, user_id: User.all[5].id)
 
 # EDITION
-puts 'Creating editions'
+puts 'Creating editions 🎫'
 Edition.create(name: 'Event A #1', event_id: Event.all[0].id)
 Edition.create(name: 'Event B #1', event_id: Event.all[1].id)
 Edition.create(name: 'Event C #1', event_id: Event.all[2].id)
@@ -60,7 +60,7 @@ Edition.create(name: 'Event D #2', event_id: Event.all[3].id)
 Edition.create(name: 'Event D #1', event_id: Event.all[3].id, status: 2)
 
 # GUEST
-puts 'GUEST GUEST GUEST!!!!!'
+puts 'GUEST GUEST GUEST 🎟🎟🎟'
 Guest.create(edition_id: Edition.all[0].id, member_id: Member.all[0].id)
 Guest.create(edition_id: Edition.all[0].id, member_id: Member.all[1].id)
 
@@ -79,7 +79,7 @@ Guest.create(edition_id: Edition.all[4].id, member_id: Member.all[10].id)
 
 
 # TAGS
-puts 'TAAAAAAGZ'
+puts 'TAAAAAAGZ 🏷'
 Tag.create(name: 'Sports')
 Tag.create(name: 'Fitness')
 Tag.create(name: 'Business')
@@ -102,7 +102,7 @@ Tag.create(name: 'YEAH🤘')
 Tag.create(name: 'Other')
 
 # EVENT TAGS
-puts 'generating event tags'
+puts 'generating event tags 🎭🎤🎪🏷'
 EventTag.create(event_id: Event.all[0].id, tag_id: Tag.all[0].id)
 EventTag.create(event_id: Event.all[0].id, tag_id: Tag.all[2].id)
 EventTag.create(event_id: Event.all[0].id, tag_id: Tag.all[3].id)
@@ -116,7 +116,7 @@ EventTag.create(event_id: Event.all[2].id, tag_id: Tag.all[4].id)
 EventTag.create(event_id: Event.all[2].id, tag_id: Tag.all[5].id)
 
 # ITEMS
-puts 'items items items'
+puts 'items items items 🧢🍾🧀🤿'
 Item.create(edition_id: Edition.all[0].id, name: 'umbrella')
 Item.create(edition_id: Edition.all[0].id, name: 'cap')
 Item.create(edition_id: Edition.all[0].id, name: 'sunscreen')
