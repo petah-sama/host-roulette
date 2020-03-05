@@ -1,21 +1,22 @@
 import "bootstrap";
 
-import { roulette } from '../components/roulette';
-const roulettePage = document.querySelector('#wheel');
-if (roulettePage) {
-  const button = document.getElementById("button-roulette")
-
-  button.addEventListener("click", roulette);
-
-}
-
-// import { updateTextInput } from '../components/event_form';
-// updateTextInput();
-
-import { formListen } from '../components/event_form';
+// import { formListen } from '../components/event_form';
+import { eventRest } from '../components/event_form';
 import { tagFunctionality } from '../components/tag_choice';
+
+import { editionRest } from '../components/roulette';
+// import { spinRoulette } from '../components/roulette';
+
+// // NEW EVENT FORM
 const tagForm = document.querySelector("#new_event");
 if (tagForm) {
+  console.log("new event")
   tagFunctionality();
-  formListen();
+  eventRest();
+};
+
+// NEW EDITION FORM
+const roulettePage = document.querySelector('#wheel');
+if (roulettePage) {
+  editionRest();
 };

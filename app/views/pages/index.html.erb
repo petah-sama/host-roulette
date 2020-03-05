@@ -40,7 +40,7 @@
     <div class="stats-card mt-4 mb-4 p-3">
         <h1> Pending </h1>
         <div>
-          <h4>  <%= @alleditions.pending.size %> of <%= @alleditions.size %></h4>
+          <h4>  <%= @alleditions.pending.size %> of <%= (@alleditions.active.size + @alleditions.pending.size) %></h4>
           <h1><i class="far fa-clock"></i></h1>
         </div>
     </div>
