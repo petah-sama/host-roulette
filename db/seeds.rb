@@ -80,12 +80,26 @@ Guest.create(edition_id: Edition.all[4].id, member_id: Member.all[10].id)
 
 # TAGS
 puts 'TAAAAAAGZ'
-Tag.create(name: 'snow')
-Tag.create(name: 'beach')
-Tag.create(name: 'paintball')
-Tag.create(name: 'bachelor party')
-Tag.create(name: 'music')
-Tag.create(name: 'yeah!')
+Tag.create(name: 'Sports')
+Tag.create(name: 'Fitness')
+Tag.create(name: 'Business')
+Tag.create(name: 'Drink')
+Tag.create(name: 'Science')
+Tag.create(name: 'Tech')
+Tag.create(name: 'Family')
+Tag.create(name: 'Education')
+Tag.create(name: 'Travel')
+Tag.create(name: 'Outdoor')
+Tag.create(name: 'Hobbies')
+Tag.create(name: 'Music')
+Tag.create(name: 'Fashion')
+Tag.create(name: 'Film')
+Tag.create(name: 'Media')
+Tag.create(name: 'Arts')
+Tag.create(name: 'Dance')
+Tag.create(name: 'Charity')
+Tag.create(name: 'YEAH🤘')
+Tag.create(name: 'Other')
 
 # EVENT TAGS
 puts 'generating event tags'
