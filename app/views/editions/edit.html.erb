@@ -1,2 +1,14 @@
-<h1>Editions#edit</h1>
-<p>Find me in app/views/editions/edit.html.erb</p>
+<div class="col-8 p-3">
+  <%= simple_form_for @edition, url: event_edition_path(@edition), method: :patch do |f| %>
+    <div class="form-inputs">
+      <%= f.input :name %>
+      <%= f.input :start_time %>
+      <%= f.input :end_time %>
+      <%= f.input :address %>
+      <%= f.input :notes %>
+    </div>
+    <div class="form-actions">
+      <%= f.button 'submit', :submit %>
+    </div>
+  <% end %>
+</div>
