@@ -16,7 +16,7 @@ class Edition < ApplicationRecord
 
   # So I can test picking a host and code the permissions.
   def picking_host
-    host = self.guests.sample.member.user
+    self.guests.sample.participants.id
   end
 
 end

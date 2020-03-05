@@ -17,12 +17,12 @@ class EditionPolicy < ApplicationPolicy
     true
   end
 
-  def edit
-    true
+  def edit?
+    check_host
   end
 
   def update?
-    true
+    check_host
   end
 
   def destroy?
@@ -36,7 +36,7 @@ class EditionPolicy < ApplicationPolicy
   end
 
   def check_host
-    record.host_id == user
+    record.host_id == user.id
   end
 
 end
