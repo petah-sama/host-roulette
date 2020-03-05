@@ -1,36 +1,40 @@
-// dom variables
-var msf_getFsTag = document.getElementsByClassName("field-slide");
+const eventRest = () => {
 
-// declaring the active fieldset & the total fieldset count
-var msf_form_nr = 0;
-var fieldset = msf_getFsTag[msf_form_nr];
-fieldset.classList.add("msf_show");
-fieldset.classList.remove("msf_hide");
-fieldset.classList.remove("msf_showhide");
+  // dom variables
+  var msf_getFsTag = document.getElementsByClassName("field-slide");
 
-// creates and stores a number of bullets
-var msf_bullet_nr = "<div class='msf_bullet'></div>";
-var msf_length = msf_getFsTag.length;
-for (var i = 1; i < msf_length; ++i) {
-  msf_bullet_nr += "<div class='msf_bullet'></div>";
-};
-// injects bullets
-var msf_bullet_o = document.getElementsByClassName("msf_bullet_o");
-for (var i = 0; i < msf_bullet_o.length; ++i) {
-  var msf_b_item = msf_bullet_o[i];
-  msf_b_item.innerHTML = msf_bullet_nr;
-};
+  // declaring the active fieldset & the total fieldset count
+  var msf_form_nr = 0;
 
-// removes the first back button & the last next button
-document.getElementsByName("back")[0].className = "msf_hide";
-document.getElementsByName("next")[msf_bullet_o.length - 1].className = "msf_hide";
+  var fieldset = msf_getFsTag[msf_form_nr];
+  fieldset.classList.add("msf_show");
+  fieldset.classList.remove("msf_hide");
+  fieldset.classList.remove("msf_showhide");
 
-// Makes the first dot active
-var msf_bullets = document.getElementsByClassName("msf_bullet");
-msf_bullets[msf_form_nr].className += " msf_bullet_active";
+  // creates and stores a number of bullets
+  var msf_bullet_nr = "<div class='msf_bullet'></div>";
+  var msf_length = msf_getFsTag.length;
+  for (var i = 1; i < msf_length; ++i) {
+    msf_bullet_nr += "<div class='msf_bullet'></div>";
+  };
+  // injects bullets
+  var msf_bullet_o = document.getElementsByClassName("msf_bullet_o");
+  for (var i = 0; i < msf_bullet_o.length; ++i) {
+    var msf_b_item = msf_bullet_o[i];
+    msf_b_item.innerHTML = msf_bullet_nr;
+  };
+
+  // removes the first back button & the last next button
+  document.getElementsByName("back")[0].className = "msf_hide";
+  document.getElementsByName("next")[msf_bullet_o.length - 1].className = "msf_hide";
+
+  // Makes the first dot active
+  var msf_bullets = document.getElementsByClassName("msf_bullet");
+  msf_bullets[msf_form_nr].className += " msf_bullet_active";
 
 // Validation loop & goes to the next step
 const msf_btn_next = () => {
+
   var msf_val = true;
 
   const tagTag = document.querySelectorAll(".tag-choices");
@@ -79,6 +83,7 @@ const msf_btn_next = () => {
 
 // goes one step back
 const msf_btn_back = () => {
+
   msf_getFsTag[msf_form_nr].classList.add("msf_hide");
   msf_getFsTag[msf_form_nr].classList.remove("msf_showhide");
   msf_getFsTag[msf_form_nr].classList.remove("msf_show");
@@ -88,8 +93,10 @@ const msf_btn_back = () => {
   msf_getFsTag[msf_form_nr].classList.remove("msf_show");
 };
 
+
 // listen to the buttons
 const formListen = () => {
+
   const buttonNext1 = document.querySelector('#button-next1');
   buttonNext1.addEventListener('click', event => { msf_btn_next(); });
 
@@ -106,10 +113,8 @@ const formListen = () => {
   const buttonBack4 = document.querySelector('#button-back4');
   buttonBack4.addEventListener('click', event => { msf_btn_back(); });
 };
+formListen();
 
-// slider budget
-// const updateTextInput = (val) => {
-//   document.getElementById('textInput').value = val;
-// }
+};
 
-export { formListen };
+export { eventRest };

@@ -1,12 +1,50 @@
-<h1><%= @edition.name %></h1>
-
-<%= link_to 'Edit', edit_event_edition_path(@edition) %>
-
-
+<div class="event-card col-8 mx-auto mt-5 p-4">
+  <div class="event-slide d-flex flex-column justify-content-between">
+    <h2><%= @edition.name %></h2>
+    <div class="d-flex justify-content-between">
+      <div>guidelines</div>
+      <%= link_to 'Edit', edit_event_edition_path(@edition) %>
+    </div>
+  </div>
+</div>
 
 <%= render partial: 'editions/calendar' %>
 
 
 
+<!-- pending -->
+  <!-- name -->
+  <!-- guidelines -->
+  <!-- guests -->
+  <!-- host name -->
+  <!-- surveys -->
+      <!-- notes -->
+      <!-- edit edition -->
 
 
+<!-- active -->
+  <!-- name -->
+  <!-- guidelines -->
+  <!-- guests -->
+  <!-- host name -->
+  <!-- start time -->
+  <!-- end time -->
+  <!-- start_address -->
+  <!-- map -->
+  <!-- items -->
+  <!-- countdown -->
+      <!-- address -->
+      <!-- notes -->
+
+
+<!-- past -->
+  <!-- name -->
+  <!-- guidelines -->
+  <!-- guests -->
+  <!-- host name -->
+  <!-- host rating -->
+  <!-- start time -->
+  <!-- end time -->
+  <!-- address -->
+  <!-- map -->
+  <!-- rating -->

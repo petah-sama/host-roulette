@@ -9,7 +9,9 @@ class EditionsController < ApplicationController
   end
 
   def new
+    fetch_event
     @edition = Edition.new
+    @edition.event = @event
     authorize @edition
   end
 
@@ -36,7 +38,10 @@ class EditionsController < ApplicationController
 
   private
 
-
+  def fetch_event
+    @event = Event.find(params[:event_id])
+    authorize @event
+  end
 
   def fetch_edition
     @edition = Edition.find(params[:id])

@@ -26,12 +26,7 @@ class EventsController < ApplicationController
     @member.event = @event
     authorize @member
 
-    @edition = Edition.new
-    @edition.event = @event
-    @edition.name = "#{@event.name} #1"
-    authorize @edition
-
-    if @event.save && @edition.save && @member.save
+    if @event.save && @member.save
       @tags = params["event"]["tag_ids"].to_a.drop(1)
       gen_tags
       redirect_to event_path(@event)

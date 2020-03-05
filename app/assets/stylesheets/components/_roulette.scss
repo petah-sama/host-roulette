@@ -1,20 +1,19 @@
-
-.roulette-div{text-align:center;}
-#wheel{
-  display:inline-block;
-  position:relative;
-  overflow:hidden;
+#wheel {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
 }
-#wheel:after{
-  content:"";
+
+#wheel:after {
+  content: "";
   font-size: 15px;
   background: #931621;
-  border:2px solid #931621;
-  position:absolute;
-  top:-7px;
-  left:50%;
-  width:17px;
-  height:12px;
-  margin-left:-7px;
-  transform: rotate(45deg)
+  border: 2px solid #931621;
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  width: 17px;
+  height: 12px;
+  margin-left: -7px;
+  transform: rotate(45deg);
 }
