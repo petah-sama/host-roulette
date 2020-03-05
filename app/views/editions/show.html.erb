@@ -1,8 +1,15 @@
 <div class="event-card col-8 mx-auto mt-5 p-4">
   <div class="event-slide d-flex flex-column justify-content-between">
     <h2><%= @edition.name %></h2>
-    <div class="d-flex justify-content-between">
-      <div>guidelines</div>
+    <div class="">
+
+      <% if @edition.pending? %>
+        <%= render partial: 'editions/show-editions/pending-show' %>
+      <% elsif @edition.active? %>
+        <%= render partial: 'editions/show-editions/active-show' %>
+      <% elsif @edition.archived? %>
+        <%= render partial: 'editions/show-editions/archive-show' %>
+      <% end %>
       <%= link_to 'Edit', edit_event_edition_path(@edition) %>
     </div>
   </div>
@@ -11,8 +18,7 @@
 <%= render partial: 'editions/calendar' %>
 
 
-
-<!-- pending -->
+<!-- if pending -->
   <!-- name -->
   <!-- guidelines -->
   <!-- guests -->
@@ -22,7 +28,7 @@
       <!-- edit edition -->
 
 
-<!-- active -->
+<!-- if active -->
   <!-- name -->
   <!-- guidelines -->
   <!-- guests -->
@@ -37,7 +43,7 @@
       <!-- notes -->
 
 
-<!-- past -->
+<!-- if past -->
   <!-- name -->
   <!-- guidelines -->
   <!-- guests -->
