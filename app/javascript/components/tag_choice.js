@@ -1,16 +1,18 @@
 const tagFunctionality = () => {
-  const tagChoices = document.querySelectorAll(".tag-choice");
-  tagChoices.forEach(tag => {
-    tag.addEventListener('click', event => {
-      event.currentTarget.classList.toggle('active')
-      if (event.currentTarget.classList.contains('active')) {
-        event.currentTarget.children[0].checked = true;
+  const tagLabel = document.querySelectorAll(".tag-choice label");
+  tagLabel.forEach(label => {
+    label.addEventListener('click', event => {
+      console.log('clicking the text')
+      event.currentTarget.parentElement.classList.toggle('active')
+      if (event.currentTarget.parentElement.classList.contains('active')) {
+        event.currentTarget.checked = true;
       } else {
-        event.currentTarget.children[0].checked = false;
+        event.currentTarget.checked = false;
       }
     });
   });
 };
+
 
 export { tagFunctionality };
 

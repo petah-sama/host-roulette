@@ -3,10 +3,11 @@
     <h2><%= @edition.name %></h2>
     <div class="d-flex justify-content-between">
       <div>guidelines</div>
-
+      <%= link_to 'Edit', edit_event_edition_path(@edition) %>
     </div>
   </div>
 </div>
+
 <%= render partial: 'editions/calendar' %>
 
 
