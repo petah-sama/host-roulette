@@ -1,15 +1,11 @@
-<h1>Dashboard</h1>
-<div class="content-container d-flex">
-  <div class="card-container col-8">
-    <div class="custom-control custom-switch">
-      <input type="checkbox" name ='checkbox' class="custom-control-input toggleButton" id="customSwitch1" unchecked>
-      <label class="custom-control-label" id ='label-active' for="customSwitch1">All</label>
-    </div>
-    <div class="d-flex">
-      <div class="notification-container col-6 mt-2">
+<div class="content-container d-flex mt-4">
+  <div class="card-container col-8 ml-3">
+
+    <div class="notifications">
+      <div class="notification-card mt-4 mb-4">
         <h3> 5 answers to your survey</h3>
       </div>
-      <div class="notification-container col-6 mt-2 mb-2">
+      <div class="notification-card mt-4 mb-4">
         <h3>3 surveys to respond</h3>
       </div>
     </div>
@@ -26,16 +22,30 @@
 
   <!-- https://www.w3schools.com/w3css/w3css_progressbar.asp -->
   <!-- We need the host, to edit the logic of stats  -->
-  <div class = 'col-4'>
-    <div class="stats-container m-4 p-3">
-      <h1> Hosting </h1>
-      <h4>  <%= @hostingeditions.size %> of <%= @alleditions.size %> </h4>
+
+  <div class ="stats col-4 mt-4 mr-3">
+    <div class="scaled">
+      <div class="custom-control custom-switch">
+        <input type="checkbox" name ='checkbox' class="custom-control-input toggleButton" id="customSwitch1" unchecked>
+        <label class="custom-control-label" id ='label-active' for="customSwitch1">All</label>
+      </div>
+    </div>
+    <div class="stats-card mt-4 mb-4 p-3">
+        <h1> Hosting </h1>
+        <div>
+          <h4>  <%= @hostingeditions.size %> of <%= @alleditions.size %> </h4>
+          <h1><i class="fas fa-glass-martini-alt"></i></h1>
+        </div>
     </div>
 
-    <div class="stats-container m-4 p-3">
-      <h1> Pending </h1>
-      <h4>  <%= @alleditions.pending.size %> of <%= (@alleditions.active.size + @alleditions.pending.size) %></h4>
+    <div class="stats-card mt-4 mb-4 p-3">
+        <h1> Pending </h1>
+        <div>
+          <h4>  <%= @alleditions.pending.size %> of <%= (@alleditions.active.size + @alleditions.pending.size) %></h4>
+          <h1><i class="far fa-clock"></i></h1>
+        </div>
     </div>
+
   </div>
 
 </div>
@@ -54,7 +64,7 @@
   var labelActive = document.getElementById("label-active")
   checkbox.addEventListener('change', function() {
     if (checkbox.checked) {
-      labelActive.innerHTML = "Pending first";
+      labelActive.innerHTML = "Pending";
       x.style.display = "block";
     } else {
       labelActive.innerHTML = "All";

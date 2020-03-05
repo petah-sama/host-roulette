@@ -32,7 +32,8 @@
 
   <fieldset class="field-slide msf_hide">
     <div class="event-slide d-flex flex-column justify-content-between">
-      <%= f.input :budget, as: :range, min: "0", max: "600", label: 'How much do you want to spend?' %>
+      <%= f.range_field :budget, min: "0", max: "600", label: 'How much do you want to spend?' %>
+      <div id="event_budget_value"></div>
       <div>
         <div class="d-flex justify-content-between">
           <input type="button" name="back" value="Back" id="button-back3" class="btn btn-success">
