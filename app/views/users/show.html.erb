@@ -1,8 +1,23 @@
-<%= @user.first_name%>
-<%= @user.last_name%>
-<%= @user.email %>
-<%= @user.date_of_birth %>
-<%= @user.host_avg_rating %>
-<% if @user.photo.attached? %>
-<%= cl_image_tag @user.photo.key, height: 600, width: 320, crop: :fill %>
-<% end %>
+<div class="card-profile col-8 d-flex">
+
+  <div class="profile-picture col-4 m-4">
+    <% if @user.photo.attached? %>
+    <%= cl_image_tag @user.photo.key, height: 600, width: 320, crop: :fill %>
+    <% end %>
+  </div>
+
+  <div class="profile-info col-7 m-4">
+
+    <ul>
+
+      <li><%= @user.first_name%></li>
+      <li><%= @user.last_name%></li>
+      <li><%= @user.email%></li>
+      <li><%= @user.date_of_birth%></li>
+      <li><%= @user.host_avg_rating %></li>
+
+    </ul>
+
+  </div>
+</div>
+
