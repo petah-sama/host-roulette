@@ -22,8 +22,8 @@
             <i class="fas fa-bell"><i class="fas fa-circle"></i></i>
           </div>
         </div>
-      <% if user_signed_in? %>
-        <div class="nav-item">
+          <% if user_signed_in? %>
+        <div class="nav-item-name">
           <% if current_user.first_name && current_user.last_name %>
           <li><%= current_user.first_name %> <%= current_user.last_name %></li>
           <% else %>

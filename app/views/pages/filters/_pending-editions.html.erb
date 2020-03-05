@@ -10,6 +10,7 @@
             <%= guest.member.user.first_name %>
             <% end %>
           </div>
+          <p> <%= link_to 'Show', event_edition_path(edition.event, edition) %></p>
       </div>
     <% end %>
 
