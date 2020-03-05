@@ -1,2 +1,12 @@
-<h1>DRAGONS R US was the realest</h1>
+<h1><%= @edition.name %></h1>
+
+<%= link_to 'Edit', edit_event_edition_path(@edition) %>
+
+
+
 <%= render partial: 'editions/calendar' %>
+
+
+
+
+

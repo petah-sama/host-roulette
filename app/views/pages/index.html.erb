@@ -34,7 +34,7 @@
 
     <div class="stats-container m-4 p-3">
       <h1> Pending </h1>
-      <h4>  <%= @alleditions.pending.size %> of <%= @alleditions.size %></h4>
+      <h4>  <%= @alleditions.pending.size %> of <%= (@alleditions.active.size + @alleditions.pending.size) %></h4>
     </div>
   </div>
 

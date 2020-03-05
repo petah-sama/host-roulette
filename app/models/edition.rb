@@ -13,4 +13,10 @@ class Edition < ApplicationRecord
       tsearch: { prefix: true }
     }
 
+
+  # So I can test picking a host and code the permissions.
+  def picking_host
+    host = self.guests.sample.member.user
+  end
+
 end
