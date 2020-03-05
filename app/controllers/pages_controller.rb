@@ -6,13 +6,14 @@ class PagesController < ApplicationController
 
   def index
     if params[:query].present?
-      events = policy_scope(Event).includes(:members).where(members: { user:current_user }).search_by_name(params[:query])
-      @editions = Edition.where(event_id: @events)
+      events = policy_scope(Event).includes(:members).where(members: { user:current_user })
+      @editions = policy_scope(Edition).where(event_id: events).search_by_name(params[:query])
+      @alleditions = policy_scope(Edition).where(event_id: events)
       authorize @editions
     else
-      @events = policy_scope(Event).includes(:members).where(members: { user:current_user })
-      @editions = Edition.where(event_id: @events)
-
+      events = policy_scope(Event).includes(:members).where(members: { user:current_user })
+      @editions = policy_scope(Edition).where(event_id: events)
+      @alleditions = @editions
       authorize @editions
     end
   end
