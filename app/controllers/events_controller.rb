@@ -4,7 +4,11 @@ class EventsController < ApplicationController
   end
 
   def show
+    fetch_event
     authorize @event
+
+    @member = Member.new
+
   end
 
   def new
@@ -30,15 +34,10 @@ class EventsController < ApplicationController
     if @event.save && @edition.save && @member.save
       @tags = params["event"]["tag_ids"].to_a.drop(1)
       gen_tags
-      redirect_to event_edition_path(@event, @edition)
+      redirect_to event_path(@event)
     else
       render :new
     end
-  end
-
-  def join
-    fetch_event
-    # @authorize @event
   end
 
   def edit
