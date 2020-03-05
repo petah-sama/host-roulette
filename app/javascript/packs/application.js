@@ -1,11 +1,9 @@
 import "bootstrap";
 
-// import { formListen } from '../components/event_form';
 import { eventRest } from '../components/event_form';
 import { tagFunctionality } from '../components/tag_choice';
 
 import { editionRest } from '../components/roulette';
-// import { spinRoulette } from '../components/roulette';
 
 // // NEW EVENT FORM
 const tagForm = document.querySelector("#new_event");

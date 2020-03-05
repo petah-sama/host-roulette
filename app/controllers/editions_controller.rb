@@ -16,12 +16,25 @@ class EditionsController < ApplicationController
   end
 
   def create
+    fetch_event
+    @edition = Edition.new
+    @edition.event = @event
+
+    host_id = params["query"].to_i
+    host_user = User.find(host_id)
+    @edition.host_id = host_user.id
     authorize @edition
+      redirect_to root_path
+    if @edition.save
+      gen_guests
+      redirect_to event_edition_path(@event, @edition)
+    else
+      render :new
+    end
   end
 
   def edit
     events = policy_scope(Event).includes(:members).where(members: { user:current_user })
-
   end
 
   def update
@@ -48,11 +61,16 @@ class EditionsController < ApplicationController
     authorize @edition
   end
 
-
-
-
   def edition_params
     params.require(:edition).permit(:name, :address, :start_time, :end_time, :notes)
   end
 
+  def gen_guests
+    @edition.event.members.each do |member|
+      guest = Guest.new
+      guest.member = member
+      guest.edition = @edition
+      guest.save
+    end
+  end
 end

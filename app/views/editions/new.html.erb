@@ -1,4 +1,5 @@
 <div class="event-card col-6 mx-auto mt-5 p-4">
+
   <div class="event-slide d-flex flex-column justify-content-between">
     <h2>New edition of <%= @edition.event.name %>!</h2>
     <div class="d-flex justify-content-center">
@@ -8,11 +9,16 @@
     </div>
     <div class="d-flex justify-content-center">
       <button id="button-roulette" class="btn btn-lg btn-danger">Spin to pick host!</button>
-      <ul class="list-inline">
-        <% @event.participants.each do |participant| %>
-          <li class="user-names" data-name=<% participant.email %>></li>
-        <% end %>
-      </ul>
+
+      <div>
+        <ul class="list-inline">
+          <% @event.participants.each do |participant| %>
+            <li class="user-names" data-name="<%= participant.first_name %>" data-last="<%= participant.last_name %>" data-id="<%= participant.id %>"></li>
+          <% end %>
+        </ul>
+      </div>
+
     </div>
   </div>
+
 </div>
