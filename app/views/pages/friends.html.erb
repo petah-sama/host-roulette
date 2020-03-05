@@ -1,10 +1,35 @@
-<h1>Friend's List 👫</h1>
-<% @friends.each do |friend| %>
-  <ul class="list-group list-group-flush">
-  <% if friend.first_name && friend.last_name %>
-    <li class="list-group-item"><%= friend.first_name %> <%= friend.last_name %></li>
-  <% else %>
-    <li class="list-group-item"><%= friend.email %></li>
+<div class="col-8 m-auto">
+  <h1>Friend's List 👫</h1>
+
+
+  <% @friends.each do |friend| %>
+    <div class="friend-card">
+
+    <%= link_to user_path(friend) do %>
+      <% if friend.photo.attached? %>
+        <%= cl_image_tag friend.photo.key %>
+      <% else %>
+          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier" %>
+      <% end %>
+    <% end %>
+
+      <div class="friend-card-infos">
+          <% if friend.first_name && friend.last_name %>
+            <%= link_to user_path(friend) do %>
+              <h2><%= friend.first_name %> <%= friend.last_name %></h2>
+            <% end %>
+            <p>Your buddy email is <strong><%= friend.email %></strong></p>
+          <% else %>
+            <%= link_to user_path(friend) do %>
+              <h2><%= friend.email %></h2>
+            <% end %>
+            <p>Tell your buddy to add his first and last name 😉</p>
+          <% end %>
+      </div>
+
+    </div>
   <% end %>
-  </ul>
-<% end %>
+</div>
+
+
+
