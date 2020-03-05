@@ -1,0 +1,29 @@
+<div class="event-card col-6 mx-auto mt-5 p-4">
+  <h2>Invite your friends to '<%= @event.name %>'!</h2>
+
+  <!-- <fieldset class="field-slide msf_hide"> -->
+    <div class="event-slide d-flex flex-column justify-content-between">
+      <ul class="list-inline">
+        <% @event.participants.each do |user| %>
+          <% if user.first_name && user.last_name %>
+            <li><%= user.first_name %> <%= user.last_name %></li>
+          <% else %>
+            <li><%= user.email %></li>
+          <% end %>
+        <% end %>
+      </ul>
+      <h4><em><%= request.original_url %></em></h4>
+      <p>Share the link above</p>
+
+      <div class="d-flex justify-content-end">
+        <% if @event.participants.include? current_user %>
+          <%= link_to 'Pick Host!', new_event_edition_path(@event), class: 'btn btn-danger' %>
+        <% else %>
+          <%= simple_form_for [@event, @member] do |f| %>
+            <%= f.submit 'Join Event', class: 'btn btn-danger' %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  <!-- </fieldset> -->
+</div>

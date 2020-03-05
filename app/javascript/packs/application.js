@@ -19,5 +19,3 @@ if (tagForm) {
   tagFunctionality();
   formListen();
 };
-
-
