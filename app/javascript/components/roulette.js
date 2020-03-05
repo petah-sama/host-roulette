@@ -92,9 +92,6 @@ const roulette = () => {
   setTimeout(function() { isStopped = true; }, 2000);
 };
 
-const button = document.getElementById("button-roulette")
-
-button.addEventListener("click", roulette);
 
 
 export { roulette };
