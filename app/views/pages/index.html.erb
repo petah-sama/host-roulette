@@ -23,25 +23,25 @@
       <%= render 'pages/filters/pending-editions' %>
     </div>
   </div>
+
+  <!-- https://www.w3schools.com/w3css/w3css_progressbar.asp -->
+  <!-- We need the host, to edit the logic of stats  -->
   <div class = 'col-4'>
     <div class="stats-container m-4 p-3">
       <h1> Hosting </h1>
-      <h4>  <%= @editions.size %> of 5 </h4>
+      <h4>  <%= @alleditions.size %> of 5 </h4>
     </div>
 
     <div class="stats-container m-4 p-3">
       <h1> Pending </h1>
-      <h4>  <%= @editions.size %> of 5 </h4>
+      <h4>  <%= @alleditions.pending.size %> of <%= @alleditions.size %></h4>
     </div>
   </div>
-
-
 
 </div>
 
 
 <script>
-
 
   var filterHost = document.getElementById('filter-by-host');
   //Ainda vai ser preciso criar o filtro de host//

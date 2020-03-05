@@ -7,11 +7,21 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <%= render 'shared/search_bar' %>
 
+
+  <%= render 'shared/search_bar' %>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+
+        <div class ='notification-div'>
+      <!-- we still need to define the notifications, and then add -->
+      <!-- an IF in here, if (notifications) show circle. -->
+      <!-- and add the link to the notifications page -->
+          <div class="notification-bell">
+            <i class="fas fa-bell"><i class="fas fa-circle"></i></i>
+          </div>
+        </div>
       <% if user_signed_in? %>
         <div class="nav-item">
           <% if current_user.first_name && current_user.last_name %>
