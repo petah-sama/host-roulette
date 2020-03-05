@@ -1,6 +1,6 @@
 .tag-choice {
   background: #b7b7b7;
-  padding: 12px;
+  // padding: 12px;
   border-radius: 5px;
   opacity: .4;
   text-align: center;
@@ -10,7 +10,6 @@
   }
   &:hover {
     opacity: 1;
-    cursor: pointer;
   }
   &.active {
   background: $darkblue;
@@ -19,17 +18,18 @@
   }
 }
 
+
+
 .tag-choices {
   font-size: 12px;
   display: flex;
   justify-content: end;
   flex-wrap: wrap;
   margin: 20px 0;
-  // font-size: 80%;
-  // display: grid;
-  // grid-template-columns: 1fr 1fr 1fr 1fr;
-  // grid-column-gap: 1em;
-  // grid-row-gap: 1em;
+  label {
+    padding: 10px;
+    cursor: pointer;
+  }
 }
 
 .form-group.check_boxes.optional.event_tags {
