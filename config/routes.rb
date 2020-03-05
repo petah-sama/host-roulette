@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get 'calendar', to: 'pages#calendar'
   get 'surveys', to: 'pages#surveys'
 
-  resources :events, except: %i[index show] do
+  resources :events, except: %i[index] do
     resources :members, only: %i[create destroy]
     resources :event_tags, only: %i[create destroy]
     resources :editions, except: %i[index] do
