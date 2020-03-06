@@ -1,8 +1,31 @@
-<%= @user.first_name%>
-<%= @user.last_name%>
-<%= @user.email %>
-<%= @user.date_of_birth %>
-<%= @user.host_avg_rating %>
-<% if @user.photo.attached? %>
-<%= cl_image_tag @user.photo.key, height: 600, width: 320, crop: :fill %>
-<% end %>
+<div class="card-profile col-8 d-flex m-4">
+
+  <div class="profile-picture col-4 mt-4 mb-4 ml-4">
+    <div class="photo-box">
+      <% if @user.photo.attached? %>
+      <%= cl_image_tag @user.photo.key, height: 150, width: 150, crop: :fill %>
+      <% end %>
+    </div>
+    <h1>Check Host Ranking</h1>
+    <i class="fas fa-award"></i>
+    <h2><%= @user.host_avg_rating %></h2>
+  </div>
+
+  <div class="profile-info col-9 mt-4 mb-4 mr-4">
+
+      <h2>Profile Information</h2>
+      <div class="name">
+        <i class="fas fa-user-tag"></i>
+        <li><%= @user.first_name%> <%= @user.last_name%></li>
+      </div>
+      <div class="email">
+        <i class="far fa-paper-plane"></i>
+        <li><%= @user.email%></li>
+      </div>
+      <div class="birthday">
+        <i class="fas fa-birthday-cake"></i>
+        <li><%= @user.date_of_birth%></li>
+      <div/>
+  </div>
+</div>
+

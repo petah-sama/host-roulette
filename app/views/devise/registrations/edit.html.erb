@@ -1,4 +1,3 @@
-
 <div class="card-form-container col-8">
 
   <div class="card-show d-flex m-4">
@@ -35,7 +34,10 @@
                         input_html: { autocomplete: "last_name" } %>
         </div>
 
-        <%= f.input :email, required: true, autofocus: true %>
+        <%= f.input :email,
+                    required: true,
+                    autofocus: true,
+                    input_html: { autocomplete: "email" }%>
 
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
           <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
@@ -66,7 +68,6 @@
                     hint: "we need your current password to confirm your changes",
                     required: true,
                     input_html: { autocomplete: "current-password" } %>
-
     </div>
 
     <div class="form-actions d-flex justify-content-between ml-4">
@@ -75,6 +76,8 @@
       <%= link_to "Back", :back, class: 'btn btn-danger' %>
     </div>
   <% end %>
+
+
 
   </div>
 

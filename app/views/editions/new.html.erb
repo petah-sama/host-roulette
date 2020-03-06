@@ -9,6 +9,9 @@
     </div>
     <div class="d-flex justify-content-center">
       <button id="button-roulette" class="btn btn-lg btn-danger">Spin to pick host!</button>
+      <%= simple_form_for [@event, @edition], html: { id: "roulette-form"} do |f| %>
+
+      <% end %>
 
       <div>
         <ul class="list-inline">
