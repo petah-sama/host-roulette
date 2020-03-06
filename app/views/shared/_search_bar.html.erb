@@ -8,5 +8,14 @@
       %>
       <%= submit_tag "Search", class: "btn btn-primary" %>
     <% end %>
+  <% elsif controller_name == 'pages' && action_name == 'past_events' %>
+   <%= form_tag 'past-events', method: :get, class: 'form-inline' do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Search for an Edition"
+      %>
+      <%= submit_tag "Search", class: "btn btn-primary" %>
+    <% end %>
   <% end %>
 </div>

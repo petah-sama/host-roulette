@@ -10,7 +10,7 @@
 }
 
 .stats-card i {
-  color: #931621;
+  color: $red;
   font-size: 80px;
 }
 
@@ -22,7 +22,6 @@
 .stats-card {
   height:34vh;
   width:92%;
-  border: 1px solid rgb(230, 230, 230);
   border-radius:8px;
   text-align: center;
   background-color: white;
@@ -40,7 +39,6 @@
   text-align:center;
   width:48.5%;
   height:15vh;
-  border: 1px solid rgb(230, 230, 230);
   border-radius:8px;
   padding: 30px;
   background-color: white;
@@ -53,7 +51,6 @@
 .dashboard-card {
   border-radius:8px;
   padding: 10px 10px;
-  border: 1px solid rgb(230, 230, 230);
   margin-bottom: 24px;
   background-color: white;
 }
