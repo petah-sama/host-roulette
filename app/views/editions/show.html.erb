@@ -1,31 +1,123 @@
-<div class="event-card col-8 mx-auto mt-5 p-4">
-  <div class="event-slide d-flex flex-column justify-content-between">
-    <h2><%= @edition.name %></h2>
-    <div class="">
+<div class="show-main-container col-12 p-4">
+      <div class = 'cover-picture'>
+      <img src="https://www.f-covers.com/cover/ha-long-bay-vietnam-facebook-cover-timeline-banner-for-fb.jpg" alt="Smiley face" height="300" width="100%" id ='cover-picture'>
 
-      <% if @edition.pending? %>
-        <%= render partial: 'editions/show-editions/pending-show' %>
-      <% elsif @edition.active? %>
-        <%= render partial: 'editions/show-editions/active-show' %>
-      <% elsif @edition.archived? %>
-        <%= render partial: 'editions/show-editions/archive-show' %>
-      <% end %>
-      <%= link_to 'Edit', edit_event_edition_path(@edition) %>
+    </div>
+  <div class ='show-card-container p-4'>
+    <div class="d-flex ">
+      <!-- LADO ESQUERDO DO SHOW -->
+      <div class = 'show-main-column col-8'>
+          <h2 id ='show-page-title'><%= @edition.name %></h2>
+          <div class="show-hosting">
+            <% if current_user.is_host?(@edition) %>
+              <h4> <i class="fas fa-crown"></i>  You're hosting </h4>
+            <% else %>
+               <h4> <i class="fas fa-crown"></i> <%= @edition.host.nil? ? @edition.host.first_name : 'Hamza is the Host' %></h4>
+            <% end %>
+          </div>
+        <div class = 'show-event-guidelines'>
+          <h4> Event guidelines</h4>
+          <ul>
+            <li> Tags: <% @edition.event.tags.each do |tag|  %>
+              <%= tag.name %>,
+            <% end %> </li>
+            <li>Budget:<%= @edition.event.budget %></li>
+            <li><%= @edition.event.frequency %></li>
+          </ul>
+        </div>
+        <% if @edition.active? %>
+          <div class = 'show-plans'>
+            <%= render partial: 'editions/show-editions/show-plans' %>
+          </div>
+          <% else %>
+            <p> Waiting for Host to Plan </p>
+        <% end %>
+        <% if current_user.is_host?(@edition) %>
+          <li><%= link_to 'Edit the plans', edit_event_edition_path(@edition), class: 'btn btn-danger' %></li>
+        <% end %>
+        <div class="show-guests-div">
+          <% @edition.guests.each do |guest| %>
+            <ul >
+              <div class="show-guest-list">
+                <li> <%= guest.member.user.email %> </li>
+              </div>
+            </ul>
+          <% end %>
+        </div>
+
+
+      </div>
+
+      <div class = 'col-4'>
+
+        <% unless current_user.is_host?(@edition) || @edition.active? %>
+          <h3> Questions to answer: </h3>
+          <ul>
+            <div class = 'question-card d-flex align-items-center justify-content-between'> Do you like Cheese?
+              <%= link_to 'answer', edit_event_edition_path(@edition), class: 'btn btn-danger' %>
+            </div>
+            <div class = 'question-card d-flex align-items-center justify-content-between'> Do you like beer?
+              <%= link_to 'answer', edit_event_edition_path(@edition), class: 'btn btn-danger' %>
+            </div>
+          </ul>
+          <div class ='host-active-buttons'>
+            <ul>
+              <li><%= link_to 'See Questions', edit_event_edition_path(@edition), class: 'btn btn-danger' %></li>
+            </ul>
+          </div>
+        <% end %>
+        <% if @edition.active? %>
+          <div>
+            <!-- In were we can put the countdown -->
+            <h2 class = 'countdown'> in 12 days</h2>
+          </div>
+          <%= render partial: 'editions/calendar' %>
+          <% if current_user.is_host?(@edition) %>
+            <div class="show-host-notes">
+              <h2> Your notes: </h2>
+              <p> <%= @edition.notes %></p>
+              <%= link_to 'Edit your notes', edit_event_edition_path(@edition), class: 'btn btn-danger mt-1' %>
+            </div>
+          <% end %>
+          <br>
+          <% if current_user.is_host?(@edition) && @edition.active? %>
+            <h3> Questions: </h3>
+            <ul>
+              <div class = 'question-card d-flex align-items-center justify-content-between'> Do you like Cheese?
+                <%= link_to 'answers', edit_event_edition_path(@edition), class: 'btn btn-danger' %>
+              </div>
+              <div class = 'question-card d-flex align-items-center justify-content-between'> Do you like Cheese?
+                <%= link_to 'answers', edit_event_edition_path(@edition), class: 'btn btn-danger' %>
+              </div>
+            </ul>
+            <div class ='host-active-buttons'>
+              <ul>
+                <li><%= link_to 'All answers', edit_event_edition_path(@edition), class: 'btn btn-danger' %></li>
+              </ul>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
 
-<%= render partial: 'editions/calendar' %>
 
 
 <!-- if pending -->
-  <!-- name -->
   <!-- guidelines -->
   <!-- guests -->
   <!-- host name -->
+
   <!-- surveys -->
       <!-- notes -->
+
+  <!-- surveys list -->
+
+      <!-- HOST HOST HOST -->
       <!-- edit edition -->
+      <!-- add members to event -->
+      <!-- new survey -->
 
 
 <!-- if active -->
@@ -33,14 +125,23 @@
   <!-- guidelines -->
   <!-- guests -->
   <!-- host name -->
+
   <!-- start time -->
   <!-- end time -->
+
   <!-- start_address -->
   <!-- map -->
+  <!-- start_address / map -->
   <!-- items -->
   <!-- countdown -->
-      <!-- address -->
-      <!-- notes -->
+
+      <!-- HOST HOST HOST -->
+      <!-- edit edition -->
+      <!-- add members to event -->
+
+      <!-- HOST HOST HOST -->
+      <!-- edit edition -->
+      <!-- add members to event -->
 
 
 <!-- if past -->
@@ -48,9 +149,11 @@
   <!-- guidelines -->
   <!-- guests -->
   <!-- host name -->
+
   <!-- host rating -->
   <!-- start time -->
   <!-- end time -->
   <!-- address -->
   <!-- map -->
   <!-- rating -->
+  <!-- review -->

@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
 
+  namespace :user do
+    root to: "pages#index"
+  end
 
   resources :users, only: [:show]
   root to: 'pages#home'
