@@ -1,0 +1,73 @@
+<!-- if pending -->
+  <!-- name -->
+  <!-- guidelines -->
+  <!-- guests -->
+  <!-- host name -->
+  <!-- surveys -->
+      <!-- notes -->
+      <!-- edit edition -->
+<% if current_user = @edition.host %>
+  <div>
+    <div class = 'd-flex justify-content-between'>
+    <div>
+      <h4> You are the host! </h4>
+      <ul>
+      <% @edition.guests.each do |guest| %>
+          <div class="d-flex">
+            <li> <%= guest.member.user.first_name %> </li>
+          </div>
+      <% end %>
+        </ul>
+
+        <div>
+          <p><%= @edition.notes %></p>
+        </div>
+    </div>
+    <div>
+      <h4> Event guidelines</h4>
+      <p><%= @edition.event.name %></p>
+      <p><%= @edition.event.budget %></p>
+      <p><%= @edition.event.frequency %></p>
+    </div>
+    </div>
+    <div>
+      <%= link_to 'Go live', edit_event_edition_path(@edition) %>
+      <!-- link_to create survey -->
+      <!-- Publish -->
+    </div>
+
+  </div>
+<% else %>
+    <div>
+      <div class = 'd-flex justify-content-between'>
+        <div>
+          <h4><%= @edition.host.nil? ? @edition.host.email : 'No Host' %></h4>
+          <ul>
+          <% @edition.guests.each do |guest| %>
+              <div class="d-flex">
+                <!-- we can put the user.photos here -->
+                <li> <%= guest.member.user.email %> </li>
+              </div>
+
+          <% end %>
+           </ul>
+            <div>
+              <p><%= @edition.notes %></p>
+            </div>
+        </div>
+        <div>
+          <h4> Event guidelines</h4>
+          <p><%= @edition.event.name %></p>
+          <p><%= @edition.event.budget %></p>
+          <p><%= @edition.event.frequency %></p>
+        </div>
+      </div>
+    <div class="">
+      <%= link_to 'Go live', edit_event_edition_path(@edition) %>
+      <!-- link_to create survey -->
+      <!-- Publish -->
+    </div>
+
+  </div>
+
+<% end %>

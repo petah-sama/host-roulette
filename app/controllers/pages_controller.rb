@@ -9,11 +9,13 @@ class PagesController < ApplicationController
       events = policy_scope(Event).includes(:members).where(members: { user:current_user })
       @editions = policy_scope(Edition).where(event_id: events).search_by_name(params[:query])
       @alleditions = policy_scope(Edition).where(event_id: events)
+      @hostingeditions = policy_scope(Edition).where(host_id: current_user.id)
       authorize @editions
     else
       events = policy_scope(Event).includes(:members).where(members: { user:current_user })
       @editions = policy_scope(Edition).where(event_id: events)
       @alleditions = @editions
+      @hostingeditions = policy_scope(Edition).where(host_id: current_user.id)
       authorize @editions
     end
   end
