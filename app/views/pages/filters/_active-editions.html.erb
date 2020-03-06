@@ -2,16 +2,23 @@
   <% @editions.each do |edition| %>
     <% if edition.active? %>
       <div class="dashboard-card active-card">
-          <p><%= edition.name %></p>
-          <p>Status:<%= edition.status %></p>
-          <div>
-            Guests: <% edition.guests.each do |guest|%>
-            <%= guest.member.user.first_name %>
-            <% end %>
+        <div class="col-4">
+            <%= image_tag "https://images.unsplash.com/photo-1539635278303-d4002c07eae3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80", height: 160, width: 220, crop: :fill %>
           </div>
-          <p> <%= link_to 'Show', event_edition_path(edition.event, edition) %></p>
+          <div class="col-8">
+            <p><%= edition.name %></p>
+            <p>Status: <%= edition.status %></p>
+            <div>
+              <p>
+                Guests: <% edition.guests.each do |guest|%>
+                <%= guest.member.user.first_name %>
+                <% end %>
+              </p>
+          </div>
+          <div><%= link_to 'Show', event_edition_path(edition.event, edition), class: "btn btn-danger" %></div>
+        </div>
       </div>
     <% end %>
-
-    <% end %>
+  <% end %>
 </div>
+

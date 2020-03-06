@@ -23,6 +23,16 @@
 .profile-info i {
   font-size: 50px;
   margin-right: 20px;
+  color: $red;
+}
+
+
+.profile-info #edit {
+  font-size: 20px;
+  position: relative;
+  bottom: -1px;
+  right: -430px;
+  margin: 0px;
 }
 
 .profile-picture {
@@ -43,7 +53,7 @@
 
 .profile-picture i {
   font-size: 50px;
-  color: #931621;
+  color: $red;
 }
 
 .name {

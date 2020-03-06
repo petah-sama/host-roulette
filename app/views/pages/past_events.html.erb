@@ -1,18 +1,30 @@
-<h1>Your Past Events</h1>
+<div class="content-container d-flex mt-4">
+  <div class="card-container col-8 ml-3">
+    <div class="title m-4">
+      <h2>Your Previous Editions</h2>
+    </div>
 
-<div class="dashboard-card-container d-flex">
-  <div class="dashboard-card col-8">
-  <% @past_editions.each do |edition| %>
-    <p><%= edition.name %></p>
-    <p>Status:<%= edition.status %></p>
-    <p>Friends in this edition:<% edition.guests.each do |guest| %>
-        <% if guest.member.user.first_name %>
-          <%= guest.member.user.first_name %>
-        <% else %>
-          <%= guest.member.user.email %>
-        <% end %>
+      <% @past_editions.each do |edition| %>
+      <div class="dashboard-card-container">
+      <div class="dashboard-card col-12 pb-4 pt-4">
+        <div class="col-4">
+            <%= image_tag "https://images.unsplash.com/photo-1539635278303-d4002c07eae3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80", height: 160, width: 220, crop: :fill%>
+        </div>
+        <div class="col-8">
+          <p><%= edition.name %></p>
+          <p>Status:<%= edition.status %></p>
+          <p>Friends in this edition:<% edition.guests.each do |guest| %>
+              <% if guest.member.user.first_name %>
+                <%= guest.member.user.first_name %>
+              <% else %>
+                <%= guest.member.user.email %>
+              <% end %>
+            <% end %>
+          </p>
+          <div><%= link_to 'Show', event_edition_path(edition.event, edition), class: "btn btn-danger" %></div>
+        </div>
       <% end %>
-    </p>
-  <% end %>
+      </div>
+    </div>
   </div>
 </div>
