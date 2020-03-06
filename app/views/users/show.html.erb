@@ -5,7 +5,7 @@
       <% if @user.photo.attached? %>
       <%= cl_image_tag @user.photo.key, height: 150, width: 150, crop: :fill %>
       <% else %>
-      <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier" %>
+      <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", height: 150, width: 150 %>
       <% end %>
     </div>
     <h1>Check Host Ranking</h1>
@@ -15,10 +15,19 @@
 
   <div class="profile-info col-9 mt-4 mb-4 mr-4">
 
+      <div d-flex>
 
-      <i id="edit" class="fas fa-edit"></i>
+        <div>
+          <%= link_to edit_user_registration_path do %>
+          <i id="edit" class="fas fa-edit"></i>
+          <% end %>
 
-      <h2>Profile Information</h2>
+        </div>
+
+        <h2>Profile Information</h2>
+
+      </div>
+
       <div class="name">
         <i class="fas fa-user-tag"></i>
         <li><%= @user.first_name%> <%= @user.last_name%></li>
@@ -31,9 +40,8 @@
         <i class="fas fa-birthday-cake"></i>
         <li><%= @user.date_of_birth%></li>
       <div/>
-      <div>
-        <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-danger" %>
-      </div>
+
   </div>
 </div>
+
 

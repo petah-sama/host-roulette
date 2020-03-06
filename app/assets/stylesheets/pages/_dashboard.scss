@@ -53,8 +53,10 @@
   padding: 10px 10px;
   margin-bottom: 24px;
   background-color: white;
+  display: flex;
+  justify-content: space-between;
+  vertical-align: middle;
 }
-
 
 .scaled {
   transform: scale(1.5);
