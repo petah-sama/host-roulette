@@ -16,49 +16,58 @@
     <%= f.input :photo,
                 as: :file,
                 required: false,
-                class: 'custom-file-label' %>
+                input_html: { class: 'btn btn-info' },
+                wrapper_html: { class: 'm-0' } %>
 
 </div>
 <div class="card-show-info col-8 p-3">
       <div class="form-inputs m-4">
         <h3 class="form-title text-simple mb-2 mt-0">Edit your profile</h3>
-      <%= f.input :first_name,
+
+        <div class="form-grid">
+          <%= f.input :first_name,
+                        required: false,
+                        autofocus: true,
+                        input_html: { autocomplete: "first_name" }%>
+          <%= f.input :last_name,
+                        required: false,
+                        autofocus: true,
+                        input_html: { autocomplete: "last_name" } %>
+        </div>
+
+        <%= f.input :email, required: true, autofocus: true %>
+
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+        <% end %>
+
+        <%= f.input :date_of_birth,
                     required: false,
                     autofocus: true,
-                    input_html: { autocomplete: "first_name" }%>
-      <%= f.input :last_name,
-                    required: false,
-                    autofocus: true,
-                    input_html: { autocomplete: "last_name" } %>
-      <%= f.input :email, required: true, autofocus: true %>
-
-      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-      <% end %>
-
-      <%= f.input :date_of_birth,
-                  required: false,
-                  autofocus: true,
-                  order: %i(day month year),
-                  start_year: Time.now.year - 100,
-                  end_year: Time.now.year,
-                  input_html: { autocomplete: "date_of_birth" }%>
-
-      <%= f.input :password,
-                  hint: "leave it blank if you don't want to change it",
-                  required: false,
-                  input_html: { autocomplete: "new-password" } %>
-      <%= f.input :password_confirmation,
-                  required: false,
-                  input_html: { autocomplete: "new-password" } %>
+                    order: %i(day month year),
+                    start_year: Time.now.year - 100,
+                    end_year: Time.now.year,
+                    input_html: { autocomplete: "date_of_birth" } %>
+        <div class="form-grid">
+          <%= f.input :password,
+                      # hint: "leave it blank if you don't want to change it",
+                      required: false,
+                      input_html: { autocomplete: "new-password" },
+                      wrapper_html: { class: 'm-0' } %>
+          <%= f.input :password_confirmation,
+                      required: false,
+                      input_html: { autocomplete: "new-password" },
+                      wrapper_html: { class: 'm-0' } %>
+        </div>
+        <small class="form-text text-muted mb-3 mt-1">leave it blank if you don't want to change it</small>
 
 
-      <%= f.input :current_password,
-                  hint: "we need your current password to confirm your changes",
-                  required: true,
-                  input_html: { autocomplete: "current-password" } %>
+        <%= f.input :current_password,
+                    hint: "we need your current password to confirm your changes",
+                    required: true,
+                    input_html: { autocomplete: "current-password" } %>
 
-  </div>
+    </div>
 
     <div class="form-actions d-flex justify-content-between ml-4">
       <%= f.button :submit, "Update", class: 'btn btn-danger'%>
