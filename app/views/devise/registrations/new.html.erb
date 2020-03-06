@@ -9,22 +9,25 @@
 
       <%= f.input :photo,
                   as: :file,
-                  required: false, class: 'btn btn-primary' %>
+                  required: false, class: 'btn btn-primary',
+                  input_html: { class: 'btn btn-info' },
+                  wrapper_html: { class: 'm-0' } %>
   </div>
 
 
   <div class="card-show-info col-8 p-3">
       <div class="form-inputs m-4">
         <h3 class="form-title text-simple mb-2 mt-0">Sign up</h3>
-
-        <%= f.input :first_name,
-                    required: true,
-                    autofocus: true,
-                    input_html: { autocomplete: "first_name" }%>
-        <%= f.input :last_name,
-                    required: true,
-                    autfocus: true,
+        <div class="form-grid">
+          <%= f.input :first_name,
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "first_name" }%>
+          <%= f.input :last_name,
+                      required: true,
+                      autfocus: true,
                       input_html: { autocomplete: "last_name" } %>
+        </div>
         <%= f.input :email,
                     required: true,
                     autofocus: true,
@@ -36,18 +39,22 @@
                     start_year: Time.now.year - 100,
                     end_year: Time.now.year,
                     input_html: { autocomplete: "date_of_birth" }%>
-        <%= f.input :password,
-                    required: true,
-                    hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                    input_html: { autocomplete: "new-password" } %>
-        <%= f.input :password_confirmation,
-                    required: true,
-                    input_html: { autocomplete: "new-password" } %>
+        <div class="form-grid">
+          <%= f.input :password,
+                      required: true,
+                      hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                      input_html: { autocomplete: "new-password" },
+                      wrapper_html: { class: 'm-0' } %>
+          <%= f.input :password_confirmation,
+                      required: true,
+                      input_html: { autocomplete: "new-password" },
+                      wrapper_html: { class: 'm-0' } %>
+        </div>
       </div>
 
     <div class="form-actions ml-4">
       <%= f.button :submit, "Let's go!", class: 'btn btn-danger' %>
-    <!--   <%= render "devise/shared/links" %> -->
+      <%#= render "devise/shared/links" %>
     </div>
   <% end %>
 
