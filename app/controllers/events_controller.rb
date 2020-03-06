@@ -6,9 +6,7 @@ class EventsController < ApplicationController
   def show
     fetch_event
     authorize @event
-
     @member = Member.new
-
   end
 
   def new
@@ -20,7 +18,6 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.user = current_user
     authorize @event
-
     @member = Member.new
     @member.user = current_user
     @member.event = @event

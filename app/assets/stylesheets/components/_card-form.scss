@@ -1,0 +1,22 @@
+.card-form-container {
+  margin: 0 auto;
+  border-radius: 8px;
+  margin-bottom: 40px;
+}
+
+.card-show {
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.card-show-image {
+  padding: 0;
+  margin: 0;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: none;
+}
+
