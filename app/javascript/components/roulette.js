@@ -128,9 +128,13 @@ const editionRest = () => {
 
     setTimeout(function() { isStopped = true; }, 2000);
   };
+
   roulette();
   const button = document.querySelector("#button-roulette")
-  button.addEventListener("click", spinRoulette);
+  button.addEventListener("click", event => {
+    button.disabled = true;
+    spinRoulette();
+  });
 };
 
 export { editionRest };
