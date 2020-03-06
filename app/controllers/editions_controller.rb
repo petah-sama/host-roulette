@@ -16,15 +16,14 @@ class EditionsController < ApplicationController
 
   def create
     fetch_event
-    @edition = Edition.new
+    @edition = Edition.new(edition_params)
     @edition.event = @event
-
-    host_id = params["query"].to_i
-    host_user = User.find(host_id)
-    @edition.host_id = host_user.id
+    # host_id = params["query"].to_i
+    # host_user = User.find(host_id)
+    # @edition.host_id = host_user.id
     authorize @edition
     if @edition.save
-      # gen_guests
+      gen_guests
       redirect_to event_edition_path(@event, @edition)
     else
       render :new
@@ -60,7 +59,7 @@ class EditionsController < ApplicationController
   end
 
   def edition_params
-    params.require(:edition).permit(:name, :address, :start_time, :end_time, :notes)
+    params.require(:edition).permit(:host_id)
   end
 
   def gen_guests
