@@ -19,10 +19,10 @@ User.destroy_all
 
 # USER
 puts 'Creating peeps 💁💁‍♀️💁💁‍♀️'
-User.create(email: 'test1@t.com', password: '111111')
-User.create(email: 'test2@t.com', password: '111111')
-User.create(email: 'test3@t.com', password: '111111')
-User.create(email: 'test4@t.com', password: '111111')
+User.create(email: 'test1@t.com', password: '111111', first_name: 'Pedro', last_name: 'Alberto')
+User.create(email: 'test2@t.com', password: '111111', first_name: 'Rui', last_name: 'Alberto')
+User.create(email: 'test3@t.com', password: '111111', first_name: 'Margarida', last_name: 'Alberto')
+User.create(email: 'test4@t.com', password: '111111', first_name: 'Hugo', last_name: 'Alberto')
 User.create(email: 'test5@t.com', password: '111111', first_name: 'Luis', last_name: 'Alberto')
 User.create(email: 'test6@t.com', password: '111111', first_name: 'Alexandra', last_name: 'Pastel')
 

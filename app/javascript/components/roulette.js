@@ -3,10 +3,20 @@ const editionRest = () => {
     return Math.random() * (max - min) + min;
   }
 
-  let color = ['#051c4a','#93a3c0','#051c4a','#93a3c0','#051c4a','#93a3c0', "#051c4a", "#93a3c0"];
-  let label = ['#051c4a','#93a3c0','#051c4a','#93a3c0','#051c4a','#93a3c0', "#051c4a", "#93a3c0"];
-  // document.querySelectorAll('.user-names').forEach(function(item){ item = item.dataset.name });
-  console.log(label);
+  let color = [];
+  let basicColors = ['#051c4a','#93a3c0'];
+
+  let label = [];
+  let members = document.querySelectorAll('.user-names').forEach(function(member) { label.push([member.dataset.name, member.dataset.last, member.dataset.id]); });
+
+  for (var i = 0; i < label.length; i++){
+    if (i % 2 === 0) {
+      color.push(basicColors[0]);
+    } else {
+      color.push(basicColors[1])
+    };
+  };
+
   let slices = color.length;
   let sliceDeg = 360/slices;
   let deg = rand(0, 360);
@@ -22,7 +32,7 @@ const editionRest = () => {
     ctx.beginPath();
     ctx.fillStyle = '#586a88';
     ctx.moveTo(center, center);
-    ctx.arc(center, center, width/12, 0, 360);
+    ctx.arc(center, center, width / 12, 0, 360);
     ctx.lineTo(center, center);
     ctx.fill();
   }
@@ -35,7 +45,7 @@ const editionRest = () => {
     ctx.beginPath();
     ctx.fillStyle = color;
     ctx.moveTo(center, center);
-    ctx.arc(center, center, width/2, deg2rad(deg), deg2rad(deg+sliceDeg));
+    ctx.arc(center, center, width / 2, deg2rad(deg), deg2rad(deg+sliceDeg));
     ctx.lineTo(center, center);
     ctx.fill();
   }
@@ -53,9 +63,10 @@ const editionRest = () => {
 
   function drawImg() {
     ctx.clearRect(0, 0, width, width);
-    for(var i=0; i<slices; i++){
+    for(var i = 0; i < slices; i++){
       drawSlice(deg, color[i]);
-      drawText(deg+sliceDeg/2, label[i]);
+      let memberName = label[i][0] + " " + label[i][1][0] + ".";
+      drawText(deg + sliceDeg / 2, memberName);
       deg += sliceDeg;
     }
     drawCircleCenter();
@@ -71,8 +82,8 @@ const editionRest = () => {
       deg %= 360;
 
       // Increment speed
-      if(!isStopped && speed<20){
-        speed = speed+2 * 0.1;
+      if(!isStopped && speed < 2){
+        speed = speed + 2 * 0.1;
       }
       // Decrement Speed
       if(isStopped){
@@ -86,8 +97,29 @@ const editionRest = () => {
       if(lock && !speed) {
         var ai = Math.floor(((360 - deg - 90) % 360) / sliceDeg); // deg 2 Array Index
         ai = (slices+ai)%slices; // Fix negative index
-        return alert("The next host is:\n" + label[ai]); // Get Array Item from end Degree
-        // modalHost();
+
+        let hostId = label[ai][2];
+        let currentRoute = window.location.href;
+        let postRoute = currentRoute.substring(0, currentRoute.length - 3)
+
+
+        const setHost = () => {
+          fetch(postRoute, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "X-CSRF-Token": document.querySelector('[name="csrf-token"]').content,
+            },
+            body: JSON.stringify({ query: hostId }),
+            credentials: "same-origin"
+          })
+            .then(response => response.json())
+            .then((data) => {
+              console.log("this is a post request")
+            });
+        }
+        setHost();
+        return alert("The next host is:\n" + label[ai][0] + " " + label[ai][1]); // Get Array Item from end Degree
       }
 
       drawImg();
@@ -96,9 +128,13 @@ const editionRest = () => {
 
     setTimeout(function() { isStopped = true; }, 2000);
   };
+
   roulette();
   const button = document.querySelector("#button-roulette")
-  button.addEventListener("click", spinRoulette);
+  button.addEventListener("click", event => {
+    button.disabled = true;
+    spinRoulette();
+  });
 };
 
 export { editionRest };
