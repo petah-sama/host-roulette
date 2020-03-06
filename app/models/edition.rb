@@ -26,4 +26,5 @@ class Edition < ApplicationRecord
 
 
 
+
 end

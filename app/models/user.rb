@@ -13,4 +13,8 @@ class User < ApplicationRecord
     friends_ids = Member.where(event_id: events_ids).pluck(:user_id)
     User.where(id: friends_ids).where.not(id: self.id)
   end
+
+  def is_host?(edition)
+    self.id == edition.host_id
+  end
 end
