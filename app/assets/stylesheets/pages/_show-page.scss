@@ -1,0 +1,37 @@
+#cover-picture {
+  overflow:hidden;
+  object-fit: cover;
+}
+.show-main-container {
+  border-radius:20px;
+}
+
+.show-card-container {
+  background-color: white;
+  border-radius: 10px;
+}
+
+li {
+  list-style: none;
+}
+
+.question-card{
+  list-style: none;
+  padding: 10px;
+  border: 1px solid lightgrey;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+#show-page-title {
+  font-size: 70px;
+  text-align:center;
+  font-family: 'Catamaran'
+}
+
+.countdown {
+  padding: 10px;
+  background-color: #93a3c0;
+  color:white;
+  border-radius: 5px;
+}
