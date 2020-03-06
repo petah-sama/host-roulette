@@ -24,9 +24,8 @@ class EditionsController < ApplicationController
     host_user = User.find(host_id)
     @edition.host_id = host_user.id
     authorize @edition
-      redirect_to root_path
     if @edition.save
-      gen_guests
+      # gen_guests
       redirect_to event_edition_path(@event, @edition)
     else
       render :new
