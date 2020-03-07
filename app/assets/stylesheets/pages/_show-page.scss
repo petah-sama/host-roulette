@@ -35,3 +35,58 @@ li {
   color:white;
   border-radius: 5px;
 }
+
+/* Opacity */
+.opacity-light {
+  opacity: 0.3;
+}
+
+/* event guidelines */
+.event-tags {
+  background: #b7b7b7;
+  padding: 8px;
+  font-size:15px;
+  border-radius: 5px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.show-event-guidelines {
+}
+
+/* friends */
+
+.show-guest-list {
+  margin-left:5px;
+}
+
+
+.show-guest-list-card {
+  border: 1px solid lightgrey;
+  padding:5px 5px;
+  width: 50%;
+  min-width: 300px;
+  margin:5px;
+  border-radius: 5px;
+  p {
+    font-size:20px;
+    font-weight:bold;
+    float:none;
+    margin:10px 5px;
+  }
+}
+#see-all-guests {
+  margin-top:5px;
+  padding:5px 10px;
+}
+
+#more {
+  display: none;
+}
+
+.avatar-guest {
+  width:70px;
+  border-radius: 50%;
+}
+
+

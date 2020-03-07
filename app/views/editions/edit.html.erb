@@ -2,10 +2,12 @@
   <%= simple_form_for @edition, url: event_edition_path(@edition), method: :patch do |f| %>
     <div class="form-inputs">
       <%= f.input :name %>
-      <%= f.input :start_time %>
-      <%= f.input :end_time %>
+      <%= f.input :start_time, as: :string, required: false, input_html: {id: "range_start"} %>
+
+      <%= f.input :end_time, as: :string, required: false, input_html: {id: "range_end"} %>
+
       <%= f.input :address %>
-      <%= f.input :notes %>
+      <%= f.input :status, collection: Edition.statuses.keys%>
     </div>
     <div class="form-actions">
       <%= f.button 'submit', :submit %>

@@ -9,17 +9,18 @@
 
   <h2> Plans: </h2>
   <ul>
-    <li>Start date:<%= @edition.start_time %></li>
-    <li>End date: <%= @edition.end_time %></li>
-    <li> Adress: <%= @edition.start_address %></li>
+    <li>Start date:
+      <%= @edition.start_time.strftime("%m/%d/%Y at %H:%M ") unless @edition.start_time.nil?%></li>
+    <li>End date:
+     <%= @edition.end_time.strftime("%m/%d/%Y") unless @edition.end_time.nil?%>
+     </li>
+    <li> Address:
+     <%= @edition.start_address unless @edition.address.nil?%>
+     </li>
   </ul>
-  <h2> Bring some: </h2>
-  <ul>
-    <li> Sunscreen </li>
-    <li> 4 Beers </li>
-    <li> Cheese </li>
-  </ul>
-
+  <% if current_user.is_host?(@edition) %>
+    <li><%= link_to 'Plan your Event', edit_event_edition_path(@edition), class: 'btn btn-danger' %></li>
+  <% end %>
 
 
 
