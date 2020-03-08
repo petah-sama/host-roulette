@@ -7,10 +7,11 @@
       <%= f.input :end_time, as: :string, required: false, input_html: {id: "range_end"} %>
 
       <%= f.input :address %>
-      <%= f.input :status, collection: Edition.statuses.keys%>
+      <%= f.input :status, collection: Edition.statuses.keys.map { |key| key.capitalize }, selected: 1 %>
     </div>
     <div class="form-actions">
-      <%= f.button 'submit', :submit %>
+      <%= f.submit 'Update Event details', class: 'btn btn-primary' %>
     </div>
   <% end %>
+  <%= link_to 'Back', event_edition_path(@edition.event, @edition), class: 'btn btn-primary' %>
 </div>

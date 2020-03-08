@@ -26,14 +26,10 @@ class EditionPolicy < ApplicationPolicy
   end
 
   def destroy?
-    check_user
+    check_host
   end
 
   private
-
-  def check_user
-    record.user == user
-  end
 
   def check_host
     record.host_id == user.id

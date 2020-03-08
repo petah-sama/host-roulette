@@ -1,14 +1,13 @@
 #cover-picture {
-  overflow:hidden;
   object-fit: cover;
 }
 .show-main-container {
-  border-radius:20px;
+  border-radius: $border-radius;
+  overflow: hidden;
+  background-color: white;
 }
 
 .show-card-container {
-  background-color: white;
-  border-radius: 10px;
 }
 
 li {
@@ -19,13 +18,12 @@ li {
   list-style: none;
   padding: 10px;
   border: 1px solid lightgrey;
-  border-radius: 8px;
+  border-radius: $border-radius;
   margin-top: 10px;
 }
 
 #show-page-title {
   font-size: 70px;
-  text-align:center;
   font-family: 'Catamaran'
 }
 
@@ -33,7 +31,7 @@ li {
   padding: 10px;
   background-color: #93a3c0;
   color:white;
-  border-radius: 5px;
+  border-radius: $border-radius;
 }
 
 /* Opacity */
@@ -46,7 +44,7 @@ li {
   background: #b7b7b7;
   padding: 8px;
   font-size:15px;
-  border-radius: 5px;
+  border-radius: $border-radius;
   text-align: center;
   white-space: nowrap;
 }
@@ -67,7 +65,7 @@ li {
   width: 50%;
   min-width: 300px;
   margin:5px;
-  border-radius: 5px;
+  border-radius: $border-radius;
   p {
     font-size:20px;
     font-weight:bold;

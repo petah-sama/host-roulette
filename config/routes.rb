@@ -21,11 +21,13 @@ Rails.application.routes.draw do
         resources :reviews, only: %i[create update destroy]
       end
       resources :items, only: %i[create update destroy]
-      resources :questions, only: %i[create destroy] do
-        resources :answers, only: %i[create update destroy]
+      resources :questions, only: %i[create show] do
+        resources :answers, only: %i[create update]
       end
     end
   end
+  resources :questions, only: :destroy
+  resources :answers, only: :destroy
 
   get '/events/:id/join', to: 'events#join'
 end

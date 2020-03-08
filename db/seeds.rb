@@ -29,55 +29,65 @@ User.create(email: 'test6@t.com', password: '111111', first_name: 'Alexandra', l
 
 # EVENT
 puts 'Creating events 🎭🎤🎪'
-Event.create(name: 'Event A', budget: 50, frequency: 'Every 2 months', user_id: User.all[0].id)
-Event.create(name: 'Event B', budget: 110, frequency: 'Every year', user_id: User.all[1].id)
-Event.create(name: 'Event C', budget: 39470, frequency: 'Every week', user_id: User.all[2].id)
-Event.create(name: 'Event D', budget: 200, frequency: 'Every 4 months', user_id: User.all[3].id)
+Event.create(name: 'Weekend Getaway', budget: 80, frequency: 'Every 2 months', user_id: User.all[0].id)
+Event.create(name: 'Summer Vay-Kay', budget: 110, frequency: 'Every year', user_id: User.all[1].id)
+Event.create(name: 'Home cooked dinner', budget: 10, frequency: 'Every week', user_id: User.all[2].id)
+Event.create(name: 'Boardgame night', budget: 5, frequency: 'Every 4 months', user_id: User.all[3].id)
 
 # MEMBER
 puts 'MEMMMMMMBEEEEERS 👨‍👩‍👧‍👦'
-Member.create(event_id: Event.all[0].id, user_id: User.all[0].id)
+Member.create(event_id: Event.all[0].id, user_id: User.all[0].id) # creator
 Member.create(event_id: Event.all[0].id, user_id: User.all[1].id)
+Member.create(event_id: Event.all[0].id, user_id: User.all[4].id)
+Member.create(event_id: Event.all[0].id, user_id: User.all[5].id)
 
 Member.create(event_id: Event.all[1].id, user_id: User.all[0].id)
-Member.create(event_id: Event.all[1].id, user_id: User.all[1].id)
+Member.create(event_id: Event.all[1].id, user_id: User.all[1].id) # creator
 Member.create(event_id: Event.all[1].id, user_id: User.all[2].id)
+Member.create(event_id: Event.all[1].id, user_id: User.all[3].id)
 
 Member.create(event_id: Event.all[2].id, user_id: User.all[1].id)
-Member.create(event_id: Event.all[2].id, user_id: User.all[2].id)
+Member.create(event_id: Event.all[2].id, user_id: User.all[4].id) # creator
+Member.create(event_id: Event.all[2].id, user_id: User.all[5].id)
 
-Member.create(event_id: Event.all[3].id, user_id: User.all[3].id)
 Member.create(event_id: Event.all[3].id, user_id: User.all[2].id)
+Member.create(event_id: Event.all[3].id, user_id: User.all[3].id) # creator
 Member.create(event_id: Event.all[3].id, user_id: User.all[4].id)
-Member.create(event_id: Event.all[3].id, user_id: User.all[5].id)
 
 # EDITION
 puts 'Creating editions 🎫'
-Edition.create(name: 'Event A #1', event_id: Event.all[0].id)
-Edition.create(name: 'Event B #1', event_id: Event.all[1].id)
-Edition.create(name: 'Event C #1', event_id: Event.all[2].id)
-Edition.create(name: 'Event D #2', event_id: Event.all[3].id)
-Edition.create(name: 'Event D #2', event_id: Event.all[3].id, status: 1)
-Edition.create(name: 'Event D #1', event_id: Event.all[3].id, status: 2)
+Edition.create(name: "#{Event.all[0].name} #1", event_id: Event.all[0].id, status: 1, host_id: User.all[0].id)
+Edition.create(name: "#{Event.all[1].name} #1", event_id: Event.all[1].id, status: 1, host_id: User.all[1].id)
+Edition.create(name: "#{Event.all[2].name} #1", event_id: Event.all[2].id, status: 1, host_id: User.all[4].id)
+Edition.create(name: "#{Event.all[3].name} #1", event_id: Event.all[3].id, status: 0)
+Edition.create(name: "#{Event.all[3].name} #3", event_id: Event.all[3].id, status: 1, host_id: User.all[3].id)
+Edition.create(name: "#{Event.all[3].name} #3", event_id: Event.all[3].id, status: 2, host_id: User.all[3].id)
 
 # GUEST
 puts 'GUEST GUEST GUEST 🎟🎟🎟'
-Guest.create(edition_id: Edition.all[0].id, member_id: Member.all[0].id)
-Guest.create(edition_id: Edition.all[0].id, member_id: Member.all[1].id)
+Edition.all[0].event.members.each do |member|
+  Guest.create(edition_id: Edition.all[0].id, member_id: member.id)
+end
 
-Guest.create(edition_id: Edition.all[1].id, member_id: Member.all[2].id)
-Guest.create(edition_id: Edition.all[1].id, member_id: Member.all[4].id)
+Edition.all[1].event.members.each do |member|
+  Guest.create(edition_id: Edition.all[1].id, member_id: member.id)
+end
 
-Guest.create(edition_id: Edition.all[2].id, member_id: Member.all[5].id)
-Guest.create(edition_id: Edition.all[2].id, member_id: Member.all[6].id)
+Edition.all[2].event.members.each do |member|
+  Guest.create(edition_id: Edition.all[2].id, member_id: member.id)
+end
 
-Guest.create(edition_id: Edition.all[3].id, member_id: Member.all[7].id)
-Guest.create(edition_id: Edition.all[3].id, member_id: Member.all[9].id)
-Guest.create(edition_id: Edition.all[3].id, member_id: Member.all[10].id)
+Edition.all[3].event.members.each do |member|
+  Guest.create(edition_id: Edition.all[3].id, member_id: member.id)
+end
 
-Guest.create(edition_id: Edition.all[4].id, member_id: Member.all[7].id)
-Guest.create(edition_id: Edition.all[4].id, member_id: Member.all[10].id)
+Edition.all[4].event.members.each do |member|
+  Guest.create(edition_id: Edition.all[4].id, member_id: member.id)
+end
 
+Edition.all[5].event.members.each do |member|
+  Guest.create(edition_id: Edition.all[5].id, member_id: member.id)
+end
 
 # TAGS
 puts 'TAAAAAAGZ 🏷'
@@ -93,45 +103,54 @@ Tag.create(name: 'Travel')
 Tag.create(name: 'Outdoor')
 Tag.create(name: 'Hobbies')
 Tag.create(name: 'Music')
-Tag.create(name: 'Fashion')
+Tag.create(name: 'Dragons')
 Tag.create(name: 'Film')
 Tag.create(name: 'Media')
 Tag.create(name: 'Arts')
 Tag.create(name: 'Dance')
 Tag.create(name: 'Charity')
 Tag.create(name: 'YEAH🤘')
-Tag.create(name: 'Other')
+Tag.create(name: 'Beach')
+Tag.create(name: 'Dinner')
+Tag.create(name: 'Brunch')
+Tag.create(name: 'Party')
+Tag.create(name: 'Games')
+Tag.create(name: 'Fashion')
 
 # EVENT TAGS
 puts 'generating event tags 🎭🎤🎪🏷'
-EventTag.create(event_id: Event.all[0].id, tag_id: Tag.all[0].id)
-EventTag.create(event_id: Event.all[0].id, tag_id: Tag.all[2].id)
 EventTag.create(event_id: Event.all[0].id, tag_id: Tag.all[3].id)
-EventTag.create(event_id: Event.all[0].id, tag_id: Tag.all[4].id)
+EventTag.create(event_id: Event.all[0].id, tag_id: Tag.all[8].id)
+EventTag.create(event_id: Event.all[0].id, tag_id: Tag.all[9].id)
+EventTag.create(event_id: Event.all[0].id, tag_id: Tag.all[18].id)
 
-EventTag.create(event_id: Event.all[1].id, tag_id: Tag.all[1].id)
-EventTag.create(event_id: Event.all[1].id, tag_id: Tag.all[3].id)
+EventTag.create(event_id: Event.all[1].id, tag_id: Tag.all[9].id)
+EventTag.create(event_id: Event.all[1].id, tag_id: Tag.all[19].id)
+EventTag.create(event_id: Event.all[1].id, tag_id: Tag.all[22].id)
 
+EventTag.create(event_id: Event.all[2].id, tag_id: Tag.all[20].id)
+EventTag.create(event_id: Event.all[2].id, tag_id: Tag.all[18].id)
 EventTag.create(event_id: Event.all[2].id, tag_id: Tag.all[3].id)
-EventTag.create(event_id: Event.all[2].id, tag_id: Tag.all[4].id)
-EventTag.create(event_id: Event.all[2].id, tag_id: Tag.all[5].id)
+
+EventTag.create(event_id: Event.all[3].id, tag_id: Tag.all[22].id)
+EventTag.create(event_id: Event.all[3].id, tag_id: Tag.all[23].id)
 
 # ITEMS
 puts 'items items items 🧢🍾🧀🤿'
 Item.create(edition_id: Edition.all[0].id, name: 'umbrella')
-Item.create(edition_id: Edition.all[0].id, name: 'cap')
-Item.create(edition_id: Edition.all[0].id, name: 'sunscreen')
-Item.create(edition_id: Edition.all[0].id, name: 'bathing suit')
+Item.create(edition_id: Edition.all[0].id, name: 'tent')
+Item.create(edition_id: Edition.all[0].id, name: 'sleeping bag')
+Item.create(edition_id: Edition.all[0].id, name: 'pillow')
 
-Item.create(edition_id: Edition.all[1].id, name: 'wine bottle')
-Item.create(edition_id: Edition.all[1].id, name: 'tent')
-Item.create(edition_id: Edition.all[1].id, name: 'sleeping bag')
+Item.create(edition_id: Edition.all[1].id, name: 'cap')
+Item.create(edition_id: Edition.all[1].id, name: 'flip-flops')
+Item.create(edition_id: Edition.all[1].id, name: 'sunscreen')
+Item.create(edition_id: Edition.all[1].id, name: 'bathing suit')
 
-Item.create(edition_id: Edition.all[2].id, name: 'pillow')
 Item.create(edition_id: Edition.all[2].id, name: 'cheese')
-Item.create(edition_id: Edition.all[2].id, name: 'mask')
+Item.create(edition_id: Edition.all[2].id, name: 'wine bottle')
+Item.create(edition_id: Edition.all[2].id, name: 'dessert')
 
-Item.create(edition_id: Edition.all[3].id, name: 'flip-flops')
-Item.create(edition_id: Edition.all[3].id, name: 'pickles')
-Item.create(edition_id: Edition.all[3].id, name: 'carrots')
-
+Item.create(edition_id: Edition.all[3].id, name: 'beer')
+Item.create(edition_id: Edition.all[3].id, name: 'card deck')
+Item.create(edition_id: Edition.all[3].id, name: 'poker chips')

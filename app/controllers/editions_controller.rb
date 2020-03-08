@@ -1,24 +1,27 @@
 class EditionsController < ApplicationController
   before_action :fetch_edition, only: %i[show edit update destroy]
+  before_action :fetch_event, only: %i[new create]
+
   def index
     @editions = policy_scope(Edition)
   end
 
   def show
+    @question = Question.new
+    @edition_calendar = Edition.where(id: @edition.id)
   end
 
   def new
-    fetch_event
     @edition = Edition.new
     @edition.event = @event
     authorize @edition
   end
 
   def create
-    fetch_event
     @edition = Edition.new(edition_params)
     @edition.event = @event
-    @edition.name = @event.name + '#' + @event.editions.size.to_s
+    edition_number = @event.editions.size + 1
+    @edition.name = @event.name + ' #' + edition_number.to_s
     # host_id = params["query"].to_i
     # host_user = User.find(host_id)
     # @edition.host_id = host_user.id
@@ -33,7 +36,6 @@ class EditionsController < ApplicationController
 
   def edit
     events = policy_scope(Event).includes(:members).where(members: { user:current_user })
-
   end
 
   def update

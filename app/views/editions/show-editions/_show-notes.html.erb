@@ -1,0 +1,7 @@
+<div class="show-host-notes">
+  <h2>Notes:</h2>
+  <%= simple_form_for @edition, url: event_edition_path(@edition), method: :patch do |f| %>
+    <%= f.input :notes, label: false, placeholder: @edition.notes, input_html: {rows: 10} %>
+    <%= f.submit 'Save notes', class: 'btn btn-primary' %>
+  <% end %>
+</div>
