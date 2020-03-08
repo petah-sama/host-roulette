@@ -10,6 +10,7 @@
           <i class="fas fa-crown"></i><h4> <%= @edition.host.first_name + ' ' + @edition.host.last_name  %></h4>
         <% end %>
       </div>
+
     </div>
   <div class ='show-card-container p-4'>
     <div class="d-flex ">
@@ -25,8 +26,13 @@
             <li> <strong>Tags:</strong> <% @edition.event.tags.each do |tag|  %>
              <span class = 'text-nowrap'> <%= tag.name %> <%= ',' unless tag == @edition.event.tags.last%> </span>
             <% end %> </li>
-            <li> <strong>Budget/person: </strong> <%= @edition.event.budget %> </li>
+
+             <li> <strong>Budget/person: </strong> <%= @edition.event.budget %> </li>
             <li> <strong>Frequency: </strong> <%= @edition.event.frequency %></li>
+            <h5> Don't forget to bring: </h5>
+              <% @edition.items.each do |item|%>
+               <li> - <%= item.name %></li>
+            <% end %>
           </ul>
         </div>
         <br>

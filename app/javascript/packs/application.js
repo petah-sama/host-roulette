@@ -26,3 +26,4 @@ if (roulettePage) {
 };
 
 initMapbox();
+

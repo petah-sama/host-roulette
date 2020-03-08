@@ -6,7 +6,7 @@ class ItemPolicy < ApplicationPolicy
   end
 
   def create?
-    check_user
+    true
   end
 
   def destroy?
@@ -17,6 +17,10 @@ class ItemPolicy < ApplicationPolicy
 
   def check_user
     record.user == user
+  end
+
+  def check_host
+    record.host_id == user.id
   end
 
 end

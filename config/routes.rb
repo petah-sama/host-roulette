@@ -20,7 +20,7 @@ Rails.application.routes.draw do
       resources :guests, only: %i[create destroy] do
         resources :reviews, only: %i[create update destroy]
       end
-      resources :items, only: %i[create update destroy]
+      resources :items, only: %i[new create update destroy]
       resources :questions, only: %i[create destroy] do
         resources :answers, only: %i[create update destroy]
       end
