@@ -5,7 +5,8 @@
         <%= f.input :name, label: 'Which item?' %>
     </div>
      <div class="form-actions">
-         <%= f.submit 'Add item' %>
+         <%= f.submit 'Add item', class:'btn btn-danger' %>
+         <%= link_to 'Back', edit_event_edition_path(@event, @edition), class:'btn btn-primary ml-4' %>
     </div>
     <% end %>
   </div>

@@ -2,8 +2,8 @@
   <%= simple_form_for @edition, url: event_edition_path(@edition), method: :patch do |f| %>
     <div class="form-inputs">
       <%= f.input :name %>
-      <%= f.input :start_time %>
-      <%= f.input :end_time %>
+      <%= f.input :start_time, order: %i(day month year) %>
+      <%= f.input :end_time, order: %i(day month year) %>
       <%= f.input :address %>
       <%= f.input :notes %>
       <label for="name">Which items do you need?</label>
@@ -12,11 +12,11 @@
           <option><%= item.name%></option>
           <% end %>
         </select>
-      <%= link_to 'Add a new item', new_event_edition_item_path(@event, @edition) %>
+      <%= link_to 'Add a new item', new_event_edition_item_path(@event, @edition), class:'btn btn-danger mt-2 mb-2 mr-2' %>
     </div>
     <div class="form-actions d-flex">
-      <%= f.button 'submit', :Submit, class:"btn, btn-danger" %>
-      <%= link_to 'Back', event_edition_path(@event, @edition), class:'btn btn-danger ml-4' %>
+      <%= f.button 'submit', :Submit, class:"btn, btn-primary" %>
+      <%= link_to 'Back', event_edition_path(@event, @edition), class:'btn btn-primary ml-4' %>
     </div>
   <% end %>
 </div>
