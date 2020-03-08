@@ -9,13 +9,14 @@
 
   <h2> Plans: </h2>
   <ul>
+
     <li>Start date:
       <%= @edition.start_time.strftime("%m/%d/%Y at %H:%M ") unless @edition.start_time.nil?%></li>
     <li>End date:
      <%= @edition.end_time.strftime("%m/%d/%Y") unless @edition.end_time.nil?%>
      </li>
     <li> Address:
-     <%= @edition.start_address unless @edition.address.nil?%>
+     <%= @edition.address unless @edition.address.nil?%>
      </li>
   </ul>
   <% if current_user.is_host?(@edition) %>

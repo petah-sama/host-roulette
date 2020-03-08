@@ -38,6 +38,10 @@
 <!-- COLUMN ON THE RIGHT -->
       <div class = 'col-4'>
 
+          <%  unless @edition.address.nil? %>
+            <%= render partial: 'editions/show-editions/show-map' %>
+          <% end %>
+
         <div class="show-hosting">
           <% if current_user.is_host?(@edition) && @edition.host_id.present? %>
             <h4> <i class="fas fa-crown"></i>  You're hosting </h4>
@@ -46,7 +50,6 @@
           <% else %>
             <i class="fas fa-crown"></i><h4> <%= @edition.host.email %></h4>
           <% end %>
-
           </div>
       <!-- Pending for Guest -->
 
