@@ -1,25 +1,20 @@
 class EditionsController < ApplicationController
-  before_action :fetch_edition, only: %i[edit update destroy]
+  before_action :fetch_edition, only: %i[show edit update destroy]
   def index
-    @editions = policy_scope(Edition).geocoded
+    @editions = policy_scope(Edition)
+
   end
 
   def show
-    if Edition.find(params[:id]).latitude.present?
-      @edition = Edition.geocoded.find(params[:id])
-      authorize @edition
       @markers = [{
         lat: @edition.latitude,
         lng: @edition.longitude,
         infoWindow: render_to_string(partial: "editions/show-editions/info_window", locals: { edition: @edition }),
         image_url: helpers.asset_url('location.png')
       }]
-    else
-      @edition = Edition.find(params[:id])
       authorize @edition
     end
 
-  end
 
   def new
     fetch_event
@@ -47,7 +42,6 @@ class EditionsController < ApplicationController
 
   def edit
     events = policy_scope(Event).includes(:members).where(members: { user:current_user })
-
   end
 
   def update
@@ -74,16 +68,13 @@ class EditionsController < ApplicationController
     authorize @edition
   end
 
-  def edit_edition_params
-    params.require(:edition).permit(:name, :start_time, :end_time, :notes, :address)
-  end
 
   def edition_params
     params.require(:edition).permit(:host_id)
   end
 
   def edit_edition_params
-    params.require(:edition).permit(:name, :start_time, :end_time, :status, :address)
+    params.require(:edition).permit(:name, :start_time, :end_time, :status, :address, :notes)
   end
 
   def gen_guests
