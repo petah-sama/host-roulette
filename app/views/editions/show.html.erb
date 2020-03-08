@@ -1,150 +1,123 @@
 <div class="show-main-container col-12 p-4">
       <div class = 'cover-picture'>
       <img src="https://www.f-covers.com/cover/ha-long-bay-vietnam-facebook-cover-timeline-banner-for-fb.jpg" alt="Smiley face" height="300" width="100%" id ='cover-picture'>
+      <div class="show-hosting">
+        <% if current_user.is_host?(@edition) && @edition.host_id.present? %>
+          <h4> <i class="fas fa-crown"></i>  You're hosting </h4>
+        <% elsif @edition.host_id.nil? %>
+           <h4> <%= 'No Host' %></h4>
+        <% else %>
+          <i class="fas fa-crown"></i><h4> <%= @edition.host.first_name + ' ' + @edition.host.last_name  %></h4>
+        <% end %>
+      </div>
+
     </div>
   <div class ='show-card-container p-4'>
     <div class="d-flex ">
-      <!-- LADO ESQUERDO DO SHOW -->
-      <div class = 'show-main-column col-8'>
-          <h2 id ='show-page-title'><%= @edition.name %></h2>
-          <div class="show-hosting">
-            <% if current_user.is_host?(@edition) %>
-              <h4> <i class="fas fa-crown"></i>  You're hosting </h4>
-            <% else %>
-               <h4> <i class="fas fa-crown"></i> <%= @edition.host.nil? ? @edition.host.first_name : 'Hamza is the Host' %></h4>
-            <% end %>
-          </div>
+<!-- COLUNA ESQUERDA DO SHOW -->
+
+      <div class = 'show-column col-8'>
+<!-- HEADER -->
+        <h2 id ='show-page-title'><%= @edition.name %></h2>
+
         <div class = 'show-event-guidelines'>
-          <h4> Event guidelines</h4>
+          <h3> Event guidelines</h3>
           <ul>
-            <li> Tags: <% @edition.event.tags.each do |tag|  %>
-              <%= tag.name %>,
+            <li> <strong>Tags:</strong> <% @edition.event.tags.each do |tag|  %>
+             <span class = 'text-nowrap'> <%= tag.name %> <%= ',' unless tag == @edition.event.tags.last%> </span>
             <% end %> </li>
-            <li>Budget: <%= @edition.event.budget %></li>
-            <li><%= @edition.event.frequency %></li>
+
+             <li> <strong>Budget/person: </strong> <%= @edition.event.budget %> </li>
+            <li> <strong>Frequency: </strong> <%= @edition.event.frequency %></li>
             <h5> Don't forget to bring: </h5>
               <% @edition.items.each do |item|%>
                <li> - <%= item.name %></li>
             <% end %>
           </ul>
         </div>
-        <% if @edition.active? %>
+        <br>
+<!-- Shows plans if Active -->
+        <% if @edition.active? || current_user.is_host?(@edition) || @edition.archived?%>
           <div class = 'show-plans'>
             <%= render partial: 'editions/show-editions/show-plans' %>
           </div>
-          <% else %>
-            <p> Waiting for Host to Plan </p>
+        <% elsif @edition.pending? && current_user.is_guest?(@edition) %>
+            <h3> Waiting for Host to Plan </h3>
         <% end %>
-        <% if current_user.is_host?(@edition) %>
-          <li><%= link_to 'Edit the plans', edit_event_edition_path(@edition), class: 'btn btn-danger' %></li>
-        <% end %>
-        <div class="show-guests-div">
-          <% @edition.guests.each do |guest| %>
-            <ul >
-              <div class="show-guest-list">
-                <li> <%= guest.member.user.email %> </li>
-              </div>
-            </ul>
-          <% end %>
-        </div>
-
-
+        <br>
+<!-- Guests for All -->
+        <%= render partial: 'editions/show-editions/show-guests' %>
       </div>
 
-      <div class = 'col-4'>
+<!-- COLUMN ON THE RIGHT -->
+      <div class = 'show-column col-4'>
 
-        <% unless current_user.is_host?(@edition) || @edition.active? %>
-          <h3> Questions to answer: </h3>
-          <ul>
-            <div class = 'question-card d-flex align-items-center justify-content-between'> Do you like Cheese?
-              <%= link_to 'answer', edit_event_edition_path(@edition), class: 'btn btn-danger' %>
-            </div>
-            <div class = 'question-card d-flex align-items-center justify-content-between'> Do you like beer?
-              <%= link_to 'answer', edit_event_edition_path(@edition), class: 'btn btn-danger' %>
-            </div>
-          </ul>
-          <div class ='host-active-buttons'>
-            <ul>
-              <li><%= link_to 'See Questions', edit_event_edition_path(@edition), class: 'btn btn-danger' %></li>
-            </ul>
+        <% if @edition.active? %>
+          <!-- Countdown -->
+          <div>
+            <h2 class = 'countdown'> <%= @edition.countdown %> days left </h2>
           </div>
         <% end %>
+        <% if @edition.address.present? && !(@edition.pending?) %>
+          <%= render partial: 'editions/show-editions/show-map' %>
+        <% end %>
+
+      <!-- Pending questions for Guest -->
+        <% if current_user.is_guest?(@edition) %>
+          <%= render partial: 'editions/show-editions/show-questions-for-guest' %>
+        <% end %>
+
+
+<!-- Calendar for Guest and Host (On Active) -->
+
         <% if @edition.active? %>
-          <div>
-            <!-- In were we can put the countdown -->
-            <h2 class = 'countdown'> in 12 days</h2>
-          </div>
-          <%= render partial: 'editions/calendar' %>
-          <% if current_user.is_host?(@edition) %>
+          <% if @edition.start_time && current_user.is_host?(@edition) %>
+              <%= render partial: 'editions/calendar' %>
+          <% end %>
+        <% end %>
+        <br>
+<!-- Host notes -->
+          <% if current_user.is_host?(@edition) && !(@edition.pending?) %>
             <div class="show-host-notes">
               <h2> Your notes: </h2>
-              <p> <%= @edition.notes %></p>
-              <%= link_to 'Edit your notes', edit_event_edition_path(@edition), class: 'btn btn-danger mt-1' %>
+              <div class = ''>
+                <p> <%= @edition.notes %></p>
+              </div>
+
+              <%= simple_form_for @edition, url: event_edition_path(@edition), method: :patch do |f| %>
+                <%= f.input :notes, placeholder: @edition.notes %>
+                <%= f.button 'submit', :submit, class: 'btn btn-primary' %>
+              <% end %>
             </div>
           <% end %>
           <br>
-          <% if current_user.is_host?(@edition) && @edition.active? %>
-            <h3> Questions: </h3>
-            <ul>
-              <div class = 'question-card d-flex align-items-center justify-content-between'> Do you like Cheese?
-                <%= link_to 'answers', edit_event_edition_path(@edition), class: 'btn btn-danger' %>
-              </div>
-              <div class = 'question-card d-flex align-items-center justify-content-between'> Do you like Cheese?
-                <%= link_to 'answers', edit_event_edition_path(@edition), class: 'btn btn-danger' %>
-              </div>
-            </ul>
-            <div class ='host-active-buttons'>
-              <ul>
-                <li><%= link_to 'All answers', edit_event_edition_path(@edition), class: 'btn btn-danger' %></li>
-              </ul>
-            </div>
-          <% end %>
+
+  <!--Active Event Questions  if we're host -->
+
+        <% if current_user.is_host?(@edition) && !(@edition.pending?) %>
+          <h3> Ask questions </h3>
+          <%= render partial: 'editions/show-editions/show-questions-for-host' %>
+          <%= link_to 'All answers', edit_event_edition_path(@edition), class: 'btn btn-danger' %>
         <% end %>
-      </div>
+
+        <% if current_user.is_host?(@edition) && @edition.pending? %>
+          <%= render partial: 'editions/show-editions/show-questions-for-host' %>
+          <br>
+          <%= link_to 'See all answers', edit_event_edition_path(@edition), class: 'btn btn-danger' %>
+          <%= link_to 'Ask a question', edit_event_edition_path(@edition), class: 'btn btn-danger' %>
+        <% end %>
+      </div> <!-- Columns -->
     </div>
   </div>
 </div>
 
+<!-- TO DO: -->
+  <!-- add members to event -->
+  <!-- Picking a host on the archived -->
 
 
-<!-- if pending -->
-  <!-- guidelines -->
-  <!-- guests -->
-  <!-- host name -->
-
-  <!-- surveys -->
-      <!-- notes -->
-
-  <!-- surveys list -->
-
-      <!-- HOST HOST HOST -->
-      <!-- edit edition -->
-      <!-- add members to event -->
-      <!-- new survey -->
 
 
-<!-- if active -->
-  <!-- name -->
-  <!-- guidelines -->
-  <!-- guests -->
-  <!-- host name -->
-
-  <!-- start time -->
-  <!-- end time -->
-
-  <!-- start_address -->
-  <!-- map -->
-  <!-- start_address / map -->
-  <!-- items -->
-  <!-- countdown -->
-
-      <!-- HOST HOST HOST -->
-      <!-- edit edition -->
-      <!-- add members to event -->
-
-      <!-- HOST HOST HOST -->
-      <!-- edit edition -->
-      <!-- add members to event -->
 
 
 <!-- if past -->

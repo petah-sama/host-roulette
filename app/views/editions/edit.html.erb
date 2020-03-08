@@ -2,10 +2,10 @@
   <%= simple_form_for @edition, url: event_edition_path(@edition), method: :patch do |f| %>
     <div class="form-inputs">
       <%= f.input :name %>
-      <%= f.input :start_time, order: %i(day month year) %>
-      <%= f.input :end_time, order: %i(day month year) %>
+      <%= f.input :start_time, as: :string, required: false,  order: %i(day month year), input_html: {id: "range_start"} %>
+      <%= f.input :end_time, as: :string, required: false,  order: %i(day month year), input_html: {id: "range_end"} %>
       <%= f.input :address %>
-      <%= f.input :notes %>
+      <%= f.input :status, collection: Edition.statuses.keys%>
       <label for="name">Which items do you need?</label>
         <select class="form-control">
           <% @items.each do |item| %>
