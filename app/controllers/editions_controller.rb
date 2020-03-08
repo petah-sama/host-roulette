@@ -1,10 +1,20 @@
 class EditionsController < ApplicationController
   before_action :fetch_edition, only: %i[show edit update destroy]
   def index
-    @editions = policy_scope(Edition)
+    @editions = policy_scope(Edition).geocoded
   end
 
   def show
+    @edition = Edition.geocoded.find(params[:id])
+    authorize @edition
+
+    @markers = [{
+      lat: @edition.latitude,
+      lng: @edition.longitude,
+      infoWindow: render_to_string(partial: "editions/show-editions/info_window", locals: { edition: @edition }),
+      image_url: helpers.asset_url('casino-roulette.png')
+
+    }]
   end
 
   def new
@@ -35,7 +45,7 @@ class EditionsController < ApplicationController
   end
 
   def update
-    if @edition.update(edition_params)
+    if @edition.update(edit_edition_params)
       redirect_to event_edition_path
     else
       render :edit
@@ -60,6 +70,10 @@ class EditionsController < ApplicationController
 
   def edition_params
     params.require(:edition).permit(:host_id)
+  end
+
+  def edit_edition_params
+    params.require(:edition).permit(:name, :start_time, :end_time, :status, :address)
   end
 
   def gen_guests
