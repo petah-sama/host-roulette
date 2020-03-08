@@ -35,7 +35,7 @@
           <div class = 'show-plans'>
             <%= render partial: 'editions/show-editions/show-plans' %>
           </div>
-        <% elsif @edition.pending? && currrent_user.is_guest?(@edition) %>
+        <% elsif @edition.pending? && current_user.is_guest?(@edition) %>
             <h3> Waiting for Host to Plan </h3>
         <% end %>
         <br>
