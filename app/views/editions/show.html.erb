@@ -49,7 +49,9 @@
       </div>
 
       <div class = 'col-4'>
-          <%= render partial: 'editions/show-editions/show-map' %>
+          <%  unless @edition.address.nil? %>
+            <%= render partial: 'editions/show-editions/show-map' %>
+          <% end %>
         <div>
         </div>
         <% unless current_user.is_host?(@edition) || @edition.active? %>
