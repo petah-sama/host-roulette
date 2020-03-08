@@ -32,6 +32,7 @@ class EditionsController < ApplicationController
     fetch_event
     @edition = Edition.new(edition_params)
     @edition.event = @event
+    @edition.name = @event.name + '#' + @event.editions.size.to_s
     # host_id = params["query"].to_i
     # host_user = User.find(host_id)
     # @edition.host_id = host_user.id
@@ -46,6 +47,7 @@ class EditionsController < ApplicationController
 
   def edit
     events = policy_scope(Event).includes(:members).where(members: { user:current_user })
+
   end
 
   def update
@@ -70,6 +72,10 @@ class EditionsController < ApplicationController
   def fetch_edition
     @edition = Edition.find(params[:id])
     authorize @edition
+  end
+
+  def edit_edition_params
+    params.require(:edition).permit(:name, :start_time, :end_time, :notes, :address)
   end
 
   def edition_params
