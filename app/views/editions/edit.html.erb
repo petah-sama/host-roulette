@@ -6,9 +6,21 @@
       <%= f.input :end_time %>
       <%= f.input :address %>
       <%= f.input :notes %>
+      <label for="name">Which items do you need?</label>
+        <select class="form-control">
+          <% @items.each do |item| %>
+          <option><%= item.name%></option>
+          <% end %>
+        </select>
+      <%= link_to 'Add a new item', new_event_edition_item_path(@event, @edition) %>
     </div>
-    <div class="form-actions">
-      <%= f.button 'submit', :submit %>
+    <div class="form-actions d-flex">
+      <%= f.button 'submit', :Submit, class:"btn, btn-danger" %>
+      <%= link_to 'Back', event_edition_path(@event, @edition), class:'btn btn-danger ml-4' %>
     </div>
   <% end %>
 </div>
+
+
+
+

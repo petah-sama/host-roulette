@@ -32,10 +32,13 @@ class EditionsController < ApplicationController
 
   def edit
     events = policy_scope(Event).includes(:members).where(members: { user:current_user })
+    fetch_event
+    @items = Item.all
+    @item = Item.new
   end
 
   def update
-    if @edition.update(edition_params)
+    if @edition.update(edit_edition_params)
       redirect_to event_edition_path
     else
       render :edit
@@ -58,6 +61,10 @@ class EditionsController < ApplicationController
     authorize @edition
   end
 
+   def edit_edition_params
+    params.require(:edition).permit(:name, :start_time, :end_time, :notes, :address)
+  end
+
   def edition_params
     params.require(:edition).permit(:host_id)
   end
@@ -70,4 +77,5 @@ class EditionsController < ApplicationController
       guest.save
     end
   end
+
 end

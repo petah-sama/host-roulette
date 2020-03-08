@@ -1,7 +1,6 @@
 <div class="show-main-container col-12 p-4">
       <div class = 'cover-picture'>
       <img src="https://www.f-covers.com/cover/ha-long-bay-vietnam-facebook-cover-timeline-banner-for-fb.jpg" alt="Smiley face" height="300" width="100%" id ='cover-picture'>
-
     </div>
   <div class ='show-card-container p-4'>
     <div class="d-flex ">
@@ -21,8 +20,12 @@
             <li> Tags: <% @edition.event.tags.each do |tag|  %>
               <%= tag.name %>,
             <% end %> </li>
-            <li>Budget:<%= @edition.event.budget %></li>
+            <li>Budget: <%= @edition.event.budget %></li>
             <li><%= @edition.event.frequency %></li>
+            <h5> Don't forget to bring: </h5>
+              <% @edition.items.each do |item|%>
+               <li> - <%= item.name %></li>
+            <% end %>
           </ul>
         </div>
         <% if @edition.active? %>
