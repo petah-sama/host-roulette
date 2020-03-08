@@ -1,10 +1,10 @@
 
 <div class="show-guests-header">
-  <h3> Who's coming?</h3>
+    <h3> Who's coming?</h3>
 </div>
 <div id ='dots'>
   <div class="show-guests-div d-flex" >
-    <% @edition.guests.take(3).each do |guest| %>
+    <% @edition.guests.take(4).each do |guest| %>
         <div class="show-guest-list-item">
           <% if guest.member.user.photo.attached? %>
             <%= cl_image_tag guest.member.user.photo.key, class: "avatar-guest" %>
@@ -13,6 +13,8 @@
           <% end %>
         </div>
     <% end %>
+
+    <i class="fas fa-user-plus" id = 'adding-friends'></i>
   </div>
 </div>
 <div id = 'more' >
