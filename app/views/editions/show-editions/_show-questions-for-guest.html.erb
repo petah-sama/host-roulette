@@ -1,17 +1,30 @@
-  <h3> Questions to answer: </h3>
-  <ul>
-    <div class = 'question-card d-flex align-items-center justify-content-between'> Do you like Cheese?
+<h3>Surveys from host</h3>
+<div>
+  <% @edition.questions.each do |question| %>
+    <div class='question-card d-flex align-items-center justify-content-between'>
+      <%= question.content %>
+      <p class='text-center'> Do you like Cheese?</p>
       <%= link_to 'answer', edit_event_edition_path(@edition), class: 'btn btn-danger' %>
     </div>
-    <div class = 'question-card d-flex align-items-center justify-content-between'> Do you like beer?
-      <%= link_to 'answer', edit_event_edition_path(@edition), class: 'btn btn-danger' %>
-    </div>
-  </ul>
-  <div class ='host-active-buttons'>
-    <ul>
-      <li><%= link_to 'See Questions', edit_event_edition_path(@edition), class: 'btn btn-danger' %></li>
-    </ul>
-  </div>
+  <% end %>
+</div>
 
-
-
+<h3>Surveys from host</h3>
+<div>
+  <% @edition.questions.each do |question| %>
+    <% if question.answers.include? @answers %>
+      <%= link_to question.content, event_edition_question_path(@edition.event, @edition, question), class: 'question-card d-flex justify-content-between btn btn-info w-100 m-0' %>
+    <% else %>
+      <%= link_to event_edition_question_path(@edition.event, @edition, question), class: 'question-card d-flex justify-content-between btn btn-success w-100 m-0' do %>
+        <span><%= question.content %></span>
+        <span><%= question.answers.size %>/<%= @edition.guests.size %> replied</span>
+      <% end %>
+    <% end %>
+  <% end %>
+  <% if @edition.pending? %>
+    <%= simple_form_for @question, url: event_edition_questions_path(@edition.event, @edition), html: { class: "d-flex justify-content-between"} do |f| %>
+      <%= f.input :content, label: false, placeholder: 'New survey to guests', wrapper_html: { class: 'm-0 w-100' }%>
+      <%= f.submit 'Send', class: 'btn btn-primary' %>
+    <% end %>
+  <% end %>
+</div>
