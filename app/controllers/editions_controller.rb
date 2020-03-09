@@ -31,6 +31,7 @@ class EditionsController < ApplicationController
     @edition.event = @event
     edition_number = @event.editions.size + 1
     @edition.name = @event.name + ' #' + edition_number.to_s
+
     # host_id = params["query"].to_i
     # host_user = User.find(host_id)
     # @edition.host_id = host_user.id
@@ -74,12 +75,12 @@ class EditionsController < ApplicationController
     authorize @edition
   end
 
-  def edition_params
-    params.require(:edition).permit(:host_id)
+   def edit_edition_params
+    params.require(:edition).permit(:name, :start_time, :end_time, :notes, :address, :status, item_ids: [])
   end
 
-  def edit_edition_params
-    params.require(:edition).permit(:name, :start_time, :end_time, :status, :address, :notes)
+  def edition_params
+    params.require(:edition).permit(:host_id)
   end
 
   def gen_guests

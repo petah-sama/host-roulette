@@ -1,3 +1,4 @@
+
 <div class="show-main-container m-4">
   <div id='cover-picture'>
     <!-- Banner picture -->
@@ -15,8 +16,6 @@
   </div>
   <div class='show-card-container p-4'>
     <div class="d-flex ">
-
-
       <!-- COLUMN ON THE LEFT !!!! -->
       <!-- COLUMN ON THE LEFT !!!! -->
       <!-- COLUMN ON THE LEFT !!!! -->
@@ -39,8 +38,8 @@
         <div class = 'Items'>
           <h5> Don't forget to bring: </h5>
           <ul>
-              <% @edition.items.each do |item|%>
-               <li> - <%= item.name %></li>
+            <% @edition.items.each do |item|%>
+             <li> - <%= item.name %></li>
             <% end %>
           </ul>
         </div>
@@ -98,7 +97,8 @@
             <!-- Notes Host -->
             <%= render partial: 'editions/show-editions/show-notes' %>
           <% end %>
-        <% end %>
+          <br>
+
 
         <!-- ARCHIVED EDITION -->
         <% if @edition.archived? %>
@@ -117,6 +117,7 @@
             <%= render partial: 'editions/show-editions/show-notes' %>
           <% end %>
         <% end %>
+
 
       </div>
     </div>
