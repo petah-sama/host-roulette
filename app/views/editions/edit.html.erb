@@ -6,12 +6,7 @@
       <%= f.input :end_time, as: :string, required: false, order: %i(day month year), input_html: {id: "range_end"} %>
       <%= f.input :address %>
       <%= f.input :status, collection: Edition.statuses.keys%>
-      <label for="name">Which items do you need?</label>
-        <select class="form-control">
-          <% @items.each do |item| %>
-          <option><%= item.name%></option>
-          <% end %>
-        </select>
+      <%= f.association :items, input_html: { class: 'select2 form-control' }, label: 'Which items do you need?' %>
       <%= link_to 'Add a new item', new_event_edition_item_path(@event, @edition), class:'btn btn-danger mt-2 mb-2 mr-2' %>
     </div>
     <div class="form-actions d-flex">
@@ -20,6 +15,8 @@
     </div>
   <% end %>
 </div>
+
+
 
 
 

@@ -4,7 +4,8 @@ class Edition < ApplicationRecord
   belongs_to :event
   has_many :guests
   has_many :questions
-  has_many :items
+  has_many :edition_items
+  has_many :items, through: :edition_items
   after_validation :geocode, if: :will_save_change_to_address?
 
   include PgSearch::Model

@@ -72,7 +72,7 @@ class EditionsController < ApplicationController
   end
 
    def edit_edition_params
-    params.require(:edition).permit(:name, :start_time, :end_time, :notes, :address)
+    params.require(:edition).permit(:name, :start_time, :end_time, :notes, :address, :status, item_ids: [])
   end
 
   def edition_params
