@@ -2,16 +2,26 @@
   <%= simple_form_for @edition, url: event_edition_path(@edition), method: :patch do |f| %>
     <div class="form-inputs">
       <%= f.input :name %>
-      <%= f.input :start_time, as: :string, required: false, input_html: {id: "range_start"} %>
-
-      <%= f.input :end_time, as: :string, required: false, input_html: {id: "range_end"} %>
-
+      <%= f.input :start_time, as: :string, required: false,  order: %i(day month year), input_html: {id: "range_start"} %>
+      <%= f.input :end_time, as: :string, required: false,  order: %i(day month year), input_html: {id: "range_end"} %>
       <%= f.input :address %>
       <%= f.input :status, collection: Edition.statuses.keys.map { |key| key.capitalize }, selected: 1 %>
+      <!-- ITEMS -->
+      <label for="name">Which items do you need?</label>
+      <select class="form-control">
+        <% @items.each do |item| %>
+          <option><%= item.name %></option>
+        <% end %>
+      </select>
+      <%= link_to 'Add a new item', new_event_edition_item_path(@event, @edition), class: 'btn btn-danger mt-2 mb-2 mr-2' %>
     </div>
-    <div class="form-actions">
+    <div class="form-actions d-flex">
       <%= f.submit 'Update Event details', class: 'btn btn-primary' %>
+      <%= link_to 'Back', event_edition_path(@edition.event, @edition), class: 'btn btn-primary' %>
     </div>
   <% end %>
-  <%= link_to 'Back', event_edition_path(@edition.event, @edition), class: 'btn btn-primary' %>
 </div>
+
+
+
+

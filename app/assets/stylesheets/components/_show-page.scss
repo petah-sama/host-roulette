@@ -1,6 +1,24 @@
 #cover-picture {
-  object-fit: cover;
+  position:relative;
+  img {
+    object-fit: cover;
+  }
 }
+
+.show-hosting {
+  position:absolute;
+  bottom:0px;
+  padding: 10px 10px 0px 10px;
+  color:white;
+  background-color: #586a88;
+  border-radius: 0px 10px 0px 0px
+
+}
+
+.show-column {
+  height:100%;
+}
+
 .show-main-container {
   border-radius: $border-radius;
   overflow: hidden;
@@ -87,4 +105,17 @@ li {
   border-radius: 50%;
 }
 
+#adding-friends{
+  font-size: 34px;
+  color:white;
+  background-color: rgba(3, 14, 38, 0.5);
+  padding:20px 18px;
+  border-radius:50%;
+  margin-left: 5px;
+}
+
+#adding-friends:hover {
+  background-color: rgba(3, 14, 38, 1);
+  cursor:pointer;
+}
 

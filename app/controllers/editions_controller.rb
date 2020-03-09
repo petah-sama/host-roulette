@@ -4,11 +4,20 @@ class EditionsController < ApplicationController
 
   def index
     @editions = policy_scope(Edition)
+
   end
 
   def show
     @question = Question.new
     @edition_calendar = Edition.where(id: @edition.id)
+
+    @markers = [{
+      lat: @edition.latitude,
+      lng: @edition.longitude,
+      infoWindow: render_to_string(partial: "editions/show-editions/info_window", locals: { edition: @edition }),
+      image_url: helpers.asset_url('location.png')
+    }]
+    authorize @edition
   end
 
   def new
@@ -36,6 +45,9 @@ class EditionsController < ApplicationController
 
   def edit
     events = policy_scope(Event).includes(:members).where(members: { user:current_user })
+    fetch_event
+    @items = Item.all
+    @item = Item.new
   end
 
   def update
@@ -62,12 +74,12 @@ class EditionsController < ApplicationController
     authorize @edition
   end
 
-  def edit_edition_params
-    params.require(:edition).permit(:name, :start_time, :end_time, :notes, :address)
-  end
-
   def edition_params
     params.require(:edition).permit(:host_id)
+  end
+
+  def edit_edition_params
+    params.require(:edition).permit(:name, :start_time, :end_time, :status, :address, :notes)
   end
 
   def gen_guests
@@ -78,4 +90,5 @@ class EditionsController < ApplicationController
       guest.save
     end
   end
+
 end
