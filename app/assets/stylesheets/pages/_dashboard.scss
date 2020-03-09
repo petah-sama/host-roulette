@@ -19,8 +19,15 @@
   font-weight: bold;
 }
 
+
+.title-charts {
+  font-family: 'Catamaran';
+  font-size:35px;
+  font-weight:bold;
+}
+
 .stats-card {
-  height:34vh;
+  height:auto;
   width:92%;
   border-radius:8px;
   text-align: center;
@@ -28,6 +35,25 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+
+  .stats-chart {
+    height:100%;
+    margin: 0 auto;
+    position:relative;
+
+  }
+}
+
+.text-inside-chart {
+  top:80px;
+  font-family:'Catamaran';
+  font-size:30px;
+  font-weight:bold;
+  left:0;
+  right:0;
+  bottom:0;
+  position:absolute;
+
 }
 
 .notifications {
