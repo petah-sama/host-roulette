@@ -3,7 +3,7 @@
 
     <div class="notifications">
       <div class="notification-card mt-4 mb-4">
-        <h3> 5 answers to your survey</h3>
+        <h3>5 answers to your survey</h3>
       </div>
       <div class="notification-card mt-4 mb-4">
         <h3>3 surveys to respond</h3>
@@ -33,7 +33,7 @@
     <div class="stats-card mt-4 mb-4 p-3">
         <h1> Hosting </h1>
         <div>
-          <h4>  <%= @hostingeditions.size %> of <%= @alleditions.size %> </h4>
+          <h4><%= @hostingeditions.size %> of <%= @alleditions.size %> </h4>
           <h1><i class="fas fa-glass-martini-alt"></i></h1>
         </div>
     </div>
@@ -41,18 +41,15 @@
     <div class="stats-card mt-4 mb-4 p-3">
         <h1> Pending </h1>
         <div>
-          <h4>  <%= @alleditions.pending.size %> of <%= (@alleditions.active.size + @alleditions.pending.size) %></h4>
+          <h4><%= @alleditions.pending.size %> of <%= (@alleditions.active.size + @alleditions.pending.size) %></h4>
           <h1><i class="far fa-clock"></i></h1>
         </div>
     </div>
 
   </div>
-
 </div>
 
-
 <script>
-
   var filterHost = document.getElementById('filter-by-host');
   //Ainda vai ser preciso criar o filtro de host//
 
@@ -71,11 +68,4 @@
       x.style.display = "block";
     }
   });
-
-
-
-
-
-
-
 </script>

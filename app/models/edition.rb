@@ -26,7 +26,4 @@ class Edition < ApplicationRecord
       days_left = (self.start_time.to_date - date.to_date).to_i
     end
   end
-
-
-
 end
