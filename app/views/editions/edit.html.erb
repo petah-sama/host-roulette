@@ -1,5 +1,5 @@
 <div class="col-8 p-3">
-  <%= simple_form_for @edition, url: event_edition_path(@edition), method: :patch do |f| %>
+  <%= simple_form_for [@event, @edition], method: :patch do |f| %>
     <div class="form-inputs">
       <%= f.input :name %>
       <%= f.input :start_time, as: :string, required: false, order: %i(day month year), input_html: {id: "range_start"} %>
@@ -11,13 +11,7 @@
     </div>
     <div class="form-actions d-flex">
       <%= f.submit 'Update Event details', class: 'btn btn-primary' %>
-      <%= link_to 'Back', event_edition_path(@edition.event, @edition), class: 'btn btn-primary' %>
+      <%= link_to 'Back', event_edition_path(@event, @edition), class: 'btn btn-primary' %>
     </div>
   <% end %>
 </div>
-
-
-
-
-
-
