@@ -22,7 +22,7 @@ class EditionPolicy < ApplicationPolicy
   end
 
   def update?
-    check_host
+    true
   end
 
   def destroy?

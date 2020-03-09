@@ -11,7 +11,14 @@ class User < ApplicationRecord
   def friends
     events_ids = self.members.pluck(:event_id)
     friends_ids = Member.where(event_id: events_ids).pluck(:user_id)
+
     User.where(id: friends_ids).where.not(id: self.id)
+  end
+
+  def guest_for(edition)
+    current_member = edition.event.members.find_by(user: self)
+
+    edition.guests.find_by(member: current_member)
   end
 
   def is_host?(edition)

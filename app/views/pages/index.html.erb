@@ -31,19 +31,20 @@
       </div>
     </div>
     <div class="stats-card mt-4 mb-4 p-3">
-        <h1> Hosting </h1>
-        <div>
-          <h4><%= @hostingeditions.size %> of <%= @alleditions.size %> </h4>
-          <h1><i class="fas fa-glass-martini-alt"></i></h1>
+        <h4 class = 'title-charts mb-3'> Hosting </h4>
+        <div class = 'stats-chart'>
+          <%= pie_chart [['Hosting', @hostingeditions.size], ['Guest', @alleditions.size - @hostingeditions.size]], legend: false, donut: true, label: "Value" , colors: ["#D95140", "#586a88"], width:"200px", height: "200px"%>
+          <p class = 'text-inside-chart'>  <%= @hostingeditions.size %> of <%= @alleditions.size %> </p>
+
         </div>
     </div>
 
     <div class="stats-card mt-4 mb-4 p-3">
-        <h1> Pending </h1>
-        <div>
-          <h4><%= @alleditions.pending.size %> of <%= (@alleditions.active.size + @alleditions.pending.size) %></h4>
-          <h1><i class="far fa-clock"></i></h1>
-        </div>
+      <h4 class = 'title-charts mb-3'> Pending </h4>
+      <div class = 'stats-chart'>
+        <%= pie_chart [ ['Active', @alleditions.active.size],['Pending', @alleditions.pending.size]], legend: false, donut: true, label: "Value" , colors: ["#D95140", "#586a88"], width:"200px", height: "200px"%>
+        <p class = 'text-inside-chart'> <%=  @alleditions.pending.size %> of <%= (@alleditions.active.size + @alleditions.pending.size) %></p>
+      </div>
     </div>
 
   </div>
