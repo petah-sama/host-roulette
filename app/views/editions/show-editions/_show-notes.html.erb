@@ -3,7 +3,9 @@
   <% if @edition.archived? %>
     <%= @edition.notes %>
   <% else %>
-    <%= simple_form_for @edition, url: event_edition_path(@edition), method: :patch do |f| %>
+    <%= simple_form_for [@event, @edition], method: :patch do |f| %>
+
+    <%#= simple_form_for @edition, url: event_edition_path(@edition), method: :patch do |f| %>
       <%= f.input :notes, label: false, placeholder: @edition.notes, input_html: {rows: 10} %>
       <%= f.submit 'Save notes', class: 'btn btn-primary' %>
     <% end %>

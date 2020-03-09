@@ -7,6 +7,7 @@ class Edition < ApplicationRecord
   has_many :answers, through: :questions
   has_many :edition_items
   has_many :items, through: :edition_items
+  has_many :reviews, through: :guests
   after_validation :geocode, if: :will_save_change_to_address?
 
   include PgSearch::Model

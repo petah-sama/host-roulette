@@ -53,11 +53,13 @@
         <br>
         <!-- Guests for All -->
         <%= render partial: 'editions/show-editions/show-guests' %>
+        <% if @edition.archived? %>
+          <!-- Reviews -->
+          <%= render partial: 'editions/show-editions/show-reviews' %>
+        <% end %>
       </div>
 
 
-      <!-- COLUMN ON THE RIGHT !!!! -->
-      <!-- COLUMN ON THE RIGHT !!!! -->
       <!-- COLUMN ON THE RIGHT !!!! -->
       <div class='show-column col-4'>
 
