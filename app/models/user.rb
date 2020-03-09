@@ -15,6 +15,12 @@ class User < ApplicationRecord
   end
 
   def is_host?(edition)
-    self.id == edition.host_id
+    unless edition.host_id.nil?
+      self.id == edition.host_id
+    end
+  end
+
+  def is_guest?(edition)
+    !(self.is_host?(edition))
   end
 end

@@ -1,13 +1,18 @@
 import "bootstrap";
+import "../plugins/flatpickr";
 
 import { eventRest } from '../components/event_form';
 import { tagFunctionality } from '../components/tag_choice';
 import { sliderBudgetValue } from '../components/event_form';
+import { initMapbox } from '../plugins/init_mapbox';
 
 
 import { editionRest } from '../components/roulette';
 
 import { refreshMembers } from '../components/invite_members_refresh.js';
+
+import 'mapbox-gl/dist/mapbox-gl.css';
+
 
 // // NEW EVENT FORM
 const tagForm = document.querySelector("#new_event");
@@ -23,8 +28,10 @@ if (roulettePage) {
   editionRest();
 };
 
-// Refresh invitiation page every 5 seconds
+// Refresh the member joining page every 5 seconds
 const invitePage = document.querySelector('#invite-members');
 if (invitePage) {
   refreshMembers();
 }
+
+initMapbox();

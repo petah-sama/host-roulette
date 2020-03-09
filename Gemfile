@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 ruby '2.6.5'
 
 gem 'pundit'
+gem 'geocoder'
 
 gem 'pg_search', '~> 2.3.0'
 gem 'cloudinary', '~> 1.12.0'

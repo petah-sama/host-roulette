@@ -5,7 +5,21 @@ class QuestionPolicy < ApplicationPolicy
     end
   end
 
+  def show?
+    check_host
+  end
+
   def create?
-    record.user == user
+    check_host
+  end
+
+  def destroy?
+    check_host
+  end
+
+  private
+
+  def check_host
+    record.edition.host_id == user.id
   end
 end
