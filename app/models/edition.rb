@@ -4,6 +4,7 @@ class Edition < ApplicationRecord
   belongs_to :event
   has_many :guests
   has_many :questions
+  has_many :notifications
   has_many :answers, through: :questions
   has_many :edition_items
   has_many :items, through: :edition_items

@@ -1,11 +1,17 @@
 Rails.application.routes.draw do
+  get 'notifications/index'
+  get 'notifications/create'
+  get 'notifications/destroy'
   devise_for :users
 
   namespace :user do
     root to: "pages#index"
   end
 
-  resources :users, only: [:show]
+  resources :users, only: [:show] do
+    resources :notifications, only: [:create, :index]
+  end
+
   root to: 'pages#home'
   get 'dashboard', to: 'pages#index'
   get 'friends', to: 'pages#friends'
@@ -28,6 +34,6 @@ Rails.application.routes.draw do
   end
   resources :questions, only: :destroy
   resources :answers, only: :destroy
-
+  resources :notifications, only: [:destroy]
   get '/events/:id/join', to: 'events#join'
 end
