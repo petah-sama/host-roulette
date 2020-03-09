@@ -17,8 +17,12 @@ class EventPolicy < ApplicationPolicy
     true
   end
 
+  def edit?
+    check_host
+  end
+
   def update?
-    true
+    check_host
   end
 
   def destroy?
@@ -29,6 +33,10 @@ class EventPolicy < ApplicationPolicy
 
   def check_user
     record.user == user
+  end
+
+  def check_host
+    record.editions.last.host_id == user.id
   end
 
 end

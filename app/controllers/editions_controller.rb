@@ -55,11 +55,12 @@ class EditionsController < ApplicationController
     fetch_event
     @items = Item.all
     @item = Item.new
+    authorize @event
   end
 
   def update
     if @edition.update(edit_edition_params)
-      redirect_to event_edition_path(@event, @edition)
+      status_notification
     else
       render :edit
     end
@@ -70,6 +71,20 @@ class EditionsController < ApplicationController
   end
 
   private
+
+  def status_notification
+    if @edition.status == 'active'
+    @edition.event.participants.each do |user|
+      @notification = Notification.new
+      @notification.user = user
+      @notification.edition = @edition
+      @notification.from = 'active'
+      # @notification.content = path necessário pra fazer o link
+      @notification.save
+    end
+    redirect_to event_edition_path(@event, @edition)
+    end
+  end
 
   def fetch_event
     @event = Event.find(params[:event_id])

@@ -1,0 +1,27 @@
+<div class ='notification-div'>
+<% if user_signed_in? %>
+  <div class=" notification-bell" onclick="notifications()">
+    <i class="dropbtn fas fa-bell"><i class="fas fa-circle"></i></i>
+    <% if (current_user.notifications.active.nil?) %>
+      <i class="dropbtn fas fa-bell"></i>
+    <% end %>
+  </div>
+  <div class="dropdown-content" id="myDropdown">
+     <% current_user.notifications.each do |notification| %>
+      <div class = 'dropdown-item'>
+<!--           <p class = 'notification-link'> <%= notification.edition.name %> is Active!</p>
+ -->
+          <%= link_to dashboard_path do %>
+            <p> <%= notification.edition.name %> is Active!</p>
+          <% end %>
+      </div>
+
+     <% end %>
+  </div>
+
+
+
+
+<% end  %>
+
+</div>
