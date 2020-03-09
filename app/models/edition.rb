@@ -28,6 +28,4 @@ class Edition < ApplicationRecord
     end
   end
 
-
-
 end

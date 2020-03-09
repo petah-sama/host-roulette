@@ -1,0 +1,26 @@
+<div class="show-main-container m-4">
+  <div class='show-card-container p-4'>
+    <h2><em><%= @question.content %></em></h2>
+
+    <% if @question.answers.empty? %>
+      <h5>Still no guests have answered... 😖</h5>
+      <%= link_to 'Send reminder', root_path, class: 'btn btn-info' %>
+    <% else %>
+      <% @question.answers.each do |answer| %>
+        <div>
+          <h5><strong><%= answer.guest.member.user.first_name %> <%= answer.guest.member.user.last_name %></strong> - <%= answer.content %></h5>
+          <p>
+            <% if answer.updated_at %>
+              <%= answer.updated_at.strftime("%m/%d/%Y at %H:%M") %>
+            <% else %>
+              <%= answer.created_at.strftime("%m/%d/%Y at %H:%M") %>
+            <% end %>
+          </p>
+        </div>
+      <% end %>
+    <% end %>
+
+    <%= link_to "Delete question", question_path(@question), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-danger' %>
+    <%= link_to 'Back', event_edition_path(@event, @edition), class: 'btn btn-primary' %>
+  </div>
+</div>

@@ -25,6 +25,7 @@ if (roulettePage) {
   editionRest();
 };
 
+initMapbox();
 
 initMapbox();
 

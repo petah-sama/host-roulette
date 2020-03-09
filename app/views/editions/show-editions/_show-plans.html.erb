@@ -3,30 +3,39 @@
   <!-- start_address -->
   <!-- map -->
   <!-- start_address / map -->
-  <!-- items -->
-  <!-- countdown -->
 
-
-  <h2> Plans: </h2>
+<div class='show-plans'>
+  <h2>Plans:</h2>
   <ul>
-
     <li>Start date:
-      <%= @edition.start_time.strftime("%m/%d/%Y at %H:%M ") unless @edition.start_time.nil?%></li>
+      <%= @edition.start_time.strftime("%m/%d/%Y at %H:%M") unless @edition.start_time.nil?%>
+    </li>
     <li>End date:
-     <%= @edition.end_time.strftime("%m/%d/%Y") unless @edition.end_time.nil?%>
-     </li>
+      <%= @edition.end_time.strftime("%m/%d/%Y") unless @edition.end_time.nil?%>
+    </li>
     <li> Address:
      <%= @edition.address unless @edition.address.nil?%>
      </li>
   </ul>
   <% if current_user.is_host?(@edition) %>
-    <li><%= link_to 'Plan your Event', edit_event_edition_path(@edition), class: 'btn btn-danger' %></li>
+    <li><%= link_to 'Edit event plans', edit_event_edition_path(@edition), class: 'btn btn-danger' %></li>
   <% end %>
+</div>
 
 
 
+<!-- ITEMS iteration, can't be used now
+
+  <ul>
+    <%# @edition.items.each do |item| %>
+      <li><%#= item.content %></li>
+    <%# end %>
+  </ul>
+
+<<<<<<< HEAD
 
 
 
-
+=======
+ -->
 
