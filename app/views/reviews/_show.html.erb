@@ -1,0 +1,8 @@
+<div class="review-card p-3 mt-1">
+  <div class="d-flex justify-content-around">
+    <h6>HOST <%= '⭐️' * review.host_rating.to_i %></h6>
+    <h6>EDITION <%= '⭐️' * review.edition_rating.to_i %></h6>
+  </div>
+  <hr>
+  <p><%= review.content %></p>
+</div>

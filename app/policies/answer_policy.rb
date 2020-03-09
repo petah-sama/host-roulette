@@ -10,7 +10,10 @@ class AnswerPolicy < ApplicationPolicy
   end
 
   def create?
-    record.user == user
+    true
   end
 
+  def update?
+    true
+  end
 end
