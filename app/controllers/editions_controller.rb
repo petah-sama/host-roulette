@@ -1,6 +1,6 @@
 class EditionsController < ApplicationController
   before_action :fetch_edition, only: %i[show edit update destroy]
-  before_action :fetch_event, only: %i[new create]
+  before_action :fetch_event, only: %i[new create update]
 
   def index
     @editions = policy_scope(Edition)
@@ -10,6 +10,8 @@ class EditionsController < ApplicationController
   def show
     @question = Question.new
     @edition_calendar = Edition.where(id: @edition.id)
+    @answer = Answer.new
+    @answers = @edition.answers.where(guest_id: current_user.id)
 
     @markers = [{
       lat: @edition.latitude,
@@ -18,6 +20,7 @@ class EditionsController < ApplicationController
       image_url: helpers.asset_url('location.png')
     }]
     authorize @edition
+    authorize @answers
   end
 
   def new
@@ -44,7 +47,7 @@ class EditionsController < ApplicationController
   end
 
   def edit
-    events = policy_scope(Event).includes(:members).where(members: { user:current_user })
+    events = policy_scope(Event).includes(:members).where(members: { user: current_user })
     fetch_event
     @items = Item.all
     @item = Item.new
@@ -52,7 +55,7 @@ class EditionsController < ApplicationController
 
   def update
     if @edition.update(edit_edition_params)
-      redirect_to event_edition_path
+      redirect_to event_edition_path(@event, @edition)
     else
       render :edit
     end

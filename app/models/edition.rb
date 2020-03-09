@@ -4,6 +4,7 @@ class Edition < ApplicationRecord
   belongs_to :event
   has_many :guests
   has_many :questions
+  has_many :answers, through: :questions
   has_many :items
   after_validation :geocode, if: :will_save_change_to_address?
 
