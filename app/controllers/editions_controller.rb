@@ -1,17 +1,20 @@
 class EditionsController < ApplicationController
   before_action :fetch_edition, only: %i[show edit update destroy]
-  before_action :fetch_event, only: %i[new create update]
+  before_action :fetch_event, only: %i[new show create update]
 
   def index
     @editions = policy_scope(Edition)
-
   end
 
   def show
     @question = Question.new
     @edition_calendar = Edition.where(id: @edition.id)
     @answer = Answer.new
-    @answers = @edition.answers.where(guest_id: current_user.id)
+
+    @review = Review.new
+    
+    @current_guest = current_user.guest_for(@edition)
+    @current_user_answers = @edition.answers.where(guest: @current_guest)
 
     @markers = [{
       lat: @edition.latitude,
@@ -20,7 +23,7 @@ class EditionsController < ApplicationController
       image_url: helpers.asset_url('location.png')
     }]
     authorize @edition
-    authorize @answers
+    authorize @current_user_answers
   end
 
   def new
@@ -52,11 +55,12 @@ class EditionsController < ApplicationController
     fetch_event
     @items = Item.all
     @item = Item.new
+    authorize @event
   end
 
   def update
     if @edition.update(edit_edition_params)
-      redirect_to event_edition_path(@event, @edition)
+      status_notification
     else
       render :edit
     end
@@ -67,6 +71,20 @@ class EditionsController < ApplicationController
   end
 
   private
+
+  def status_notification
+    if @edition.status == 'active'
+    @edition.event.participants.each do |user|
+      @notification = Notification.new
+      @notification.user = user
+      @notification.edition = @edition
+      @notification.from = 'active'
+      # @notification.content = path necessário pra fazer o link
+      @notification.save
+    end
+    redirect_to event_edition_path(@event, @edition)
+    end
+  end
 
   def fetch_event
     @event = Event.find(params[:event_id])

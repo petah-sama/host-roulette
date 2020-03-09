@@ -1,0 +1,27 @@
+const reviewForm = document.querySelector('#new_review');
+
+function refreshForm(innerHTML) {
+  reviewForm.innerHTML = innerHTML;
+};
+
+function addReview(reviewHTML) {
+  const reviews = document.querySelector('#review-cards');
+  console.log(reviewHTML)
+  reviews.insertAdjacentHTML('afterbegin', reviewHTML);
+};
+
+<% if @review.errors.any? %>
+  refreshForm('<%= j render "reviews/form", edition: @edition, review: @review %>');
+<% else %>
+  addReview('<%= j render "reviews/show", review: @review %>');
+  // get edition_rating
+  // editionStars = document.querySelectorAll('#form_check');
+  // get host_rating
+  // hostStars = document.querySelector('#review_host_rating');
+  // get content
+  reviewContent = document.querySelector('#review_content');
+  // set the values to ''
+  // reviewContent.value = '';
+  reviewForm.style.display = "none";
+  // hostStars.value = '';
+<% end %>

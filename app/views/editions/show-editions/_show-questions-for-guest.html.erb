@@ -1,30 +1,27 @@
 <h3>Surveys from host</h3>
 <div>
   <% @edition.questions.each do |question| %>
-    <div class='question-card d-flex align-items-center justify-content-between'>
-      <%= question.content %>
-      <p class='text-center'> Do you like Cheese?</p>
-      <%= link_to 'answer', edit_event_edition_path(@edition), class: 'btn btn-danger' %>
+    <div class="<%= answer_classes(@current_user_answers, question) %>">
+      <p class="m-0"><%= question.content %></p>
+
+      <%= form_for [@edition.event, @edition, question, question.answers.find_by(guest: @current_guest) || @answer], html: { class: "d-flex align-items-center" } do |f| %>
+        <%= f.radio_button :content, 'true', class: 'radio_buttons answer-hidden', id: "question_true_#{question.id}" %>
+        <%= label_tag :content, 'Yes', for: "question_true_#{question.id}", class: 'btn btn-info btn-sm mr-1 mb-0' %>
+        <%= f.radio_button :content, 'false', class: 'radio_buttons answer-hidden', id: "question_false_#{question.id}" %>
+        <%= label_tag :content, 'No', for: "question_false_#{question.id}", class: 'btn btn-info btn-sm mb-0' %>
+      <% end %>
+
     </div>
   <% end %>
 </div>
 
-<h3>Surveys from host</h3>
-<div>
-  <% @edition.questions.each do |question| %>
-    <% if question.answers.include? @answers %>
-      <%= link_to question.content, event_edition_question_path(@edition.event, @edition, question), class: 'question-card d-flex justify-content-between btn btn-info w-100 m-0' %>
-    <% else %>
-      <%= link_to event_edition_question_path(@edition.event, @edition, question), class: 'question-card d-flex justify-content-between btn btn-success w-100 m-0' do %>
-        <span><%= question.content %></span>
-        <span><%= question.answers.size %>/<%= @edition.guests.size %> replied</span>
-      <% end %>
-    <% end %>
-  <% end %>
-  <% if @edition.pending? %>
-    <%= simple_form_for @question, url: event_edition_questions_path(@edition.event, @edition), html: { class: "d-flex justify-content-between"} do |f| %>
-      <%= f.input :content, label: false, placeholder: 'New survey to guests', wrapper_html: { class: 'm-0 w-100' }%>
-      <%= f.submit 'Send', class: 'btn btn-primary' %>
-    <% end %>
-  <% end %>
-</div>
+<script>
+  const yesNoRadio = document.querySelectorAll('input[name="answer[content]"]');
+
+  yesNoRadio.forEach(input => {
+    input.addEventListener('change', event => {
+      const form = event.target.closest('form');
+      form.submit();
+    });
+  });
+</script>
