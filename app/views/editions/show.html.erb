@@ -1,4 +1,3 @@
-
 <div class="show-main-container m-4">
   <div id='cover-picture'>
     <!-- Banner picture -->
@@ -15,7 +14,8 @@
     </div>
   </div>
   <div class='show-card-container p-4'>
-    <div class="d-flex ">
+    <div class="d-flex">
+
       <!-- COLUMN ON THE LEFT !!!! -->
       <!-- COLUMN ON THE LEFT !!!! -->
       <!-- COLUMN ON THE LEFT !!!! -->
@@ -35,20 +35,20 @@
         </div>
         <br>
         <!-- List of items -->
-        <div class = 'Items'>
-          <h5> Don't forget to bring: </h5>
+        <div class='Items'>
+          <h5>Don't forget to bring:</h5>
           <ul>
             <% @edition.items.each do |item|%>
-             <li> - <%= item.name %></li>
+              <li> - <%= item.name %></li>
             <% end %>
           </ul>
         </div>
         <br>
         <!-- Shows plans -->
         <% if @edition.active? || current_user.is_host?(@edition) || @edition.archived?%>
-            <%= render partial: 'editions/show-editions/show-plans' %>
+          <%= render partial: 'editions/show-editions/show-plans' %>
         <% elsif @edition.pending? && current_user.is_guest?(@edition) %>
-            <h3>The Host is making the preparations</h3>
+          <h3>The Host is making the preparations</h3>
         <% end %>
         <br>
         <!-- Guests for All -->
@@ -66,12 +66,10 @@
         <% if @edition.pending? %>
           <% if current_user.is_guest?(@edition) %>
             <!-- Surveys GP -->
-            <%= render partial: 'editions/show-editions/show-questions-for-guest-pending' %>
+            <%= render partial: 'editions/show-editions/show-questions-for-guest' %>
           <% elsif current_user.is_host?(@edition) %>
             <!-- Surveys HP -->
-            <%= render partial: 'editions/show-editions/show-questions-for-host-pending' %>
-            <%= link_to 'See all answers', edit_event_edition_path(@edition), class: 'btn btn-danger' %>
-            <%= link_to 'Ask a question', edit_event_edition_path(@edition), class: 'btn btn-danger' %>
+            <%= render partial: 'editions/show-editions/show-questions-for-host' %>
             <!-- Notes Host -->
             <%= render partial: 'editions/show-editions/show-notes' %>
           <% end %>
@@ -90,10 +88,10 @@
 
           <% if current_user.is_guest?(@edition) %>
             <!-- Surveys GA -->
-            <%= render partial: 'editions/show-editions/show-questions-for-guest-active' %>
+            <%= render partial: 'editions/show-editions/show-questions-for-guest' %>
           <% elsif current_user.is_host?(@edition) %>
             <!-- Surveys HA -->
-            <%= render partial: 'editions/show-editions/show-questions-for-host-active' %>
+            <%= render partial: 'editions/show-editions/show-questions-for-host' %>
             <!-- Notes Host -->
             <%= render partial: 'editions/show-editions/show-notes' %>
           <% end %>
@@ -106,14 +104,16 @@
           <!-- Map -->
           <%= render partial: 'editions/show-editions/show-map' %>
           <!-- Calendar -->
-          <%= render partial: 'editions/calendar' %>
+          <% if @edition.start_time %>
+            <%= render partial: 'editions/calendar' %>
+          <% end %>
 
           <% if current_user.is_guest?(@edition) %>
             <!-- Surveys GArch -->
-            <%= render partial: 'editions/show-editions/show-questions-for-guest-archived' %> <!-- CREATE VIEW -->
+            <%= render partial: 'editions/show-editions/show-questions-for-guest' %>
           <% elsif current_user.is_host?(@edition) %>
             <!-- Surveys HArch -->
-            <%= render partial: 'editions/show-editions/show-questions-for-host-archived' %> <!-- CREATE VIEW -->
+            <%= render partial: 'editions/show-editions/show-questions-for-host' %>
             <!-- Notes Host -->
             <%= render partial: 'editions/show-editions/show-notes' %>
           <% end %>
