@@ -53,14 +53,15 @@
         <br>
         <!-- Guests for All -->
         <%= render partial: 'editions/show-editions/show-guests' %>
+        <% if @edition.archived? %>
+          <!-- Reviews -->
+          <%= render partial: 'editions/show-editions/show-reviews' %>
+        <% end %>
       </div>
 
 
       <!-- COLUMN ON THE RIGHT !!!! -->
-      <!-- COLUMN ON THE RIGHT !!!! -->
-      <!-- COLUMN ON THE RIGHT !!!! -->
       <div class='show-column col-4'>
-
 
         <!-- PENDING EDITION -->
         <% if @edition.pending? %>
@@ -95,6 +96,7 @@
             <!-- Notes Host -->
             <%= render partial: 'editions/show-editions/show-notes' %>
           <% end %>
+        <% end %>
           <br>
 
 

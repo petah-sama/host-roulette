@@ -1,0 +1,8 @@
+<%= simple_form_for [@event, @edition, @review], remote: true do |f| %>
+  <div class="d-flex justify-content-between">
+    <%= f.input :edition_rating, as: :radio_buttons, collection: [['1', '⭐️'], ['2', '⭐️⭐️'], ['3', '⭐️⭐️⭐️'], ['4', '⭐️⭐️⭐️⭐️'], ['5', '⭐️⭐️⭐️⭐️⭐️']], label_method: :second, value_method: :first %>
+    <%= f.input :host_rating, as: :radio_buttons, collection: [['1', '⭐️'], ['2', '⭐️⭐️'], ['3', '⭐️⭐️⭐️'], ['4', '⭐️⭐️⭐️⭐️'], ['5', '⭐️⭐️⭐️⭐️⭐️']], label_method: :second, value_method: :first %>
+  </div>
+  <%= f.input :content, as: :text %>
+  <%= f.button :submit, class: 'btn btn-outline-dark' %>
+<% end %>

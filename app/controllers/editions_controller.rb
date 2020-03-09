@@ -1,6 +1,6 @@
 class EditionsController < ApplicationController
   before_action :fetch_edition, only: %i[show edit update destroy]
-  before_action :fetch_event, only: %i[new create update]
+  before_action :fetch_event, only: %i[new show create update]
 
   def index
     @editions = policy_scope(Edition)
@@ -12,6 +12,10 @@ class EditionsController < ApplicationController
     @edition_calendar = Edition.where(id: @edition.id)
     @answer = Answer.new
     @answers = @edition.answers.where(guest_id: current_user.id)
+    @review = Review.new
+
+    # @guest = @edition.event.participants.find(current_user.id)
+    @current_guest = @event.members.where(user_id: current_user.id).first.guests.where(edition_id: @edition).first
 
     @markers = [{
       lat: @edition.latitude,
