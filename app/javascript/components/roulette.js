@@ -85,14 +85,14 @@ const editionRest = () => {
       deg %= 360;
 
       // Increment speed
-      if(!isStopped && speed < 20) {    // set the last value to 10
+      if(!isStopped && speed < 10) {    // set the last value to 10
         speed = speed + 2 * 0.1;
       }
       // Decrement Speed
       if(isStopped){
         if(!lock){
           lock = true;
-          slowDownRand = rand(0.994, 0.998);
+          slowDownRand = rand(0.980, 0.999);
         }
         speed = speed > 0.1 ? speed *= slowDownRand : 0;
       }

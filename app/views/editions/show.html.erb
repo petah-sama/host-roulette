@@ -13,10 +13,8 @@
       <% end %>
     </div>
   </div>
-
   <div class='show-card-container p-4'>
     <div class="d-flex">
-
 
       <!-- COLUMN ON THE LEFT !!!! -->
       <!-- COLUMN ON THE LEFT !!!! -->
@@ -37,7 +35,8 @@
         </div>
         <br>
         <!-- List of items -->
-        <h5> Don't forget to bring: </h5>
+        <div class='Items'>
+          <h5>Don't forget to bring:</h5>
           <ul>
             <% @edition.items.each do |item|%>
               <li> - <%= item.name %></li>
@@ -96,7 +95,8 @@
             <!-- Notes Host -->
             <%= render partial: 'editions/show-editions/show-notes' %>
           <% end %>
-        <% end %>
+          <br>
+
 
         <!-- ARCHIVED EDITION -->
         <% if @edition.archived? %>
@@ -118,10 +118,12 @@
           <% end %>
         <% end %>
 
+
       </div>
     </div>
-  </div>
 </div>
+
+
 
 <!-- TO DO: -->
   <!-- add members to event -->

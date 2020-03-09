@@ -9,7 +9,10 @@ import { initMapbox } from '../plugins/init_mapbox';
 
 import { editionRest } from '../components/roulette';
 
+import { refreshMembers } from '../components/invite_members_refresh.js';
+
 import 'mapbox-gl/dist/mapbox-gl.css';
+
 
 // // NEW EVENT FORM
 const tagForm = document.querySelector("#new_event");
@@ -25,5 +28,19 @@ if (roulettePage) {
   editionRest();
 };
 
+// Refresh the member joining page every 5 seconds
+const invitePage = document.querySelector('#invite-members');
+if (invitePage) {
+  refreshMembers();
+}
+
 initMapbox();
+
+// SELECT MUlTIPLE ITEMS
+
+import 'select2/dist/css/select2.css';
+
+import { initSelect2 } from '../components/init_select2';
+
+initSelect2();
 

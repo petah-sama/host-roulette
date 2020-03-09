@@ -1,7 +1,7 @@
 <div class="event-card col-6 mx-auto mt-5 p-4">
   <h2><%= @event.name %></h2>
 
-  <div class="event-slide d-flex flex-column justify-content-between">
+  <div class="event-slide d-flex flex-column justify-content-between" id="invite-members">
     <ul class="list-inline">
       <% @event.participants.each do |user| %>
         <% if user.first_name && user.last_name %>
