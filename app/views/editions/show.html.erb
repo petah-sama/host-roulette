@@ -82,6 +82,9 @@
           <!-- Map -->
           <%= render partial: 'editions/show-editions/show-map' %>
           <!-- Calendar -->
+          <% if @edition.start_time %>
+            <%= render partial: 'editions/calendar-edition' %>
+          <% end %>
 
           <% if current_user.is_guest?(@edition) %>
             <!-- Surveys GA -->
@@ -95,9 +98,6 @@
           <% end %>
           <br>
 
-           <% if @edition.start_time %>
-            <%= render partial: 'editions/calendar-edition' %>
-          <% end %>
 
         <!-- ARCHIVED EDITION -->
         <% if @edition.archived? %>
