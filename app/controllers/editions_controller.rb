@@ -2,10 +2,19 @@ class EditionsController < ApplicationController
   before_action :fetch_edition, only: %i[show edit update destroy]
   def index
     @editions = policy_scope(Edition)
+
   end
 
   def show
-  end
+      @markers = [{
+        lat: @edition.latitude,
+        lng: @edition.longitude,
+        infoWindow: render_to_string(partial: "editions/show-editions/info_window", locals: { edition: @edition }),
+        image_url: helpers.asset_url('location.png')
+      }]
+      authorize @edition
+    end
+
 
   def new
     fetch_event
@@ -18,6 +27,7 @@ class EditionsController < ApplicationController
     fetch_event
     @edition = Edition.new(edition_params)
     @edition.event = @event
+    @edition.name = @event.name + '#' + @event.editions.size.to_s
     # host_id = params["query"].to_i
     # host_user = User.find(host_id)
     # @edition.host_id = host_user.id

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_05_195014) do
+ActiveRecord::Schema.define(version: 2020_03_07_214910) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,15 @@ ActiveRecord::Schema.define(version: 2020_03_05_195014) do
     t.datetime "updated_at", null: false
     t.index ["guest_id"], name: "index_answers_on_guest_id"
     t.index ["question_id"], name: "index_answers_on_question_id"
+  end
+
+  create_table "edition_items", force: :cascade do |t|
+    t.bigint "edition_id"
+    t.bigint "item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["edition_id"], name: "index_edition_items_on_edition_id"
+    t.index ["item_id"], name: "index_edition_items_on_item_id"
   end
 
   create_table "editions", force: :cascade do |t|
@@ -153,6 +162,8 @@ ActiveRecord::Schema.define(version: 2020_03_05_195014) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "answers", "guests"
   add_foreign_key "answers", "questions"
+  add_foreign_key "edition_items", "editions"
+  add_foreign_key "edition_items", "items"
   add_foreign_key "editions", "events"
   add_foreign_key "event_tags", "events"
   add_foreign_key "event_tags", "tags"
