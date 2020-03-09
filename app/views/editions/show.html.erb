@@ -1,4 +1,4 @@
-<div class="show-main-container p-4">
+<div class="show-main-container m-4">
   <div id='cover-picture'>
     <!-- Banner picture -->
     <img src="https://www.f-covers.com/cover/ha-long-bay-vietnam-facebook-cover-timeline-banner-for-fb.jpg" alt="Smiley face" height="300" width="100%">
@@ -13,7 +13,6 @@
       <% end %>
     </div>
   </div>
-
   <div class='show-card-container p-4'>
     <div class="d-flex ">
 
@@ -37,7 +36,9 @@
         </div>
         <br>
         <!-- List of items -->
-            <h5> Don't forget to bring: </h5>
+        <div class = 'Items'>
+          <h5> Don't forget to bring: </h5>
+          <ul>
               <% @edition.items.each do |item|%>
                <li> - <%= item.name %></li>
             <% end %>
@@ -119,8 +120,9 @@
 
       </div>
     </div>
-  </div>
 </div>
+
+
 
 <!-- TO DO: -->
   <!-- add members to event -->
