@@ -4,14 +4,15 @@ class EditionsController < ApplicationController
 
   def index
     @editions = policy_scope(Edition)
-
   end
 
   def show
     @question = Question.new
     @edition_calendar = Edition.where(id: @edition.id)
     @answer = Answer.new
-    @answers = @edition.answers.where(guest_id: current_user.id)
+    @current_guest = current_user.guest_for(@edition)
+    @current_user_answers = @edition.answers.where(guest: @current_guest)
+
 
     @markers = [{
       lat: @edition.latitude,
@@ -20,7 +21,7 @@ class EditionsController < ApplicationController
       image_url: helpers.asset_url('location.png')
     }]
     authorize @edition
-    authorize @answers
+    authorize @current_user_answers
   end
 
   def new

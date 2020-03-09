@@ -61,64 +61,27 @@
       <!-- COLUMN ON THE RIGHT !!!! -->
       <div class='show-column col-4'>
 
-
-        <!-- PENDING EDITION -->
-        <% if @edition.pending? %>
-          <% if current_user.is_guest?(@edition) %>
-            <!-- Surveys GP -->
-            <%= render partial: 'editions/show-editions/show-questions-for-guest' %>
-          <% elsif current_user.is_host?(@edition) %>
-            <!-- Surveys HP -->
-            <%= render partial: 'editions/show-editions/show-questions-for-host' %>
-            <!-- Notes Host -->
-            <%= render partial: 'editions/show-editions/show-notes' %>
-          <% end %>
-        <% end %>
-
-        <!-- ACTIVE EDITION -->
         <% if @edition.active? %>
           <!-- Countdown -->
           <h2 class='countdown'><%= @edition.countdown %> days left</h2>
-          <!-- Map -->
-          <%= render partial: 'editions/show-editions/show-map' %>
-          <!-- Calendar -->
-
-          <% if current_user.is_guest?(@edition) %>
-            <!-- Surveys GA -->
-            <%= render partial: 'editions/show-editions/show-questions-for-guest' %>
-          <% elsif current_user.is_host?(@edition) %>
-            <!-- Surveys HA -->
-            <%= render partial: 'editions/show-editions/show-questions-for-host' %>
-            <!-- Notes Host -->
-            <%= render partial: 'editions/show-editions/show-notes' %>
-          <% end %>
-          <% end %>
-          <br>
-           <% if @edition.start_time %>
-            <%= render partial: 'editions/calendar-edition' %>
-          <% end %>
-
-
-        <!-- ARCHIVED EDITION -->
-        <% if @edition.archived? %>
-          <!-- Map -->
-          <%= render partial: 'editions/show-editions/show-map' %>
-          <!-- Calendar -->
-          <% if @edition.start_time %>
-            <%= render partial: 'editions/calendar' %>
-          <% end %>
-
-          <% if current_user.is_guest?(@edition) %>
-            <!-- Surveys GArch -->
-            <%= render partial: 'editions/show-editions/show-questions-for-guest' %>
-          <% elsif current_user.is_host?(@edition) %>
-            <!-- Surveys HArch -->
-            <%= render partial: 'editions/show-editions/show-questions-for-host' %>
-            <!-- Notes Host -->
-            <%= render partial: 'editions/show-editions/show-notes' %>
-          <% end %>
         <% end %>
 
+        <% if @edition.active? || @edition.archived? %>
+          <!-- Map -->
+          <%= render partial: 'editions/show-editions/show-map' %>
+          <!-- Calendar -->
+          <%= render partial: 'editions/calendar' %>
+        <% end %>
+
+        <% if current_user.is_guest?(@edition) %>
+          <!-- Surveys Guest -->
+          <%= render partial: 'editions/show-editions/show-questions-for-guest' %>
+        <% elsif current_user.is_host?(@edition) %>
+          <!-- Surveys Host -->
+          <%= render partial: 'editions/show-editions/show-questions-for-host' %>
+          <!-- Notes Host -->
+          <%= render partial: 'editions/show-editions/show-notes' %>
+        <% end %>
 
       </div>
     </div>

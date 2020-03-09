@@ -33,14 +33,6 @@ li {
   list-style: none;
 }
 
-.question-card{
-  list-style: none;
-  padding: 10px;
-  border: 1px solid lightgrey;
-  border-radius: $border-radius;
-  margin-top: 10px;
-}
-
 #show-page-title {
   font-size: 70px;
   font-family: 'Catamaran'
@@ -119,4 +111,35 @@ li {
   background-color: rgba(3, 14, 38, 1);
   cursor:pointer;
 }
+
+.answer-hidden {
+  display: none;
+}
+
+input.radio_buttons + label {
+
+}
+
+input.radio_buttons:checked + label {
+  background: $danger;
+}
+
+
+.question-card {
+  background-color: $danger;
+  border: 0;
+  border-radius: $border-radius;
+  padding: 1em;
+  margin-top: .5em;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &.with-answer {
+    background-color: $info;
+  }
+}
+
+
 

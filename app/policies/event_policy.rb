@@ -18,7 +18,7 @@ class EventPolicy < ApplicationPolicy
   end
 
   def update?
-    check_user
+    true
   end
 
   def destroy?
