@@ -1,6 +1,6 @@
 header {
   position: relative;
-  background-color: black;
+  background-color: white;
   height: calc(100vh - 56px);
   min-height: 25rem;
   width: 100%;
@@ -23,54 +23,12 @@ header video {
 }
 
 video {
-  clip-path: inset(0px 0px 106px 0px);
+  clip-path: inset(0px 0px 135px 0px);
 }
 
 
-header .container {
-  height: calc(100vh - 56px);
-  position: relative;
-  z-index: 2;
-}
 
-header .overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background-color: black;
-  opacity: 0.4;
-  z-index: 1;
-}
 
-// #dashboard-btn {
-//   top: 50%;
-//   position: fixed;
-//   z-index: 3;
-//   left: 50%;
-//   transform: translate(-50%, -50%);
-//   text-decoration: none;
-//     h1 {
-//       text-decoration: none;
-//       padding: 10px 20px;
-//       color: white;
-//       text-align: center;
-//       font-size: 50px;
-//       // font-weight: bold;
-//       border-radius: 30px;
-//       border: none;
-//       overflow: hidden;
-//     }
-
-//    & h1:hover {
-//        text-decoration: none;
-//        border-radius: 30px;
-//        background: $red;
-//        transition: .5s;
-//        color: white;
-//     }
-// }
 
 
 .myButt {

@@ -11,14 +11,11 @@ class NotificationsController < ApplicationController
   end
 
   def destroy
-    skip_pundit_policy_sc
     @notifications = Notification.where user: current_user #policy_scope(Notification)
     @notifications.each do |notification|
       notification.destroy
     end
-    redirect_to dashboard_path
+    redirect_back(fallback_location: root_path)
   end
-
-
 
 end
