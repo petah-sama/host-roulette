@@ -17,6 +17,10 @@
 
     <% if action_name == 'home' %>
       <%= yield %>
+    <% elsif controller_name == 'registrations' && action_name == 'new' %>
+      <%= yield %>
+    <% elsif controller_name == 'sessions' && action_name == 'new' %>
+      <%= yield %>
     <% else %>
       <%= render 'shared/sidebar' %>
       <div class="container-margin">
