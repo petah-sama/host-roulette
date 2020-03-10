@@ -4,7 +4,7 @@ const editionRest = () => {
   }
 
   let color = [];
-  let basicColors = ['#051c4a','#93a3c0'];
+  let basicColors = ['#051c4a','#93a3c0','#D95140']
 
   let label = [];
   let members = document.querySelectorAll('.user-names');
@@ -12,13 +12,17 @@ const editionRest = () => {
     label.push([member.dataset.name, member.dataset.last, member.dataset.id]);
   });
 
+// 3, 5, 7, 11, 13, 17, 19, 23
   for (var i = 0; i < label.length; i++){
-    if (i % 2 === 0) {
+    if (i === 1) {
+      color.push(basicColors[2]);
+    } else if (i % 2 === 0) {
       color.push(basicColors[0]);
     } else {
       color.push(basicColors[1])
     };
   };
+
 
   let slices = color.length;
   let sliceDeg = 360/slices;
