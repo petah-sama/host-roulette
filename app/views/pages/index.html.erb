@@ -11,7 +11,7 @@
     </div> -->
 
 
-    <div class="active-cards " id='active-cards'>
+    <div class="active-cards" id='active-cards'>
       <%= render 'pages/filters/active-editions' %>
     </div>
 
@@ -30,6 +30,8 @@
         <label class="custom-control-label" id ='label-active' for="customSwitch1">All</label>
       </div>
     </div> -->
+
+
     <div class="stats-card mb-4 p-3">
         <h4 class = 'title-charts mb-3'> Hosting </h4>
         <div class = 'stats-chart'>
@@ -39,7 +41,7 @@
         </div>
     </div>
 
-    <div class="stats-card mt-4 mb-4 p-3">
+    <div class="stats-card-cool mt-4 mb-4 p-3">
       <h4 class = 'title-charts mb-3'> Active </h4>
       <div class = 'stats-chart'>
         <%= pie_chart [ ['Active', @alleditions.active.size],['Pending', @alleditions.pending.size]], legend: false, donut: true, label: "Value" , colors: ["#D95140", "#586a88"], width:"200px", height: "200px"%>
@@ -49,6 +51,31 @@
 
   </div>
 </div>
+
+<script>
+  // var filterHost = document.getElementById('filter-by-host');
+  //Ainda vai ser preciso criar o filtro de host//
+
+  var list = document.querySelectorAll("active-card");
+  var filterActive = document.getElementById('filter-by-state');
+
+  var x = document.getElementById("pending-cards");
+  var pieActive = document.querySelector(".stats-card-cool");
+  pieActive.addEventListener('click', function() {
+    if (!pieActive.classList.contains('clicked')) {
+      pieActive.style.border = "thick solid grey";
+      x.style.display = "none";
+      pieActive.classList.add("clicked");
+    } else {
+      x.style.display = "block";
+      pieActive.classList.remove("clicked");
+      pieActive.style.border = "none";
+    }
+  });
+
+</script>
+
+
 <!--
 <script>
   var filterHost = document.getElementById('filter-by-host');

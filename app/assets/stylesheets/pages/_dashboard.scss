@@ -20,6 +20,17 @@
 }
 
 
+.stats-card-cool i {
+  color: $red;
+  font-size: 80px;
+}
+
+.stats-card-cool h1 {
+  color: #93a3c0;
+  font-weight: bold;
+}
+
+
 .title-charts {
   font-family: 'Catamaran';
   font-size:35px;
@@ -27,6 +38,24 @@
 }
 
 .stats-card {
+  height:auto;
+  width:92%;
+  border-radius:8px;
+  text-align: center;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .stats-chart {
+    height:100%;
+    margin: 0 auto;
+    position:relative;
+
+  }
+}
+
+.stats-card-cool {
   height:auto;
   width:92%;
   border-radius:8px;
