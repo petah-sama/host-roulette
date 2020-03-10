@@ -34,7 +34,7 @@
   background-color: white;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
 
   .stats-chart {
     height:100%;
@@ -84,10 +84,10 @@
   vertical-align: middle;
 }
 
-.scaled {
-  transform: scale(1.5);
-  transform-origin: left;
-}
+// .scaled {
+//   transform: scale(1.5);
+//   transform-origin: left;
+// }
 
 
 
