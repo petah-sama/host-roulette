@@ -4,17 +4,18 @@
     <%#= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
   <%# end %>
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
 
 
 
   <%= render 'shared/search_bar' %>
 
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <%= render 'shared/notifications' %>
     <ul class="navbar-nav mr-auto">
-       <%= render 'shared/notifications' %>
       <% if user_signed_in? %>
         <div class="nav-item-name">
           <% if current_user.first_name && current_user.last_name %>
