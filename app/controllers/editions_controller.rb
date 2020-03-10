@@ -83,7 +83,6 @@ class EditionsController < ApplicationController
         # @notification.content = path necessário pra fazer o link
         @notification.save
       end
-      redirect_to event_edition_path(@event, @edition)
     end
   end
 
