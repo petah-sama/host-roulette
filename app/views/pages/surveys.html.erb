@@ -1,0 +1,45 @@
+<div class="content-container d-flex mt-4">
+  <div class="col-6 py-0 pl-3 pr-2">
+    <div class="question-card-index">
+
+      <h2>Your answers</h2>
+      <ul class="list-inline">
+        <% @editions.each do |e| %>
+          <li>
+            <%= e.name %>
+            <ul class="list-inline">
+              <% e.questions.each do |q| %>
+                <li>
+                  <%= q.content %>
+                </li>
+              <% end %>
+            </ul>
+          </li>
+        <% end %>
+      </ul>
+
+    </div>
+  </div>
+
+  <div class="col-6 m-0 py-0 pl-2 pr-3">
+    <div class="question-card-index">
+
+      <h2>Your questions</h2>
+      <ul class="list-inline">
+        <% @my_editions.each do |e| %>
+          <li>
+            <%= e.name %>
+            <ul class="list-inline">
+              <% e.questions.each do |q| %>
+                <li>
+                  <%= q.content %>
+                </li>
+              <% end %>
+            </ul>
+          </li>
+        <% end %>
+      </ul>
+
+    </div>
+  </div>
+</div>
