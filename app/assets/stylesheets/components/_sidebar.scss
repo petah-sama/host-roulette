@@ -17,14 +17,8 @@
   text-decoration: none;
   font-size: 18px;
   font-weight: lighter;
-  margin: 0px auto;
   padding: 12px 8px 12px 16px;
-  text-align: center;
-  display: block;
   transition: background-color 0.5s ease;
-  &:hover {
-    background-color: #75111A;
-  }
 }
 
 
@@ -37,6 +31,22 @@
   padding: 0px 8px 0px 26px;
 }
 
+.one {
+  display: flex;
+  justify-content: space-end;
+  text-align: left;
+  &:hover {
+    background-color: #75111A;
+  }
+}
+
+
+.one i {
+  align-self: center;
+  margin-left: 50px;
+  color: white;
+  font-size: 25px;
+}
 
 
 
