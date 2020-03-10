@@ -11,7 +11,6 @@ class NotificationsController < ApplicationController
   end
 
   def destroy
-    skip_pundit_policy_sc
     @notifications = Notification.where user: current_user #policy_scope(Notification)
     @notifications.each do |notification|
       notification.destroy
