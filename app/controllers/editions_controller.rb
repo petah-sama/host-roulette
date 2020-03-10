@@ -67,6 +67,8 @@ class EditionsController < ApplicationController
       if @edition.status == 'active'
         status_notification('active')
         redirect_to event_edition_path(@event, @edition)
+      else
+      redirect_to event_edition_path(@event, @edition)
       end
     else
       render :edit
