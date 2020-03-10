@@ -10,9 +10,10 @@ class ItemsController < ApplicationController
     fetch_event
     fetch_edition
     @item = Item.new(item_params)
-    @item.edition = @edition
+    # @item.edition = @edition
     if @item.save
-      redirect_to event_edition_path(@event, @edition)
+      @edition.items << @item
+      redirect_to edit_event_edition_path(@event, @edition)
     else
       render :new
     end
@@ -24,12 +25,12 @@ class ItemsController < ApplicationController
 
   private
 
-   def fetch_event
+  def fetch_event
     @event = Event.find(params[:event_id])
     authorize @event
   end
 
-   def fetch_edition
+  def fetch_edition
     @edition = Edition.find(params[:edition_id])
     authorize @edition
   end

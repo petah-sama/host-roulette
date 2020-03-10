@@ -1,8 +1,7 @@
-<div class="col-8 p-3">
-  <h4>Add a new item to this edition</h4>
-    <%= simple_form_for [@edition, @item], url: event_edition_items_path(@edition, @event), method: :post do |f| %>
+<div class="col-8">
+    <%= simple_form_for [@edition, @item], url: event_edition_items_path(@event, @edition), method: :post do |f| %>
     <div class="form-inputs">
-        <%= f.input :name, label: 'Which item?' %>
+        <%= f.input :name, placeholder: 'Add a new item' %>
     </div>
      <div class="form-actions">
          <%= f.submit 'Add item', class:'btn btn-danger' %>

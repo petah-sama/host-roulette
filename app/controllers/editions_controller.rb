@@ -12,7 +12,7 @@ class EditionsController < ApplicationController
     @answer = Answer.new
 
     @review = Review.new
-    
+
     @current_guest = current_user.guest_for(@edition)
     @current_user_answers = @edition.answers.where(guest: @current_guest)
 
@@ -61,6 +61,7 @@ class EditionsController < ApplicationController
   def update
     if @edition.update(edit_edition_params)
       status_notification
+      redirect_to event_edition_path(@event, @edition)
     else
       render :edit
     end
@@ -74,15 +75,15 @@ class EditionsController < ApplicationController
 
   def status_notification
     if @edition.status == 'active'
-    @edition.event.participants.each do |user|
-      @notification = Notification.new
-      @notification.user = user
-      @notification.edition = @edition
-      @notification.from = 'active'
-      # @notification.content = path necessário pra fazer o link
-      @notification.save
-    end
-    redirect_to event_edition_path(@event, @edition)
+      @edition.event.participants.each do |user|
+        @notification = Notification.new
+        @notification.user = user
+        @notification.edition = @edition
+        @notification.from = 'active'
+        # @notification.content = path necessário pra fazer o link
+        @notification.save
+      end
+      redirect_to event_edition_path(@event, @edition)
     end
   end
 

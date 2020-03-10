@@ -96,7 +96,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="983" y="227" name="answers">
+<table x="1066" y="171" name="answers">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -184,7 +184,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="824" y="381" name="questions">
+<table x="907" y="325" name="questions">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -226,7 +226,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="855" y="68" name="reviews">
+<table x="938" y="12" name="reviews">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -247,7 +247,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="1005" y="416" name="dragons">
+<table x="1088" y="360" name="dragons">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -258,7 +258,18 @@
 <part>id</part>
 </key>
 </table>
-<table x="818" y="603" name="items">
+<table x="1119" y="574" name="items">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="name" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="829" y="472" name="edition_items">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -266,9 +277,10 @@
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="editions" row="id" />
 </row>
-<row name="name" null="1" autoincrement="0">
+<row name="item_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default></row>
+<default>NULL</default><relation table="items" row="id" />
+</row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
