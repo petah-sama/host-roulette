@@ -86,7 +86,7 @@ class EditionsController < ApplicationController
         @notification.edition = @edition
         @notification.from = from
         @notification.save
-    end
+      end
   end
 
   def fetch_event

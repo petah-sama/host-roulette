@@ -17,6 +17,12 @@
 
     <% if action_name == 'home' %>
       <%= yield %>
+    <% elsif controller_name == 'registrations' && action_name == 'new' %>
+      <%= yield %>
+      <body class="body-background-user">
+    <% elsif controller_name == 'sessions' && action_name == 'new' %>
+      <%= yield %>
+      <body class="body-background-user">
     <% else %>
       <%= render 'shared/sidebar' %>
       <div class="container-margin">
