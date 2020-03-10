@@ -7,6 +7,7 @@ class QuestionsController < ApplicationController
     @question.edition = @edition
     authorize @question
     if @question.save
+      status_notification('question')
       redirect_to event_edition_path(@event, @edition)
     else
       render 'editions/show'
@@ -26,6 +27,17 @@ class QuestionsController < ApplicationController
   end
 
   private
+
+  def status_notification(from)
+    @edition.event.participants.each do |user|
+      next if user == @edition.host
+      @notification = Notification.new
+      @notification.user = user
+      @notification.edition = @edition
+      @notification.from = from
+      @notification.save
+    end
+  end
 
   def fetch_event_edition
     @event = Event.find(params[:event_id])

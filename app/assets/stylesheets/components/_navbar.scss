@@ -99,13 +99,13 @@
 
 .dropdown-content a {
    text-decoration: none;
-   text-overflow: hidden;
+   text-overflow: ellipsis;
    margin: 0px;
 }
 
 .dropdown-content p {
    text-decoration: none;
-   text-overflow: hidden;
+   text-overflow: ellipsis;
    margin: 0px;
 }
 
@@ -117,10 +117,11 @@
 }
 
 .dropdown-notification-item {
-  width:auto;
+  width:100%;
   border: 1px solid lightgrey;
   border-radius:$border-radius;
-  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 .dropdown-notification-item:hover {
   background-color:#93a3c0;
@@ -128,9 +129,7 @@
 }
 
 .active-notification {
-  font-size:30px;
-  padding:10px;
+  font-size:28px;
+  padding:10px 5px;
+  margin-right:0px;
 }
-#icon-notificatin-text {
-
-  }
