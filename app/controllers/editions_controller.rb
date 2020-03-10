@@ -37,13 +37,17 @@ class EditionsController < ApplicationController
     @edition.event = @event
     edition_number = @event.editions.size + 1
     @edition.name = @event.name + ' #' + edition_number.to_s
-
     # host_id = params["query"].to_i
     # host_user = User.find(host_id)
     # @edition.host_id = host_user.id
     authorize @edition
     if @edition.save
       gen_guests
+      @notification = Notification.new
+      @notification.user = @edition.host
+      @notification.edition = @edition
+      @notification.from = 'host'
+      @notification.save
       redirect_to event_edition_path(@event, @edition)
     else
       render :new
@@ -60,8 +64,10 @@ class EditionsController < ApplicationController
 
   def update
     if @edition.update(edit_edition_params)
-      status_notification
-      redirect_to event_edition_path(@event, @edition)
+      if @edition.status == 'active'
+        status_notification('active')
+        redirect_to event_edition_path(@event, @edition)
+      end
     else
       render :edit
     end
@@ -73,17 +79,13 @@ class EditionsController < ApplicationController
 
   private
 
-  def status_notification
-    if @edition.status == 'active'
+  def status_notification(from)
       @edition.event.participants.each do |user|
         @notification = Notification.new
         @notification.user = user
         @notification.edition = @edition
-        @notification.from = 'active'
-        # @notification.content = path necessário pra fazer o link
+        @notification.from = from
         @notification.save
-      end
-      redirect_to event_edition_path(@event, @edition)
     end
   end
 
