@@ -23,6 +23,8 @@
 
 .notification-div {
   align-self: center;
+  position:relative;
+  cursor:pointer;
 }
 
 .notification-div  {
@@ -41,7 +43,7 @@
 }
 
 
-.notification-div:hover {
+.notification-bell:hover {
   animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
   transform: translate3d(0, 0, 0);
 }
@@ -64,3 +66,70 @@
   }
 }
 
+
+
+.dropdown {
+
+}
+
+.dropdown .dropbtn {
+  cursor: pointer;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right:50px;
+  background-color: #f9f9f9;
+  z-index: 1;
+  width:500px;
+  border:1px solid lightgrey;
+  border-radius:$border-radius;
+}
+
+
+.dropdown-content a {
+   text-decoration: none;
+   text-overflow: hidden;
+   margin: 0px;
+}
+
+.dropdown-content p {
+   text-decoration: none;
+   text-overflow: hidden;
+   margin: 0px;
+}
+
+.dropdown-content a:hover {
+}
+
+.display-notifications {
+  display: block;
+}
+
+.dropdown-notification-item {
+  width:auto;
+  border: 1px solid lightgrey;
+  border-radius:$border-radius;
+}
+.dropdown-notification-item:hover {
+  background-color:#93a3c0;
+  margin: 1px;
+}
+
+.active-notification {
+  font-size:30px;
+  padding:10px;
+}
+#icon-notificatin-text {
+
+  }

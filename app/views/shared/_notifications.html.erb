@@ -1,0 +1,33 @@
+<div class ='notification-div'>
+<% if user_signed_in? %>
+  <div class=" notification-bell" onclick="notifications()">
+    <% if !(current_user.notifications.nil?) %>
+      <i class="dropbtn fas fa-bell"></i>
+      <% else %>
+      <i class="dropbtn fas fa-bell"><i class="fas fa-circle"></i></i>
+    <% end %>
+  </div>
+  <div class="dropdown-content" id="myDropdown">
+    <span class = 'd-flex justify-content-between align-items-center m-2'><p>All notifications</p>
+      <%= link_to notifications_path, method: :delete, data: { confirm: "Are you sure?" } do %>
+        <i class="fas fa-trash-alt" id = 'icon-notificatin-text'></i>
+      <% end %>
+    </span>
+     <% current_user.notifications.each do |notification| %>
+        <div class = 'd-flex justify-content-between align-items-center dropdown-item dropdown-notification-item'>
+  <!--           <p class = 'notification-link'> <%= notification.edition.name %> is Active!</p>
+   -->      <i class="fas fa-map-marker-alt active-notification"></i>
+            <%= link_to dashboard_path do %>
+              <p> <%= notification.edition.name %> is Active!</p>
+            <% end %>
+        </div>
+
+     <% end %>
+  </div>
+
+
+
+
+<% end  %>
+
+</div>

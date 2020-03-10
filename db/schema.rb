@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_07_214910) do
+ActiveRecord::Schema.define(version: 2020_03_10_105138) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -103,11 +103,9 @@ ActiveRecord::Schema.define(version: 2020_03_07_214910) do
   end
 
   create_table "items", force: :cascade do |t|
-    t.bigint "edition_id"
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["edition_id"], name: "index_items_on_edition_id"
   end
 
   create_table "members", force: :cascade do |t|
@@ -117,6 +115,17 @@ ActiveRecord::Schema.define(version: 2020_03_07_214910) do
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_members_on_event_id"
     t.index ["user_id"], name: "index_members_on_user_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.text "content"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "from", default: 0
+    t.bigint "edition_id"
+    t.index ["edition_id"], name: "index_notifications_on_edition_id"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -170,9 +179,10 @@ ActiveRecord::Schema.define(version: 2020_03_07_214910) do
   add_foreign_key "events", "users"
   add_foreign_key "guests", "editions"
   add_foreign_key "guests", "members"
-  add_foreign_key "items", "editions"
   add_foreign_key "members", "events"
   add_foreign_key "members", "users"
+  add_foreign_key "notifications", "editions"
+  add_foreign_key "notifications", "users"
   add_foreign_key "questions", "editions"
   add_foreign_key "reviews", "guests"
 end

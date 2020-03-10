@@ -1,17 +1,21 @@
-<div class="col-8 p-3">
+<div class="col-8">
   <%= simple_form_for [@event, @edition], method: :patch do |f| %>
     <div class="form-inputs">
       <%= f.input :name %>
+      <div class="d-flex justify-content-around">
       <%= f.input :start_time, as: :string, required: false, order: %i(day month year), input_html: {id: "range_start"} %>
       <%= f.input :end_time, as: :string, required: false, order: %i(day month year), input_html: {id: "range_end"} %>
+      </div>
       <%= f.input :address %>
       <%= f.input :status, collection: Edition.statuses.keys, selected: 1 %>
       <%= f.association :items, input_html: { class: 'select2 form-control' }, label: 'Which items do you need?' %>
-      <%= link_to 'Add a new item', new_event_edition_item_path(@event, @edition), class:'btn btn-danger mt-2 mb-2 mr-2' %>
     </div>
+    <div class="d-flex align-items-end">
     <div class="form-actions d-flex">
       <%= f.submit 'Update Event details', class: 'btn btn-primary' %>
       <%= link_to 'Back', event_edition_path(@event, @edition), class: 'btn btn-primary' %>
     </div>
   <% end %>
+    <%= render partial: 'items/new' %>
+    </div>
 </div>

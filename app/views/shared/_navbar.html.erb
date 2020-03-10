@@ -4,26 +4,19 @@
     <%#= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
   <%# end %>
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
 
 
 
   <%= render 'shared/search_bar' %>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-        <div class ='notification-div'>
-      <!-- we still need to define the notifications, and then add -->
-      <!-- an IF in here, if (notifications) show circle. -->
-      <!-- and add the link to the notifications page -->
-          <div class="notification-bell">
-            <i class="fas fa-bell"><i class="fas fa-circle"></i></i>
-          </div>
-        </div>
-          <% if user_signed_in? %>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <%= render 'shared/notifications' %>
+    <ul class="navbar-nav mr-auto">
+      <% if user_signed_in? %>
         <div class="nav-item-name">
           <% if current_user.first_name && current_user.last_name %>
           <li><%= current_user.first_name %> <%= current_user.last_name %></li>
@@ -52,3 +45,22 @@
     </ul>
   </div>
 </div>
+
+
+<script>
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function notifications() {
+  document.getElementById("myDropdown").classList.toggle("display-notifications");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(e) {
+  if (!e.target.matches('.dropbtn')) {
+  var myDropdown = document.getElementById("myDropdown");
+    if (myDropdown.classList.contains('display-notifications')) {
+      myDropdown.classList.remove('display-notifications');
+    }
+  }
+}
+</script>

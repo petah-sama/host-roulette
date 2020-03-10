@@ -1,7 +1,7 @@
-class ReviewPolicy < ApplicationPolicy
+class NotificationPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all
+      scope.where(user:user)
     end
   end
 
@@ -9,9 +9,6 @@ class ReviewPolicy < ApplicationPolicy
     true
   end
 
-  def update?
-    check_user
-  end
 
   private
 

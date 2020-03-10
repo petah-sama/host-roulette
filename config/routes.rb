@@ -1,11 +1,16 @@
 Rails.application.routes.draw do
+
   devise_for :users
 
   namespace :user do
     root to: "pages#index"
   end
 
-  resources :users, only: [:show]
+  resources :users, only: [:show] do
+    resources :notifications, only: [:create, :index]
+
+  end
+
   root to: 'pages#home'
   get 'dashboard', to: 'pages#index'
   get 'friends', to: 'pages#friends'
@@ -17,9 +22,8 @@ Rails.application.routes.draw do
     resources :members, only: %i[create destroy]
     resources :event_tags, only: %i[create destroy]
     resources :editions, except: %i[index] do
-      resources :guests, only: %i[create destroy] do
-        resources :reviews, only: %i[create update destroy]
-      end
+      resources :guests, only: %i[create destroy]
+      resources :reviews, only: %i[create update destroy]
       resources :items, only: %i[new create update destroy]
       resources :questions, only: %i[create show] do
         resources :answers, only: %i[create update]
@@ -28,6 +32,6 @@ Rails.application.routes.draw do
   end
   resources :questions, only: :destroy
   resources :answers, only: :destroy
-
+  delete '/notifications', to: 'notifications#destroy'
   get '/events/:id/join', to: 'events#join'
 end

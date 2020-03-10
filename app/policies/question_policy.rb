@@ -10,7 +10,11 @@ class QuestionPolicy < ApplicationPolicy
   end
 
   def create?
-    check_host
+    true
+  end
+
+  def update?
+    true
   end
 
   def destroy?
