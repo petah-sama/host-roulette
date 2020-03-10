@@ -44,48 +44,85 @@ header .overlay {
   z-index: 1;
 }
 
-#dashboard-btn {
+// #dashboard-btn {
+//   top: 50%;
+//   position: fixed;
+//   z-index: 3;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+//   text-decoration: none;
+//     h1 {
+//       text-decoration: none;
+//       padding: 10px 20px;
+//       color: white;
+//       text-align: center;
+//       font-size: 50px;
+//       // font-weight: bold;
+//       border-radius: 30px;
+//       border: none;
+//       overflow: hidden;
+//     }
+
+//    & h1:hover {
+//        text-decoration: none;
+//        border-radius: 30px;
+//        background: $red;
+//        transition: .5s;
+//        color: white;
+//     }
+// }
+
+
+.myButt {
   top: 50%;
   position: fixed;
   z-index: 3;
   left: 50%;
   transform: translate(-50%, -50%);
   text-decoration: none;
-    h1 {
-      text-decoration: none;
-      padding: 10px 20px;
-      color: white;
-      text-align: center;
-      font-size: 50px;
-      // font-weight: bold;
-      border-radius: 30px;
-      border: none;
-      overflow: hidden;
-    }
-
-   & h1:hover {
-       text-decoration: none;
-       border-radius: 30px;
-       background: $red;
-       transition: .5s;
-       color: white;
-    }
-}
-
-
-.container {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  text-align: center;
-  color: white;
-}
-
-.cool {
-  align-self: flex-end;
+  outline:none;
+  padding:20px;
+  display: block;
+  margin: 50px auto;
+  cursor:pointer;
+  background-color:transparent;
+  border:5px solid #fff;
+  font-size: 70px;
+  font-family: 'Catamaran';
   border-radius: $border-radius;
-  margin-bottom: 65px;
-  background-color: $red;
-  padding: 25px 10px;
+  @include transition(all 0.5s ease);
 }
+
+.five {
+  overflow:hidden;
+  color:#fff;
+  text-decoration: none;
+
+  .layer {
+    color:#fff;
+    position:absolute;
+    top:-145px;
+    width:100%;
+    left:0;
+    padding:20px 0;
+    background-color:$red;
+    @include transition(all 0.3s ease);
+    text-decoration: none;
+  }
+
+  &:hover {
+    .layer {
+      top:0;
+      text-decoration: none;
+    }
+  }
+}
+
+.layer a {
+   text-decoration: none;
+   color:#fff;
+  }
+
+
+
 
