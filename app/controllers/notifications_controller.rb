@@ -15,7 +15,7 @@ class NotificationsController < ApplicationController
     @notifications.each do |notification|
       notification.destroy
     end
-    redirect_to dashboard_path
+    redirect_back(fallback_location: root_path)
   end
 
 
