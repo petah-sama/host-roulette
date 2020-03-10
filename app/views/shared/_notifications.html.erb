@@ -1,9 +1,10 @@
 <div class ='notification-div'>
 <% if user_signed_in? %>
   <div class=" notification-bell" onclick="notifications()">
-    <i class="dropbtn fas fa-bell"><i class="fas fa-circle"></i></i>
-    <% if (current_user.notifications.active.nil?) %>
+    <% if !(current_user.notifications.nil?) %>
       <i class="dropbtn fas fa-bell"></i>
+      <% else %>
+      <i class="dropbtn fas fa-bell"><i class="fas fa-circle"></i></i>
     <% end %>
   </div>
   <div class="dropdown-content" id="myDropdown">
@@ -19,7 +20,6 @@
             <%= link_to dashboard_path do %>
               <p> <%= notification.edition.name %> is Active!</p>
             <% end %>
-
         </div>
 
      <% end %>
