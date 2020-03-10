@@ -26,16 +26,22 @@ class PagesController < ApplicationController
 
   def past_events
     if params[:query].present?
-    events = policy_scope(Event).includes(:members).where(members: { user:current_user })
-    @past_editions = Edition.where(event_id: events, status: 2).search_by_name(params[:query])
-  else
-    events = policy_scope(Event).includes(:members).where(members: { user:current_user })
-    @past_editions = Edition.where(event_id: events, status: 2)
-  end
-
+      events = policy_scope(Event).includes(:members).where(members: { user:current_user })
+      @past_editions = Edition.where(event_id: events, status: 2).search_by_name(params[:query])
+    else
+      events = policy_scope(Event).includes(:members).where(members: { user:current_user })
+      @past_editions = Edition.where(event_id: events, status: 2)
+    end
   end
 
   def calendar
     @editions = Edition.all
+  end
+
+  def surveys
+    events = policy_scope(Event).includes(:members).where(members: { user:current_user })
+
+    @editions = Edition.where(event_id: events)
+    @my_editions = Edition.where(event_id: events, host_id: current_user.id)
   end
 end
