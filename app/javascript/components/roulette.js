@@ -6,6 +6,7 @@ const editionRest = () => {
   let color = [];
   let basicColors = ['#051c4a','#93a3c0','#D95140']
 
+
   let label = [];
   let members = document.querySelectorAll('.user-names');
   members.forEach(function(member) {
@@ -20,6 +21,7 @@ const editionRest = () => {
       color.push(basicColors[0]);
     } else {
       color.push(basicColors[1])
+
     };
   };
 

@@ -1,21 +1,21 @@
 <div class="content-container d-flex mt-4">
   <div class="card-container col-8 ml-3">
 
-    <div class="notifications">
+<!--     <div class="notifications">
       <div class="notification-card mt-4 mb-4">
         <h3>5 answers to your survey</h3>
       </div>
       <div class="notification-card mt-4 mb-4">
         <h3>3 surveys to respond</h3>
       </div>
-    </div>
+    </div> -->
 
 
-    <div class="active-cards " id= 'active-cards'>
+    <div class="active-cards " id='active-cards'>
       <%= render 'pages/filters/active-editions' %>
     </div>
 
-    <div class="pending-cards" id= 'pending-cards'>
+    <div class="pending-cards" id='pending-cards'>
       <%= render 'pages/filters/pending-editions' %>
     </div>
   </div>
@@ -24,13 +24,13 @@
   <!-- We need the host, to edit the logic of stats  -->
 
   <div class ="stats col-4 mt-4 mr-3">
-    <div class="scaled col-6">
+    <!-- <div class="scaled col-6">
       <div class="custom-control custom-switch">
         <input type="checkbox" name ='checkbox' class="custom-control-input toggleButton" id="customSwitch1" unchecked>
         <label class="custom-control-label" id ='label-active' for="customSwitch1">All</label>
       </div>
-    </div>
-    <div class="stats-card mt-4 mb-4 p-3">
+    </div> -->
+    <div class="stats-card mb-4 p-3">
         <h4 class = 'title-charts mb-3'> Hosting </h4>
         <div class = 'stats-chart'>
           <%= pie_chart [['Hosting', @hostingeditions.size], ['Guest', @alleditions.size - @hostingeditions.size]], legend: false, donut: true, label: "Value" , colors: ["#D95140", "#586a88"], width:"200px", height: "200px"%>
@@ -40,16 +40,16 @@
     </div>
 
     <div class="stats-card mt-4 mb-4 p-3">
-      <h4 class = 'title-charts mb-3'> Pending </h4>
+      <h4 class = 'title-charts mb-3'> Active </h4>
       <div class = 'stats-chart'>
         <%= pie_chart [ ['Active', @alleditions.active.size],['Pending', @alleditions.pending.size]], legend: false, donut: true, label: "Value" , colors: ["#D95140", "#586a88"], width:"200px", height: "200px"%>
-        <p class = 'text-inside-chart'> <%=  @alleditions.pending.size %> of <%= (@alleditions.active.size + @alleditions.pending.size) %></p>
+        <p class = 'text-inside-chart'> <%=  @alleditions.active.size %> of <%= (@alleditions.active.size + @alleditions.pending.size) %></p>
       </div>
     </div>
 
   </div>
 </div>
-
+<!--
 <script>
   var filterHost = document.getElementById('filter-by-host');
   //Ainda vai ser preciso criar o filtro de host//
@@ -69,4 +69,4 @@
       x.style.display = "block";
     }
   });
-</script>
+</script> -->
