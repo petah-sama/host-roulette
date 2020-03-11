@@ -1,0 +1,81 @@
+// PAGES >> CALENDAR
+
+#calendar-big {
+
+  .simple-calendar {
+    .day {
+      max-height: 40px;
+      vertical-align: middle;
+    }
+
+    .has-events {
+      background-color: $red;
+      max-height: 40px;
+      color: white;
+      p {
+        font-size: 0.7rem;
+      }
+    }
+  }
+
+  .calendar-container {
+    width: 480px;
+    height: 240px;
+  }
+
+  .calendar-heading {
+    width: 85%;
+    vertical-align: middle;
+    text-align: center;
+  }
+
+  .simple-calendar .day {
+      height: 30px;
+      width: 18px;
+      text-align: center;
+      font-size: 13px;
+  }
+
+  .simple-calendar th {
+    height: 30px;
+    text-align: center;
+    font-size: 15px;
+    padding: 2px;
+    vertical-align: middle;
+  }
+
+  .simple-calendar .today {
+    background: $success;
+    font-weight: bold;
+  }
+
+  .calendar-title {
+    font-size: 30px;
+    font-weight: bold;
+    vertical-align: middle;
+  }
+
+  .table {
+    width: 85%;
+    height: 100%;
+    background-color: white;
+  }
+
+  .table thead th {
+    border-style: none;
+    background-color: white;
+    padding: 20px;
+  }
+
+  .table td {
+    border-style: none;
+    background-color: white;
+    padding: 20px;
+  }
+
+  .simple-calendar {
+    width: 800px;
+    height: 350px;
+    margin: 20px auto;
+  }
+}

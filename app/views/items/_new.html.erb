@@ -1,12 +1,7 @@
 <div class="col-8">
-    <%= simple_form_for [@edition, @item], url: event_edition_items_path(@event, @edition), method: :post do |f| %>
-    <div class="form-inputs">
-        <%= f.input :name, placeholder: 'Add a new item' %>
-    </div>
-     <div class="form-actions">
-         <%= f.submit 'Add item', class:'btn btn-danger' %>
-         <%= link_to 'Back', edit_event_edition_path(@event, @edition), class:'btn btn-primary ml-4' %>
-    </div>
+    <%= simple_form_for [@edition, @item], url: event_edition_items_path(@event, @edition), html: { class: "d-flex justify-content-between mt-2"}, method: :post do |f| %>
+      <%= f.input :name, label: false, placeholder: 'Add a new item', wrapper_html: { class: 'm-0 w-100' } %>
+      <%= f.submit 'Add item', class:'btn btn-info' %>
     <% end %>
   </div>
 </div>

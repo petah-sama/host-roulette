@@ -1,3 +1,8 @@
+// EDITION SHOW >> CALENDAR
+.calendar-edition {
+  height: 320px;
+}
+
 .simple-calendar {
   .day {
     max-height: 40px;
@@ -20,31 +25,29 @@
   height: 240px;
 }
 
-
 .simple-calendar .day {
-    height: 30px;
-    width: 18px;
-    text-align: center;
-    font-size: 11px;
+  height: 30px;
+  width: 18px;
+  text-align: center;
+  font-size: 11px;
 }
 
 .simple-calendar th {
-    height: 30px;
-    text-align: center;
-    font-size: 15px;
-    padding: 2px;
-    vertical-align: middle;
-  }
-
-  .simple-calendar .today {
-    background: $success;
-    color: white;
-    font-weight: bold;
+  height: 30px;
+  text-align: center;
+  font-size: 15px;
+  padding: 2px;
+  vertical-align: middle;
 }
 
+.simple-calendar .today {
+  background: $success;
+  color: white;
+  font-weight: bold;
+}
 
 .calendar-heading {
-  padding: 20px;
+  padding: 0 20px 20px 20px;
   background-color: white;
   display: flex;
   justify-content: space-between;
@@ -57,123 +60,33 @@
 .calendar-heading {
   vertical-align: middle;
   text-align: center;
-  // display: table-cell;
 }
 
 .calendar-title {
-    text-align: center;
-    font-size: 20px;
-    font-weight: bold;
-    vertical-align: middle;
-    // display: table-cell;
-  }
-
-
-  .table {
-    background-color: white;
-  }
-
-  .table thead th {
-      border-style: none;
-      background-color: white;
-    }
-
-  .table td {
-      border-style: none;
-      background-color: white;
-    }
-
-
-  .prev-month {
-      color: lightgrey;
-  }
-
-  .next-month {
-    color: lightgrey;
-  }
-
-
-#calendar-big {
-
-  .simple-calendar {
-  .day {
-    max-height: 40px;
-    vertical-align: middle;
-  }
-
-  .has-events {
-    background-color: $red;
-    max-height: 40px;
-    color: white;
-    p {
-      font-size: 0.7rem;
-    }
-  }
-}
-
-.calendar-container {
-  width: 480px;
-  height: 240px;
-}
-
-
-.calendar-heading {
-  width: 85%;
-  vertical-align: middle;
   text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  vertical-align: middle;
 }
 
-
-.simple-calendar .day {
-    height: 30px;
-    width: 18px;
-    text-align: center;
-    font-size: 13px;
+.table {
+  background-color: white;
 }
 
-.simple-calendar th {
-    height: 30px;
-    text-align: center;
-    font-size: 15px;
-    padding: 2px;
-    vertical-align: middle;
-  }
-
-
-  .simple-calendar .today {
-    background: $success;
-    font-weight: bold;
+.table thead th {
+  border-style: none;
+  background-color: white;
 }
 
-  .calendar-title {
-    font-size: 30px;
-    font-weight: bold;
-    vertical-align: middle;
-  }
+.table td {
+  border-style: none;
+  background-color: white;
+}
 
-  .table {
-    width: 85%;
-    height: 100%;
-    background-color: white;
-  }
+.prev-month {
+  color: lightgrey;
+}
 
-  .table thead th {
-      border-style: none;
-      background-color: white;
-      padding: 20px;
-    }
-
-  .table td {
-      border-style: none;
-      background-color: white;
-      padding: 20px;
-    }
-
-
-  .simple-calendar {
-    width: 800px;
-    height: 350px;
-    margin: 20px auto;
-  }
-
+.next-month {
+  color: lightgrey;
 }

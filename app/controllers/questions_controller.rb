@@ -2,6 +2,10 @@ class QuestionsController < ApplicationController
   before_action :fetch_event_edition, except: :destroy
   before_action :fetch_question, only: %i[show destroy]
 
+  def index
+
+  end
+
   def create
     @question = Question.new(question_params)
     @question.edition = @edition

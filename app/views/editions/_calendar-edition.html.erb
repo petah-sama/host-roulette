@@ -1,7 +1,5 @@
-  <%= month_calendar events: @edition_calendar do |date, editions| %>
-    <%= date.day %>
-    <% editions.each do |edition| %>
-    <% end %>
+<%= month_calendar events: @edition_calendar do |date, editions| %>
+  <%= date.day %>
+  <% editions.each do |edition| %>
   <% end %>
-
-
+<% end %>
