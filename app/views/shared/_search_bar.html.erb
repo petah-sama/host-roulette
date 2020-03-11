@@ -3,6 +3,7 @@
     <%= form_tag 'dashboard', method: :get, class: 'form-inline' do %>
       <%= text_field_tag :query,
         params[:query],
+        style: "width: 790px",
         class: "form-control",
         placeholder: "Search for an Edition" %>
       <%= submit_tag "Search", class: "btn btn-primary" %>
@@ -11,6 +12,7 @@
    <%= form_tag 'past-events', method: :get, class: 'form-inline' do %>
       <%= text_field_tag :query,
         params[:query],
+        style: "width: 790px",
         class: "form-control",
         placeholder: "Search for an Edition"
       %>

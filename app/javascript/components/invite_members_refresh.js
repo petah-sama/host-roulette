@@ -1,5 +1,24 @@
 const refreshMembers = () => {
-  setInterval("location.reload()", 5000);
+  const TIMEOUT = 2000;
+  const membersList = document.getElementById('member-list');
+
+  setInterval(() => {
+    Rails.ajax({
+      url: `/events/${membersList.dataset.event_id}/members`,
+      type: 'GET',
+      data: '',
+      success: function(data) {
+        membersList.textContent = '';
+
+        data.forEach(member => {
+          const item = `<li>${member.first_name} ${member.last_name}</li>`;
+
+          membersList.insertAdjacentHTML('beforeend', item);
+        });
+      },
+      error: function(data) {}
+    });
+  }, TIMEOUT);
 };
 
 export { refreshMembers };

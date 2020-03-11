@@ -21,7 +21,7 @@ class Edition < ApplicationRecord
 
   # So I can test picking a host and code the permissions.
   def host
-    User.find(self.host_id)
+    User.find_by(id: host_id)
   end
 
   def countdown
