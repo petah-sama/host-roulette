@@ -2,26 +2,25 @@
   <% @editions.each do |edition| %>
     <% if edition.active? %>
     <div class="<%= 'hosting-card' if edition&.host != current_user %>">
-      <div class="dashboard-card active-card mt-4">
-        <div class="col-4 p-0">
-            <%= image_tag "https://images.unsplash.com/photo-1539635278303-d4002c07eae3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80", id: "my-image", height: 208, width: 270, crop: :fill %>
-        </div>
+      <%= link_to event_edition_path(edition.event, edition) do %>
+
+
+
+        <div class="dashboard-card active-card d-flex mt-4">
+          <div class="col-4 p-0" id="image-test">
+          </div>
+
           <div class="col-8 p-4">
             <% if edition.host_id == current_user.id %>
               <div class="ribbon ribbon-top-right"><span>host</span></div>
             <% end %>
-            <h2><%= edition.name %></h2>
-            <div class="dashboard-info col-10">
-              <div class="status-dashboard-active">
-                <h5> <%= edition.status %> event</h5>
-              </div>
-              <div class="countdown-dashboard border border-primary rounded">
-                <i class="fas fa-hourglass-half"></i><h5><%= edition.countdown %> days left</h5>
+            <div class="top-card">
+              <div class="tittle-card">
+                <h2><%= edition.name %></h2>
               </div>
             </div>
-            <div>
-              <div class="show-guests-div d-flex" >
-                <% edition.guests.take(4).each do |guest|%>
+            <div class="show-guests-div d-flex mt-3 mb-3" >
+                <% edition.guests.take(5).each do |guest|%>
                   <div class="show-guest-list-item">
                     <% if guest.member.user.photo.attached? %>
                       <%= cl_image_tag guest.member.user.photo.key, class: "avatar-guest-small" %>
@@ -30,11 +29,23 @@
                     <% end %>
                   </div>
                  <% end %>
-                <!-- <div class="button-show p-3"><%= link_to 'Show', event_edition_path(edition.event, edition), class: "btn btn-danger" %></div> -->
+              </div>
+            <div class="bottom-card">
+              <div class="event-tags-small pr-3">
+                  <% edition.event.tags.each do |tag| %>
+                    <span class="tiny-tag mr-1 p-1 border border-primary rounded"> <%= tag.name %></span>
+                  <% end %>
+               </div>
+                  <div class="countdown-dashboard d-flex">
+                    <div><h5><i class="fas fa-hourglass-half"></i><%= edition.countdown %> days left</h5>
+                  </div>
               </div>
             </div>
           </div>
         </div>
+
+
+        <% end %>
       </div>
     <% end %>
   <% end %>
