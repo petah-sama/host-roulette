@@ -1,7 +1,7 @@
 <div class="event-card col-8 mx-auto p-4">
 
   <div class="event-slide d-flex flex-column justify-content-between">
-    <h2>New edition of <%= @edition.event.name %>!</h2>
+    <h2><%= @edition.event.name.upcase %>!</h2>
     <div class="d-flex justify-content-center">
       <div id="wheel">
         <canvas id="canvas" width="800" height="800"></canvas>
