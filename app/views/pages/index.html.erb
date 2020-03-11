@@ -9,7 +9,7 @@
         <h3>3 surveys to respond</h3>
       </div>
     </div> -->
-
+    <%= link_to 'Create New Event', new_event_path, class: 'btn btn-outline-primary btn-lg w-100 d-flex align-items-center justify-content-center', style: 'height: 60px' %>
 
     <div class="active-cards" id='active-cards'>
       <%= render 'pages/filters/active-editions' %>
@@ -23,7 +23,7 @@
   <!-- https://www.w3schools.com/w3css/w3css_progressbar.asp -->
   <!-- We need the host, to edit the logic of stats  -->
 
-  <div class ="stats col-3 mt-4 mr-3">
+  <div class ="stats col-3">
     <!-- <div class="scaled col-6">
       <div class="custom-control custom-switch">
         <input type="checkbox" name ='checkbox' class="custom-control-input toggleButton" id="customSwitch1" unchecked>
@@ -33,12 +33,11 @@
 
 
     <div class="stats-card mb-4 p-3">
-        <h4 class = 'title-charts mb-3'> Hosting </h4>
-        <div class = 'stats-chart'>
-          <%= pie_chart [['Hosting', @hostingeditions.size], ['Guest', @alleditions.size - @hostingeditions.size]], legend: false, donut: true, label: "Value" , colors: ["#586a88", "#DCDCDC"], width:"200px", height: "200px"%>
-          <p class = 'text-inside-chart col-8'>  <%= @hostingeditions.size %> of <%= @alleditions.size %> events </p>
-
-        </div>
+      <h4 class = 'title-charts mb-3'> Hosting </h4>
+      <div class = 'stats-chart'>
+        <%= pie_chart [['Hosting', @hostingeditions.size], ['Guest', @alleditions.size - @hostingeditions.size]], legend: false, donut: true, label: "Value" , colors: ["#586a88", "#DCDCDC"], width:"200px", height: "200px"%>
+        <p class = 'text-inside-chart col-8'>  <%= @hostingeditions.size %> of <%= @alleditions.size %> events </p>
+      </div>
     </div>
 
     <div class="stats-card-cool mt-4 mb-4 p-3">

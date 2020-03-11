@@ -33,7 +33,6 @@ video {
   transition: all 1s ease;
   background-color: transparent;
 
-
   &:hover {
     transform: rotate(1080deg);
   }
@@ -73,7 +72,7 @@ video {
   width: 400px;
 
   .layer {
-    // color: #fff;
+
     position: absolute;
     width: 100%;
     top: -145px;
@@ -81,8 +80,6 @@ video {
     font-size: 3em;
     font-style: italic;
     font-family: 'Lobster';
-    // padding: 20px 0;
-    // background-color: $red;
     @include transition(all 1s ease);
     text-decoration: none;
   }
@@ -90,7 +87,6 @@ video {
   &:hover {
     .layer {
       top: 320px;
-      // bottom:-100px;
       text-decoration: none;
     }
   }

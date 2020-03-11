@@ -20,18 +20,18 @@
               </div>
             </div>
             <div class="show-guests-div d-flex mt-3 mb-3" >
-                <% edition.guests.take(5).each do |guest|%>
-                  <div class="show-guest-list-item">
-                    <% if guest.member.user.photo.attached? %>
-                      <%= cl_image_tag guest.member.user.photo.key, class: "avatar-guest-small" %>
-                    <% else %>
-                      <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-guest-small" %>
-                    <% end %>
-                  </div>
-                 <% end %>
-              </div>
+              <% edition.guests.take(5).each do |guest|%>
+                <div class="show-guest-list-item">
+                  <% if guest.member.user.photo.attached? %>
+                    <%= cl_image_tag guest.member.user.photo.key, class: "avatar-guest-small" %>
+                  <% else %>
+                    <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-guest-small" %>
+                  <% end %>
+                </div>
+               <% end %>
+            </div>
             <div class="bottom-card">
-              <div class="event-tags-small pr-3">
+              <div class="event-tags-small">
                   <% edition.event.tags.each do |tag| %>
                     <span class="tiny-tag mr-1 p-1 border border-primary rounded"> <%= tag.name %></span>
                   <% end %>
