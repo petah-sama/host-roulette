@@ -4,7 +4,6 @@
   border-radius: $border-radius;
   display: inline-grid;
   padding:10px;
-
 }
 
 .answer-item{
@@ -32,4 +31,43 @@
   position:absolute;
   top: 0px;
   right:5px;
+}
+
+.back-button{
+  font-family:'Montserrat'
+}
+
+.color-container-div {
+  p {
+    font-family: 'Catamaran';
+  }
+  width:100%;
+  padding:20px;
+  #yes_color {
+  font-size:30px;
+  color: red;
+  margin-right:10px;
+
+}
+
+  #no_color {
+  font-size:20px;
+  color: darkblue;
+  font-size:30px;
+  margin-right:10px;
+  }
+  #unanswered_color {
+    font-size:20px;
+    color: grey;
+    font-size:30px;
+    margin-right:10px;
+  }
+}
+
+.btn-back-questions {
+  padding:10px 20px;
+  margin:0 auto;
+  p {
+    margin-bottom:0px;
+  }
 }
