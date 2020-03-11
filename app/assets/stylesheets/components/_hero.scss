@@ -1,3 +1,4 @@
+// VIDEO
 header {
   position: relative;
   background-color: white;
@@ -27,59 +28,78 @@ video {
 }
 
 
+// LOGO
+#roulette-logo {
+  transition: all 1s ease;
+  background-color: transparent;
 
 
+  &:hover {
+    transform: rotate(1080deg);
+  }
+}
 
+#words-logo {
 
+  z-index: 9;
+}
+
+// BUTTON
 .myButt {
-  top: 50%;
+  top: calc(50% - 50px);
+  left: 50%;
   position: fixed;
   z-index: 3;
-  left: 50%;
   transform: translate(-50%, -50%);
-  text-decoration: none;
-  outline:none;
-  padding:20px;
+  // text-decoration: none;
+  // outline: none;
+  // padding: 20px;
   display: block;
   margin: 50px auto;
-  cursor:pointer;
-  background-color:transparent;
-  border:5px solid #fff;
-  font-size: 70px;
+  // cursor: pointer;
+  background-color: transparent;
+  // border: 5px solid #fff;
+  border: none;
+  // font-size: 70px;
   font-family: 'Catamaran';
-  border-radius: $border-radius;
+  // border-radius: $border-radius;
   @include transition(all 0.5s ease);
 }
 
 .five {
-  overflow:hidden;
-  color:#fff;
+  overflow: hidden;
+  color: #fff;
   text-decoration: none;
+  width: 400px;
 
   .layer {
-    color:#fff;
-    position:absolute;
-    top:-145px;
-    width:100%;
-    left:0;
-    padding:20px 0;
-    background-color:$red;
-    @include transition(all 0.3s ease);
+    // color: #fff;
+    position: absolute;
+    width: 100%;
+    top: -145px;
+    left: 0;
+    font-size: 3em;
+    font-style: italic;
+    font-family: 'Lobster';
+    // padding: 20px 0;
+    // background-color: $red;
+    @include transition(all 1s ease);
     text-decoration: none;
   }
 
   &:hover {
     .layer {
-      top:0;
+      top: 320px;
+      // bottom:-100px;
       text-decoration: none;
     }
   }
 }
 
 .layer a {
-   text-decoration: none;
-   color:#fff;
-  }
+ text-decoration: none;
+ color:#fff;
+}
 
 
 

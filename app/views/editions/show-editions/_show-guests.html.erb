@@ -4,19 +4,17 @@
 </div> -->
 
 <div id='dots'>
-  <div class="show-guests-div" >
+  <div class="show-guests-div d-flex flex-wrap">
     <% @edition.guests.take(4).each do |guest| %>
-      <div class="show-guest-list-item guest-label-parent d-flex justify-content-start">
-        <div class="d-flex justify-content-center">
-          <div class="guest-label border border-primary rounded">
-            <p class="m-0"><%= guest.member.user.first_name %> <%= guest.member.user.last_name[0] %>.</p>
-          </div>
-          <% if guest.member.user.photo.attached? %>
-            <%= cl_image_tag guest.member.user.photo.key, class: "avatar-guest" %>
-          <% else %>
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-guest" %>
-          <% end %>
+      <div class="show-guest-list-item d-flex justify-content-center guest-label-parent mr-1 mb-1">
+        <div class="guest-label border border-primary rounded p-1">
+          <p class="m-0 text-nowrap"><%= guest.member.user.first_name %> <%= guest.member.user.last_name[0] %>.</p>
         </div>
+        <% if guest.member.user.photo.attached? %>
+          <%= cl_image_tag guest.member.user.photo.key, class: "avatar-guest" %>
+        <% else %>
+          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-guest" %>
+        <% end %>
       </div>
     <% end %>
 

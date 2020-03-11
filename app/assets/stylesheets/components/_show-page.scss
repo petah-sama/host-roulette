@@ -34,20 +34,20 @@
   margin-left:5px;
 }
 
-.show-guest-list-card {
-  border: 1px solid lightgrey;
-  padding:5px 5px;
-  width: 50%;
-  min-width: 300px;
-  margin:5px;
-  border-radius: $border-radius;
-  p {
-    font-size:20px;
-    font-weight:bold;
-    float:none;
-    margin:10px 5px;
-  }
-}
+// .show-guest-list-card {
+//   border: 1px solid lightgrey;
+//   padding:5px 5px;
+//   width: 50%;
+//   min-width: 300px;
+//   margin:5px;
+//   border-radius: $border-radius;
+//   p {
+//     font-size:20px;
+//     font-weight:bold;
+//     float:none;
+//     margin:10px 5px;
+//   }
+// }
 
 .avatar-guest {
   width:60px;
@@ -63,24 +63,16 @@
   display: none;
 }
 
-// .guest-label-parent .guest-label {
-//   // border: 1px solid #ccc;
-//   visibility: hidden;
-//   // font-size: 10px;
-//   position: absolute;
-//   z-index: 1;
-// }
-
-// .guest-label-parent:hover #guest-label {
-//   visibility: visible;
-// }
-
 .guest-label-parent {
+  position: relative;
+  // overflow: visible;
 
   .guest-label {
     visibility: hidden;
     position: absolute;
     z-index: 9;
+    top: 4em;
+    background-color: white;
   }
 
   &:hover .guest-label {
