@@ -7,15 +7,15 @@
       <%= f.input :end_time, as: :string, required: false, order: %i(day month year), input_html: {id: "range_end"} %>
       </div>
       <%= f.input :address %>
-      <%= f.input :status, collection: Edition.statuses.keys, selected: 1 %>
+      <%= f.input :status, collection: Edition.statuses.keys, selected: @edition.status %>
       <%= f.association :items, input_html: { class: 'select2 form-control' }, label: 'Which items do you need?' %>
     </div>
     <div class="d-flex align-items-end">
     <div class="form-actions d-flex">
       <%= f.submit 'Update Event details', class: 'btn btn-primary' %>
-      <%= link_to 'Back', event_edition_path(@event, @edition), class: 'btn btn-primary' %>
+      <%= link_to 'Back', event_edition_path(@event, @edition), class:'btn btn-primary' %>
     </div>
   <% end %>
-    <%= render partial: 'items/new' %>
-    </div>
+  <%= render partial: 'items/new' %>
+  </div>
 </div>

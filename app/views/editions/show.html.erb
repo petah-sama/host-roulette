@@ -1,92 +1,133 @@
 <div class="show-main-container m-4">
-  <div id='cover-picture'>
-    <!-- Banner picture -->
-    <img src="https://www.f-covers.com/cover/ha-long-bay-vietnam-facebook-cover-timeline-banner-for-fb.jpg" alt="Smiley face" height="300" width="100%">
-    <!-- Who's hosting -->
-    <div class="show-hosting">
-      <% if current_user.is_host?(@edition) && @edition.host_id.present? %>
-        <h4> <i class="fas fa-crown"></i>  You're hosting </h4>
-      <% elsif @edition.host_id.nil? %>
-         <h4> <%= 'No Host' %></h4>
-      <% else %>
-        <i class="fas fa-crown"></i><h4> <%= @edition.host.first_name + ' ' + @edition.host.last_name  %></h4>
+
+  <!-- BANNER INFO -->
+  <!-- BANNER INFO -->
+  <!-- BANNER INFO -->
+  <div id="show-banner" class="p-4 d-flex">
+    <div class="col-8 d-flex justify-content-between flex-column p-0">
+      <!-- Banner picture -->
+      <!-- <img src="https://images.unsplash.com/photo-1498747946579-bde604cb8f44?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80" alt="Ball in pool" height="240" width="100%"> -->
+      <!-- Edition name -->
+      <h1 class="m-0"><strong><%= @edition.name %></strong></h1>
+      <div class="d-flex justify-content-between pr-4">
+        <div>
+          <!-- Tags -->
+          <p class="m-0 d-flex align-items-center">
+            <i class="fas fa-tags col-1 text-left p-0"></i>
+            <% @edition.event.tags.each do |tag| %>
+              <span class="text-nowrap mr-1 p-1 border border-primary rounded"> <%= tag.name %></span>
+            <% end %>
+          </p>
+          <p class="m-0 d-flex align-items-center">
+            <i class="fas fa-coins col-1 text-left p-0"></i><%= @edition.event.budget %>€ per person
+          </p>
+          <p class="m-0 d-flex align-items-center">
+            <i class="fas fa-redo col-1 text-left p-0"></i><%= @edition.event.frequency %>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-4 p-0 d-flex align-items-end">
+
+      <!-- Shows plans -->
+      <div class="d-flex justify-content-between">
+        <%= render partial: 'editions/show-editions/show-plans' %>
+        <div class="d-flex flex-wrap">
+          <!-- Countdown -->
+          <% if @edition.active? %>
+            <div class="countdown m-0">
+              <i class="fas fa-stopwatch"></i>
+              <h2><%= @edition.countdown %></h2>
+              <h5>days left</h5>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+      <!-- Host -->
+      <div class="show-hosting d-flex justify-content-between flex-grow">
+        <% if current_user.is_host?(@edition) && @edition.host_id.present? %>
+          <h4><i class="fas fa-crown"></i> You're the Host!</h4>
+          <!-- Edition edit -->
+          <%= link_to 'Edit event', edit_event_edition_path(@edition.event, @edition), class: 'btn btn-danger' %>
+        <% elsif @edition.host_id.nil? %>
+          <h4>No Host is defined.</h4>
+        <% else %>
+          <i class="fas fa-crown"></i><h4>The Host is <%= @edition.host.first_name + ' ' + @edition.host.last_name  %></h4>
+          <!-- Poke Host -->
+          <%= link_to 'Poke host', user_notifications_path(@edition.host_id), class: 'btn btn-primary' %>
+        <% end %>
+      </div>
+
+      <!-- Rating -->
+    </div>
+  </div>
+
+
+  <!-- EDITION INFO -->
+  <!-- EDITION INFO -->
+  <!-- EDITION INFO -->
+  <div class="show-card-container p-4 d-flex justify-content-between">
+
+    <!-- COLUMN ON THE LEFT !!!! -->
+    <!-- COLUMN ON THE LEFT !!!! -->
+    <!-- COLUMN ON THE LEFT !!!! -->
+    <div class="show-column col-4 p-0">
+
+      <!-- List of items -->
+      <div class='Items'>
+        <% if @edition.items.any? %>
+          <h5>Don't forget to bring</h5>
+          <ul class="list-inline">
+            <% @edition.items.each do |item|%>
+              <li>• <%= item.name.capitalize %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+
+
+
+      <!-- Guests for All -->
+      <%= render partial: 'editions/show-editions/show-guests' %>
+
+      <!-- Reviews -->
+      <% if @edition.archived? %>
+        <%= render partial: 'editions/show-editions/show-reviews' %>
+      <% end %>
+    </div>
+
+    <!-- COLUMN IN THE MIDDLE -->
+    <!-- COLUMN IN THE MIDDLE -->
+    <!-- COLUMN IN THE MIDDLE -->
+    <div class="col-4 px-4 calendar-edition">
+      <%# if current_user.is_host?(@edition) %>
+        <!-- Notes Host -->
+        <%#= render partial: 'editions/show-editions/show-notes' %>
+      <%# end %>
+      <% if @edition.active? || @edition.archived? %>
+        <!-- Map -->
+        <%#= render partial: 'editions/show-editions/show-map' %>
+        <!-- Calendar -->
+        <%= render partial: 'editions/calendar-edition' %>
+      <% end %>
+    </div>
+
+
+    <!-- COLUMN ON THE RIGHT !!!! -->
+    <!-- COLUMN ON THE RIGHT !!!! -->
+    <!-- COLUMN ON THE RIGHT !!!! -->
+    <div class="show-column col-4 p-0">
+      <% if current_user.is_guest?(@edition) %>
+        <!-- Surveys Guest -->
+        <%= render partial: 'editions/show-editions/show-questions-for-guest' %>
+      <% elsif current_user.is_host?(@edition) %>
+        <!-- Surveys Host -->
+        <%= render partial: 'editions/show-editions/show-questions-for-host' %>
       <% end %>
     </div>
   </div>
-  <div class='show-card-container p-4'>
-    <div class="d-flex">
-
-      <!-- COLUMN ON THE LEFT !!!! -->
-      <!-- COLUMN ON THE LEFT !!!! -->
-      <!-- COLUMN ON THE LEFT !!!! -->
-      <div class='show-column col-8'>
-        <!-- HEADER -->
-        <h2 id ='show-page-title'><%= @edition.name %></h2>
-
-        <div class='show-event-guidelines'>
-          <h3>Event guidelines</h3>
-          <ul>
-            <li><strong>Tags:</strong> <% @edition.event.tags.each do |tag|  %>
-              <span class='text-nowrap'><%= tag.name %><%= ', ' unless tag == @edition.event.tags.last%></span>
-            <% end %> </li>
-            <li><strong>Budget: </strong><%= @edition.event.budget %>€ per person</li>
-            <li><strong>Frequency: </strong><%= @edition.event.frequency %></li>
-          </ul>
-        </div>
-        <br>
-        <!-- List of items -->
-        <div class='Items'>
-          <h5>Don't forget to bring:</h5>
-          <ul>
-            <% @edition.items.each do |item|%>
-              <li> - <%= item.name %></li>
-            <% end %>
-          </ul>
-        </div>
-        <br>
-        <!-- Shows plans -->
-        <% if @edition.active? || current_user.is_host?(@edition) || @edition.archived?%>
-          <%= render partial: 'editions/show-editions/show-plans' %>
-        <% elsif @edition.pending? && current_user.is_guest?(@edition) %>
-          <h3>The Host is making the preparations</h3>
-        <% end %>
-        <br>
-        <!-- Guests for All -->
-        <%= render partial: 'editions/show-editions/show-guests' %>
-        <% if @edition.archived? %>
-          <!-- Reviews -->
-          <%= render partial: 'editions/show-editions/show-reviews' %>
-        <% end %>
-      </div>
-
-
-      <!-- COLUMN ON THE RIGHT !!!! -->
-      <div class='show-column col-4'>
-
-        <% if @edition.active? %>
-          <!-- Countdown -->
-          <h2 class='countdown'><%= @edition.countdown %> days left</h2>
-        <% end %>
-
-        <% if @edition.active? || @edition.archived? %>
-          <!-- Map -->
-          <%= render partial: 'editions/show-editions/show-map' %>
-          <!-- Calendar -->
-          <%= render partial: 'editions/calendar-edition' %>
-        <% end %>
-
-        <% if current_user.is_guest?(@edition) %>
-          <!-- Surveys Guest -->
-          <%= render partial: 'editions/show-editions/show-questions-for-guest' %>
-        <% elsif current_user.is_host?(@edition) %>
-          <!-- Surveys Host -->
-          <%= render partial: 'editions/show-editions/show-questions-for-host' %>
-          <!-- Notes Host -->
-          <%= render partial: 'editions/show-editions/show-notes' %>
-        <% end %>
-
-      </div>
-    </div>
 </div>
 
 
