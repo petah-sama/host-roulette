@@ -1,0 +1,35 @@
+
+.question-card-container {
+  background-color:white;
+  border-radius: $border-radius;
+  display: inline-grid;
+  padding:10px;
+
+}
+
+.answer-item{
+  width:100%;
+}
+
+.dropdown-answers{
+  width:100%;
+  margin-top:30px;
+  transition: all 1s ease-in;
+
+}
+
+.questions-main-container {
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+}
+
+.header-question {
+  position:relative;
+}
+
+.delete-question {
+  position:absolute;
+  top: 0px;
+  right:5px;
+}
