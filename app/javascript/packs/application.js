@@ -13,6 +13,8 @@ import { refreshMembers } from '../components/invite_members_refresh.js';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
 
+import { existingEdition } from '../components/existing_edition';
+
 // SELECT MUlTIPLE ITEMS
 
 import 'select2/dist/css/select2.css';
@@ -44,7 +46,15 @@ if (roulettePage) {
 const invitePage = document.querySelector('#invite-members');
 if (invitePage) {
   refreshMembers();
-}
+};
+
+// EDITION MODAL
+const editionPage = document.querySelector('#edition-show')
+if (editionPage && editionPage.dataset.ongoing === "true") {
+  console.log("dhvgdbjvm");
+  existingEdition();
+};
+
 
 initMapbox();
 
