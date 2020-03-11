@@ -2,12 +2,12 @@
 <div>
   <% @edition.questions.each do |question| %>
     <% if question.answers.size == @edition.guests.size - 1 %>
-      <%= link_to event_edition_question_path(@edition.event, @edition, question), class: 'question-card d-flex justify-content-between btn btn-info w-100' do %>
+      <%= link_to event_edition_questions_path(@edition.event, @edition, question), class: 'question-card d-flex justify-content-between btn btn-info w-100' do %>
         <span><%= question.content %></span>
         <span>Everyone replied</span>
       <% end %>
     <% else %>
-      <%= link_to event_edition_question_path(@edition.event, @edition, question), class: 'question-card d-flex justify-content-between btn btn-success w-100' do %>
+      <%= link_to event_edition_questions_path(@edition.event, @edition, question), class: 'question-card d-flex justify-content-between btn btn-success w-100' do %>
         <span><%= question.content %></span>
         <span><%= question.answers.size %>/<%= @edition.guests.size %> replies</span>
       <% end %>
