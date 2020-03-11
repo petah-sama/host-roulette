@@ -85,15 +85,20 @@
 }
 
 .text-inside-chart {
-  top:80px;
+  top:70px;
   font-family:'Catamaran';
-  font-size:30px;
+  font-size:25px;
   font-weight:bold;
   left:0;
   right:0;
-  bottom:0;
   position:absolute;
+  margin: 0px auto;
+  padding: 0px;
+  line-height: 30px;
+}
 
+.text-inside-chart p {
+  line-height: 30px;
 }
 
 .notifications {
@@ -121,13 +126,11 @@
   display: flex;
   justify-content: space-between;
   vertical-align: middle;
+  text-decoration: none;
 }
 
-#my-image {
-  img {
-  border-radius: 5px 0px 0px 5px;
-}
-
+.dashboard-card-container a {
+ text-decoration: none;
 }
 
 .button-show {
@@ -162,51 +165,67 @@
 
 .countdown-dashboard {
   display: flex;
-  padding: 10px;
+  padding: 0px;
   text-align: center;
-  justify-content: spasce-between;
-}
-
-.countdown-dashboard h5 {
-  margin: 0px;
-  font-size: 25px;
-  align-self: center;
-}
-
-.countdown-dashboard i {
-  align-self: center;
-  font-size: 20px;
-  padding-right: 10px;
-}
-
-
-.status-dashboard-pending {
-  align-self: center;
-}
-
-.status-dashboard-active {
-  align-self: center;
-}
-
-.status-dashboard-pending h5 {
-  font-size: 23px;
-  font-weight: bold;
-  color: $rockblue;
-  text-transform: capitalize;
-}
-
-.status-dashboard-active h5 {
-  font-size: 23px;
-  font-weight: bold;
+  justify-content: space-between;
   color: $red;
-  text-transform: capitalize;
+  align-self: center;
+
+   h5 {
+    margin: 0px;
+    font-size: 25px;
+    line-height: 30px;
+    padding: 0px;
+    align-self: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    align-self: center;
+
+   }
+
+  i {
+    align-self: center;
+    font-size: 20px;
+    padding-right: 10px;
+
+  }
+
 }
 
 
+
+.tiny-tag {
+ font-size: 12px;
+ align-self: center;
+}
+
+
+#image-test {
+  background-image: url(https://images.unsplash.com/photo-1539635278303-d4002c07eae3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 5px 0px 0px 5px;
+}
 // .scaled {
 //   transform: scale(1.5);
 //   transform-origin: left;
 // }
+
+  .tittle-card h2 {
+    font-size: 35px;
+    align-self: center;
+  }
+
+
+
+
+.bottom-card {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px;
+}
 
 
 
