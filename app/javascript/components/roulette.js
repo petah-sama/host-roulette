@@ -159,7 +159,7 @@ const editionRest = () => {
         return swal({
           title: label[ai][0] + " " + label[ai][1],
           text: "is the new Host!",
-          button: "🎊🍾🥳",
+          button: "See edition!",
         }).then((value) => {
           if (value) {
             const seeEditionButton = document.querySelector('#see-edition-button');
