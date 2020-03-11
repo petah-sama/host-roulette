@@ -1,8 +1,17 @@
 <div class="review-card p-3 mt-1">
-  <div class="d-flex justify-content-around">
-    <h6>HOST <%= '⭐️' * review.host_rating.to_i %></h6>
-    <h6>EDITION <%= '⭐️' * review.edition_rating.to_i %></h6>
+  <div>
+    <h6><%= review.guest.member.user.first_name %> <%= review.guest.member.user.last_name %></h6>
+    <hr>
+    <div class="d-flex">
+      <div class="d-flex">
+        <p>Host:</p>
+        <div><% review.host_rating.to_i.times do %> <i class="fas fa-star" id="voted"></i> <% end %><% (5 - review.host_rating).to_i.times do %> <i class="fas fa-star" id="not-voted"></i> <% end %></div>
+      </div>
+      <div class="d-flex">
+        <p>Event:</p>
+        <div><% review.edition_rating.to_i.times do %> <i class="fas fa-star" id="voted"></i> <% end %><% (5 - review.edition_rating).to_i.times do %> <i class="fas fa-star" id="not-voted"></i> <% end %></div>
+      </div>
+    </div>
+    <p><%= review.content %></p>
   </div>
-  <hr>
-  <p><%= review.content %></p>
 </div>

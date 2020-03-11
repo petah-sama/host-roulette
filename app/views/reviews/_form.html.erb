@@ -1,7 +1,35 @@
 <%= simple_form_for [@event, @edition, @review], remote: true do |f| %>
   <div class="d-flex justify-content-between">
-    <%= f.input :edition_rating, as: :radio_buttons, collection: [['1', '⭐️'], ['2', '⭐️⭐️'], ['3', '⭐️⭐️⭐️'], ['4', '⭐️⭐️⭐️⭐️'], ['5', '⭐️⭐️⭐️⭐️⭐️']], label_method: :second, value_method: :first %>
-    <%= f.input :host_rating, as: :radio_buttons, collection: [['1', '⭐️'], ['2', '⭐️⭐️'], ['3', '⭐️⭐️⭐️'], ['4', '⭐️⭐️⭐️⭐️'], ['5', '⭐️⭐️⭐️⭐️⭐️']], label_method: :second, value_method: :first %>
+    <%#= f.input :edition_rating, as: :radio_buttons, collection: [['1', '⭐️'], ['2', '⭐️⭐️'], ['3', '⭐️⭐️⭐️'], ['4', '⭐️⭐️⭐️⭐️'], ['5', '⭐️⭐️⭐️⭐️⭐️']], label_method: :second, value_method: :first %>
+    <div class="rating-box">
+      <p>Event</p>
+      <div class="rating-container">
+        <input type="radio" name="review[edition_rating]" value="5" id="star-5"> <label for="star-5"><i class="fas fa-star"></i></label>
+
+        <input type="radio" name="review[edition_rating]" value="4" id="star-4"> <label for="star-4"><i class="fas fa-star"></i></label>
+
+        <input type="radio" name="review[edition_rating]" value="3" id="star-3"> <label for="star-3"><i class="fas fa-star"></i></label>
+
+        <input type="radio" name="review[edition_rating]" value="2" id="star-2"> <label for="star-2"><i class="fas fa-star"></i></label>
+
+        <input type="radio" name="review[edition_rating]" value="1" id="star-1"> <label for="star-1"><i class="fas fa-star"></i></label>
+      </div>
+    </div>
+    <%#= f.input :host_rating, as: :radio_buttons, collection: [['1', '⭐️'], ['2', '⭐️⭐️'], ['3', '⭐️⭐️⭐️'], ['4', '⭐️⭐️⭐️⭐️'], ['5', '⭐️⭐️⭐️⭐️⭐️']], label_method: :second, value_method: :first %>
+    <div class="rating-box">
+      <p>Host</p>
+      <div class="rating-container">
+        <input type="radio" name="review[host_rating]" value="5" id="star-5h"> <label for="star-5h"><i class="fas fa-star"></i></label>
+
+        <input type="radio" name="review[host_rating]" value="4" id="star-4h"> <label for="star-4h"><i class="fas fa-star"></i></label>
+
+        <input type="radio" name="review[host_rating]" value="3" id="star-3h"> <label for="star-3h"><i class="fas fa-star"></i></label>
+
+        <input type="radio" name="review[host_rating]" value="2" id="star-2h"> <label for="star-2h"><i class="fas fa-star"></i></label>
+
+        <input type="radio" name="review[host_rating]" value="1" id="star-1h"> <label for="star-1h"><i class="fas fa-star"></i></label>
+      </div>
+    </div>
   </div>
   <%= f.input :content, as: :text %>
   <%= f.button :submit, class: 'btn btn-outline-dark' %>
