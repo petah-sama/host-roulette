@@ -1,5 +1,4 @@
-  const filterDashboard = () => {
-
+const filterDashboard = () => {
   var x = document.getElementById("pending-cards");
   var pieActive = document.querySelector(".stats-card-cool");
   pieActive.addEventListener('click', function() {
@@ -14,7 +13,5 @@
     }
   });
 }
-
-filterDashboard();
 
 export { filterDashboard };

@@ -1,5 +1,4 @@
  const anotherfilterDashboard = () => {
-
   var ys = document.querySelectorAll(".hosting-card");
   var pieHosting = document.querySelector(".stats-card");
   pieHosting.addEventListener('click', function() {
@@ -19,7 +18,4 @@
   });
 }
 
-anotherfilterDashboard();
-
 export { anotherfilterDashboard };
-

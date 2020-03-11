@@ -1,18 +1,22 @@
 
-<div class="show-guests-header">
+<!-- <div class="show-guests-header">
   <h5>Who's coming?</h5>
-</div>
-
+</div> -->
 
 <div id='dots'>
-  <div class="show-guests-div d-flex" >
+  <div class="show-guests-div" >
     <% @edition.guests.take(4).each do |guest| %>
-      <div class="show-guest-list-item">
-        <% if guest.member.user.photo.attached? %>
-          <%= cl_image_tag guest.member.user.photo.key, class: "avatar-guest" %>
-        <% else %>
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-guest" %>
-        <% end %>
+      <div class="show-guest-list-item guest-label-parent d-flex justify-content-start">
+        <div class="d-flex justify-content-center">
+          <div class="guest-label border border-primary rounded">
+            <p class="m-0"><%= guest.member.user.first_name %> <%= guest.member.user.last_name[0] %>.</p>
+          </div>
+          <% if guest.member.user.photo.attached? %>
+            <%= cl_image_tag guest.member.user.photo.key, class: "avatar-guest" %>
+          <% else %>
+            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-guest" %>
+          <% end %>
+        </div>
       </div>
     <% end %>
 
@@ -21,40 +25,40 @@
 </div>
 
 
-<div id='more'>
-  <% @edition.guests.each do |guest| %>
+<!-- <div id='more'>
+  <%# @edition.guests.each do |guest| %>
     <div class="friend-card">
-      <%= link_to user_path(guest.member.user) do %>
-        <% if guest.member.user.photo.attached? %>
-          <%= cl_image_tag guest.member.user.photo.key %>
-        <% else %>
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier" %>
-        <% end %>
-      <% end %>
+      <%#= link_to user_path(guest.member.user) do %>
+        <%# if guest.member.user.photo.attached? %>
+          <%#= cl_image_tag guest.member.user.photo.key %>
+        <%# else %>
+          <%#= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier" %>
+        <%# end %>
+      <%# end %>
       <div class="friend-card-infos">
-        <% if guest.member.user.first_name && guest.member.user.last_name %>
-          <%= link_to user_path(guest.member.user) do %>
-            <h2><%= guest.member.user.first_name %> <%= guest.member.user.last_name %></h2>
-          <% end %>
-          <p>Your buddy's email is <strong><%= guest.member.user.email %></strong></p>
-        <% else %>
-          <%= link_to user_path(guest.member.user) do %>
-            <h2><%= guest.member.user.email %></h2>
-          <% end %>
+        <%# if guest.member.user.first_name && guest.member.user.last_name %>
+          <%#= link_to user_path(guest.member.user) do %>
+            <h2><%#= guest.member.user.first_name %> <%#= guest.member.user.last_name %></h2>
+          <%# end %>
+          <p>Your buddy's email is <strong><%#= guest.member.user.email %></strong></p>
+        <%# else %>
+          <%#= link_to user_path(guest.member.user) do %>
+            <h2><%#= guest.member.user.email %></h2>
+          <%# end %>
           <p>Tell your buddy to add his first and last name 😉</p>
-        <% end %>
+        <%# end %>
       </div>
     </div>
-  <% end %>
+  <%# end %>
 </div>
-<div>
+<div> -->
 
-  <button onclick="showMore()" id="see-all-guests" class='btn btn-info btn-sm mb-5'>
+  <!-- <button onclick="showMore()" id="see-all-guests" class='btn btn-info btn-sm mb-5'>
     Guest details <i class="fas fa-caret-down"></i>
-  </button>
-</div>
+  </button> -->
+<!-- </div> -->
 
-<script>
+<!-- <script>
   var dots = document.getElementById("dots");
   var moreText = document.getElementById("more");
   var btnText = document.getElementById("see-all-guests");
@@ -69,6 +73,5 @@
       moreText.style.display = "inline";
     }
   };
-
-
 </script>
+ -->

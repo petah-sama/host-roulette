@@ -1,17 +1,9 @@
 #show-banner {
   height: 240px;
-  position:relative;
-  img {
-    object-fit: cover;
-  }
-  background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.7)), url(https://images.unsplash.com/photo-1498747946579-bde604cb8f44?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80);
+  background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.7)), url(https://images.unsplash.com/photo-1444210971048-6130cf0c46cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1504&q=80);
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
-}
-
-.show-column {
-  height:100%;
 }
 
 .show-main-container {
@@ -20,17 +12,14 @@
   background-color: white;
 }
 
-li {
-  list-style: none;
-}
-
+// COUNTDOWN
 .countdown {
   padding: 10px;
   background-color: $white;
   border-radius: $border-radius;
 }
 
-/* event guidelines */
+// TAGS
 .event-tags {
   background: #b7b7b7;
   padding: 8px;
@@ -40,12 +29,10 @@ li {
   white-space: nowrap;
 }
 
-/* friends */
-
+// FRIENDS
 .show-guest-list {
   margin-left:5px;
 }
-
 
 .show-guest-list-card {
   border: 1px solid lightgrey;
@@ -61,6 +48,12 @@ li {
     margin:10px 5px;
   }
 }
+
+.avatar-guest {
+  width:60px;
+  border-radius: 50%;
+}
+
 #see-all-guests {
   margin-top:5px;
   padding:5px 10px;
@@ -70,39 +63,41 @@ li {
   display: none;
 }
 
-.avatar-guest {
-  width:60px;
-  border-radius: 50%;
+// .guest-label-parent .guest-label {
+//   // border: 1px solid #ccc;
+//   visibility: hidden;
+//   // font-size: 10px;
+//   position: absolute;
+//   z-index: 1;
+// }
+
+// .guest-label-parent:hover #guest-label {
+//   visibility: visible;
+// }
+
+.guest-label-parent {
+
+  .guest-label {
+    visibility: hidden;
+    position: absolute;
+    z-index: 9;
+  }
+
+  &:hover .guest-label {
+    visibility: visible;
+  }
 }
 
 
 
-// #adding-friends{
-//   font-size: 34px;
-//   color:white;
-//   background-color: rgba(3, 14, 38, 0.5);
-//   padding:20px 18px;
-//   border-radius:50%;
-//   margin-left: 5px;
-// }
-
-// #adding-friends:hover {
-//   background-color: rgba(3, 14, 38, 1);
-//   cursor:pointer;
-// }
-
+// QUESTION CARDS
 .answer-hidden {
   display: none;
-}
-
-input.radio_buttons + label {
-
 }
 
 input.radio_buttons:checked + label {
   background: $danger;
 }
-
 
 .question-card {
   background-color: $success;
@@ -137,5 +132,3 @@ input.radio_buttons:checked + label {
   color: white;
   }
 }
-
-
