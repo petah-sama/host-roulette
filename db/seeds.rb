@@ -8,9 +8,11 @@
 
 # DESTROY EVERYTHING
 puts 'Xau pessoal 👋👋👋'
-Edition_items.destroy_all
+EditionItem.destroy_all
 Item.destroy_all
+Review.destroy_all
 Guest.destroy_all
+Notification.destroy_all
 Member.destroy_all
 Edition.destroy_all
 EventTag.destroy_all
@@ -138,20 +140,17 @@ EventTag.create(event_id: Event.all[3].id, tag_id: Tag.all[23].id)
 
 # ITEMS
 puts 'items items items 🧢🍾🧀🤿'
-Item.create(edition_id: Edition.all[0].id, name: 'umbrella')
-Item.create(edition_id: Edition.all[0].id, name: 'tent')
-Item.create(edition_id: Edition.all[0].id, name: 'sleeping bag')
-Item.create(edition_id: Edition.all[0].id, name: 'pillow')
-
-Item.create(edition_id: Edition.all[1].id, name: 'cap')
-Item.create(edition_id: Edition.all[1].id, name: 'flip-flops')
-Item.create(edition_id: Edition.all[1].id, name: 'sunscreen')
-Item.create(edition_id: Edition.all[1].id, name: 'bathing suit')
-
-Item.create(edition_id: Edition.all[2].id, name: 'cheese')
-Item.create(edition_id: Edition.all[2].id, name: 'wine bottle')
-Item.create(edition_id: Edition.all[2].id, name: 'dessert')
-
-Item.create(edition_id: Edition.all[3].id, name: 'beer')
-Item.create(edition_id: Edition.all[3].id, name: 'card deck')
-Item.create(edition_id: Edition.all[3].id, name: 'poker chips')
+Item.create(name: 'umbrella')
+Item.create(name: 'tent')
+Item.create(name: 'sleeping bag')
+Item.create(name: 'pillow')
+Item.create(name: 'cap')
+Item.create(name: 'flip-flops')
+Item.create(name: 'sunscreen')
+Item.create(name: 'bathing suit')
+Item.create(name: 'cheese')
+Item.create(name: 'wine bottle')
+Item.create(name: 'dessert')
+Item.create(name: 'beer')
+Item.create(name: 'card deck')
+Item.create(name: 'poker chips')
