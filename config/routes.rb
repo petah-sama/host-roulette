@@ -25,7 +25,7 @@ Rails.application.routes.draw do
       resources :guests, only: %i[create destroy]
       resources :reviews, only: %i[create update destroy]
       resources :items, only: %i[new create update destroy]
-      resources :questions, only: %i[create show] do
+      resources :questions, only: %i[create show index] do
         resources :answers, only: %i[create update]
       end
     end

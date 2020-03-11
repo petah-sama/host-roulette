@@ -1,23 +1,19 @@
-  <!-- start time -->
-  <!-- end time -->
-  <!-- start_address -->
-  <!-- map -->
-  <!-- start_address / map -->
+<div class="show-plans">
+  <% if !@edition.pending? %>
+    <ul class="list-inline">
+      <li>
+        <i class="far fa-calendar-check"></i>
+        <%= @edition.start_time.strftime("%d %^b %Y, at %Hh%Mm") unless @edition.start_time.nil?%>
+      </li>
+      <li>
+        <i class="far fa-calendar-times"></i>
+        <%= @edition.end_time.strftime("%d %^b %Y") unless @edition.end_time.nil?%>
+      </li>
 
-<div class='show-plans'>
-  <h2>Plans:</h2>
-  <ul>
-    <li>Start date:
-      <%= @edition.start_time.strftime("%m/%d/%Y at %H:%M") unless @edition.start_time.nil?%>
-    </li>
-    <li>End date:
-      <%= @edition.end_time.strftime("%m/%d/%Y") unless @edition.end_time.nil?%>
-    </li>
-    <li> Address:
-     <%= @edition.address unless @edition.address.nil?%>
-     </li>
-  </ul>
-  <% if current_user.is_host?(@edition) %>
-    <li><%= link_to 'Edit event plans', edit_event_edition_path(@edition.event, @edition), class: 'btn btn-danger' %></li>
+      <li>
+        <i class="far fa-compass"></i>
+        <%= @edition.address unless @edition.address.nil?%>
+      </li>
+    </ul>
   <% end %>
 </div>
