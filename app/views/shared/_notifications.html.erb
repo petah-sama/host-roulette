@@ -17,14 +17,14 @@
         <% if notification.from == 'active' %>
           <div class = 'd-flex justify-content-between align-items-center dropdown-item dropdown-notification-item'>
             <i class="fas fa-map-marker-alt active-notification"></i>
-              <%= link_to send(:event_edition_path, notification.edition.event.id, notification.edition.id) do %>
+              <%= link_to event_edition_path(notification.edition.event.id, notification.edition.id) do %>
                 <p> <%= notification.edition.name %> is now active!</p>
               <% end %>
           </div>
         <% elsif notification.from == 'began' %>
           <div class = 'd-flex justify-content-between align-items-center dropdown-item dropdown-notification-item'>
             <i class="fas fa-map-marker-alt active-notification"></i>
-            <%= link_to send(:event_edition_path, notification.edition.event.id, notification.edition.id) do %>
+            <%= link_to event_edition_path(notification.edition.event.id, notification.edition.id) do %>
               <p> You joined <%= notification.edition.name %>!</p>
             <% end %>
           </div>
@@ -32,7 +32,7 @@
         <% elsif notification.from == 'host' %>
           <div class = 'd-flex justify-content-between align-items-center dropdown-item dropdown-notification-item'>
             <i class="fas fa-map-marker-alt active-notification"></i>
-            <%= link_to send(:event_edition_path, notification.edition.event.id, notification.edition.id) do %>
+            <%= link_to event_edition_path(notification.edition.event.id, notification.edition.id) do %>
               <p> You are the host of <%= notification.edition.name %>!</p>
             <% end %>
           </div>
@@ -40,8 +40,15 @@
         <% elsif notification.from == 'question' %>
           <div class = 'd-flex justify-content-between align-items-center dropdown-item dropdown-notification-item'>
             <i class="fas fa-question active-notification"></i>
-            <%= link_to send(:event_edition_path, notification.edition.event.id, notification.edition.id) do %>
+            <%= link_to event_edition_path(notification.edition.event.id, notification.edition.id) do %>
               <p><%= notification.edition.name %> new question!</p>
+            <% end %>
+          </div>
+        <% elsif notification.from == 'reminder' %>
+          <div class = 'd-flex justify-content-between align-items-center dropdown-item dropdown-notification-item'>
+            <i class="fas fa-question active-notification"></i>
+            <%= link_to event_edition_path(notification.edition.event.id, notification.edition.id) do %>
+              <p>Answer <%= notification.edition.name %> Survey!</p>
             <% end %>
           </div>
         <% end %>

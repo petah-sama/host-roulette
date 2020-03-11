@@ -15,8 +15,10 @@
     <% end %>
 
     <% if @question.answers.size < @edition.guests.size - 1 %>
-      <%= link_to 'Send reminder', root_path, class: 'btn btn-info' %>
+      <%= link_to 'Send reminder', user_notifications_path(from: 'reminder', user_id: current_user, edition_id: @question.edition.id, question: @question), method: :post, data: { confirm: "Are you sure?" }, class: 'btn btn-info' %>
     <% end %>
+
+
     <%= link_to "Delete question", question_path(@question), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-danger' %>
     <%= link_to 'Back', event_edition_path(@event, @edition), class: 'btn btn-primary' %>
   </div>
