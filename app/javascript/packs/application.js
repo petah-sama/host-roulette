@@ -15,6 +15,18 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 
 import { existingEdition } from '../components/existing_edition';
 
+// SELECT MUlTIPLE ITEMS
+
+import 'select2/dist/css/select2.css';
+
+import { initSelect2 } from '../components/init_select2';
+
+initSelect2();
+
+import { filterDashboard } from '../components/active_filter.js';
+
+import { anotherfilterDashboard } from '../components/host_filter.js';
+
 
 // // NEW EVENT FORM
 const tagForm = document.querySelector("#new_event");
@@ -46,11 +58,11 @@ if (editionPage && editionPage.dataset.ongoing === "true") {
 
 initMapbox();
 
-// SELECT MUlTIPLE ITEMS
 
-import 'select2/dist/css/select2.css';
 
-import { initSelect2 } from '../components/init_select2';
 
-initSelect2();
+
+
+
+
 
