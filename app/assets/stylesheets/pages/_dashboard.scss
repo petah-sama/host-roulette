@@ -30,6 +30,17 @@
   font-weight: bold;
 }
 
+.stats-card:hover {
+  -webkit-box-shadow: 0px 1px 8px 6px rgba(147, 163, 192, 1);
+  -moz-box-shadow: 0px 1px 8px 6px rgba(147, 163, 192, 1);
+  box-shadow: 0px 1px 8px 6px rgba(147, 163, 192, 1);
+}
+
+.stats-card-cool:hover {
+  -webkit-box-shadow: 0px 1px 8px 6px rgba(147, 163, 192, 1);
+  -moz-box-shadow: 0px 1px 8px 6px rgba(147, 163, 192, 1);
+  box-shadow: 0px 1px 8px 6px rgba(147, 163, 192, 1);
+}
 
 .title-charts {
   font-family: 'Catamaran';
@@ -40,7 +51,7 @@
 .stats-card {
   height:auto;
   width:92%;
-  border-radius:8px;
+  border-radius: $border-radius;
   text-align: center;
   background-color: white;
   display: flex;
@@ -58,7 +69,7 @@
 .stats-card-cool {
   height:auto;
   width:92%;
-  border-radius:8px;
+  border-radius: $border-radius;
   text-align: center;
   background-color: white;
   display: flex;
@@ -104,14 +115,85 @@
 }
 
 .dashboard-card {
-  border-radius:8px;
-  padding: 10px 10px;
+  border-radius: $border-radius;
   margin-bottom: 24px;
   background-color: white;
   display: flex;
   justify-content: space-between;
   vertical-align: middle;
 }
+
+#my-image {
+  img {
+  border-radius: 5px 0px 0px 5px;
+}
+
+}
+
+.button-show {
+  margin-left: auto;
+  align-self: center;
+}
+
+
+.box-shadow {
+  -webkit-box-shadow: 0px 1px 8px 6px rgba(147, 163, 192, 1);
+  -moz-box-shadow: 0px 1px 8px 6px rgba(147, 163, 192, 1);
+  box-shadow: 0px 1px 8px 6px rgba(147, 163, 192, 1);
+}
+
+.avatar-guest-small {
+  width: 45px;
+  border-radius: 50%;
+}
+
+.show-guest-list-item {
+  align-self: center;
+}
+
+
+.dashboard-info {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 0px;
+  margin-right: 0px,
+}
+
+
+.countdown-dashboard {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid lightgrey;
+}
+
+.countdown-dashboard h5 {
+  margin: 0px;
+  font-size: 25px;
+}
+
+
+.status-dashboard-pending {
+  align-self: center;
+}
+
+.status-dashboard-active {
+  align-self: center;
+}
+
+.status-dashboard-pending h5 {
+  font-size: 23px;
+  font-weight: bold;
+  color: $rockblue;
+  text-transform: capitalize;
+}
+
+.status-dashboard-active h5 {
+  font-size: 23px;
+  font-weight: bold;
+  color: $red;
+  text-transform: capitalize;
+}
+
 
 // .scaled {
 //   transform: scale(1.5);
