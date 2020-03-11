@@ -86,6 +86,9 @@
       <!-- COLUMN ON THE LEFT !!!! -->
       <div class="show-column col-4 p-0">
 
+        <!-- Guests for All -->
+        <%= render partial: 'editions/show-editions/show-guests' %>
+
         <!-- List of items -->
         <div class='Items'>
           <% if @edition.items.any? %>
@@ -97,9 +100,6 @@
             </ul>
           <% end %>
         </div>
-
-        <!-- Guests for All -->
-        <%= render partial: 'editions/show-editions/show-guests' %>
       </div>
 
       <!-- COLUMN IN THE MIDDLE -->
