@@ -161,14 +161,22 @@
 
 
 .countdown-dashboard {
+  display: flex;
   padding: 10px;
   text-align: center;
-  border: 1px solid lightgrey;
+  justify-content: spasce-between;
 }
 
 .countdown-dashboard h5 {
   margin: 0px;
   font-size: 25px;
+  align-self: center;
+}
+
+.countdown-dashboard i {
+  align-self: center;
+  font-size: 20px;
+  padding-right: 10px;
 }
 
 
