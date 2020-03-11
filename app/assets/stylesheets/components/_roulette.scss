@@ -10,14 +10,19 @@
   background: #931621;
   border: 2px solid #931621;
   position: absolute;
-  top: -18px;
+  top: -19px;
   left: 50%;
   width: 40px;
   height: 28px;
-  margin-left: -18px;
+  margin-left: -25px;
   transform: rotate(45deg);
 }
 
 #canvas {
   width: 500px;
+}
+
+.event-slide h2 {
+  text-align: center;
+  font-weight: bold;
 }
