@@ -1,6 +1,7 @@
 import "bootstrap";
 import "../plugins/flatpickr";
 
+
 import { eventRest } from '../components/event_form';
 import { tagFunctionality } from '../components/tag_choice';
 import { sliderBudgetValue } from '../components/event_form';
@@ -43,6 +44,10 @@ const roulettePage = document.querySelector('#wheel');
 if (roulettePage) {
   editionRest();
 };
+
+//dropdown questions
+
+
 
 // Refresh the member joining page every 5 seconds
 const invitePage = document.querySelector('#invite-members');

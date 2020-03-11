@@ -1,6 +1,7 @@
 <div>
   <% @edition.questions.each do |question| %>
     <% if question.answers.size == @edition.guests.size - 1 %>
+
       <div class="question-card-host d-flex align-items-center justify-content-between w-100">
         <%= question.content %>
         <i class="fas fa-check-circle"></i>
@@ -10,6 +11,7 @@
         <%= question.content %>
         <i class="fas fa-times-circle"></i>
       </div>
+
     <% end %>
   <% end %>
   <% if @edition.pending? %>

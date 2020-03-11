@@ -1,10 +1,39 @@
-#reviews {
-  border-radius: $border-radius;
-  border: 1px solid $gray;
-  box-shadow: 1px 1px 3px $rockblue
-}
+// #reviews {
+//   border-radius: $border-radius;
+//   border: 1px solid $gray;
+//   box-shadow: 1px 1px 3px $rockblue
+// }
 
 .review-card {
   border-radius: $border-radius;
-  border: 1px solid $rockblue;
+  border: 1px solid #ced4da;
+}
+
+.rating-box {
+  display: inline-block;
+  text-align: center;
+  p {
+    margin: 0px;
+  }
+}
+.rating-box .rating-container {
+  direction: rtl !important;
+}
+.rating-box .rating-container label {
+  display: inline-block;
+  margin: 15px 0;
+  color: #d4d4d4;
+  cursor: pointer;
+  font-size: 20px;
+  transition: color 0.2s;
+}
+.rating-box .rating-container input {
+  display: none;
+}
+.rating-box .rating-container label:hover, .rating-box .rating-container label:hover ~ label, .rating-box .rating-container input:checked ~ label, #voted {
+  color: gold;
+}
+
+#not-voted {
+  color: #d4d4d4;
 }
