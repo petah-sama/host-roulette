@@ -5,25 +5,33 @@
   <!-- BANNER INFO -->
   <div id="show-banner" class="p-4 d-flex">
     <div class="col-8 d-flex justify-content-between flex-column p-0">
-      <!-- Banner picture -->
-      <!-- <img src="https://images.unsplash.com/photo-1498747946579-bde604cb8f44?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80" alt="Ball in pool" height="240" width="100%"> -->
       <!-- Edition name -->
       <h1 class="m-0"><strong><%= @edition.name %></strong></h1>
       <div class="d-flex justify-content-between pr-4">
         <div>
           <!-- Tags -->
-          <p class="m-0 d-flex align-items-center">
-            <i class="fas fa-tags col-1 text-left p-0"></i>
+          <div class="m-0 d-flex align-items-center">
+            <i class="fas fa-tags col-1 text-left mr-2 p-0"></i>
             <% @edition.event.tags.each do |tag| %>
-              <span class="text-nowrap mr-1 p-1 border border-primary rounded"> <%= tag.name %></span>
+              <div class="text-nowrap border border-primary rounded mr-1 p-1">
+                <%= tag.name %>
+              </div>
             <% end %>
-          </p>
-          <p class="m-0 d-flex align-items-center">
-            <i class="fas fa-coins col-1 text-left p-0"></i><%= @edition.event.budget %>€ per person
-          </p>
-          <p class="m-0 d-flex align-items-center">
-            <i class="fas fa-redo col-1 text-left p-0"></i><%= @edition.event.frequency %>
-          </p>
+          </div>
+          <!-- Budget -->
+          <div class="m-0 d-flex align-items-center">
+            <i class="fas fa-coins col-1 text-left p-0 mr-2"></i>
+            <div class="mr-1 p-1">
+              <%= @edition.event.budget %> € per person
+            </div>
+          </div>
+          <!-- Frequency -->
+          <div class="m-0 d-flex align-items-center">
+            <i class="fas fa-redo col-1 text-left p-0 mr-2"></i>
+            <div class="mr-1 p-1">
+              <%= @edition.event.frequency %>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -69,51 +77,47 @@
   <!-- EDITION INFO -->
   <!-- EDITION INFO -->
   <div class="show-card-container p-4 d-flex justify-content-between">
+    <% if @edition.archived? %>
+      <!-- Reviews -->
+      <%= render partial: 'editions/show-editions/show-reviews' %>
+    <% else %>
+      <!-- COLUMN ON THE LEFT !!!! -->
+      <!-- COLUMN ON THE LEFT !!!! -->
+      <!-- COLUMN ON THE LEFT !!!! -->
+      <div class="show-column col-4 p-0">
 
-    <!-- COLUMN ON THE LEFT !!!! -->
-    <!-- COLUMN ON THE LEFT !!!! -->
-    <!-- COLUMN ON THE LEFT !!!! -->
-    <div class="show-column col-4 p-0">
+        <!-- List of items -->
+        <div class='Items'>
+          <% if @edition.items.any? %>
+            <h5>Don't forget to bring</h5>
+            <ul class="list-inline">
+              <% @edition.items.each do |item|%>
+                <li>• <%= item.name.capitalize %></li>
+              <% end %>
+            </ul>
+          <% end %>
+        </div>
 
-      <!-- List of items -->
-      <div class='Items'>
-        <% if @edition.items.any? %>
-          <h5>Don't forget to bring</h5>
-          <ul class="list-inline">
-            <% @edition.items.each do |item|%>
-              <li>• <%= item.name.capitalize %></li>
-            <% end %>
-          </ul>
-        <% end %>
+        <!-- Guests for All -->
+        <%= render partial: 'editions/show-editions/show-guests' %>
       </div>
 
-
-
-      <!-- Guests for All -->
-      <%= render partial: 'editions/show-editions/show-guests' %>
-
-      <!-- Reviews -->
-      <% if @edition.archived? %>
-        <%= render partial: 'editions/show-editions/show-reviews' %>
-      <% end %>
-    </div>
-
-    <!-- COLUMN IN THE MIDDLE -->
-    <!-- COLUMN IN THE MIDDLE -->
-    <!-- COLUMN IN THE MIDDLE -->
-    <div class="col-4 px-4 calendar-edition">
-      <%# if current_user.is_host?(@edition) %>
-        <!-- Notes Host -->
-        <%#= render partial: 'editions/show-editions/show-notes' %>
-      <%# end %>
-      <% if @edition.active? || @edition.archived? %>
-        <!-- Map -->
-        <%#= render partial: 'editions/show-editions/show-map' %>
-        <!-- Calendar -->
-        <%= render partial: 'editions/calendar-edition' %>
-      <% end %>
-    </div>
-
+      <!-- COLUMN IN THE MIDDLE -->
+      <!-- COLUMN IN THE MIDDLE -->
+      <!-- COLUMN IN THE MIDDLE -->
+      <div class="col-4 px-4 calendar-edition">
+        <%# if current_user.is_host?(@edition) %>
+          <!-- Notes Host -->
+          <%#= render partial: 'editions/show-editions/show-notes' %>
+        <%# end %>
+        <% if @edition.active? %>
+          <!-- Map -->
+          <%#= render partial: 'editions/show-editions/show-map' %>
+          <!-- Calendar -->
+          <%= render partial: 'editions/calendar-edition' %>
+        <% end %>
+      </div>
+    <% end %>
 
     <!-- COLUMN ON THE RIGHT !!!! -->
     <!-- COLUMN ON THE RIGHT !!!! -->
@@ -129,28 +133,3 @@
     </div>
   </div>
 </div>
-
-
-
-<!-- TO DO: -->
-  <!-- add members to event -->
-  <!-- Picking a host on the archived -->
-
-
-
-
-
-
-<!-- if past -->
-  <!-- name -->
-  <!-- guidelines -->
-  <!-- guests -->
-  <!-- host name -->
-
-  <!-- host rating -->
-  <!-- start time -->
-  <!-- end time -->
-  <!-- address -->
-  <!-- map -->
-  <!-- rating -->
-  <!-- review -->

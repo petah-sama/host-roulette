@@ -6,13 +6,9 @@ import { eventRest } from '../components/event_form';
 import { tagFunctionality } from '../components/tag_choice';
 import { sliderBudgetValue } from '../components/event_form';
 import { initMapbox } from '../plugins/init_mapbox';
-
 import { editionRest } from '../components/roulette';
-
 import { refreshMembers } from '../components/invite_members_refresh.js';
-
 import 'mapbox-gl/dist/mapbox-gl.css';
-
 import { existingEdition } from '../components/existing_edition';
 
 // SELECT MUlTIPLE ITEMS
@@ -20,13 +16,20 @@ import { existingEdition } from '../components/existing_edition';
 import 'select2/dist/css/select2.css';
 
 import { initSelect2 } from '../components/init_select2';
-
-initSelect2();
-
 import { filterDashboard } from '../components/active_filter.js';
-
 import { anotherfilterDashboard } from '../components/host_filter.js';
 
+
+const editionEdit = document.querySelector("#edition-edit");
+if (editionEdit) {
+  initSelect2();
+};
+
+const dashboardPage = document.querySelector("#dashboard-page");
+if (dashboardPage) {
+  filterDashboard();
+  anotherfilterDashboard();
+};
 
 // // NEW EVENT FORM
 const tagForm = document.querySelector("#new_event");
@@ -55,10 +58,8 @@ if (invitePage) {
 // EDITION MODAL
 const editionPage = document.querySelector('#edition-show')
 if (editionPage && editionPage.dataset.ongoing === "true") {
-  console.log("dhvgdbjvm");
   existingEdition();
 };
-
 
 initMapbox();
 
