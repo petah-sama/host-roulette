@@ -32,6 +32,20 @@ class QuestionsController < ApplicationController
 
   private
 
+
+
+  def send_reminders
+    current_guest = current_user.guest_for(@question.edition)
+    @question.guests_didnt_answer.each do |guest|
+      @notification = Notification.new
+      @notification.edition = @question.edition
+      @notification.from = 'reminder'
+      @notification.user = guest.member.user
+      @notification.save
+    end
+  end
+
+
   def status_notification(from)
     @edition.event.participants.each do |user|
       next if user == @edition.host

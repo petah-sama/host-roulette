@@ -41,16 +41,18 @@ class EditionsController < ApplicationController
     # host_user = User.find(host_id)
     # @edition.host_id = host_user.id
     authorize @edition
-    if @edition.save
-      gen_guests
-      @notification = Notification.new
-      @notification.user = @edition.host
-      @notification.edition = @edition
-      @notification.from = 'host'
-      @notification.save
-      redirect_to event_edition_path(@event, @edition)
-    else
-      render :new
+    if @event.editions.last.nil? || @event.editions.last.archived?
+      if @edition.save
+        gen_guests
+        @notification = Notification.new
+        @notification.user = @edition.host
+        @notification.edition = @edition
+        @notification.from = 'host'
+        @notification.save
+        redirect_to event_edition_path(@event, @edition)
+      else
+        render :new
+      end
     end
   end
 
