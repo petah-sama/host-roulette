@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   get 'surveys', to: 'pages#surveys'
 
   resources :events, except: %i[index] do
-    resources :members, only: %i[create destroy]
+    resources :members, only: %i[index create destroy]
     resources :event_tags, only: %i[create destroy]
     resources :editions, except: %i[index] do
       resources :guests, only: %i[create destroy]

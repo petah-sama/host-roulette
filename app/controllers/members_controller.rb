@@ -1,10 +1,13 @@
 class MembersController < ApplicationController
+  before_action :fetch_event, except: :destroy
+
   def index
-    @members = policy_scope(Member)
+    @members = policy_scope(@event.participants)
+
+    render json: @members.as_json(only: [:first_name, :last_name])
   end
 
   def create
-    fetch_event
     @member = Member.new
     @member.user = current_user
     @member.event = @event
