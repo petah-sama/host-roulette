@@ -8,6 +8,7 @@
 
 # DESTROY EVERYTHING
 puts 'Xau pessoal 👋👋👋'
+Edition_items.destroy_all
 Item.destroy_all
 Guest.destroy_all
 Member.destroy_all
