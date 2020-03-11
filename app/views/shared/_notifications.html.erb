@@ -1,6 +1,6 @@
 <div class ='notification-div'>
 <% if user_signed_in? %>
-  <div class=" notification-bell" onclick="notifications()">
+  <div class="notification-bell" onclick="notifications()">
     <% if (current_user.notifications.exists?) %>
       <i class="dropbtn fas fa-bell"><i class="fas fa-circle"></i></i>
       <% else %>
