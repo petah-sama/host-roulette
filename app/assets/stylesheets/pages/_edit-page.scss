@@ -1,14 +1,19 @@
 .edition-main-container {
+    border-radius:$border-radius;
+    overflow:hidden;
+}
 
+#show-banner {
+  overflow:hidden;
 }
 
 .edition-content-container {
   background-color:white;
   border-radius: $border-radius;
+
 }
 #edition-edit {
   border-radius:$border-radius;
-  overflow:hidden;
 
 }
 
