@@ -1,4 +1,4 @@
-<div class="content-container d-flex mt-4" id="dashboard-page">
+<div class="content-container d-flex" id="dashboard-page">
   <div class="card-container col-9 ml-3">
 
 <!--     <div class="notifications">
@@ -9,7 +9,7 @@
         <h3>3 surveys to respond</h3>
       </div>
     </div> -->
-    <%= link_to 'Create New Event', new_event_path, class: 'btn btn-outline-primary btn-lg w-100 d-flex align-items-center justify-content-center', style: 'height: 60px' %>
+    <%#= link_to 'Create New Event', new_event_path, class: 'btn btn-outline-primary btn-lg w-100 d-flex align-items-center justify-content-center', style: 'height: 60px' %>
 
     <div class="active-cards" id='active-cards'>
       <%= render 'pages/filters/active-editions' %>

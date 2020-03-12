@@ -197,16 +197,13 @@
 }
 
 #image-test {
-  background-image: url(https://images.unsplash.com/photo-1539635278303-d4002c07eae3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
   border-radius: 5px 0px 0px 5px;
+  height: 100%;
 }
-// .scaled {
-//   transform: scale(1.5);
-//   transform-origin: left;
-// }
+
 
 .tittle-card h2 {
   font-size: 35px;
