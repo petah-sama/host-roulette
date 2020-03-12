@@ -8,7 +8,9 @@
         </div>
           <div class="col-8 p-4">
             <% if edition.host_id == current_user.id %>
-              <div class="ribbon ribbon-top-right"><span>host</span></div>
+              <div class="corner-text-wrapper">
+                <div class="corner-text"><span><i class="fas fa-crown"></i></span></div>
+              </div>
             <% end %>
             <h2><%= edition.name %></h2>
             <div class="show-guests-div d-flex mt-3 mb-3" >
