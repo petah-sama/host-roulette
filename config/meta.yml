@@ -1,0 +1,5 @@
+meta_product_name: "Host Roulette"
+meta_title: "Host Roulette - Who's Next?"
+meta_description: "Sick and tired of always being you organizing events and pushing your friends to attend them? We have found a solution for you..."
+meta_image: "logo_transparent.svg" # should exist in `app/assets/images/`
+twitter_account: "@HostRoulette"   # required for Twitter Cards
