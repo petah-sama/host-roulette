@@ -9,10 +9,11 @@
       <%= f.input :address %>
       <%= f.input :status, collection: Edition.statuses.keys, selected: @edition.status %>
       <%= f.association :items, input_html: { class: 'select2 form-control' }, label: 'Which items do you need?' %>
+      <%= f.input :photo, as: :file, required: false %>
     </div>
     <div class="d-flex align-items-end">
     <div class="form-actions d-flex">
-      <%= f.submit 'Update Event details', class: 'btn btn-primary' %>
+      <%= f.submit 'Update Event details', class: 'btn btn-primary mr-3' %>
       <%= link_to 'Back', event_edition_path(@event, @edition), class:'btn btn-primary' %>
     </div>
   <% end %>

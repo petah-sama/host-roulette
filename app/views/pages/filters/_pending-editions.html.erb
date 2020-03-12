@@ -4,7 +4,12 @@
     <div class="<%= 'hosting-card' if edition&.host != current_user %>">
       <%= link_to event_edition_path(edition.event, edition) do %>
       <div class="dashboard-card mt-4">
-        <div class="col-4 p-0" id="image-test">
+        <div class="col-4 p-0">
+          <% if edition.photo.attached? %>
+              <div id="image-test" style="background-image: url(<%= url_for(edition.photo) %>)"></div>
+            <% else %>
+              <div id="image-test" style="background-image: url(https://images.unsplash.com/photo-1539635278303-d4002c07eae3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80)"></div>
+              <% end %>
         </div>
           <div class="col-8 p-4">
             <% if edition.host_id == current_user.id %>
