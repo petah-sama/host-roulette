@@ -6,16 +6,18 @@
   background-repeat: no-repeat;
 }
 
+.show-map {
+  height: 240px;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 .show-main-container {
   border-radius: $border-radius;
   overflow: hidden;
   background-color: white;
 }
-
-// COUNTDOWN
-// .countdown {
-//   padding: 10px;
-// }
 
 // TAGS
 .event-tags {
@@ -35,6 +37,13 @@
 .avatar-guest {
   width:60px;
   border-radius: 50%;
+}
+
+
+.avatar-host {
+  width: 80px;
+  border-radius: 50%;
+  border: 3px solid white;
 }
 
 #see-all-guests {
