@@ -1,30 +1,55 @@
-<div class="content-container d-flex mt-4">
-  <div class="card-container col-8 ml-3">
-    <div class="title m-4">
-      <h2>Your Previous Editions</h2>
-    </div>
+<div class="content-container d-flex mt-4" id="dashboard-page">
+ <div class="card-container col-9 ml-3">
+
+    <div class="dashboard-card-container">
 
       <% @past_editions.each do |edition| %>
-      <div class="dashboard-card-container">
-        <div class="dashboard-card col-12 pb-4 pt-4">
-          <div class="col-4">
-              <%= image_tag "https://images.unsplash.com/photo-1539635278303-d4002c07eae3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80", height: 160, width: 220, crop: :fill%>
-          </div>
-          <div class="col-8">
-            <p><%= edition.name %></p>
-            <p>Status:<%= edition.status %></p>
-            <p>Friends in this edition:<% edition.guests.each do |guest| %>
-                <% if guest.member.user.first_name %>
-                  <%= guest.member.user.first_name %>
-                <% else %>
-                  <%= guest.member.user.email %>
-                <% end %>
-              <% end %>
-            </p>
-            <div><%= link_to 'Show', event_edition_path(edition.event, edition), class: "btn btn-danger" %></div>
-          </div>
+        <div class="<%= 'hosting-card' if edition&.host != current_user %>">
+          <%= link_to event_edition_path(edition.event, edition) do %>
+
+
+            <div class="dashboard-card mt-4">
+
+              <div class="col-4 p-0">
+                  <% if edition.photo.attached? %>
+                    <div id="image-test" style="background-image: url(<%= url_for(edition.photo) %>)"></div>
+                  <% else %>
+                    <div id="image-test" style="background-image: url(https://images.unsplash.com/photo-1539635278303-d4002c07eae3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80)"></div>
+                  <% end %>
+              </div>
+
+              <div class="col-8 p-4">
+                  <% if edition.host_id == current_user.id %>
+                    <div class="corner-text-wrapper">
+                      <div class="corner-text"><span><i class="fas fa-crown"></i></span></div>
+                    </div>
+                  <% end %>
+                  <h2><%= edition.name %></h2>
+                  <div class="show-guests-div d-flex mt-3 mb-3" >
+                      <% edition.guests.take(4).each do |guest|%>
+                        <div class="show-guest-list-item">
+                          <% if guest.member.user.photo.attached? %>
+                            <%= cl_image_tag guest.member.user.photo.key, class: "avatar-guest-small" %>
+                          <% else %>
+                            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-guest-small" %>
+                          <% end %>
+                        </div>
+                      <% end %>
+                  </div>
+                  <div class="event-tags-small pr-3">
+                     <% edition.event.tags.each do |tag| %>
+                         <span class="tiny-tag mr-1 p-1 border border-primary rounded"> <%= tag.name %></span>
+                    <% end %>
+                  </div>
+              </div>
+
+            </div>
+
+          <% end %>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+
+    </div>
+
   </div>
 </div>
