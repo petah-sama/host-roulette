@@ -161,7 +161,6 @@
   margin-right: 0px,
 }
 
-
 .countdown-dashboard {
   display: flex;
   padding: 0px;
@@ -170,7 +169,7 @@
   color: $red;
   align-self: center;
 
-   h5 {
+  h5 {
     margin: 0px;
     font-size: 25px;
     line-height: 30px;
@@ -179,21 +178,18 @@
     font-weight: bold;
     text-transform: uppercase;
     align-self: center;
-
-   }
+  }
 
   i {
     align-self: center;
     font-size: 20px;
     padding-right: 10px;
-
   }
-
 }
 
 .tiny-tag {
- font-size: 12px;
- align-self: center;
+  font-size: 12px;
+  align-self: center;
 }
 
 #image-test {
@@ -203,7 +199,6 @@
   border-radius: 5px 0px 0px 5px;
   height: 100%;
 }
-
 
 .tittle-card h2 {
   font-size: 35px;
