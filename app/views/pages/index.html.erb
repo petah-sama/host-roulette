@@ -41,7 +41,7 @@
     </div>
 
     <div class="stats-card-cool mt-4 mb-4 p-3">
-      <h4 class = 'title-charts mb-3'> Active </h4>
+      <h4 class = 'title-charts mb-3'> Scheduled </h4>
       <div class = 'stats-chart'>
         <%= pie_chart [ ['Active', @alleditions.active.size],['Pending', @alleditions.pending.size]], legend: false, donut: true, label: "Value" , colors: ["#D95140","#DCDCDC"], width:"200px", height: "200px"%>
         <p class = 'text-inside-chart col-8'> <%=  @alleditions.active.size %> of <%= (@alleditions.active.size + @alleditions.pending.size) %> events </p>
