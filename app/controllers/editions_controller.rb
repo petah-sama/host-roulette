@@ -101,8 +101,8 @@ class EditionsController < ApplicationController
     authorize @edition
   end
 
-   def edit_edition_params
-    params.require(:edition).permit(:name, :start_time, :end_time, :notes, :address, :status, item_ids: [])
+  def edit_edition_params
+    params.require(:edition).permit(:name, :start_time, :end_time, :notes, :address, :status, :photo, item_ids: [])
   end
 
   def edition_params

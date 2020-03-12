@@ -1,45 +1,29 @@
-<!-- <div class="show-plans">
-  <%# if !@edition.pending? %>
-    <ul class="list-inline">
-      <li>
-        <i class="far fa-calendar-check"></i>
-        <%#= @edition.start_time.strftime("%d %^b %Y, at %Hh%Mm") unless @edition.start_time.nil?%>
-      </li>
-      <li>
-        <i class="far fa-calendar-times"></i>
-        <%#= @edition.end_time.strftime("%d %^b %Y") unless @edition.end_time.nil?%>
-      </li>
-
-      <li>
-        <i class="far fa-compass"></i>
-        <%#= @edition.address unless @edition.address.nil?%>
-      </li>
-    </ul>
-  <%# end %>
-</div> -->
-
 <div class="d-flex justify-content-between col-8 p-0">
-  <div>
-    <!-- Start time -->
-    <div class="m-0 d-flex align-items-center">
-      <i class="far fa-calendar-check col-1 text-left mr-2 p-0"></i>
-      <div class="text-nowrap">
-        <%= @edition.start_time.strftime("%d %^b %Y, at %Hh%Mm") unless @edition.start_time.nil?%>
+
+  <% if @edition.active? %>
+    <div>
+      <!-- Start time -->
+      <div class="m-0 d-flex align-items-center">
+        <i class="far fa-calendar-check col-1 text-left mr-2 p-0"></i>
+        <div class="text-nowrap">
+          <%= @edition.start_time.strftime("%d %^b %Y, at %Hh%Mm") unless @edition.start_time.nil?%>
+        </div>
+      </div>
+      <!-- End time -->
+      <div class="m-0 d-flex align-items-center">
+        <i class="far fa-calendar-times col-1 text-left p-0 mr-2"></i>
+        <div class="text-nowrap">
+          <%= @edition.end_time.strftime("%d %^b %Y") unless @edition.end_time.nil?%>
+        </div>
+      </div>
+      <!-- Address -->
+      <div class="m-0 d-flex align-items-center">
+        <i class="far fa-compass col-1 text-left p-0 mr-2"></i>
+        <div class="text-nowrap">
+          <%= @edition.address unless @edition.address.nil?%>
+        </div>
       </div>
     </div>
-    <!-- End time -->
-    <div class="m-0 d-flex align-items-center">
-      <i class="far fa-calendar-times col-1 text-left p-0 mr-2"></i>
-      <div class="text-nowrap">
-        <%= @edition.end_time.strftime("%d %^b %Y") unless @edition.end_time.nil?%>
-      </div>
-    </div>
-    <!-- Address -->
-    <div class="m-0 d-flex align-items-center">
-      <i class="far fa-compass col-1 text-left p-0 mr-2"></i>
-      <div class="text-nowrap">
-        <%= @edition.address unless @edition.address.nil?%>
-      </div>
-    </div>
-  </div>
+  <% end %>
+
 </div>

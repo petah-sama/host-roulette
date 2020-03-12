@@ -7,7 +7,12 @@
 
 
         <div class="dashboard-card active-card d-flex mt-4">
-          <div class="col-4 p-0" id="image-test">
+          <div class="col-4 p-0">
+            <% if edition.photo.attached? %>
+              <div id="image-test" style="background-image: url(<%= url_for(edition.photo) %>)"></div>
+            <% else %>
+              <div id="image-test" style="background-image: url(https://images.unsplash.com/photo-1539635278303-d4002c07eae3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80)"></div>
+              <% end %>
           </div>
 
           <div class="col-8 p-4">
@@ -23,7 +28,7 @@
             </div>
             <div class="show-guests-div d-flex mt-3 mb-3" >
               <% edition.guests.take(5).each do |guest|%>
-                <div class="show-guest-list-item">
+                <div class="show-guest-list-item mr-1">
                   <% if guest.member.user.photo.attached? %>
                     <%= cl_image_tag guest.member.user.photo.key, class: "avatar-guest-small" %>
                   <% else %>

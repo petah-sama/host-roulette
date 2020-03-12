@@ -10,6 +10,7 @@ class Edition < ApplicationRecord
   has_many :items, through: :edition_items
   has_many :reviews, through: :guests
   after_validation :geocode, if: :will_save_change_to_address?
+  has_one_attached :photo
 
   include PgSearch::Model
   pg_search_scope :search_by_name,
@@ -27,7 +28,7 @@ class Edition < ApplicationRecord
   def countdown
     unless self.start_time.nil?
       date = Time.now
-      days_left = (self.start_time.to_date - date.to_date).to_i + 1
+      days_left = (self.start_time.to_date - date.to_date).to_i
     end
   end
 end

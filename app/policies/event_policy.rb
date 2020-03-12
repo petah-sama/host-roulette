@@ -18,7 +18,7 @@ class EventPolicy < ApplicationPolicy
   end
 
   def edit?
-    check_host
+    true
   end
 
   def update?

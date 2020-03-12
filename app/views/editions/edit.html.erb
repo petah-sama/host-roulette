@@ -17,7 +17,7 @@
               <%= f.input :end_time, as: :string, required: false, order: %i(day month year), input_html: {id: "range_end"} %>
             </div>
             <%= f.input :status, collection: Edition.statuses.keys, selected: @edition.status, class: 'editing-status ml-3' %>
-
+            <%= f.input :photo, as: :file, required: false %>
             </div>
             <%= f.input :address %>
             <%= f.association :items, input_html: { class: 'select2 form-control items-form col-12' }, label: 'Which items do you need?' %>
@@ -35,6 +35,7 @@
           <%= render partial: 'editions/show-editions/show-notes' %>
         <% end %>
       </div>
+
     </div>
   </div>
 </div>
