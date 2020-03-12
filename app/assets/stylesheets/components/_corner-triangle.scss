@@ -10,7 +10,6 @@
     right: -21.7107px;
     top: -19.7107px;
     width: 141.421px;
-    z-index: 3;
 }
 .corner-text {
   color: white;
@@ -26,11 +25,9 @@
     height: 100px;
     position: absolute;
     width: 100px;
-    z-index: 2;
 }
 .corner-text span {
   font-size: 30px;
-  z-index: 1;
   display: block;
   text-align: right;
 }
