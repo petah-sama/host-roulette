@@ -125,7 +125,7 @@ Edition.create(name: "#{Event.all[0].name} #1", event_id: Event.all[0].id, statu
 Edition.create(name: "#{Event.all[1].name} #1", event_id: Event.all[1].id, status: 0, host_id: User.all[2].id)
 Edition.create(name: "#{Event.all[2].name} #1", event_id: Event.all[2].id, status: 1, host_id: User.all[2].id, start_time: DateTime.new(2020,3,27), end_time: DateTime.new(2020,3,28))
 Edition.create(name: "#{Event.all[3].name} #2", event_id: Event.all[3].id, status: 0, host_id: User.all[3].id)
-Edition.create(name: "#{Event.all[3].name} #1", event_id: Event.all[3].id, status: 2, host_id: User.all[4].id)
+Edition.create(name: "#{Event.all[3].name} #1", event_id: Event.all[3].id, status: 2, host_id: User.all[4].id, start_time: DateTime.new(2020,3,5), end_time: DateTime.new(2020,3,6))
 Edition.create(name: "#{Event.all[4].name} #1", event_id: Event.all[4].id, status: 0, host_id: User.all[9].id)
 Edition.create(name: "#{Event.all[5].name} #1", event_id: Event.all[5].id, status: 0, host_id: User.all[5].id)
 Edition.create(name: "#{Event.all[6].name} #1", event_id: Event.all[6].id, status: 0, host_id: User.all[8].id)
