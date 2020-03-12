@@ -113,10 +113,7 @@
       <!-- COLUMN IN THE MIDDLE -->
       <!-- COLUMN IN THE MIDDLE -->
       <div class="col-5 px-4 calendar-edition">
-        <%# if current_user.is_host?(@edition) %>
-          <!-- Notes Host -->
-          <%#= render partial: 'editions/show-editions/show-notes' %>
-        <%# end %>
+
         <% if @edition.active? %>
           <!-- Map -->
           <%#= render partial: 'editions/show-editions/show-map' %>

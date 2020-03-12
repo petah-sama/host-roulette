@@ -4,8 +4,10 @@
     <%= @edition.notes %>
   <% else %>
     <%= simple_form_for [@event, @edition], method: :patch do |f| %>
-      <%= f.input :notes, label: false, placeholder: @edition.notes, input_html: {rows: 6} %>
-      <%= f.submit 'Save notes', class: 'btn btn-primary' %>
+      <%= f.input :notes, label: false, placeholder: @edition.notes, input_html: {rows: 11}, class: 'notes-input mb-2' %>
+      <div class = 'd-flex justify-content-end'>
+        <%= f.submit 'Save notes', class: 'btn btn-primary' %>
+      </div>
     <% end %>
   <% end %>
 </div>
