@@ -7,11 +7,12 @@
         Who's next?
       <% end %>
     </div>
-    <%= image_tag 'logo_transparent.svg' %>
-    <!-- <div>
-      <%#= image_tag 'logo-roulette.svg', id: 'roulette-logo' %>
-      <%#= image_tag 'logo-words.svg', id: 'words-logo' %>
-    </div> -->
+
+    <%= link_to dashboard_path do %>
+      <%#= image_tag 'logo_transparent.svg' %>
+      <%= image_tag 'logo-roulette.svg', id: 'roulette-logo' %>
+      <%= image_tag 'logo-words.svg', id: 'words-logo' %>
+    <% end %>
   </button>
 
 

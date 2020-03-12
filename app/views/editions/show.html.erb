@@ -127,8 +127,10 @@
           <!-- Calendar -->
           <%= render partial: 'editions/calendar-edition' %>
         <% else %>
-          <h1>You're not the Host.</h1>
-          <h2><em>Just await instructions.</em></h2>
+          <% if !current_user.is_host?(@edition) %>
+            <h1>You're not the Host.</h1>
+            <h2><em>Just await instructions.</em></h2>
+          <% end %>
         <% end %>
       </div>
     <% end %>

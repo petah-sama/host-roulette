@@ -2,6 +2,8 @@ import swal from 'sweetalert';
 
 
 const editionRest = () => {
+  const song = document.getElementById('song');
+
   function rand(min, max) {
     return Math.random() * (max - min) + min;
   };
@@ -99,6 +101,14 @@ const editionRest = () => {
     drawImg();
   };
 
+  const lowerSongVolume = () => {
+    if (song.volume === 0.4) {
+      return;
+    }
+
+    song.volume = Math.max(song.volume - 0.2, 0.4);
+  }
+
   const spinRoulette = () => {
     (function anim() {
       deg += speed;
@@ -109,11 +119,12 @@ const editionRest = () => {
         speed = speed + 2 * 0.1;
       };
       // Decrement Speed
-      if(isStopped){
+      if (isStopped){
         if(!lock){
           lock = true;
-          slowDownRand = rand(0.970, 0.980);
+          slowDownRand = rand(0.990, 0.991);
         };
+
         speed = speed > 0.1 ? speed *= slowDownRand : 0;
       };
       // Stopped!
@@ -125,24 +136,7 @@ const editionRest = () => {
         let currentRoute = window.location.href;
         let postRoute = currentRoute.substring(0, currentRoute.length - 3);
 
-
-        // const setHost = () => {
-        //   fetch(postRoute, {
-        //     method: "POST",
-        //     headers: {
-        //       "Content-Type": "application/json",
-        //       "X-CSRF-Token": document.querySelector('[name="csrf-token"]').content,
-        //     },
-        //     body: JSON.stringify({ query: hostId }),
-        //     credentials: "same-origin"
-        //   })
-        //     .then(response => response.json())
-        //     .then((data) => {
-        //       console.log(data);
-        //     });
-        // }
-        // setHost();
-
+        setInterval(lowerSongVolume, 500);
 
         const buttonRoulette = document.querySelector('#button-roulette');
         const buttonSubmit = document.querySelector('#button-submit');
@@ -177,9 +171,12 @@ const editionRest = () => {
 
   roulette();
   const button = document.querySelector("#button-roulette")
+
   button.addEventListener("click", event => {
     button.disabled = true;
     spinRoulette();
+    song.currentTime += 0.5;
+    song.play();
   });
 };
 
