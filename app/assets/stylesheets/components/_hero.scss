@@ -27,6 +27,11 @@ video {
   clip-path: inset(0px 0px 14vh 0px);
 }
 
+.overlay {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(255, 255, 255, 0.7));
+  z-index: 12;
+}
+
 
 // LOGO
 #roulette-logo {
@@ -39,7 +44,6 @@ video {
 }
 
 #words-logo {
-
   z-index: 9;
 }
 
@@ -63,6 +67,7 @@ video {
   font-family: 'Catamaran';
   // border-radius: $border-radius;
   @include transition(all 0.5s ease);
+  outline: none;
 }
 
 .five {

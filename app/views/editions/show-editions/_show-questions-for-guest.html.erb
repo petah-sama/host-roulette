@@ -1,4 +1,3 @@
-<h3>Surveys from host</h3>
 <div>
   <% @edition.questions.each do |question| %>
     <div class="<%= answer_classes(@current_user_answers, question) %>">
