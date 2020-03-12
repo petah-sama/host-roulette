@@ -11,8 +11,7 @@ const refreshMembers = () => {
         membersList.textContent = '';
 
         data.forEach(member => {
-          const item = `<li>${member.first_name} ${member.last_name}</li>`;
-
+          const item = `<li class = 'invited-member'>${member.first_name} ${member.last_name}</li>`;
           membersList.insertAdjacentHTML('beforeend', item);
         });
       },
