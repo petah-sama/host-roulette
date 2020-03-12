@@ -1,9 +1,6 @@
+<%= link_to 'Back', event_edition_path(@event, @edition), class: 'btn btn-primary ml-4' %>
 
-  <%= link_to event_edition_path(@event, @edition), class: 'btn btn-primary btn-back-surveys ml-4 p-2' do %>
-     <i class="fas fa-caret-left d-flex mr-3"> <p class = 'back-button ml-3 mb-0'> Back</p></i>
-  <% end %>
-
-<div class = 'color-container-div d-flex m-3'>
+<div class = 'color-container-div d-flex ml-2 mt-4 col-6'>
   <div class = 'd-flex align-items-center mr-3'>
     <i class="fas fa-square" id = 'yes_color'></i>
     <p class = 'm-0'> Answered Yes </p>
@@ -16,51 +13,51 @@
     <i class="fas fa-square" id = 'unanswered_color'></i>
     <p class = 'm-0'> Unanswered </p>
   </div>
-
 </div>
 
-    <div class="questions-main-container m-4">
-      <% @questions.each do |question| %>
-      <div class='question-card-container grid-item'>
-        <div>
-          <div class="header-question">
-            <h2 class = 'text-center'><%= question.content %></h2>
-            <%= link_to question_path(question), method: :delete, data: { confirm: "Are you sure?" }, class: 'delete-question' do %>
-              <i class="fas fa-trash-alt"></i>
-            <% end %>
-          </div>
-
-
-          <div class = 'chart-questions d-flex justify-content-center'>
-            <%= pie_chart [['Yes', question.answered_yes],['No', question.answered_no], ['Unanswered', question.unanswered]], legend: false, donut: true, label: "Value" , colors: ["#D95140", "#586a88"], width:"200px", height: "200px"%>
-          </div>
+<div class="questions-main-container m-4">
+  <% @questions.each do |question| %>
+    <div class='question-card-container grid-item'>
+      <div>
+        <div class="header-question mb-4">
+          <h5 class = 'text-center'><%= question.content %></h5>
+          <%= link_to question_path(question), method: :delete, data: { confirm: "Are you sure?" }, class: 'delete-question' do %>
+            <i class="fas fa-trash-alt text-info"></i>
+          <% end %>
         </div>
 
-        <div class="dropdown dropdown-answers">
-          <button class="btn btn-secondary dropdown-toggle dropdown-answers" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          </button>
-          <div class = 'dropdown-menu col-12' aria-labelledby="dropdownMenuButton" >
-            <% if question.answers.size < @edition.guests.size - 1 %>
-              <%= link_to 'Send reminder', user_notifications_path(from: 'reminder', user_id: current_user, edition_id: question.edition.id, question: question), method: :post, data: { confirm: "Are you sure?" }, class: 'btn btn-info answer-item send-reminder-item' %>
-            <% else %>
-              <% question.answers.each do |answer| %>
-                <div class = 'dropdown-item answer-item' >
-                  <div class = 'd-flex justify-content-between'>
-                    <div>
-                      <% if answer.content = true %>
-                        <i class="fas fa-check"></i>
-                      <% elsif answer.content = false %>
-                        <i class="fas fa-times"></i>
-                      <% end %>
-                    </div>
-                      <strong> <%= answer.guest.member.user.first_name %> <%= answer.guest.member.user.last_name %></strong>
-                  </div>
-                </div>
-              <% end %>
-            <% end %>
-          </div>
+
+        <div class = 'chart-questions d-flex justify-content-center'>
+          <%= pie_chart [['Yes', question.answered_yes],['No', question.answered_no], ['Unanswered', question.unanswered]], legend: false, donut: true, label: "Value" , colors: ["#D95140", "#586a88"], width:"200px", height: "200px"%>
         </div>
       </div>
-    <% end %>
-  </div>
+
+      <div class="dropdown dropdown-answers">
+        <button class="btn btn-secondary dropdown-toggle dropdown-answers" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Guest Answers
+        </button>
+        <div class = 'dropdown-menu col-12' aria-labelledby="dropdownMenuButton" >
+          <% if question.answers.size < @edition.guests.size - 1 %>
+            <%= link_to 'Send reminder', user_notifications_path(from: 'reminder', user_id: current_user, edition_id: question.edition.id, question: question), method: :post, data: { confirm: "Are you sure?" }, class: 'btn btn-info send-reminder-button mx-2' %>
+          <% else %>
+            <% question.answers.each do |answer| %>
+              <div class = 'dropdown-item answer-item' >
+                <div class = 'd-flex justify-content-between'>
+                  <div>
+                    <% if answer.content = true %>
+                      <i class="fas fa-check"></i>
+                    <% elsif answer.content = false %>
+                      <i class="fas fa-times"></i>
+                    <% end %>
+                  </div>
+                    <strong> <%= answer.guest.member.user.first_name %> <%= answer.guest.member.user.last_name %></strong>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
 
