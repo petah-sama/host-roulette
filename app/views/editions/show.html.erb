@@ -63,8 +63,6 @@
           <h4>No Host is defined.</h4>
         <% else %>
           <i class="fas fa-crown"></i><h4>The Host is <%= @edition.host.first_name + ' ' + @edition.host.last_name  %></h4>
-          <!-- Poke Host -->
-          <%= link_to 'Poke host', user_notifications_path(@edition.host_id), class: 'btn btn-primary' %>
         <% end %>
       </div>
 

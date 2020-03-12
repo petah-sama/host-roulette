@@ -8,7 +8,7 @@
     <% end %>
   </div>
   <div class="dropdown-content" id="myDropdown">
-    <span class = 'd-flex justify-content-between align-items-center m-2'><p>Notifications</p>
+    <span class = 'd-flex justify-content-between align-items-center m-2'><p id = 'all-notification-text'>Notifications</p>
       <%= link_to notifications_path, method: :delete, data: { confirm: "Are you sure?" } do %>
         <i class="fas fa-trash-alt" id = 'icon-notificatin-text'></i>
       <% end %>
@@ -18,7 +18,7 @@
           <div class = 'd-flex justify-content-between align-items-center dropdown-item dropdown-notification-item'>
             <i class="fas fa-map-marker-alt active-notification"></i>
               <%= link_to event_edition_path(notification.edition.event.id, notification.edition.id) do %>
-                <p> <%= notification.edition.name %> is now active!</p>
+                <p> <%= notification.edition.name %> is now Scheduled!</p>
               <% end %>
           </div>
         <% elsif notification.from == 'began' %>
@@ -31,7 +31,7 @@
 
         <% elsif notification.from == 'host' %>
           <div class = 'd-flex justify-content-between align-items-center dropdown-item dropdown-notification-item'>
-            <i class="fas fa-map-marker-alt active-notification"></i>
+            <i class="fas fa-crown active-notification"></i>
             <%= link_to event_edition_path(notification.edition.event.id, notification.edition.id) do %>
               <p> You are the host of <%= notification.edition.name %>!</p>
             <% end %>
@@ -39,7 +39,7 @@
 
         <% elsif notification.from == 'question' %>
           <div class = 'd-flex justify-content-between align-items-center dropdown-item dropdown-notification-item'>
-            <i class="fas fa-question active-notification"></i>
+            <i class="far fa-comment-alt active-notification"></i>
             <%= link_to event_edition_path(notification.edition.event.id, notification.edition.id) do %>
               <p><%= notification.edition.name %> new question!</p>
             <% end %>
@@ -59,3 +59,8 @@
 <% end  %>
 
 </div>
+
+
+
+
+
