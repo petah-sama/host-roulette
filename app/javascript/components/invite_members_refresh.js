@@ -1,5 +1,5 @@
 const refreshMembers = () => {
-  const TIMEOUT = 2000;
+  const TIMEOUT = 5000;
   const membersList = document.getElementById('member-list');
 
   setInterval(() => {

@@ -5,19 +5,16 @@ class PagesController < ApplicationController
   end
 
   def index
+      events = policy_scope(Event).includes(:members).where(members: { user:current_user })
+      @hostingeditions = policy_scope(Edition).where(host_id: current_user.id, status: [0, 1])
     if params[:query].present?
-      events = policy_scope(Event).includes(:members).where(members: { user:current_user })
       @editions = policy_scope(Edition).where(event_id: events).search_by_name(params[:query])
-      @alleditions = policy_scope(Edition).where(event_id: events)
-      @hostingeditions = policy_scope(Edition).where(host_id: current_user.id)
-      authorize @editions
+      @alleditions = policy_scope(Edition).where(event_id: events, status: [0, 1])
     else
-      events = policy_scope(Event).includes(:members).where(members: { user:current_user })
-      @editions = policy_scope(Edition).where(event_id: events)
+      @editions = policy_scope(Edition).where(event_id: events, status: [0, 1])
       @alleditions = @editions
-      @hostingeditions = policy_scope(Edition).where(host_id: current_user.id)
-      authorize @editions
     end
+      authorize @editions
   end
 
   def friends

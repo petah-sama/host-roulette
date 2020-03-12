@@ -20,7 +20,7 @@
 
       <br>
       <div class = 'd-flex align-items-center invite-link-card'>
-        <p id = 'secretInfo'><%= request.original_url %></p>
+        <p id='secretInfo'><%= request.original_url %></p>
         <button type="button" class ='btn btn-primary button-copy' id="btnCopy">Copy</button>
       </div>
       <p class = 'font-italic mt-1'>Share the link to invite your friends</p>
@@ -28,7 +28,7 @@
 
 
       <div class="event-slide d-flex flex-column justify-content-between" id="invite-members">
-        <h4> Who's coming?</h4>
+        <h4>Who's coming?</h4>
         <ul class="list-inline" id="member-list" data-event_id="<%= @event.id %>">
           <% @event.participants.each do |user| %>
               <div class = 'd-flex'>
