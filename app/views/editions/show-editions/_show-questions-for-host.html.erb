@@ -1,6 +1,6 @@
 <div>
   <% if @edition.questions.empty? && (@edition.active? || @edition.archived?) %>
-    <h5><em>The host didn't submit any questions</em></h5>
+    <h5><em>You didn't submit any questions</em></h5>
   <% else %>
 
     <% @edition.questions.each do |question| %>
