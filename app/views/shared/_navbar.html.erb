@@ -20,7 +20,7 @@
       <% if user_signed_in? %>
         <div class="nav-item-name">
           <% if current_user.first_name && current_user.last_name %>
-          <li><%= current_user.first_name %> <%= current_user.last_name %></li>
+          <li><%= current_user.first_name %> <%= current_user.last_name.first %>.</li>
           <% else %>
           <li><%= current_user.email %></li>
         <% end %>
