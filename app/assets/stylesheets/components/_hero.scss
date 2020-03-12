@@ -54,18 +54,12 @@ video {
   position: fixed;
   z-index: 3;
   transform: translate(-50%, -50%);
-  // text-decoration: none;
-  // outline: none;
-  // padding: 20px;
+  outline: none;
   display: block;
   margin: 50px auto;
-  // cursor: pointer;
   background-color: transparent;
-  // border: 5px solid #fff;
   border: none;
-  // font-size: 70px;
   font-family: 'Catamaran';
-  // border-radius: $border-radius;
   @include transition(all 0.5s ease);
   outline: none;
 }
@@ -101,7 +95,3 @@ video {
  text-decoration: none;
  color:#fff;
 }
-
-
-
-

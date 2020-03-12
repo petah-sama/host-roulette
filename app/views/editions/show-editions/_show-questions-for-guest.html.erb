@@ -1,16 +1,22 @@
 <div>
-  <% @edition.questions.each do |question| %>
-    <div class="<%= answer_classes(@current_user_answers, question) %>">
-      <p class="m-0"><%= question.content %></p>
+  <% if @edition.questions.empty? && (@edition.active? || @edition.archived?) %>
+    <h5><em>The host didn't submit any questions</em></h5>
+  <% else %>
 
-      <%= form_for [@edition.event, @edition, question, question.answers.find_by(guest: @current_guest) || @answer], html: { class: "d-flex align-items-center" } do |f| %>
-        <%= f.radio_button :content, 'true', class: 'radio_buttons answer-hidden', id: "question_true_#{question.id}" %>
-        <%= label_tag :content, 'Yes', for: "question_true_#{question.id}", class: 'btn btn-info btn-sm mr-1 mb-0' %>
-        <%= f.radio_button :content, 'false', class: 'radio_buttons answer-hidden', id: "question_false_#{question.id}" %>
-        <%= label_tag :content, 'No', for: "question_false_#{question.id}", class: 'btn btn-info btn-sm mb-0' %>
-      <% end %>
+    <% @edition.questions.each do |question| %>
+      <div class="<%= answer_classes(@current_user_answers, question) %>">
+        <p class="m-0"><%= question.content %></p>
 
-    </div>
+        <%= form_for [@edition.event, @edition, question, question.answers.find_by(guest: @current_guest) || @answer], html: { class: "d-flex align-items-center" } do |f| %>
+          <%= f.radio_button :content, 'true', class: 'radio_buttons answer-hidden', id: "question_true_#{question.id}" %>
+          <%= label_tag :content, 'Yes', for: "question_true_#{question.id}", class: 'btn btn-info btn-sm mr-1 mb-0' %>
+          <%= f.radio_button :content, 'false', class: 'radio_buttons answer-hidden', id: "question_false_#{question.id}" %>
+          <%= label_tag :content, 'No', for: "question_false_#{question.id}", class: 'btn btn-info btn-sm mb-0' %>
+        <% end %>
+
+      </div>
+    <% end %>
+
   <% end %>
 </div>
 
