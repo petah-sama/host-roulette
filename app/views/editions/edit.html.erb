@@ -1,33 +1,114 @@
 <div class="editing-main-container p-4 ">
-  <div class = 'event-card' id ='edition-edit'>
-    <div id="show-banner" class="d-flex">
-      <div class="d-flex justify-content-between flex-column p-0">
-        <h1 class="m-0"><strong><%= @edition.name %></strong></h1>
+  <div class = 'show-main-container' id ='edition-edit'>
+<div id="show-banner" class="p-4 d-flex">
+    <!-- BANNER LEFT -->
+    <!-- BANNER LEFT -->
+    <div class="col-8 d-flex justify-content-between flex-column p-0">
+      <!-- Edition name -->
+      <h1 class="m-0"><strong><%= @edition.name %></strong></h1>
+      <!-- Countdown -->
+      <% if @edition.active? %>
+        <div class="countdown m-0 p-0 text-danger">
+          <% days = @edition.countdown == 1 || @edition.countdown == -1 ? 'DAY' : 'DAYS' %>
+          <% if @edition.countdown > 0 %>
+            <h5><strong><i class="fas fa-hourglass-half"></i> <%= @edition.countdown %> <%= days %> LEFT</strong></h5>
+          <% elsif @edition.countdown == 0 %>
+            <h5><strong><i class="fas fa-hourglass-half"></i> IT'S TODAY!</strong></h5>
+          <% else %>
+            <h5><strong><i class="fas fa-hourglass-half"></i> STARTED <%= @edition.countdown * -1 %> <%= days %> AGO</strong></h5>
+          <% end %>
+        </div>
+      <% end %>
+
+      <div class="d-flex justify-content-between pr-4">
+        <div>
+          <!-- Tags -->
+          <div class="m-0 d-flex align-items-center">
+            <i class="fas fa-tags col-1 text-left mr-2 p-0"></i>
+            <% @edition.event.tags.each do |tag| %>
+              <div class="text-nowrap border border-primary rounded mr-1 px-1">
+                <%= tag.name %>
+              </div>
+            <% end %>
+          </div>
+          <!-- Budget -->
+          <div class="m-0 d-flex align-items-center">
+            <i class="fas fa-coins col-1 text-left p-0 mr-2"></i>
+            <%= @edition.event.budget %> € per person
+          </div>
+          <!-- Frequency -->
+          <div class="m-0 d-flex align-items-center">
+            <i class="fas fa-redo col-1 text-left p-0 mr-2"></i>
+            <%= @edition.event.frequency %>
+          </div>
+        </div>
       </div>
     </div>
+
+    <!-- BANNER RIGHT -->
+    <!-- BANNER RIGHT -->
+    <div class="col-4 p-0 d-flex flex-column justify-content-between">
+      <!-- HOST -->
+      <div class="show-hosting d-flex justify-content-between align-items-center">
+        <div class="m-0 col-8">
+          <h3 class="m-0"><i class="fas fa-crown"></i> <%= @edition.host.first_name + ' ' + @edition.host.last_name  %></h3>
+          <% if current_user.is_host?(@edition) %>
+            <p class="m-0 ml-5">(That's you!)</p>
+          <% end %>
+        </div>
+        <!-- Host Photo -->
+        <div class="col-4 text-center p-0">
+          <% if User.find(@edition.host_id).photo.attached? %>
+            <%= cl_image_tag User.find(@edition.host_id).photo.key, class: "avatar-host text-center p-0" %>
+          <% else %>
+            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-host text-center p-0" %>
+          <% end %>
+        </div>
+      </div>
+      <div class="d-flex justify-content-between align-items-center">
+        <!-- Shows plans -->
+        <%= render partial: 'editions/show-editions/show-plans' %>
+        <% if current_user.is_host?(@edition) && @edition.host_id.present? %>
+        <% end %>
+      </div>
+    </div>
+  </div>
     <div class="d-flex mt-3">
       <div class = 'col-8'>
         <%= simple_form_for [@event, @edition], method: :patch do |f| %>
           <div class="form-inputs col-12">
+              <div class="onoffswitch">
+                <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" onchange='scheduleButton();' checked="<%= @edition.active? %>">
+                <label class="onoffswitch-label" for="myonoffswitch">
+                    <span class="onoffswitch-inner"></span>
+                    <span class="onoffswitch-switch"></span>
+                </label>
+              </div>
             <%= f.input :name %>
 
-            <div class="d-flex justify-content-between">
-            <%= f.input :start_time, as: :string, required: false, order: %i(day month year), input_html: {id: "range_start"} %>
-            <div class="d-none">
-              <%= f.input :end_time, as: :string, required: false, order: %i(day month year), input_html: {id: "range_end"} %>
-            </div>
-            <%= f.input :status, collection: Edition.statuses.keys, selected: @edition.status, class: 'editing-status ml-3' %>
-            <%= f.input :photo, as: :file, required: false %>
-            </div>
             <%= f.input :address %>
+
             <%= f.association :items, input_html: { class: 'select2 form-control items-form col-12' }, label: 'Which items do you need?' %>
+
+
+            <div class="d-flex justify-content-between">
+              <div class="d-flex justify-content-between">
+              <%= f.input :start_time, as: :string, required: false, order: %i(day month year), input_html: {id: "range_start"}, label: "Pick a date" %>
+              <div class="d-none">
+                <%= f.input :end_time, as: :string, required: false, order: %i(day month year), input_html: {id: "range_end"}, label: 'Which items do you need?' %>
+              </div>
+              </div>
+              <%= f.input :photo, as: :file, required: false %>
+            </div>
+            </div>
+            <div class = ' d-none'>
+              <%= f.input :status, collection: Edition.statuses.keys, selected: @edition.status, id: 'status-form' %>
             </div>
           <div class="form-actions d-flex mt-3 mb-3">
             <%= f.submit 'Update Event details', class: 'btn btn-primary mr-3' %>
             <%= link_to 'Back', event_edition_path(@event, @edition), class:'btn btn-primary' %>
           </div>
         <% end %>
-
       </div>
 
       <div class = 'col-4'>
@@ -40,3 +121,15 @@
   </div>
 </div>
 
+<script>
+  function scheduleButton() {
+    const scheduleForm = document.getElementById("edition_status");
+    const toggleButton = document.getElementById("myonoffswitch");
+
+    if (toggleButton.checked) {
+      scheduleForm.value = 'active'
+    } else {
+      scheduleForm.value = 'pending';
+    }
+  }
+</script>
