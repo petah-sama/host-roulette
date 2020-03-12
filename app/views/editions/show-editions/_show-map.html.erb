@@ -1,9 +1,9 @@
 <% if @edition.address.present? %>
   <div
     id="map"
-    style="width: 100%;
-    height: 160px;"
+    class="show-map"
+    style="width: 100%; height: 240px;"
     data-markers="<%= @markers.to_json %>"
-    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-  ></div>
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
 <% end %>

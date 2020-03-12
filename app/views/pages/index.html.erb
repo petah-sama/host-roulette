@@ -9,7 +9,7 @@
         <h3>3 surveys to respond</h3>
       </div>
     </div> -->
-    <%= link_to 'Create New Event', new_event_path, class: 'btn btn-outline-primary btn-lg w-100 d-flex align-items-center justify-content-center', style: 'height: 60px' %>
+    <%#= link_to 'Create New Event', new_event_path, class: 'btn btn-outline-primary btn-lg w-100 d-flex align-items-center justify-content-center', style: 'height: 60px' %>
 
     <div class="active-cards" id='active-cards'>
       <%= render 'pages/filters/active-editions' %>
@@ -24,13 +24,6 @@
   <!-- We need the host, to edit the logic of stats  -->
 
   <div class ="stats col-3">
-    <!-- <div class="scaled col-6">
-      <div class="custom-control custom-switch">
-        <input type="checkbox" name ='checkbox' class="custom-control-input toggleButton" id="customSwitch1" unchecked>
-        <label class="custom-control-label" id ='label-active' for="customSwitch1">All</label>
-      </div>
-    </div> -->
-
 
     <div class="stats-card mb-4 p-3">
       <h4 class = 'title-charts mb-3'> Hosting </h4>
@@ -50,27 +43,3 @@
 
   </div>
 </div>
-
-
-
-<!--
-<script>
-  var filterHost = document.getElementById('filter-by-host');
-  //Ainda vai ser preciso criar o filtro de host//
-
-  var list = document.querySelectorAll("active-card");
-  var filterActive = document.getElementById('filter-by-state');
-
-  var checkbox = document.querySelector('input[name=checkbox]')
-  var x = document.getElementById("active-cards");
-  var labelActive = document.getElementById("label-active")
-  checkbox.addEventListener('change', function() {
-    if (checkbox.checked) {
-      labelActive.innerHTML = "Pending";
-      x.style.display = "none";
-    } else {
-      labelActive.innerHTML = "All";
-      x.style.display = "block";
-    }
-  });
-</script> -->

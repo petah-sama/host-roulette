@@ -27,7 +27,7 @@ class Edition < ApplicationRecord
   def countdown
     unless self.start_time.nil?
       date = Time.now
-      days_left = (self.start_time.to_date - date.to_date).to_i + 1
+      days_left = (self.start_time.to_date - date.to_date).to_i
     end
   end
 end
