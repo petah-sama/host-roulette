@@ -9,9 +9,8 @@
   </div>
   <div class="dropdown-content" id="myDropdown">
     <span class = 'd-flex justify-content-between align-items-center m-2'><p id = 'all-notification-text'>Notifications</p>
-      <%= link_to notifications_path, method: :delete, data: { confirm: "Are you sure?" } do %>
-        <i class="fas fa-trash-alt" id = 'icon-notificatin-text'></i>
-      <% end %>
+      <%= link_to 'delete', notifications_path, method: :delete, id: 'delete-all-notifications', class: 'd-none' %>
+      <i class="fas fa-trash-alt" id = 'icon-notification-text'></i>
     </span>
      <% current_user.notifications.each do |notification| %>
         <% if notification.from == 'active' %>

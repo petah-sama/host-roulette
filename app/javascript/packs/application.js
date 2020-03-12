@@ -10,7 +10,8 @@ import { editionRest } from '../components/roulette';
 import { refreshMembers } from '../components/invite_members_refresh.js';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { existingEdition } from '../components/existing_edition';
-
+import { deleteAlert } from '../components/notifications_swal'
+deleteAlert();
 // SELECT MUlTIPLE ITEMS
 
 import 'select2/dist/css/select2.css';

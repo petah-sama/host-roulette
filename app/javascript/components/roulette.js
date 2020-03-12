@@ -112,7 +112,7 @@ const editionRest = () => {
       if(isStopped){
         if(!lock){
           lock = true;
-          slowDownRand = rand(0.980, 0.999);
+          slowDownRand = rand(0.970, 0.980);
         };
         speed = speed > 0.1 ? speed *= slowDownRand : 0;
       };
