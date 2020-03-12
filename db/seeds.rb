@@ -8,6 +8,8 @@
 
 # DESTROY EVERYTHING
 puts 'Xau pessoal 👋👋👋'
+Answer.destroy_all
+Question.destroy_all
 EditionItem.destroy_all
 Item.destroy_all
 Review.destroy_all
