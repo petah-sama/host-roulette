@@ -2,7 +2,7 @@
 
 
 
-  <div class="event-card ">
+  <div class="event-card invite-members-card">
     <div id ='invite-members-banner'>
     </div>
     <div class="content-card-invite p-4 mt-3">
@@ -14,7 +14,7 @@
            <%= ',' unless tag == @event.tags.last %>
           <% end %>
         </span> <br>
-         <i class="fas fa-coins text-left p-0 mr-1"></i> <%= @event.budget %> <br>
+         <i class="fas fa-coins text-left p-0 mr-1"></i> <%= @event.budget %> € per person <br>
          <i class="fas fa-redo text-left p-0 mr-1"></i> <%= @event.frequency %>
       </div>
 
