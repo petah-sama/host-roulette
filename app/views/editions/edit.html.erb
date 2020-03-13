@@ -1,6 +1,18 @@
 <div class="editing-main-container p-4 ">
   <div class = 'show-main-container' id ='edition-edit'>
-<div id="show-banner" class="p-4 d-flex">
+
+<div id="show-banner">
+
+  <% if @edition.photo.attached? %>
+    <%= cl_image_tag @edition.photo.key, height: 240, width: 1200, crop: :fill, class: 'edition-banner' %>
+  <% else %>
+    <%= image_tag 'https://images.unsplash.com/photo-1539635278303-d4002c07eae3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80', height: 240, width: 1200, crop: :fill, class: 'edition-banner' %>
+    <%#= cl_image_tag 'nvou98k9mzayc2m57bm1', height: 240, width: 1200, crop: :fill, class: 'edition-banner' %>
+  <% end %>
+
+  <div class="p-4 d-flex h-100">
+
+    <!-- BANNER LEFT -->
     <!-- BANNER LEFT -->
     <!-- BANNER LEFT -->
     <div class="col-8 d-flex justify-content-between flex-column p-0">
@@ -73,17 +85,21 @@
       </div>
     </div>
   </div>
+</div>
+
     <div class="d-flex mt-3">
       <div class = 'col-8'>
         <%= simple_form_for [@event, @edition], method: :patch do |f| %>
-          <div class="form-inputs col-12">
-              <div class="onoffswitch">
-                <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" onchange='scheduleButton();'>
-                <label class="onoffswitch-label" for="myonoffswitch">
-                    <span class="onoffswitch-inner"></span>
-                    <span class="onoffswitch-switch"></span>
-                </label>
-              </div>
+          <div class="form-inputs p-0">
+
+            <div class="onoffswitch">
+              <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" onchange='scheduleButton();'>
+              <label class="onoffswitch-label" for="myonoffswitch">
+                <span class="onoffswitch-inner"></span>
+                <span class="onoffswitch-switch"></span>
+              </label>
+            </div>
+
             <%= f.input :name %>
 
             <%= f.input :address %>
