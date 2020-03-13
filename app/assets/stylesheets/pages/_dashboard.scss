@@ -7,6 +7,7 @@
   height: calc(100vh - 95px);
   position: sticky;
   margin-top: 1.5em;
+  user-select: none;
 }
 
 .stats-card i {
