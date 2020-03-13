@@ -24,17 +24,17 @@ User.destroy_all
 
 # USER
 puts 'Creating peeps 💁💁‍♀️💁💁‍♀️'
-User.create(email: 'riley@lewagon.com', password: '111111', first_name: 'Riley', last_name: 'Silva')      #0
-User.create(email: 'jordan@lewagon.com', password: '111111', first_name: 'Jordan', last_name: 'Green')    #1
-User.create(email: 'taylor@lewagon.com', password: '111111', first_name: 'Taylor', last_name: 'Bloom')    #2
-User.create(email: 'blake@lewagon.com', password: '111111', first_name: 'Blake', last_name: 'Ant')        #3
-User.create(email: 'jessie@lewagon.com', password: '111111', first_name: 'Jessie', last_name: 'Campos')   #4
-User.create(email: 'reese@lewagon.com', password: '111111', first_name: 'Reese', last_name: 'Tyler')      #5
-User.create(email: 'skyler@lewagon.com', password: '111111', first_name: 'Skyler', last_name: 'Sousa')    #6
-User.create(email: 'spencer@lewagon.com', password: '111111', first_name: 'Spencer', last_name: 'Raposo') #7
-User.create(email: 'elliott@lewagon.com', password: '111111', first_name: 'Elliott', last_name: 'White')  #8
-User.create(email: 'morgan@lewagon.com', password: '111111', first_name: 'Morgan', last_name: 'Free')     #9
-User.create(email: 'armani@lewagon.com', password: '111111', first_name: 'Armani', last_name: 'Gray')     #10
+User.create(email: 'riley@lw.com', password: '111111', first_name: 'Riley', last_name: 'Silva')      #0
+User.create(email: 'jordan@lw.com', password: '111111', first_name: 'Jordan', last_name: 'Green')    #1
+User.create(email: 'taylor@lw.com', password: '111111', first_name: 'Taylor', last_name: 'Bloom')    #2
+User.create(email: 'rui@lw.com', password: '111111', first_name: 'Rui', last_name: 'Baltazar')       #3
+User.create(email: 'jessie@lw.com', password: '111111', first_name: 'Jessie', last_name: 'Campos')   #4
+User.create(email: 'reese@lw.com', password: '111111', first_name: 'Reese', last_name: 'Tyler')      #5
+User.create(email: 'skyler@lw.com', password: '111111', first_name: 'Skyler', last_name: 'Sousa')    #6
+User.create(email: 'spencer@lw.com', password: '111111', first_name: 'Spencer', last_name: 'Raposo') #7
+User.create(email: 'elliott@lw.com', password: '111111', first_name: 'Elliott', last_name: 'White')  #8
+User.create(email: 'morgan@lw.com', password: '111111', first_name: 'Morgan', last_name: 'Free')     #9
+User.create(email: 'alex@lw.com', password: '111111', first_name: 'Alex', last_name: 'White')        #10
 
 
 # EVENT
@@ -48,7 +48,8 @@ Event.create(name: 'SecretSessions Movie Night', budget: 15, frequency: 'Every m
 Event.create(name: 'Video Games Party', budget: 5, frequency: 'Every 2 weeks', user_id: User.all[4].id)
 Event.create(name: 'Family Reunion', budget: 0, frequency: 'Every month', user_id: User.all[5].id)
 Event.create(name: "Dragon's Meetup", budget: 0, frequency: 'Every day', user_id: User.all[2].id)
-Event.create(name: 'Live Snake Jazz Fridays 🐍🎷', budget: 20, frequency: 'Every month', user_id: User.all[0].id)
+Event.create(name: 'Live Snake Jazz 🐍🎷', budget: 20, frequency: 'Every month', user_id: User.all[0].id)
+Event.create(name: 'Bowling Night 🎳', budget: 25, frequency: 'Twice a week', user_id: User.all[3].id)
 
 # MEMBER
 puts 'MEMMMMMMBEEEEERS 👨‍👩‍👧‍👦'
@@ -118,6 +119,14 @@ Member.create(event_id: Event.all[9].id, user_id: User.all[6].id)
 Member.create(event_id: Event.all[9].id, user_id: User.all[9].id)
 Member.create(event_id: Event.all[9].id, user_id: User.all[8].id)
 
+# EVENT 10
+Member.create(event_id: Event.all[10].id, user_id: User.all[2].id)
+Member.create(event_id: Event.all[10].id, user_id: User.all[3].id) # creator
+Member.create(event_id: Event.all[10].id, user_id: User.all[4].id)
+Member.create(event_id: Event.all[10].id, user_id: User.all[10].id)
+Member.create(event_id: Event.all[10].id, user_id: User.all[5].id)
+Member.create(event_id: Event.all[10].id, user_id: User.all[8].id)
+
 
 # EDITION
 puts 'Creating editions 🎫'
@@ -132,6 +141,7 @@ Edition.create(name: "#{Event.all[6].name} #1", event_id: Event.all[6].id, statu
 Edition.create(name: "#{Event.all[7].name} #1", event_id: Event.all[7].id, status: 0, host_id: User.all[7].id)
 Edition.create(name: "#{Event.all[8].name} #1", event_id: Event.all[8].id, status: 1, host_id: User.all[4].id, start_time: DateTime.new(2020,3,25), end_time: DateTime.new(2020,3,26))
 Edition.create(name: "#{Event.all[9].name} #1", event_id: Event.all[9].id, status: 1, host_id: User.all[6].id, start_time: DateTime.new(2020,3,13), end_time: DateTime.new(2020,3,14))
+Edition.create(name: "#{Event.all[10].name} #1", event_id: Event.all[10].id, status: 0, host_id: User.all[10].id)
 
 # GUEST
 puts 'GUEST GUEST GUEST 🎟🎟🎟'
@@ -179,6 +189,10 @@ Edition.all[10].event.members.each do |member|
   Guest.create(edition_id: Edition.all[10].id, member_id: member.id)
 end
 
+Edition.all[11].event.members.each do |member|
+  Guest.create(edition_id: Edition.all[11].id, member_id: member.id)
+end
+
 # TAGS
 puts 'TAAAAAAGZ 🏷'
 Tag.create(name: 'Sports')    #0
@@ -209,9 +223,11 @@ Tag.create(name: 'Fashion')   #24
 Tag.create(name: 'Lunch')     #25
 Tag.create(name: 'Indoor')    #26
 Tag.create(name: 'Live')      #27
-# Tag.create(name: 'Brunch')    #28
-# Tag.create(name: 'Party')     #29
-# Tag.create(name: 'Games')     #30
+Tag.create(name: 'Surprise')  #28
+Tag.create(name: 'Wild')      #29
+Tag.create(name: 'Work')      #30
+Tag.create(name: 'Pets')      #31
+Tag.create(name: 'Kids')      #32
 
 # EVENT TAGS
 puts 'generating event tags 🎭🎤🎪🏷'
@@ -254,6 +270,10 @@ EventTag.create(event_id: Event.all[8].id, tag_id: Tag.all[18].id)
 EventTag.create(event_id: Event.all[9].id, tag_id: Tag.all[11].id)
 EventTag.create(event_id: Event.all[9].id, tag_id: Tag.all[27].id)
 
+EventTag.create(event_id: Event.all[10].id, tag_id: Tag.all[22].id)
+EventTag.create(event_id: Event.all[10].id, tag_id: Tag.all[23].id)
+EventTag.create(event_id: Event.all[10].id, tag_id: Tag.all[10].id)
+
 # ITEMS
 puts 'items items items 🧢🍾🧀🤿'
 Item.create(name: 'umbrella')
@@ -270,3 +290,12 @@ Item.create(name: 'dessert')
 Item.create(name: 'beer')
 Item.create(name: 'card deck')
 Item.create(name: 'poker chips')
+Item.create(name: 'cash money')
+Item.create(name: 'pizza')
+Item.create(name: 'masks')
+Item.create(name: 'underwear')
+Item.create(name: 'beach ball')
+Item.create(name: 'snacks')
+Item.create(name: 'sun glasses')
+Item.create(name: 'whisky')
+Item.create(name: 'piñata')
