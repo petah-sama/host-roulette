@@ -1,6 +1,10 @@
 // PAGES >> CALENDAR
 #cal-fix {
 
+  .next-month.has-events {
+    background-color: rgba(217, 82, 64, 0.5);
+  }
+
   .table td {
     height: 80px;
     position: relative;
@@ -25,8 +29,8 @@
     &:hover .table-table-label {
       visibility: visible;
     }
-
   }
+
 }
 
 .guest-label-parent {
