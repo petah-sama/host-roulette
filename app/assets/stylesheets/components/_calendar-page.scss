@@ -1,81 +1,126 @@
 // PAGES >> CALENDAR
-
-#calendar-big {
-
-  .simple-calendar {
-    .day {
-      max-height: 40px;
-      vertical-align: middle;
-    }
-
-    .has-events {
-      background-color: $red;
-      max-height: 40px;
-      color: white;
-      p {
-        font-size: 0.7rem;
-      }
-    }
-  }
-
-  .calendar-container {
-    width: 480px;
-    height: 240px;
-  }
-
-  .calendar-heading {
-    width: 85%;
-    vertical-align: middle;
-    text-align: center;
-  }
-
-  .simple-calendar .day {
-      height: 30px;
-      width: 18px;
-      text-align: center;
-      font-size: 13px;
-  }
-
-  .simple-calendar th {
-    height: 30px;
-    text-align: center;
-    font-size: 15px;
-    padding: 2px;
-    vertical-align: middle;
-  }
-
-  .simple-calendar .today {
-    background: $success;
-    font-weight: bold;
-  }
-
-  .calendar-title {
-    font-size: 30px;
-    font-weight: bold;
-    vertical-align: middle;
-  }
-
-  .table {
-    width: 85%;
-    height: 100%;
-    background-color: white;
-  }
-
-  .table thead th {
-    border-style: none;
-    background-color: white;
-    padding: 20px;
-  }
+#cal-fix {
 
   .table td {
-    border-style: none;
-    background-color: white;
-    padding: 20px;
-  }
+    height: 80px;
+    position: relative;
 
-  .simple-calendar {
-    width: 800px;
-    height: 350px;
-    margin: 20px auto;
+    .table-table-label {
+      a {
+        text-decoration: none;
+      }
+
+      margin: auto;
+      width: 80%;
+      visibility: hidden;
+      position: absolute;
+      z-index: 9;
+      right: 0px;
+      bottom: 2em;
+      background-color: white;
+      border-radius: $border-radius;
+      color: $primary;
+    }
+
+    &:hover .table-table-label {
+      visibility: visible;
+    }
+
   }
 }
+
+.guest-label-parent {
+  position: relative;
+
+  .guest-label {
+    visibility: hidden;
+    position: absolute;
+    z-index: 9;
+    top: 4em;
+    background-color: white;
+  }
+
+  &:hover .guest-label {
+    visibility: visible;
+  }
+}
+
+// #calendar-big {
+
+//   .simple-calendar {
+//     .day {
+//       max-height: 40px;
+//       vertical-align: middle;
+//     }
+
+//     .has-events {
+//       background-color: $red;
+//       max-height: 40px;
+//       color: white;
+//       p {
+//         font-size: 0.7rem;
+//       }
+//     }
+//   }
+
+//   .calendar-container {
+//     width: 480px;
+//     height: 240px;
+//   }
+
+//   .calendar-heading {
+//     width: 85%;
+//     vertical-align: middle;
+//     text-align: center;
+//   }
+
+//   .simple-calendar .day {
+//       height: 30px;
+//       width: 18px;
+//       text-align: center;
+//       font-size: 13px;
+//   }
+
+//   .simple-calendar th {
+//     height: 30px;
+//     text-align: center;
+//     font-size: 15px;
+//     padding: 2px;
+//     vertical-align: middle;
+//   }
+
+//   .simple-calendar .today {
+//     background: $success;
+//     font-weight: bold;
+//   }
+
+//   .calendar-title {
+//     font-size: 30px;
+//     font-weight: bold;
+//     vertical-align: middle;
+//   }
+
+//   .table {
+//     width: 85%;
+//     height: 100%;
+//     background-color: white;
+//   }
+
+//   .table thead th {
+//     border-style: none;
+//     background-color: white;
+//     padding: 20px;
+//   }
+
+//   .table td {
+//     border-style: none;
+//     background-color: white;
+//     padding: 20px;
+//   }
+
+//   .simple-calendar {
+//     width: 800px;
+//     height: 350px;
+//     margin: 20px auto;
+//   }
+// }
