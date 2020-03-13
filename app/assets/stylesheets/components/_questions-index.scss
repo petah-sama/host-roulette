@@ -34,6 +34,7 @@
 
 .send-reminder-button {
   width: 94%;
+  margin-top:2px;
 }
 
 .color-container-div {
@@ -43,13 +44,13 @@
 
   #yes_color {
     font-size:30px;
-    color: $red;
+    color: darkblue ;
     margin-right:10px;
   }
 
   #no_color {
   font-size:20px;
-  color: $darkblue;
+  color: #D95140;
   font-size:30px;
   margin-right:10px;
   }

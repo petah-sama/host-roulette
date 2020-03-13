@@ -28,7 +28,7 @@
 
 
         <div class = 'chart-questions d-flex justify-content-center'>
-          <%= pie_chart [['Yes', question.answered_yes],['No', question.answered_no], ['Unanswered', question.unanswered]], legend: false, donut: true, label: "Value" , colors: ["#D95140", "#586a88"], width:"200px", height: "200px"%>
+          <%= pie_chart [['Yes', question.answered_yes],['No', question.answered_no], ['Unanswered', question.unanswered]], legend: false, donut: true, label: "Value" , colors: ["#586a88","#D95140"], width:"200px", height: "200px"%>
         </div>
       </div>
 
@@ -37,9 +37,6 @@
           Guest Answers
         </button>
         <div class = 'dropdown-menu col-12' aria-labelledby="dropdownMenuButton" >
-          <% if question.answers.size < @edition.guests.size - 1 %>
-            <%= link_to 'Send reminder', user_notifications_path(from: 'reminder', user_id: current_user, edition_id: question.edition.id, question: question), method: :post, data: { confirm: "Are you sure?" }, class: 'btn btn-info send-reminder-button mx-2' %>
-          <% else %>
             <% question.answers.each do |answer| %>
               <div class = 'dropdown-item answer-item' >
                 <div class = 'd-flex justify-content-between'>
@@ -54,6 +51,8 @@
                 </div>
               </div>
             <% end %>
+            <% if question.answers.size < @edition.guests.size - 1 %>
+            <%= link_to 'Send reminder', user_notifications_path(from: 'reminder', user_id: current_user, edition_id: question.edition.id, question: question), method: :post, data: { confirm: "Are you sure?" }, class: 'btn btn-info send-reminder-button mx-2' %>
           <% end %>
         </div>
       </div>
