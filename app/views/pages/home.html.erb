@@ -1,19 +1,10 @@
-<div class="header">
+<div class="landing-header">
 
-  <button class='logo-button'>
-
-    <div class='logo-tagline'>
-      <%= link_to dashboard_path do %>
-        Who's next?
-      <% end %>
-    </div>
-
-    <%= link_to dashboard_path do %>
-      <%= image_tag 'logo-roulette.svg', id: 'logo-roulette' %>
-      <%= image_tag 'logo-words.svg', id: 'logo-words' %>
-    <% end %>
-
-  </button>
+  <%= link_to dashboard_path, id: 'logo-main-button' do %>
+    <%= simple_format 'Who\'s next', id: 'logo-tagline' %>
+    <%= image_tag 'logo-roulette.svg', id: 'logo-roulette' %>
+    <%= image_tag 'logo-words.svg', id: 'logo-words' %>
+  <% end %>
 
   <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
     <source src="https://imgur.com/KS2A8v6.mp4" type="video/mp4">
