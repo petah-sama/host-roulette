@@ -1,5 +1,7 @@
-// VIDEO
-header {
+// body .landing-header:parent { background-color: $red !important; }
+body:has(> div.landing-header) { background-color: red; }
+
+.landing-header {
   position: relative;
   background-color: white;
   height: calc(100vh - 56px);
@@ -8,7 +10,8 @@ header {
   overflow: hidden;
 }
 
-header video {
+// VIDEO
+video {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -21,42 +24,15 @@ header video {
   -moz-transform: translateX(-50%) translateY(-50%);
   -webkit-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
+  clip-path: inset(0px 0px 18vh 0px);
 }
-
-video {
-  clip-path: inset(0px 0px 14vh 0px);
-}
-
-.overlay {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(255, 255, 255, 0.7));
-  z-index: 12;
-}
-
 
 // LOGO
-#roulette-logo {
-  transition: all 1s ease;
-  background-color: transparent;
-  z-index: 9;
-
-  &:hover {
-    transform: rotate(1080deg);
-  }
-}
-
-#words-logo {
-  z-index: 9;
-  position: absolute;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-}
-
-// BUTTON
-.myButt {
+#logo-main-button {
+  width: 400px;
+  position: fixed;
   top: calc(50% - 50px);
   left: 50%;
-  position: fixed;
   z-index: 3;
   transform: translate(-50%, -50%);
   display: block;
@@ -65,38 +41,50 @@ video {
   border: none;
   font-family: 'Catamaran';
   @include transition(all 0.5s ease);
-  outline: none;
-}
-
-.five {
-  outline: none;
   overflow: hidden;
-  color: #fff;
+  color: $white;
   text-decoration: none;
-  width: 400px;
+  outline: none;
 
-  .layer {
-    outline: none;
-    position: absolute;
+  #logo-tagline {
     width: 100%;
+    position: absolute;
     top: -145px;
-    left: 0;
+    left: 50%;
+    transform: translateX(-25%);
     font-size: 3em;
     font-style: italic;
     font-family: 'Lobster';
     @include transition(all 1s ease);
     text-decoration: none;
-  }
+    color: $white;
+    text-shadow: 0 0 10px $primary;
 
-  &:hover {
-    .layer {
-      top: 320px;
+    a {
       text-decoration: none;
     }
   }
+
+  &:hover #logo-tagline {
+    top: 320px;
+  }
+
+  #logo-roulette {
+    transition: all 1s ease;
+    background-color: transparent;
+    z-index: 9;
+
+    &:hover {
+      transform: rotate(1080deg);
+    }
+  }
+
+  #logo-words {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    pointer-events: none;
+  }
 }
 
-.layer a {
- text-decoration: none;
- color:#fff;
-}
