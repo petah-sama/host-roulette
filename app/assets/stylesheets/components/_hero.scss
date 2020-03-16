@@ -1,14 +1,15 @@
 // VIDEO
-header {
+.header {
   position: relative;
   background-color: white;
   height: calc(100vh - 56px);
   min-height: 25rem;
   width: 100%;
   overflow: hidden;
+
 }
 
-header video {
+video {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -21,20 +22,11 @@ header video {
   -moz-transform: translateX(-50%) translateY(-50%);
   -webkit-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
+  clip-path: inset(0px 0px 18vh 0px);
 }
-
-video {
-  clip-path: inset(0px 0px 14vh 0px);
-}
-
-.overlay {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(255, 255, 255, 0.7));
-  z-index: 12;
-}
-
 
 // LOGO
-#roulette-logo {
+#logo-roulette {
   transition: all 1s ease;
   background-color: transparent;
   z-index: 9;
@@ -44,7 +36,7 @@ video {
   }
 }
 
-#words-logo {
+#logo-words {
   z-index: 9;
   position: absolute;
   top: 0;
@@ -53,7 +45,7 @@ video {
 }
 
 // BUTTON
-.myButt {
+.logo-button {
   top: calc(50% - 50px);
   left: 50%;
   position: fixed;
@@ -66,16 +58,13 @@ video {
   font-family: 'Catamaran';
   @include transition(all 0.5s ease);
   outline: none;
-}
-
-.five {
   outline: none;
   overflow: hidden;
   color: #fff;
   text-decoration: none;
   width: 400px;
 
-  .layer {
+  .logo-tagline {
     outline: none;
     position: absolute;
     width: 100%;
@@ -86,17 +75,15 @@ video {
     font-family: 'Lobster';
     @include transition(all 1s ease);
     text-decoration: none;
-  }
-
-  &:hover {
-    .layer {
-      top: 320px;
-      text-decoration: none;
+    a {
+     text-decoration: none;
+     color:#fff;
     }
   }
+
+  &:hover .tagline {
+    top: 320px;
+    text-decoration: none;
+  }
 }
 
-.layer a {
- text-decoration: none;
- color:#fff;
-}
