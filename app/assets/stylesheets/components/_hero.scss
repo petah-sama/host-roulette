@@ -1,9 +1,6 @@
-// body .landing-header:parent { background-color: $red !important; }
-body:has(> div.landing-header) { background-color: red; }
-
 .landing-header {
   position: relative;
-  background-color: white;
+  background-color: $gray;
   height: calc(100vh - 56px);
   min-height: 25rem;
   width: 100%;
