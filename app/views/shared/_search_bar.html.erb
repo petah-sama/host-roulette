@@ -1,24 +1,19 @@
-<div class="col-9 p-0 d-flex pr-1">
+<div class="col-9 search-bar">
   <% if controller_name == 'pages' && action_name == 'index' %>
-
-    <%= form_tag 'dashboard', method: :get, class: 'form-inline form-shrink-grow' do %>
+    <%= form_tag 'dashboard', method: :get, class: 'form-inline flex-grow-1' do %>
       <%= text_field_tag :query,
         params[:query],
-        class: "form-control form-shrink-grow",
-        placeholder: "Search for an Edition" %>
-      <%= submit_tag "Search", class: "btn btn-primary ml-2" %>
+        class: "form-control flex-grow-1 mr-2",
+        placeholder: "Search for an Event" %>
+      <%= submit_tag "Search", class: "btn btn-primary" %>
     <% end %>
-
   <% elsif controller_name == 'pages' && action_name == 'past_events' %>
-
-    <%= form_tag 'past-events', method: :get, class: 'form-inline form-shrink-grow' do %>
+    <%= form_tag 'past-events', method: :get, class: 'form-inline flex-grow-1' do %>
       <%= text_field_tag :query,
         params[:query],
-        class: "form-control form-shrink-grow",
-        placeholder: "Search for an Edition"
-      %>
-      <%= submit_tag "Search", class: "btn btn-primary ml-2" %>
+        class: "form-control flex-grow-1 mr-2",
+        placeholder: "Search for an Event" %>
+      <%= submit_tag "Search", class: "btn btn-primary" %>
     <% end %>
-
   <% end %>
 </div>

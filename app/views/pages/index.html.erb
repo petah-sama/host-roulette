@@ -10,24 +10,23 @@
     </div>
   </div>
 
-  <!-- https://www.w3schools.com/w3css/w3css_progressbar.asp -->
-  <!-- We need the host, to edit the logic of stats  -->
-
   <div class="stats col-3">
 
     <div class="stats-card mb-4 p-3">
-      <h4 class='title-charts mb-3'> Hosting </h4>
-      <div class='stats-chart'>
-        <%= pie_chart [['Hosting', @hostingeditions.size], ['Guest', @alleditions.size - @hostingeditions.size]], legend: false, donut: true, label: "Value" , colors: ["#586a88", "#DCDCDC"], width:"200px", height: "200px"%>
-        <p class='text-inside-chart col-8'>  <%= @hostingeditions.size %> of <%= @alleditions.size %> events </p>
+      <h4 class="title-charts mb-3">Hosting</h4>
+      <div class="stats-chart">
+        <%= pie_chart [['Hosting', @hostingeditions.size], ['Guest', @alleditions.size - @hostingeditions.size]],
+        legend: false, donut: true, label: "Value" , colors: ["#586a88", "#DCDCDC"], width:"200px", height: "200px" %>
+        <p class="text-inside-chart col-8"><%= @hostingeditions.size %> of <%= @alleditions.size %> events</p>
       </div>
     </div>
 
     <div class="stats-card-cool mt-4 mb-4 p-3">
-      <h4 class='title-charts mb-3'> Scheduled </h4>
-      <div class='stats-chart'>
-        <%= pie_chart [ ['Active', @alleditions.active.size],['Pending', @alleditions.pending.size]], legend: false, donut: true, label: "Value" , colors: ["#D95140","#DCDCDC"], width:"200px", height: "200px"%>
-        <p class='text-inside-chart col-8'> <%=  @alleditions.active.size %> of <%= (@alleditions.active.size + @alleditions.pending.size) %> events </p>
+      <h4 class="title-charts mb-3">Scheduled</h4>
+      <div class="stats-chart">
+        <%= pie_chart [['Active', @alleditions.active.size],['Pending', @alleditions.pending.size]],
+        legend: false, donut: true, label: "Value" , colors: ["#D95140","#DCDCDC"], width:"200px", height: "200px" %>
+        <p class="text-inside-chart col-8"><%= @alleditions.active.size %> of <%= (@alleditions.active.size + @alleditions.pending.size) %> events</p>
       </div>
     </div>
 
