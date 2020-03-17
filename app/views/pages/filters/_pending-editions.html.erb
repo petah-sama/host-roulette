@@ -3,7 +3,7 @@
     <% if edition.pending? %>
     <div class="<%= 'hosting-card' if edition&.host != current_user %>">
       <%= link_to event_edition_path(edition.event, edition) do %>
-      <div class="dashboard-card mt-4">
+      <div class="dashboard-card">
         <div class="col-4 p-0">
           <% if edition.photo.attached? %>
               <div id="image-test" style="background-image: url(<%= url_for(edition.photo) %>)"></div>
