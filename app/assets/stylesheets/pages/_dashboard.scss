@@ -3,7 +3,7 @@
 }
 
 .stats {
-  padding-left: 12px;
+  padding-left: 0;
   padding-right: 24px;
   height: calc(100vh - 95px);
   position: sticky;
@@ -72,10 +72,6 @@
   border-radius: $border-radius;
   padding: 30px;
   background-color: white;
-}
-
-.card-container {
-  padding-right: 12px;
 }
 
 .dashboard-card {

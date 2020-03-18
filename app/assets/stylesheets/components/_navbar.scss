@@ -14,14 +14,21 @@
 }
 
 .search-bar {
-  display: flex;
-  padding: 0 12px 0 24px;
+  // min-width: 25vw;
 }
+
+
+.form-inline .form-control {
+  display: inline-block;
+  width: auto;
+  vertical-align: middle;
+}
+
 
 #navbarSupportedContent {
   display: flex;
   justify-content: space-between;
-  padding: 0 24px 0 12px;
+  padding: 0 24px 0 0;
 }
 
 .navbar-nav {

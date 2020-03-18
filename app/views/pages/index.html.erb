@@ -1,5 +1,5 @@
 <div class="content-container d-flex mt-3" id="dashboard-page">
-  <div class="card-container col-9 pl-4">
+  <div class="card-container col-12 col-lg-9 px-4">
 
     <div class="active-cards" id='active-cards'>
       <%= render 'pages/filters/active-editions' %>
@@ -10,18 +10,14 @@
     </div>
   </div>
 
-  <div class="stats col-3">
+  <div class="stats col-3 d-none d-lg-inline">
 
     <div class="stats-card-hosting p-3 pb-4">
       <h4 class="title-charts mb-3">Hosting</h4>
       <div class="stats-chart">
-        <%#= pie_chart [['Hosting', @hostingeditions.size], ['Guest', @alleditions.size - @hostingeditions.size]],
+        <%= pie_chart [['Hosting', @hostingeditions.size], ['Guest', @alleditions.size - @hostingeditions.size]],
         legend: false, donut: true, label: "Value" , colors: ["#586a88", "#DCDCDC"], width:"200px", height: "200px" %>
-        <!-- <p class="text-inside-chart col-8"><%= @hostingeditions.size %> of <%= @alleditions.size %> events</p> -->
-
-
-        <%= column_chart [['Hosting', @hostingeditions.size, color: 'red']],
-        legend: false, width:"100px", height: "200px", stacked: true, max: @alleditions.size %>
+        <p class="text-inside-chart col-8"><%= @hostingeditions.size %> of <%= @alleditions.size %> events</p>
       </div>
     </div>
 

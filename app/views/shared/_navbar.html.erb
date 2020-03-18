@@ -5,10 +5,6 @@
   <!-- SEARCH BAR -->
   <%= render 'shared/search_bar' %>
 
-  <!-- HAMBURGER BUTTON -->
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
 
   <!-- RIGHT PORTION -->
   <!-- RIGHT PORTION -->
@@ -21,7 +17,7 @@
     <!-- USER PORTION -->
     <ul class="navbar-nav col-10 p-0 justify-content-end">
       <% if user_signed_in? %>
-        <li class="nav-item-name"><%= current_user.first_name %> <%= current_user.last_name.first %>.</li>
+        <li class="nav-item-name d-none d-lg-inline"><%= current_user.first_name %> <%= current_user.last_name.first %>.</li>
 
         <li class="nav-item dropdown">
           <% if current_user.photo.attached? %>
