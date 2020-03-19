@@ -3,9 +3,7 @@
   <div class="event-slide d-flex flex-column justify-content-between">
     <h2><%= @edition.event.name.upcase %>!</h2>
     <div class="d-flex justify-content-center">
-      <div id="wheel">
-        <canvas id="canvas" width="800" height="800"></canvas>
-      </div>
+      <div id="chart"></div>
       <%= audio_tag 'song.mp3', autoplay: false, id: 'song' %>
     </div>
     <div class="d-flex justify-content-center">

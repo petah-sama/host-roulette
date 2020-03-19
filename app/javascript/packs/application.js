@@ -4,11 +4,12 @@ import 'select2/dist/css/select2.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 
+
 import { eventRest } from '../components/event_form';
 import { tagFunctionality } from '../components/tag_choice';
 import { sliderBudgetValue } from '../components/event_form';
 import { initMapbox } from '../plugins/init_mapbox';
-import { editionRest } from '../components/roulette';
+import { rouletteWheel } from '../components/roulette';
 import { refreshMembers } from '../components/invite_members_refresh.js';
 import { existingEdition } from '../components/existing_edition';
 import { deleteAlert } from '../components/notifications_swal'
@@ -38,9 +39,9 @@ if (tagForm) {
 };
 
 // NEW EDITION ROULETTE
-const roulettePage = document.querySelector('#wheel');
+const roulettePage = document.querySelector('#chart');
 if (roulettePage) {
-  editionRest();
+  rouletteWheel();
 };
 
 // REFRESH THE MEMBER JOINING PAGE EVERY 5 SECONDS
