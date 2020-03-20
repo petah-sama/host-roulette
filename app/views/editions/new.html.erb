@@ -15,7 +15,7 @@
       <div>
         <ul class="list-inline">
           <% @event.participants.each do |participant| %>
-            <li class="user-names" data-name="<%= participant.first_name %>" data-last="<%= participant.last_name %>" data-id="<%= participant.id %>"></li>
+            <li id="user-names" data-name="<%= participant.first_name %> <%= participant.last_name %>" data-id="<%= participant.id %>"></li>
           <% end %>
         </ul>
       </div>

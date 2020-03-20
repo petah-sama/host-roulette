@@ -1,5 +1,5 @@
 import * as d3 from 'd3';
-
+import swal from 'sweetalert';
 
 const rouletteWheel = () => {
 
@@ -18,20 +18,11 @@ const rouletteWheel = () => {
   let oldpick = [];
   let color = d3.scale.category20();
 
-  const data = [
-    { "label": "Tiago Carvalho",  "value": 1 },
-    { "label": "Shannon Graybill",  "value": 2 },
-    { "label": "Pedro Alberto",  "value": 3 },
-    { "label": "Humberto Coelho",  "value": 4 },
-    { "label": "Adalberto Bruno",  "value": 5 },
-    { "label": "Ricardo Otero",  "value": 6 },
-    { "label": "Maria Vacondeus",  "value": 7 },
-    { "label": "Patrick Pinto",  "value": 8 },
-    { "label": "Rui Vitor Baltazar",  "value": 9 },
-    { "label": "Pequeno Eusébio", "value": 10 },
-  ];
-
-  oldpick = [{ "label": "Shannon Graybill",  "value": 2 }];
+  let data = [];
+  let members = document.querySelectorAll('#user-names');
+  members.forEach(function(member) {
+    data.push({ "label": member.dataset.name,  "value": member.dataset.id });
+  });
 
   const svg = d3.select('#chart')
     .append("svg")
@@ -109,29 +100,27 @@ const rouletteWheel = () => {
         d3.select(".slice:nth-child(" + (picked + 1) + ") path")
           .classed({'selected': true });
 
-        // populate answer
-        d3.select("#picked")
-          .text(`Picked: ${data[picked].label}`);
-
         oldrotation = rotation;
 
-        setInterval(lowerSongVolume, 500);
 
-        let hostId = data[picked].label;
 
-        setInterval(lowerSongVolume, 500);
+        let hostId = data[picked].value;
 
-        const hostInput = document.querySelector('#host-input');
         const rouletteForm = document.querySelector('#roulette-form');
 
-        rouletteForm.insertAdjacentHTML("beforeend", `<input value="${hostId}" type="number" class="form-control numeric integer optional d-none" id="host-input" name="edition[host_id]">`);
-        rouletteForm.insertAdjacentHTML("beforeend", `<input type="submit" name="commit" id="see-edition-button" class="d-none">`);
 
+        rouletteForm.insertAdjacentHTML("beforeend", `<input value="${hostId}" type="number" class="form-control numeric integer optional d-none" id="host-input" name="edition[host_id]">`);
+        rouletteForm.insertAdjacentHTML("beforeend", `<input type="submit" name="commit" value="See edition!" id="see-edition-button" class="btn btn-lg btn-danger hidden-element d-none" data-disable-with="See edition!">`);
+
+
+        setInterval(lowerSongVolume, 500);
 
         return swal({
-          title: data[picked].label,
+          title: `🎉 ${data[picked].label} 🎉`,
           text: "is the new Host!",
-          button: "See edition!",
+          button: "See event!",
+          closeOnEsc: false,
+          closeOnClickOutside: false,
         }).then((value) => {
           if (value) {
             const seeEditionButton = document.querySelector('#see-edition-button');
@@ -146,22 +135,22 @@ const rouletteWheel = () => {
       .attr("transform", "translate(" + (w + padding.left + padding.right) + "," + ((h/2)+padding.top) + ")")
       .append("path")
       .attr("d", "M-" + (r*.15) + ",0L0," + (r*.05) + "L0,-" + (r*.05) + "Z")
-      .style({"fill":"black"});
+      .style({"fill":"#051c4a"});
 
   //draw spin circle
   container.append("circle")
       .attr("cx", 0)
       .attr("cy", 0)
       .attr("r", 60)
-      .style({"fill":"white","cursor":"pointer"});
+      .style({"fill":"#051c4a"});
 
   //spin text
-  container.append("text")
-      .attr("x", 0)
-      .attr("y", 15)
-      .attr("text-anchor", "middle")
-      .text("SPIN!")
-      .style({"font-weight":"bold", "font-size":"30px"});
+  // container.append("text")
+  //     .attr("x", 0)
+  //     .attr("y", 15)
+  //     .attr("text-anchor", "middle")
+  //     .text("Host \n Roulette")
+  //     .style({"font-weight":"bold", "font-size":"30px", "font-family":"Lobster"});
 
 
   function rotTween(to) {
@@ -174,15 +163,16 @@ const rouletteWheel = () => {
   const song = document.getElementById('song');
 
   const lowerSongVolume = () => {
-    if (song.volume === 0.4) {
+    if (song.volume === 0.3) {
       return;
     }
 
-    song.volume = Math.max(song.volume - 0.1, 0.4);
+    song.volume = Math.max(song.volume - 0.1, 0.3);
   }
 
   const button = document.querySelector("#button-roulette")
 
+  // Click 'Spin to pick host!'
   button.addEventListener("click", event => {
     button.disabled = true;
     spin();

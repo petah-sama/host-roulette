@@ -1,18 +1,19 @@
 
+svg {
+  margin-left: 20px;
+}
+
 text{
-  font-size:11px;
+  font-size:18px;
   pointer-events:none;
 }
 #chart {
-  // position:absolute;
   width:500px;
   height:500px;
   top:0;
   left:0;
 }
-#picked {
-  margin-top: 500px;
-}
+
 .selected {
   /* transition: fill .1s ease; */
   fill: rgb(62, 35, 35);
