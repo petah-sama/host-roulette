@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_10_105138) do
+ActiveRecord::Schema.define(version: 2020_03_20_020329) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 2020_03_10_105138) do
     t.float "avg_rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "host_avg_rating", default: 0.0
     t.index ["event_id"], name: "index_editions_on_event_id"
   end
 

@@ -6,6 +6,16 @@
       <% @edition.reviews.reverse_each do |review| %>
         <%= render 'reviews/show', review: review %>
       <% end %>
+      <div class="average-rating p-2 d-flex">
+        <div class="p-4">
+          <h5>Edition Average Rating:</h5>
+          <%= @edition[:avg_rating] %>
+        </div>
+        <div class="p-4">
+          <h5>Host Average Rating:</h5>
+          <%= @edition[:host_avg_rating] %>
+        </div>
+      </div>
     </div>
   <% elsif @edition.reviews.blank? %>
     <h4>Be the first to leave a review for <%= @edition.name %></h4>
