@@ -1,66 +1,50 @@
-<div class="notification-div col-2 p-0">
-  <% if user_signed_in? %>
+<% if user_signed_in? %>
+  <div class="dropdown-content dropdown-list">
 
-    <div class="notification-bell" onclick="notifications()">
-      <i class="dropbtn fas fa-bell">
-        <% if (current_user.notifications.exists?) %>
-          <i class="fas fa-circle"></i>
+    <span class="d-flex justify-content-between align-items-center mx-3 my-1">
+      <p id="all-notification-text">Notifications</p>
+      <%= link_to 'delete', notifications_path, method: :delete, id: 'delete-all-notifications', class: 'd-none' %>
+      <i class="fas fa-trash-alt" id="icon-notification-text"></i>
+    </span>
+
+    <% current_user.notifications.each do |notification| %>
+      <% if notification.from == 'active' %>
+        <%= link_to event_edition_path(notification.edition.event.id, notification.edition.id) do %>
+          <div class="d-flex justify-content-between align-items-center dropdown-item dropdown-notification-item px-2">
+            <i class="fas fa-map-marker-alt active-notification col-1 justify-content-center"></i>
+            <p class="col-11 ml-1 p-0"><%= notification.edition.name %> is scheduled!</p>
+          </div>
         <% end %>
-      </i>
-    </div>
-
-    <div class="dropdown-content" id="myDropdown">
-
-      <span class="d-flex justify-content-between align-items-center mx-3 my-1">
-        <p id="all-notification-text">Notifications</p>
-        <%= link_to 'delete', notifications_path, method: :delete, id: 'delete-all-notifications', class: 'd-none' %>
-        <i class="fas fa-trash-alt" id="icon-notification-text"></i>
-      </span>
-
-      <% current_user.notifications.each do |notification| %>
-        <% if notification.from == 'active' %>
-          <%= link_to event_edition_path(notification.edition.event.id, notification.edition.id) do %>
-            <div class="d-flex justify-content-between align-items-center dropdown-item dropdown-notification-item px-2">
-              <i class="fas fa-map-marker-alt active-notification col-1 justify-content-center"></i>
-              <p class="col-11 ml-1 p-0"><%= notification.edition.name %> is scheduled!</p>
-            </div>
-          <% end %>
-        <% elsif notification.from == 'began' %>
-          <%= link_to event_edition_path(notification.edition.event.id, notification.edition.id) do %>
-            <div class="d-flex justify-content-between align-items-center dropdown-item dropdown-notification-item px-2">
-              <i class="fas fa-map-marker-alt active-notification col-1 justify-content-center"></i>
-              <p class="col-11 ml-1 p-0">You joined <%= notification.edition.name %>!</p>
-            </div>
-          <% end %>
-        <% elsif notification.from == 'host' %>
-          <%= link_to event_edition_path(notification.edition.event.id, notification.edition.id) do %>
-            <div class="d-flex justify-content-between align-items-center dropdown-item dropdown-notification-item px-2">
-              <i class="fas fa-crown active-notification col-1 justify-content-center"></i>
-              <p class="col-11 ml-1 p-0">You're the Host of <%= notification.edition.name %>!</p>
-            </div>
-          <% end %>
-        <% elsif notification.from == 'question' %>
-          <%= link_to event_edition_path(notification.edition.event.id, notification.edition.id) do %>
-            <div class="d-flex justify-content-between align-items-center dropdown-item dropdown-notification-item px-2">
-              <i class="far fa-comment-alt active-notification col-1 justify-content-center"></i>
-              <p class="col-11 ml-1 p-0">New question for <%= notification.edition.name %>!</p>
-            </div>
-          <% end %>
-        <% elsif notification.from == 'reminder' %>
-          <%= link_to event_edition_path(notification.edition.event.id, notification.edition.id) do %>
-            <div class="d-flex justify-content-between align-items-center dropdown-item dropdown-notification-item px-2">
-              <i class="fas fa-exclamation active-notification col-1 justify-content-center"></i>
-              <p class="col-11 ml-1 p-0">Don't forget the questions for <%= notification.edition.name %>!</p>
-            </div>
-          <% end %>
+      <% elsif notification.from == 'began' %>
+        <%= link_to event_edition_path(notification.edition.event.id, notification.edition.id) do %>
+          <div class="d-flex justify-content-between align-items-center dropdown-item dropdown-notification-item px-2">
+            <i class="fas fa-map-marker-alt active-notification col-1 justify-content-center"></i>
+            <p class="col-11 ml-1 p-0">You joined <%= notification.edition.name %>!</p>
+          </div>
+        <% end %>
+      <% elsif notification.from == 'host' %>
+        <%= link_to event_edition_path(notification.edition.event.id, notification.edition.id) do %>
+          <div class="d-flex justify-content-between align-items-center dropdown-item dropdown-notification-item px-2">
+            <i class="fas fa-crown active-notification col-1 justify-content-center"></i>
+            <p class="col-11 ml-1 p-0">You're the Host of <%= notification.edition.name %>!</p>
+          </div>
+        <% end %>
+      <% elsif notification.from == 'question' %>
+        <%= link_to event_edition_path(notification.edition.event.id, notification.edition.id) do %>
+          <div class="d-flex justify-content-between align-items-center dropdown-item dropdown-notification-item px-2">
+            <i class="far fa-comment-alt active-notification col-1 justify-content-center"></i>
+            <p class="col-11 ml-1 p-0">New question for <%= notification.edition.name %>!</p>
+          </div>
+        <% end %>
+      <% elsif notification.from == 'reminder' %>
+        <%= link_to event_edition_path(notification.edition.event.id, notification.edition.id) do %>
+          <div class="d-flex justify-content-between align-items-center dropdown-item dropdown-notification-item px-2">
+            <i class="fas fa-exclamation active-notification col-1 justify-content-center"></i>
+            <p class="col-11 ml-1 p-0">Unanswered questions for <%= notification.edition.name %>!</p>
+          </div>
         <% end %>
       <% end %>
+    <% end %>
 
-    </div>
-  <% end  %>
-</div>
-
-
-
-
-
+  </div>
+<% end  %>

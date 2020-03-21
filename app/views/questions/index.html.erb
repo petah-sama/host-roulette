@@ -1,33 +1,33 @@
 <%= link_to 'Back', event_edition_path(@event, @edition), class: 'btn btn-primary ml-4' %>
 
-<div class = 'color-container-div d-flex ml-2 mt-4 col-6'>
-  <div class = 'd-flex align-items-center mr-3'>
-    <i class="fas fa-square" id = 'yes_color'></i>
-    <p class = 'm-0'> Answered Yes </p>
+<div class="color-container-div d-flex ml-2 mt-4 col-6">
+  <div class="d-flex align-items-center mr-3">
+    <i class="fas fa-square" id="yes_color"></i>
+    <p class="m-0"> Answered Yes </p>
   </div>
-  <div class = 'd-flex align-items-center mr-3'>
-    <i class="fas fa-square" id = 'no_color'></i>
-    <p class = 'm-0'> Answered No</p>
+  <div class="d-flex align-items-center mr-3">
+    <i class="fas fa-square" id="no_color"></i>
+    <p class="m-0"> Answered No</p>
   </div>
-  <div class = 'd-flex align-items-center'>
-    <i class="fas fa-square" id = 'unanswered_color'></i>
-    <p class = 'm-0'> Unanswered </p>
+  <div class="d-flex align-items-center">
+    <i class="fas fa-square" id="unanswered_color"></i>
+    <p class="m-0"> Unanswered </p>
   </div>
 </div>
 
 <div class="questions-main-container m-4">
   <% @questions.each do |question| %>
-    <div class='question-card-container grid-item'>
+    <div class="question-card-container grid-item">
       <div>
         <div class="header-question mb-4">
-          <h5 class = 'text-center'><%= question.content %></h5>
+          <h5 class="text-center"><%= question.content %></h5>
           <%= link_to question_path(question), method: :delete, data: { confirm: "Are you sure?" }, class: 'delete-question' do %>
             <i class="fas fa-trash-alt text-info"></i>
           <% end %>
         </div>
 
 
-        <div class = 'chart-questions d-flex justify-content-center'>
+        <div class="chart-questions d-flex justify-content-center">
           <%= pie_chart [['Yes', question.answered_yes],['No', question.answered_no], ['Unanswered', question.unanswered]], legend: false, donut: true, label: "Value" , colors: ["#586a88","#D95140"], width:"200px", height: "200px"%>
         </div>
       </div>
@@ -36,10 +36,10 @@
         <button class="btn btn-secondary dropdown-toggle dropdown-answers" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Guest Answers
         </button>
-        <div class = 'dropdown-menu col-12' aria-labelledby="dropdownMenuButton" >
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" >
             <% question.answers.each do |answer| %>
-              <div class = 'dropdown-item answer-item' >
-                <div class = 'd-flex justify-content-between'>
+              <div class="dropdown-item answer-item" >
+                <div class="d-flex justify-content-between">
                   <div>
                     <% if answer.content == true %>
                       <i class="fas fa-check"></i>

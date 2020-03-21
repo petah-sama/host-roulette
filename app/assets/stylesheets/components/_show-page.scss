@@ -42,7 +42,6 @@
   border-radius: 50%;
 }
 
-
 .avatar-host {
   width: 80px;
   border-radius: 50%;
@@ -50,8 +49,8 @@
 }
 
 #see-all-guests {
-  margin-top:5px;
-  padding:5px 10px;
+  margin-top: 5px;
+  padding: 5px 10px;
 }
 
 #more {
@@ -60,7 +59,6 @@
 
 .guest-label-parent {
   position: relative;
-  // overflow: visible;
 
   .guest-label {
     visibility: hidden;
@@ -74,8 +72,6 @@
     visibility: visible;
   }
 }
-
-
 
 // QUESTION CARDS
 .answer-hidden {

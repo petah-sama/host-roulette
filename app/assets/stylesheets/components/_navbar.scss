@@ -1,9 +1,7 @@
 .navbar-main {
-  background: white;
   position: sticky;
   z-index: 3;
   top: 0px;
-  background-color: #f4f6f9;
   right: 0px;
   .navbar-collapse {
     flex-grow: 0;
@@ -13,26 +11,24 @@
   }
 }
 
-.search-bar {
-  // min-width: 25vw;
+.navbar-main-color {
+  background-color: $red;
 }
 
-
-.form-inline .form-control {
-  display: inline-block;
-  width: auto;
-  vertical-align: middle;
+@include media-breakpoint-up(md) {
+  .navbar-main-color {
+    background-color: $gray;
+  }
 }
 
-
-#navbarSupportedContent {
-  display: flex;
-  justify-content: space-between;
-  padding: 0 24px 0 0;
-}
-
-.navbar-nav {
-  display: flex;
+// LOGO
+#logo-small-div {
+  height: 40px;
+  overflow: hidden;
+  left: -8px;
+  #logo-small {
+    width: 60px;
+  }
 }
 
 .nav-item-name {
@@ -40,25 +36,57 @@
   margin-right: 16px;
 }
 
-// NOTIFICATIONS
+// SEARCH BAR
+.form-inline {
+  height: 40px;
+  .form-control {
+    display: inline-block;
+    width: 50%;
+    vertical-align: middle;
+    background-color: $red;
+    border: 1px solid $gray;
+    color: $gray;
+    &::placeholder {
+      color: $gray;
+    }
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .form-inline .form-control {
+    background-color: $gray;
+    border: 1px solid #ced4da;
+    color: #495057;
+    &::placeholder {
+      color: #495057;
+    }
+  }
+}
+
+.button-clear i {
+  font-size: 150%;
+  color: $gray;
+}
+
+// NOTIFICATION BELL
 .notification-div {
   align-self: center;
   position: relative;
   cursor: pointer;
-  .fa-bell {
-    position: relative;
-    font-size: 1.5em;
-  }
-  .fa-circle {
-    position: absolute;
-    left: 10px;
-    color: $red;
-    font-size: 0.5em;
-    pointer-events: none;
-  }
+}
+.fa-bell {
+  position: relative;
+  font-size: 1.5em;
+}
+.fa-circle {
+  position: absolute;
+  left: 10px;
+  color: $red;
+  font-size: 0.5em;
+  pointer-events: none;
 }
 
-.notification-bell:hover {
+#notification-bell:hover {
   animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
 }
 
@@ -95,11 +123,9 @@
 
 // NOTIFICATION DROPDOWN
 .dropdown-content {
-  width: 400px;
   display: none;
   position: absolute;
-  top: 42px;
-  right: 16px;
+  right: 0px;
   padding: 0.5rem 0;
   background-color: $white;
   z-index: 1;
@@ -116,38 +142,46 @@
   }
 }
 
-.display-notifications {
-  display: block;
-  .dropdown-notification-item {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    white-space: nowrap;
-    &:hover {
-      background-color: $gray;
-    }
-    i {
-      text-align: center;
-      align-self: center;
-      font-size: 1em;
-    }
-    p {
-      align-self: center;
-      font-size: 12px;
-    }
+.display-notifications-up {
+  width: 400px;
+  display: inline-block;
+  top: 42px;
+}
+
+.display-notifications-down {
+  width: 280px;
+  display: inline-block;
+  bottom: 42px;
+}
+
+.dropdown-notification-item {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  &:hover {
+    background-color: $gray;
+  }
+  i {
+    text-align: center;
+    align-self: center;
+    font-size: 1em;
+  }
+  p {
+    align-self: center;
+    font-size: 12px;
   }
 }
 
 .active-notification {
   font-size: 28px;
   padding: 8px 5px;
-  // margin-right: 0px;
-  // margin-bottom: 0px;
 }
 
-.dropdown-menu {
+.navbar-nav .dropdown-menu {
   top: 46px;
   border: 1px solid #CFD1D4;
   border-radius: $border-radius;
   box-shadow: 0 0 10px $info;
+  position: absolute;
 }

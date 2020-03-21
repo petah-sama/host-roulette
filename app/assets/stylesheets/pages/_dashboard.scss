@@ -40,18 +40,18 @@
 
 .title-charts {
   font-family: 'Catamaran';
-  font-size:35px;
-  font-weight:bold;
+  font-size: 35px;
+  font-weight: bold;
 }
 
 .text-inside-chart {
-  top:70px;
-  font-family:'Catamaran';
-  font-size:25px;
-  font-weight:bold;
-  left:0;
-  right:0;
-  position:absolute;
+  top: 70px;
+  font-family: 'Catamaran';
+  font-size: 25px;
+  font-weight: bold;
+  left: 0;
+  right: 0;
+  position: absolute;
   margin: 0px auto;
   padding: 0px;
   line-height: 30px;
@@ -66,9 +66,9 @@
 }
 
 .notification-card {
-  text-align:center;
-  width:48.5%;
-  height:15vh;
+  text-align: center;
+  width: 48.5%;
+  height: 15vh;
   border-radius: $border-radius;
   padding: 30px;
   background-color: white;
@@ -101,14 +101,13 @@
 }
 
 .avatar-guest-small {
-  width: 45px;
+  width: 30px;
   border-radius: 50%;
 }
 
 .show-guest-list-item {
   align-self: center;
 }
-
 
 .dashboard-info {
   display: flex;
@@ -118,37 +117,29 @@
 }
 
 .countdown-dashboard {
-  display: flex;
-  padding: 0px;
   text-align: center;
-  justify-content: space-between;
   color: $red;
-  align-self: center;
-
-  h5 {
-    margin: 0px;
-    font-size: 25px;
-    line-height: 30px;
-    padding: 0px;
-    align-self: center;
-    font-weight: bold;
-    text-transform: uppercase;
-    align-self: center;
-  }
-
   i {
     align-self: center;
-    font-size: 20px;
-    padding-right: 10px;
+    font-size: 1em;
   }
+}
+
+h5 {
+  margin: 0px;
+  font-size: 0.75rem;
+  padding: 0px;
+  align-self: center;
+  text-transform: uppercase;
+  align-self: center;
 }
 
 .tiny-tag {
-  font-size: 12px;
+  font-size: 0.5em;
   align-self: center;
 }
 
-#image-test {
+.dashboard-card-image {
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -157,14 +148,31 @@
   opacity: 0.8;
 }
 
-.tittle-card h2 {
-  font-size: 35px;
+.title-card h2 {
+  font-size: 1em;
   align-self: center;
 }
 
 .bottom-card {
   margin-top: 10px;
-  display: flex;
-  justify-content: space-between;
   padding: 0px;
 }
+
+
+@include media-breakpoint-up(md) {
+  .avatar-guest-small {
+    width: 45px;
+  }
+  h5 {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  .title-card h2 {
+    font-size: 2em;
+    align-self: center;
+  }
+  .tiny-tag {
+    font-size: 1em;
+  }
+}
+

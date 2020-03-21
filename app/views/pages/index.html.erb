@@ -1,5 +1,5 @@
-<div class="content-container d-flex mt-3" id="dashboard-page">
-  <div class="card-container col-12 col-lg-9 px-4">
+<div class="content-container d-flex mt-4 mt-md-3" id="dashboard-page">
+  <div class="card-container col-lg-9 px-4">
 
     <div class="active-cards" id='active-cards'>
       <%= render 'pages/filters/active-editions' %>
@@ -14,9 +14,9 @@
 
     <div class="stats-card-hosting p-3 pb-4">
       <h4 class="title-charts mb-3">Hosting</h4>
-      <div class="stats-chart">
+      <div class="stats-chart d-flex justify-content-center align-items-center">
         <%= pie_chart [['Hosting', @hostingeditions.size], ['Guest', @alleditions.size - @hostingeditions.size]],
-        legend: false, donut: true, label: "Value" , colors: ["#586a88", "#DCDCDC"], width:"200px", height: "200px" %>
+        legend: false, donut: true, label: "Value", colors: ["#586a88", "#DCDCDC"], width:"200px", height: "200px" %>
         <p class="text-inside-chart col-8"><%= @hostingeditions.size %> of <%= @alleditions.size %> events</p>
       </div>
     </div>
@@ -25,7 +25,7 @@
       <h4 class="title-charts mb-3">Scheduled</h4>
       <div class="stats-chart">
         <%= pie_chart [['Active', @alleditions.active.size],['Pending', @alleditions.pending.size]],
-        legend: false, donut: true, label: "Value" , colors: ["#D95140","#DCDCDC"], width:"200px", height: "200px" %>
+        legend: false, donut: true, label: "Value", colors: ["#D95140","#DCDCDC"], width:"200px", height: "200px" %>
         <p class="text-inside-chart col-8"><%= @alleditions.active.size %> of <%= (@alleditions.active.size + @alleditions.pending.size) %> events</p>
       </div>
     </div>

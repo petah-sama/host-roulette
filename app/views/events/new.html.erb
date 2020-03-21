@@ -1,80 +1,69 @@
-<div class="event-card col-6 mx-auto mt-5 p-4">
-  <h2>Create a new event!</h2>
-  <%= simple_form_for @event do |f| %>
+<div class="d-flex justify-content-center">
+  <div class="event-card col-lg-8 m-4 p-4">
+    <h2>New event!</h2>
+    <%= simple_form_for @event do |f| %>
 
-  <fieldset class="field-slide msf_hide">
-    <div class="event-slide d-flex flex-column justify-content-between">
-      <%= f.input :name, label: 'What do you want to call it?', placeholder: 'E.g. Epic weekend getaway!' %>
-      <div>
-        <div class="d-flex justify-content-end">
-          <input type="button" name="back" value="Back" id="button-back1" class="btn btn-success">
-          <input type="button" name="next" value="Next" id="button-next1" class="btn btn-primary">
+    <fieldset class="field-slide msf_hide">
+      <div class="event-slide d-flex flex-column justify-content-between">
+        <%= f.input :name, label: 'What do you want to call it?', placeholder: 'e.g. Epic weekend getaway!' %>
+        <div>
+          <div class="d-flex justify-content-end">
+            <input type="button" name="back" value="Back" id="button-back1" class="btn btn-success">
+            <input type="button" name="next" value="Next" id="button-next1" class="btn btn-primary">
+          </div>
+          <div class="msf_bullet_o mt-4"></div>
         </div>
-        <div class="msf_bullet_o mt-4"></div>
       </div>
-    </div>
-  </fieldset>
+    </fieldset>
 
-  <fieldset class="field-slide msf_hide">
-    <div class="event-slide d-flex flex-column justify-content-between">
-      <div class="tag-choices">
-        <%= f.association :tags, as: :check_boxes, item_wrapper_class: 'tag-choice' %>
-      </div>
-      <div>
-        <div class="d-flex justify-content-between">
-          <input type="button" name="back" value="Back" id="button-back2" class="btn btn-success">
-          <input type="button" name="next" value="Next" id="button-next2" class="btn btn-primary">
+    <fieldset class="field-slide msf_hide">
+      <div class="event-slide d-flex flex-column justify-content-between">
+        <div class="tag-choices d-flex justify-content-start flex-wrap m-0">
+          <%= f.association :tags, as: :check_boxes, label: "Select a few relevant categories", item_wrapper_class: 'tag-choice' %>
         </div>
-        <div class="msf_bullet_o mt-4"></div>
-      </div>
-    </div>
-  </fieldset>
-
-  <fieldset class="field-slide msf_hide">
-    <div class="event-slide d-flex flex-column justify-content-between">
-      <p>How much do you want to spend?</p>
-      <%= f.range_field :budget, min: "0", max: "150" %>
-      <div class="d-flex" id="event_budget_value_display">
-        <div id="event_budget_value"></div><span>€</span>
-      </div>
-      <div id="value_per_person">per person</div>
-      <p>Hint: Use keyboard arrows if you prefer 😉</p>
-      <div>
-        <div class="d-flex justify-content-between">
-          <input type="button" name="back" value="Back" id="button-back3" class="btn btn-success">
-          <input type="button" name="next" value="Next" id="button-next3" class="btn btn-primary">
+        <div>
+          <div class="d-flex justify-content-between">
+            <input type="button" name="back" value="Back" id="button-back2" class="btn btn-success">
+            <input type="button" name="next" value="Next" id="button-next2" class="btn btn-primary">
+          </div>
+          <div class="msf_bullet_o mt-4"></div>
         </div>
-        <div class="msf_bullet_o mt-4"></div>
       </div>
-    </div>
-  </fieldset>
+    </fieldset>
 
-  <fieldset class="field-slide msf_hide">
-    <div class="event-slide d-flex flex-column justify-content-between">
-      <%= f.input :frequency, label: 'What should be the frequency of the event?', placeholder: 'E.g. Every 2 weeks' %>
-      <div>
-        <div class="d-flex justify-content-between">
-          <input type="button" name="back" value="Back" id="button-back4" class="btn btn-success">
-          <input type="button" name="next" value="Next" id="button-next4" class="btn btn-primary">
-          <%= f.submit 'Create', class: 'btn btn-danger' %>
+    <fieldset class="field-slide msf_hide">
+      <div class="event-slide d-flex flex-column justify-content-between">
+        <p>How much do you want to spend?</p>
+        <%= f.range_field :budget, min: "0", max: "150" %>
+        <div class="d-flex" id="event_budget_value_display">
+          <div id="event_budget_value"></div><span>€</span>
         </div>
-        <div class="msf_bullet_o mt-4"></div>
-      </div>
-    </div>
-  </fieldset>
-
-  <!-- <fieldset class="msf_hide">
-    <div class="event-slide d-flex flex-column justify-content-between">
-      <h2>Membeeeeeers</h2>
-      <div>
-        <div class="d-flex justify-content-between">
-          <input type="button" name="back" value="Back" id="button-back5" class="btn btn-success">
-          <input type="button" name="next" value="Next" id="button-next5" class="btn btn-primary">
+        <div id="value_per_person">per person</div>
+        <!-- <p>Hint: Use keyboard arrows if you prefer 😉</p> -->
+        <div>
+          <div class="d-flex justify-content-between">
+            <input type="button" name="back" value="Back" id="button-back3" class="btn btn-success">
+            <input type="button" name="next" value="Next" id="button-next3" class="btn btn-primary">
+          </div>
+          <div class="msf_bullet_o mt-4"></div>
         </div>
-        <div class="msf_bullet_o mt-4"></div>
       </div>
-    </div>
-  </fieldset> -->
+    </fieldset>
 
-  <% end %>
+    <fieldset class="field-slide msf_hide">
+      <div class="event-slide d-flex flex-column justify-content-between">
+        <%= f.input :frequency, label: 'What should be the frequency of the event?', placeholder: 'e.g. Every 2 weeks' %>
+        <div>
+          <div class="d-flex justify-content-between">
+            <input type="button" name="back" value="Back" id="button-back4" class="btn btn-success">
+            <input type="button" name="next" value="Next" id="button-next4" class="btn btn-primary">
+            <%= f.submit 'Create', class: 'btn btn-danger' %>
+          </div>
+          <div class="msf_bullet_o mt-4"></div>
+        </div>
+      </div>
+    </fieldset>
+
+    <% end %>
+  </div>
 </div>

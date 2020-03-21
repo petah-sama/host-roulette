@@ -1,0 +1,31 @@
+<div class="footer-main d-flex justify-content-between align-items-center px-4 d-md-none">
+
+  <!-- DASHBOARD -->
+  <%= link_to dashboard_path, class: 'footer-icon' do %>
+    <i class="fas fa-th-large"></i>
+  <% end %>
+  <!-- PAST EVENTS -->
+  <%= link_to past_events_path, class: 'footer-icon' do %>
+    <i class="far fa-clock"></i>
+  <% end %>
+  <!-- NEW EVENT -->
+  <%= link_to new_event_path, class: 'footer-icon d-flex align-items-center justify-content-center', id: 'button-add-event' do %>
+    <i class="fas fa-plus-circle text-danger"></i>
+  <% end %>
+  <!-- CALENDAR -->
+  <%= link_to calendar_path, class: 'footer-icon' do %>
+    <i class="far fa-calendar-alt"></i>
+  <% end %>
+  <!-- NOTIFICATIONS -->
+  <div class="notification-div">
+    <div id="notification-bell" onclick="notificationsDown()">
+      <i class="dropbtn fas fa-bell">
+        <% if (current_user.notifications.exists?) %>
+          <i class="fas fa-circle"></i>
+        <% end %>
+      </i>
+    </div>
+    <%= render 'shared/notifications' %>
+  </div>
+
+</div>

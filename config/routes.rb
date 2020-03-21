@@ -2,13 +2,8 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  namespace :user do
-    root to: "pages#index"
-  end
-
   resources :users, only: [:show] do
     resources :notifications, only: [:create, :index]
-
   end
 
   root to: 'pages#home'

@@ -1,62 +1,76 @@
-<div class = 'main-container col-8 mx-auto invite p-4' >
+<div class="d-flex justify-content-center m-4">
 
+  <div class="main-container col-lg-8 invite p-0" >
+    <div class="event-card invite-members-card">
 
-
-  <div class="event-card invite-members-card">
-    <div id ='invite-members-banner'>
-    </div>
-    <div class="content-card-invite p-4 mt-3">
-      <h2 class='mb-3'><%= @event.name %></h2>
-      <div class = 'event-info-invite'>
-       <i class="fas fa-tags text-left p-0 mr-1"></i><span>
-          <% @event.tags.each do |tag| %>
-           <%= tag.name %>
-           <%= ',' unless tag == @event.tags.last %>
-          <% end %>
-        </span> <br>
-         <i class="fas fa-coins text-left p-0 mr-1"></i> <%= @event.budget %> € per person <br>
-         <i class="fas fa-redo text-left p-0 mr-1"></i> <%= @event.frequency %>
+      <div id="invite-members-banner">
       </div>
 
-      <br>
-      <div class = 'd-flex align-items-center invite-link-card'>
-        <p id='secretInfo'><%= request.original_url %></p>
-        <button type="button" class ='btn btn-primary button-copy' id="btnCopy">Copy</button>
-      </div>
-      <p class = 'font-italic mt-1'>Share the link to invite your friends</p>
-      <hr>
-
-
-      <div class="event-slide d-flex flex-column justify-content-between" id="invite-members">
-        <h4>Who's coming?</h4>
-        <ul class="list-inline" id="member-list" data-event_id="<%= @event.id %>">
-          <% @event.participants.each do |user| %>
-              <div class = 'd-flex'>
-                <%# if user.photo.attached? %>
-                  <%#= cl_image_tag user.photo.key, class: 'avatar-large'%>
-                <%# else %>
-                    <%#= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: 'avatar-large' %>
-                <%# end %>
-                <li class = 'invited-member'><%= user.first_name %> <%= user.last_name %></li>
+        <!-- NAME -->
+        <h2 class='mb-3'><%= @event.name %></h2>
+        <!-- GUIDELINES -->
+        <div class="event-info-invite pr-4">
+          <!-- Tags -->
+          <div class="m-0 d-flex align-items-center flex-wrap">
+            <i class="fas fa-tags text-left mr-2 p-0"></i>
+            <% @event.tags.each do |tag| %>
+              <div class="text-nowrap border border-primary rounded mr-1 px-1">
+                <%= tag.name %>
               </div>
-
             <% end %>
+          </div>
+          <!-- Budget -->
+          <div class="m-0 d-flex align-items-center">
+            <i class="fas fa-coins text-left p-0 mr-2"></i>
+            <%= @event.budget %> € per person
+          </div>
+          <!-- Frequency -->
+          <div class="m-0 d-flex align-items-center">
+            <i class="fas fa-redo text-left p-0 mr-2"></i>
+            <%= @event.frequency %>
+          </div>
+        </div>
 
-        </ul>
 
+      <div class="content-card-invite p-4">
+        <!-- EVENT URL -->
+        <hr>
+        <div class="d-flex align-items-center invite-link-card flex-wrap">
+          <p class="mr-2" id="secretInfo"><%= request.original_url %></p>
+          <button type="button" class="btn btn-success button-copy" id="btnCopy">Copy link</button>
+        </div>
+        <hr>
 
-        <div class="d-flex justify-content-end">
-          <% if @event.participants.include? current_user %>
-            <% if @event.editions.last.nil? || @event.editions.last.archived? %>
-              <%= link_to 'Pick Host!', new_event_edition_path(@event), class: 'btn btn-danger' %>
+        <div class="event-slide d-flex flex-column justify-content-between" id="invite-members">
+          <!-- MEMBERS -->
+          <h4>Who's coming?</h4>
+          <ul class="list-inline" id="member-list" data-event_id="<%= @event.id %>">
+            <% @event.participants.each do |user| %>
+                <div class = 'd-flex'>
+                  <%# if user.photo.attached? %>
+                    <%#= cl_image_tag user.photo.key, class: 'avatar-large'%>
+                  <%# else %>
+                      <%#= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: 'avatar-large' %>
+                  <%# end %>
+                  <li class = 'invited-member'><%= user.first_name %> <%= user.last_name %></li>
+                </div>
+              <% end %>
+          </ul>
+
+          <!-- BUTTON -->
+          <div class="d-flex justify-content-end">
+            <% if @event.participants.include? current_user %>
+              <% if @event.editions.last.nil? || @event.editions.last.archived? %>
+                <%= link_to 'Pick Host!', new_event_edition_path(@event), class: 'btn btn-danger' %>
+              <% else %>
+                <%= link_to 'Ongoing edition!', event_edition_path(@event, @event.editions.last, ongoing: true), class: 'btn btn-danger' %>
+              <% end %>
             <% else %>
-              <%= link_to 'Ongoing edition!', event_edition_path(@event, @event.editions.last, ongoing: true), class: 'btn btn-danger' %>
+              <%= simple_form_for [@event, @member] do |f| %>
+                <%= f.submit 'Join Event', class: 'btn btn-danger' %>
+              <% end %>
             <% end %>
-          <% else %>
-            <%= simple_form_for [@event, @member] do |f| %>
-              <%= f.submit 'Join Event', class: 'btn btn-danger' %>
-            <% end %>
-          <% end %>
+          </div>
         </div>
       </div>
     </div>

@@ -1,24 +1,34 @@
 <div class="dashboard-card-container">
   <% @editions.each do |edition| %>
     <% if edition.pending? %>
-    <div class="<%= 'hosting-card' if edition&.host != current_user %>">
-      <%= link_to event_edition_path(edition.event, edition) do %>
-      <div class="dashboard-card">
-        <div class="col-4 p-0">
-          <% if edition.photo.attached? %>
-              <div id="image-test" style="background-image: url(<%= url_for(edition.photo) %>)"></div>
-            <% else %>
-              <div id="image-test" style="background-image: url(https://images.unsplash.com/photo-1444210971048-6130cf0c46cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1504&q=80)"></div>
+      <div class="<%= 'hosting-card' if edition&.host != current_user %>">
+        <%= link_to event_edition_path(edition.event, edition) do %>
+
+          <div class="dashboard-card">
+            <div class="col-4 p-0">
+              <% if edition.photo.attached? %>
+                <div class="dashboard-card-image" style="background-image: url(<%= url_for(edition.photo) %>)"></div>
+              <% else %>
+                <div class="dashboard-card-image" style="background-image: url(https://images.unsplash.com/photo-1444210971048-6130cf0c46cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1504&q=80)"></div>
               <% end %>
-        </div>
-          <div class="col-8 p-4">
-            <% if edition.host_id == current_user.id %>
-              <div class="corner-text-wrapper">
-                <div class="corner-text"><span><i class="fas fa-crown"></i></span></div>
+            </div>
+            <div class="col-8 p-3 p-md-4">
+              <% if edition.host_id == current_user.id %>
+                <div class="corner-text-wrapper">
+                  <div class="corner-text">
+                    <i class="fas fa-crown"></i>
+                  </div>
+                </div>
+              <% end %>
+
+              <div class="top-card">
+                <div class="title-card">
+                  <h2><%= edition.name %></h2>
+                </div>
               </div>
-            <% end %>
-            <h2><%= edition.name %></h2>
-            <div class="show-guests-div d-flex mt-3 mb-3" >
+
+              <!-- GUESTS -->
+              <div class="show-guests-div d-flex mt-3 mb-3" >
                 <% edition.guests.take(4).each do |guest|%>
                   <div class="show-guest-list-item mr-1">
                     <% if guest.member.user.photo.attached? %>
@@ -29,16 +39,17 @@
                   </div>
                 <% end %>
               </div>
-             <div class="event-tags-small pr-3">
+
+              <!-- TAGS -->
+              <div class="event-tags-small">
                 <% edition.event.tags.each do |tag| %>
-                  <span class="tiny-tag mr-1 p-1 border border-primary rounded"> <%= tag.name %></span>
+                  <span class="tiny-tag mr-0 mr-md-1 p-1 border border-primary rounded"> <%= tag.name %></span>
                 <% end %>
               </div>
-            <div>
 
             </div>
           </div>
-        </div>
+
         <% end %>
       </div>
     <% end %>

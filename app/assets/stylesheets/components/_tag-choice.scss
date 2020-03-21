@@ -1,9 +1,21 @@
+.tag-choices {
+  font-size: 12px;
+  max-height: 75%;
+  overflow: scroll;
+  legend {
+    font-size: 1.4em;
+  }
+}
+
 .tag-choice {
-  background: #b7b7b7;
-  border-radius: 5px;
-  opacity: .4;
+  background: $gray;
+  border-radius: $border-radius;
   text-align: center;
   margin: 2px;
+  label {
+    padding: 10px;
+    cursor: pointer;
+  }
   input {
     display: none;
   }
@@ -11,21 +23,9 @@
     opacity: 1;
   }
   &.active {
-  background: $darkblue;
-  color: white;
-  opacity: 1;
-  }
-}
-
-.tag-choices {
-  font-size: 12px;
-  display: flex;
-  justify-content: end;
-  flex-wrap: wrap;
-  margin: 20px 0;
-  label {
-    padding: 10px;
-    cursor: pointer;
+    background: $primary;
+    color: white;
+    opacity: 1;
   }
 }
 

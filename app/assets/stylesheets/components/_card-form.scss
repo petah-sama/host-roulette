@@ -1,21 +1,40 @@
 .card-form-container {
-  margin: 60px auto;
   border-radius: $border-radius;
-  // margin-bottom: 40px;
 }
 
 .card-show {
   background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  border-radius: 5px;
+  border-radius: $border-radius;
   overflow: hidden;
 }
 
 .card-show-image {
-  padding: 0;
-  margin: 0;
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  position: relative;
   border: none;
+  overflow: hidden;
+  height: 160px;
+}
+
+.aux-links {
+  margin-top: 1rem;
+}
+
+@include media-breakpoint-up(md) {
+  .card-show-image {
+    height: auto;
+  }
+  .aux-links {
+    margin-top: 0;
+  }
+}
+
+.uploaded-image {
+  position: absolute;
+  z-index: 0;
+  width: 100%;
+  object-fit: cover;
+}
+
+.user-simple-form {
+  z-index: 1;
 }

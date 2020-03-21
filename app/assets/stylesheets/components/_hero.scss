@@ -13,15 +13,12 @@ video {
   top: 50%;
   left: 50%;
   min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
+  min-height: 150%;
   z-index: 0;
-  -ms-transform: translateX(-50%) translateY(-50%);
-  -moz-transform: translateX(-50%) translateY(-50%);
+          transform: translateX(-50%) translateY(-50%);
+      -ms-transform: translateX(-50%) translateY(-50%);
+     -moz-transform: translateX(-50%) translateY(-50%);
   -webkit-transform: translateX(-50%) translateY(-50%);
-  transform: translateX(-50%) translateY(-50%);
-  clip-path: inset(0px 0px 18vh 0px);
 }
 
 // LOGO
@@ -85,3 +82,12 @@ video {
   }
 }
 
+// FOOTER
+#footer-landing {
+  height: 56px;
+  width: 100%;
+  position: fixed;
+  z-index: 3;
+  bottom: 0px;
+  background-color: $gray;
+}
