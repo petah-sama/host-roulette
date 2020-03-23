@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
+    @user.host_avg_rating = user_avg_rating(@user.id)
     authorize @user
-    @user[:host_avg_rating] = user_avg_rating(@user.id)
     @user.save
   end
 
@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     editions = Edition.where( host_id: user_id )
     sum = 0
     editions.each do |edition|
-      sum = sum + edition[:host_avg_rating]
+      sum = sum + edition.host_avg_rating
     end
     sum / editions.size.to_f
   end
