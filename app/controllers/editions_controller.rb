@@ -22,6 +22,10 @@ class EditionsController < ApplicationController
       infoWindow: render_to_string(partial: "editions/show-editions/info_window", locals: { edition: @edition }),
       image_url: helpers.asset_url('location.png')
     }]
+
+    @edition.avg_rating = edition_avg_rating(@edition)
+    @edition.host_avg_rating = host_avg_rating(@edition)
+    @edition.save
     authorize @edition
     authorize @current_user_answers
   end
@@ -37,9 +41,6 @@ class EditionsController < ApplicationController
     @edition.event = @event
     edition_number = @event.editions.size + 1
     @edition.name = @event.name + ' #' + edition_number.to_s
-    # host_id = params["query"].to_i
-    # host_user = User.find(host_id)
-    # @edition.host_id = host_user.id
     authorize @edition
     if @edition.save
       gen_guests
@@ -102,7 +103,7 @@ class EditionsController < ApplicationController
   end
 
   def edit_edition_params
-    params.require(:edition).permit(:name, :start_time, :end_time, :notes, :address, :status, :photo, item_ids: [])
+    params.require(:edition).permit(:name, :start_time, :end_time, :notes, :address, :status, :photo, :avg_rating, :host_avg_rating, item_ids: [])
   end
 
   def edition_params
@@ -116,6 +117,21 @@ class EditionsController < ApplicationController
       guest.edition = @edition
       guest.save
     end
+  end
+
+  def edition_avg_rating(edition)
+    guest_ids = edition.guests
+    reviews = Review.where(guest_id: guest_ids)
+    sum = reviews.sum(:edition_rating)
+    sum / reviews.size.to_f
+  end
+
+
+  def host_avg_rating(edition)
+    guest_ids = edition.guests
+    reviews = Review.where(guest_id: guest_ids)
+    sum = reviews.sum(:host_rating)
+    sum / reviews.size.to_f
   end
 
 end
