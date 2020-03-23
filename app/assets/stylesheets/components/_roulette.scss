@@ -1,28 +1,33 @@
-#wheel {
-  display: inline-block;
-  position: relative;
-  overflow: hidden;
+svg {
+  margin-left: 20px;
 }
 
-#wheel:after {
-  content: "";
-  font-size: 15px;
-  background: #931621;
-  border: 2px solid #931621;
-  position: absolute;
-  top: -19px;
-  left: 50%;
-  width: 40px;
-  height: 28px;
-  margin-left: -25px;
-  transform: rotate(45deg);
+text{
+  font-size:18px;
+  pointer-events:none;
+}
+#chart {
+  width:500px;
+  height:500px;
+  top:0;
+  left:0;
 }
 
-#canvas {
-  width: 500px;
+.selected {
+  /* transition: fill .1s ease; */
+  fill: rgb(62, 35, 35);
+  animation: blink .5s;
 }
 
-.event-slide h2 {
-  text-align: center;
-  font-weight: bold;
+.selected + text {
+  fill:antiquewhite;
+}
+
+@keyframes blink {
+  0% { fill: yellow }
+  20% { fill: rgb(62, 35, 35) }
+  40% { fill: yellow }
+  60% { fill: rgb(62, 35, 35) }
+  80% { fill: yellow }
+  100% { fill: rgb(62, 35, 35) }
 }

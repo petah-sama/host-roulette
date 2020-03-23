@@ -3,9 +3,7 @@
   <div class="event-slide d-flex flex-column justify-content-between">
     <h2><%= @edition.event.name.upcase %>!</h2>
     <div class="d-flex justify-content-center">
-      <div id="wheel">
-        <canvas id="canvas" width="800" height="800"></canvas>
-      </div>
+      <div id="chart"></div>
       <%= audio_tag 'song.mp3', autoplay: false, id: 'song' %>
     </div>
     <div class="d-flex justify-content-center">
@@ -17,7 +15,7 @@
       <div>
         <ul class="list-inline">
           <% @event.participants.each do |participant| %>
-            <li class="user-names" data-name="<%= participant.first_name %>" data-last="<%= participant.last_name %>" data-id="<%= participant.id %>"></li>
+            <li id="user-names" data-name="<%= participant.first_name %> <%= participant.last_name %>" data-id="<%= participant.id %>"></li>
           <% end %>
         </ul>
       </div>
