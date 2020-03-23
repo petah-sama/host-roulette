@@ -122,21 +122,15 @@ class EditionsController < ApplicationController
   def edition_avg_rating(edition)
     guest_ids = edition.guests
     reviews = Review.where(guest_id: guest_ids)
-    sum = 0
-    reviews.each do |review|
-      sum = sum + review[:edition_rating]
-    end
+    sum = reviews.sum(:edition_rating)
     sum / reviews.size.to_f
   end
 
 
-   def host_avg_rating(edition)
+  def host_avg_rating(edition)
     guest_ids = edition.guests
     reviews = Review.where(guest_id: guest_ids)
-    sum = 0
-    reviews.each do |review|
-      sum = sum + review[:host_rating]
-    end
+    sum = reviews.sum(:host_rating)
     sum / reviews.size.to_f
   end
 
