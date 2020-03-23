@@ -23,8 +23,8 @@ class EditionsController < ApplicationController
       image_url: helpers.asset_url('location.png')
     }]
 
-    @edition[:avg_rating] = edition_avg_rating(@edition)
-    @edition[:host_avg_rating] = host_avg_rating(@edition)
+    @edition.avg_rating = edition_avg_rating(@edition)
+    @edition.host_avg_rating = host_avg_rating(@edition)
     @edition.save
     authorize @edition
     authorize @current_user_answers
@@ -41,9 +41,6 @@ class EditionsController < ApplicationController
     @edition.event = @event
     edition_number = @event.editions.size + 1
     @edition.name = @event.name + ' #' + edition_number.to_s
-    # host_id = params["query"].to_i
-    # host_user = User.find(host_id)
-    # @edition.host_id = host_user.id
     authorize @edition
     if @edition.save
       gen_guests
