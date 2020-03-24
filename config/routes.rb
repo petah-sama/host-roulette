@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   end
   resources :questions, only: :destroy
   resources :answers, only: :destroy
+  resources :orders, only: [:show, :create]
   delete '/notifications', to: 'notifications#destroy'
   get '/events/:id/join', to: 'events#join'
 end

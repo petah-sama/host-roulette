@@ -11,6 +11,7 @@ class Edition < ApplicationRecord
   has_many :reviews, through: :guests
   after_validation :geocode, if: :will_save_change_to_address?
   has_one_attached :photo
+  monetize :price_cents
 
   include PgSearch::Model
   pg_search_scope :search_by_name,

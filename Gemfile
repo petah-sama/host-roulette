@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 ruby '2.6.5'
-
+gem 'stripe'
 gem 'pundit'
 gem 'geocoder'
 gem "chartkick"
-
+gem "money-rails"
 gem 'pg_search', '~> 2.3.0'
 gem 'cloudinary', '~> 1.12.0'
 gem "simple_calendar", "~> 2.0"

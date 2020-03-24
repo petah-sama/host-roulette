@@ -1,0 +1,31 @@
+
+<div class="container">
+  <div class="row py-4">
+    <% if @order.edition.photo.attached? %>
+      <div class="col-md-3"><%= cl_image_tag @order.edition.photo.key, crop: :fill, class: 'edition-banner w-100' %> </div>
+    <% else %>
+      <div class="col-md-3"><%= image_tag 'https://images.unsplash.com/photo-1444210971048-6130cf0c46cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1504&q=80', crop: :fill, class: 'edition-banner w-100' %></div>
+    <% end %>
+
+
+
+
+    <div class="col">
+      <h1>Checkout summary</h1>
+      <p>Purchase of <strong><%= @order.edition.name %></strong> for <strong><%= humanized_money_with_symbol @order.amount %></strong></p>
+      <button id="pay" class="btn btn-primary">Pay</button>
+
+
+      <script src="https://js.stripe.com/v3/"></script>
+      <script>
+        const paymentButton = document.getElementById('pay');
+        paymentButton.addEventListener('click', () => {
+          const stripe = Stripe('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
+          stripe.redirectToCheckout({
+            sessionId: '<%= @order.checkout_session_id %>'
+          });
+        });
+      </script>
+    </div>
+  </div>
+</div>
