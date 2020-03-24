@@ -1,5 +1,7 @@
-.form-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-column-gap: 1em;
+@include media-breakpoint-up(lg) {
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 1em;
+  }
 }

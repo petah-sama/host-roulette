@@ -1,62 +1,84 @@
-<div class="container-padding navbar navbar-expand-sm navbar-light navbar-main d-flex flex-row pr-0">
+<% if user_signed_in? %>
 
-  <!-- SEARCH BAR -->
-  <!-- SEARCH BAR -->
-  <!-- SEARCH BAR -->
-  <%= render 'shared/search_bar' %>
+  <!-- LOGO -->
+  <div class="container-padding navbar navbar-expand-sm navbar-light navbar-main navbar-main-color d-flex flex-row pr-0">
+    <%= link_to dashboard_path, class: 'col-3 col-sm-2 d-md-none pl-4 pr-0 d-flex align-items-center', id: 'logo-small-div' do %>
+      <%= image_tag 'logo_transparent.svg', id: 'logo-small' %>
+    <% end %>
 
-  <!-- HAMBURGER BUTTON -->
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <!-- SEARCH BAR -->
+    <%= render 'shared/search_bar' %>
 
-  <!-- RIGHT PORTION -->
-  <!-- RIGHT PORTION -->
-  <!-- RIGHT PORTION -->
-  <div class="collapse navbar-collapse col-3" id="navbarSupportedContent">
+    <!-- RIGHT PORTION -->
+    <div class="collapse navbar-collapse col-3 col-sm-2 col-md-3 d-flex justify-content-end pl-0 pr-4" id="navbarSupportedContent">
+      <!-- NOTIFICATIONS -->
+      <div class="notification-div col-md-3 d-none d-md-inline p-0">
+        <div id="notification-bell" onclick="notificationsUp()">
+          <i class="dropbtn fas fa-bell">
+            <% if (current_user.notifications.exists?) %>
+              <i class="fas fa-circle"></i>
+            <% end %>
+          </i>
+        </div>
+        <%= render 'shared/notifications' %>
+      </div>
 
-    <!-- NOTIFICATIONS -->
-    <%= render 'shared/notifications' %>
+      <!-- USER PORTION -->
+      <ul class="navbar-nav col-12 col-sm-9 p-0 d-flex justify-content-end">
+        <li class="nav-item-name d-none d-lg-inline"><%= current_user.first_name %> <%= current_user.last_name.first %>.</li>
 
-    <!-- USER PORTION -->
-    <ul class="navbar-nav col-10 p-0 justify-content-end">
-      <% if user_signed_in? %>
-        <li class="nav-item-name"><%= current_user.first_name %> <%= current_user.last_name.first %>.</li>
-
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown text-right">
           <% if current_user.photo.attached? %>
             <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <% else %>
             <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <% end %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <%= link_to "Friends", friends_path, class: "dropdown-item" %>
+            <%= link_to "Surveys", surveys_path, class: "dropdown-item" %>
+            <hr>
             <%= link_to "Profile", user_path(current_user.id), class: "dropdown-item" %>
             <%= link_to "Edit Profile", edit_user_registration_path, class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
-      <% else %>
-        <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-        </li>
-      <% end %>
-    </ul>
+      </ul>
+    </div>
   </div>
-</div>
+
+<% else %>
+
+  <div class="container-padding navbar navbar-expand-sm navbar-light navbar-main d-flex justify-content-end pr-0">
+    <div class="collapse navbar-collapse d-flex justify-content-end pr-4" id="navbarSupportedContent">
+      <!-- LOGIN / SIGN UP -->
+      <ul class="navbar-nav d-flex justify-content-end p-0">
+        <li class="nav-item d-flex">
+          <%= link_to "Log In", new_user_session_path, class: "nav-link" %>
+          <%= link_to "Sign Up", new_user_registration_path, class: "nav-link ml-4" %>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+<% end %>
 
 <script>
   // When the user clicks on the button,
   // toggle between hiding and showing the dropdown content
-  const notifications = () => {
-    document.getElementById("myDropdown").classList.toggle("display-notifications");
+  const notificationsUp = () => {
+    document.querySelectorAll('.dropdown-list')[0].classList.toggle("display-notifications-up");
+  }
+
+  const notificationsDown = () => {
+    document.querySelectorAll('.dropdown-list')[1].classList.toggle("display-notifications-down");
   }
 
   // Close the dropdown if the user clicks outside of it
   window.onclick = function(event) {
     if (!event.target.matches('.dropbtn')) {
       var myDropdown = document.getElementById("myDropdown");
-      if (myDropdown.classList.contains('display-notifications')) {
-        myDropdown.classList.remove('display-notifications');
+      if (myDropdown) {
+        myDropdown.classList.remove('display-notifications-up', 'display-notifications-down');
       }
     }
   }

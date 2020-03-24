@@ -1,3 +1,9 @@
 .container-padding {
-  padding-left: 240px;
+  padding-left: 0px;
+}
+
+@include media-breakpoint-up(md) {
+  .container-padding {
+    padding-left: 240px;
+  }
 }

@@ -1,6 +1,6 @@
 const filterDashboard = () => {
   var x = document.getElementById("pending-cards");
-  var pieActive = document.querySelector(".stats-card-cool");
+  var pieActive = document.querySelector(".stats-card-scheduled");
   pieActive.addEventListener('click', function() {
     if (!pieActive.classList.contains('clicked')) {
       pieActive.classList.toggle('box-shadow');

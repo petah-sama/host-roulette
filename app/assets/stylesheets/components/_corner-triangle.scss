@@ -1,37 +1,65 @@
 .corner-text-wrapper {
-  -webkit-transform: rotate(45deg);
-     -moz-transform: rotate(45deg);
-      -ms-transform: rotate(45deg);
-       -o-transform: rotate(45deg);
-          transform: rotate(45deg);
-  clip: rect(0px, 141.421px, 70.7107px, 0px);
-  height: 141.421px;
+  -webkit-transform: rotate(45deg) translatey(-100%);
+     -moz-transform: rotate(45deg) translatey(-100%);
+      -ms-transform: rotate(45deg) translatey(-100%);
+       -o-transform: rotate(45deg) translatey(-100%);
+          transform: rotate(45deg) translatey(-100%);
   position: absolute;
-  right: -21.7107px;
-  top: -19.7107px;
-  width: 141.421px;
-}
-.corner-text {
-  -webkit-transform: rotate(-45deg);
-     -moz-transform: rotate(-45deg);
-      -ms-transform: rotate(-45deg);
-       -o-transform: rotate(-45deg);
-          transform: rotate(-45deg);
-  color: white;
-  left: 20px;
-  top: 20px;
-  background-color: $kashblue;
-  display: block;
-  height: 100px;
-  position: absolute;
-  width: 100px;
-  span {
-    font-size: 1.5em;
+  top: 1em;
+  right: 1em;
+  height: 80px;
+  width: 80px;
+  background-color: $primary;
+  .corner-text {
+    -webkit-transform: rotate(-45deg);
+       -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+         -o-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+    position: absolute;
+    top: 3em;
+    right: 2em;
+    color: $white;
     display: block;
-    text-align: right;
-  }
-  i {
-    margin-right: 0.5em;
-    margin-top: 0.5em;
+    i {
+      font-size: 1em;
+      display: block;
+      text-align: right;
+      margin-right: 0.5em;
+      margin-top: 0.5em;
+    }
   }
 }
+
+@include media-breakpoint-up(sm) {
+  .corner-text-wrapper {
+    top: 1.5em;
+    right: 1.5em;
+    height: 120px;
+    width: 120px;
+    .corner-text {
+      top: 4.5em;
+      right: 3em;
+      i {
+        font-size: 1.25em;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .corner-text-wrapper {
+    top: 2em;
+    right: 2em;
+    height: 160px;
+    width: 160px;
+    .corner-text {
+      top: 6em;
+      right: 4em;
+      i {
+        font-size: 1.5em;
+      }
+    }
+  }
+}
+

@@ -14,10 +14,18 @@ import { refreshMembers } from '../components/invite_members_refresh.js';
 import { existingEdition } from '../components/existing_edition';
 import { deleteAlert } from '../components/notifications_swal'
 import { initSelect2 } from '../components/init_select2';
-import { filterDashboard } from '../components/active_filter.js';
-import { anotherfilterDashboard } from '../components/host_filter.js';
+import { filterDashboard } from '../components/active_filter';
+import { anotherfilterDashboard } from '../components/host_filter';
+import { photoUploadButton } from '../components/photo_upload_button';
+import { searchBarChange } from '../components/search_bar_change'
 
-// SELECT MUlTIPLE ITEMS
+// SEARCH BAR CHANGES
+const searchBar = document.querySelector("#query");
+if (searchBar) {
+  searchBarChange();
+};
+
+// SELECT MULTIPLE ITEMS
 const editionEdit = document.querySelector("#edition-edit");
 if (editionEdit) {
   initSelect2();
@@ -51,13 +59,22 @@ if (invitePage) {
 };
 
 // EDITION MODAL
-const editionPage = document.querySelector('#edition-show')
+const editionPage = document.querySelector('#edition-show');
 if (editionPage && editionPage.dataset.ongoing === "true") {
   existingEdition();
 };
 
 // SWAL
-deleteAlert();
+const notificationBell = document.querySelector('#notification-bell');
+if (notificationBell) {
+  deleteAlert();
+};
+
+// PHOTO UPLOAD BUTTON
+const photoButton = document.querySelector('.photo-upload-button');
+if (photoButton) {
+  photoUploadButton();
+}
 
 // MAP
 initMapbox();

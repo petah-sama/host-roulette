@@ -1,6 +1,6 @@
  const anotherfilterDashboard = () => {
   var ys = document.querySelectorAll(".hosting-card");
-  var pieHosting = document.querySelector(".stats-card");
+  var pieHosting = document.querySelector(".stats-card-hosting");
   pieHosting.addEventListener('click', function() {
     if (!pieHosting.classList.contains('clicked')) {
       pieHosting.classList.toggle('box-shadow');

@@ -1,44 +1,46 @@
-<div class="card-form-container col-8">
+<div class="card-form-container d-flex justify-content-center">
 
-  <div class="card-show d-flex">
-    <div class="card-show-image col-4 d-flex align-items-end p-3"
-          style="background-image: url(https://media.giphy.com/media/l4KhWPNyLHiB3TjVe/giphy.gif)">
+  <div class="card-show col-lg-8 m-4 p-0 d-flex flex-column flex-md-row">
 
-  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= f.error_notification %>
+    <div class="card-show-image col-md-4 p-0 m-0 d-flex align-items-end">
 
-      <%= f.input :photo,
-                  as: :file,
-                  required: false, class: 'btn btn-primary',
-                  input_html: { class: 'btn btn-info' },
-                  wrapper_html: { class: 'm-0' } %>
-  </div>
+      <%= image_tag 'https://i.pinimg.com/originals/28/4b/68/284b68f4b182d5698be34825c5ec23cc.gif', class: 'uploaded-image h-100' %>
 
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'user-simple-form' }) do |f| %>
+        <%= f.error_notification %>
 
-  <div class="card-show-info col-8 p-3">
-      <div class="form-inputs m-4">
+        <%= f.input :photo,
+                    as: :file,
+                    required: false,
+                    label: false,
+                    input_html: { hidden: true, class: 'hidden-photo-button' } %>
+        <div class="btn btn-primary photo-upload-button m-4">Upload Photo</div>
+    </div>
+
+    <div class="card-show-info col-md-8 p-4">
+      <div class="form-inputs">
         <h3 class="form-title text-simple mb-2 mt-0">Sign up</h3>
         <div class="form-grid">
           <%= f.input :first_name,
                       required: true,
                       autofocus: true,
-                      input_html: { autocomplete: "first_name" }%>
+                      input_html: { autocomplete: "first_name" } %>
           <%= f.input :last_name,
                       required: true,
                       autfocus: true,
                       input_html: { autocomplete: "last_name" } %>
         </div>
-        <%= f.input :email,
-                    required: true,
-                    autofocus: true,
-                    input_html: { autocomplete: "email" }%>
-        <%= f.input :date_of_birth,
-                    required: false,
-                    autofocus: true,
-                    order: %i(day month year),
-                    start_year: Time.now.year - 100,
-                    end_year: Time.now.year,
-                    input_html: { autocomplete: "date_of_birth" }%>
+          <%= f.input :email,
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "email" } %>
+          <%= f.input :date_of_birth,
+                      required: false,
+                      autofocus: true,
+                      order: %i(day month year),
+                      start_year: Time.now.year - 100,
+                      end_year: Time.now.year,
+                      input_html: { autocomplete: "date_of_birth" } %>
         <div class="form-grid">
           <%= f.input :password,
                       required: true,
@@ -52,13 +54,12 @@
         </div>
       </div>
 
-    <div class="form-actions ml-4">
-      <%= f.button :submit, "Let's go!", class: 'btn btn-danger' %>
-      <%#= render "devise/shared/links" %>
+      <div class="form-actions d-flex justify-content-between mt-4">
+        <%= f.button :submit, "Sign Up", class: 'btn-danger' %>
+        <%= render "devise/shared/links" %>
+      </div>
+      <% end %>
     </div>
-  <% end %>
-
-
-
-    </div>
+  </div>
+</div>
 
