@@ -2,10 +2,11 @@ svg {
   margin-left: 20px;
 }
 
-text{
+text {
   font-size:18px;
   pointer-events:none;
 }
+
 #chart {
   width:500px;
   height:500px;
@@ -20,7 +21,7 @@ text{
 }
 
 .selected + text {
-  fill:antiquewhite;
+  fill: antiquewhite;
 }
 
 @keyframes blink {

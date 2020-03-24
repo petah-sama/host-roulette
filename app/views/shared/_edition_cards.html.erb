@@ -1,0 +1,83 @@
+<div class="<%= 'hosting-card' if edition&.host != current_user %>">
+  <%= link_to event_edition_path(edition.event, edition) do %>
+
+    <div class="dashboard-card d-flex justify-content-between align-middle mb-4">
+
+      <div class="col-4 p-0">
+        <% if edition.photo.attached? %>
+          <div class="dashboard-card-image" style="background-image: url(<%= url_for(edition.photo) %>)"></div>
+        <% else %>
+          <div class="dashboard-card-image" style="background-image: url(https://images.unsplash.com/photo-1444210971048-6130cf0c46cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1504&q=80)"></div>
+        <% end %>
+      </div>
+
+      <div class="col-8 p-3 p-md-4">
+
+        <% if edition.host_id == current_user.id %>
+          <div class="corner-text-wrapper">
+            <div class="corner-text">
+              <i class="fas fa-crown"></i>
+            </div>
+          </div>
+        <% end %>
+
+        <div class="top-card">
+          <div class="title-card">
+            <h2><%= edition.name %></h2>
+          </div>
+        </div>
+
+        <div class="bottom-card d-flex justify-content-between">
+
+          <div class="flex-shrink p-0">
+            <!-- GUESTS -->
+            <div class="show-guests-div d-flex mt-3 mb-3">
+              <% edition.guests.take(5).each do |guest|%>
+                <div class="show-guest-list-item mr-1">
+                  <% if guest.member.user.photo.attached? %>
+                    <%= cl_image_tag guest.member.user.photo.key, class: "avatar-guest-small" %>
+                  <% else %>
+                    <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-guest-small" %>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+
+            <!-- TAGS -->
+            <div class="p-0 d-flex flex-wrap">
+              <% edition.event.tags.each do |tag| %>
+                <div class="tiny-tag mr-1 mt-1 px-1 border border-primary rounded text-nowrap"><%= tag.name %></div>
+              <% end %>
+            </div>
+          </div>
+
+          <% if edition.active? %>
+            <!-- COUNTDOWN -->
+            <div class="countdown-dashboard col-4 d-flex p-0">
+              <% if edition.countdown %>
+                <% days = edition.countdown == 1 || edition.countdown == -1 ? 'DAY' : 'DAYS' %>
+                <% if edition.countdown > 0 %>
+                  <h4><strong><i class="fas fa-hourglass-half"></i> <%= edition.countdown %> <%= days %> LEFT</strong></h4>
+                <% elsif edition.countdown == 0 %>
+                  <h4><strong><i class="fas fa-hourglass-half"></i> IT'S TODAY!</strong></h4>
+                <% else %>
+                  <h4><strong><i class="fas fa-hourglass-half"></i> ONGOING</strong></h4>
+                  <!-- <h5><strong><i class="fas fa-hourglass-half"></i> STARTED <%#= edition.countdown * -1 %> <%#= days %> AGO</strong></h5> -->
+                <% end %>
+              <% end %>
+            </div>
+          <% end %>
+
+          <% if edition.archived? %>
+            <!-- CREATE NEW EDITION -->
+            <div class="new-edition-button col-4 d-flex p-0">
+              <%= link_to 'Let\'s do it again!', new_event_edition_path(edition.event), class: 'btn btn-success' %>
+            </div>
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+</div>

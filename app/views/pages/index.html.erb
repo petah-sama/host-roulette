@@ -1,13 +1,24 @@
 <div class="content-container d-flex mt-4 mt-md-3" id="dashboard-page">
   <div class="card-container col-lg-9 px-4">
 
-    <div class="active-cards" id='active-cards'>
-      <%= render 'pages/filters/active-editions' %>
+    <!-- SCHEDULED EDITIONS -->
+    <div id="scheduled-card-section">
+      <% @editions.each do |edition| %>
+        <% if edition.active? %>
+          <%= render 'shared/edition_cards', edition: edition %>
+        <% end %>
+      <% end %>
     </div>
 
-    <div class="pending-cards" id='pending-cards'>
-      <%= render 'pages/filters/pending-editions' %>
+    <!-- PENDING EDITIONS -->
+    <div id="pending-card-section">
+      <% @editions.each do |edition| %>
+        <% if edition.pending? %>
+          <%= render 'shared/edition_cards', edition: edition %>
+        <% end %>
+      <% end %>
     </div>
+
   </div>
 
   <div class="stats col-3 d-none d-lg-inline">

@@ -38,6 +38,8 @@
 
 // SEARCH BAR
 .form-inline {
+  max-height: calc(100vh - 112px);
+  overflow: auto;
   height: 40px;
   .form-control {
     display: inline-block;
@@ -146,12 +148,16 @@
   width: 400px;
   display: inline-block;
   top: 42px;
+  max-height: calc(100vh - 80px);
+  overflow: auto;
 }
 
 .display-notifications-down {
   width: 280px;
   display: inline-block;
   bottom: 42px;
+  max-height: calc(100vh - 136px);
+  overflow: auto;
 }
 
 .dropdown-notification-item {

@@ -31,9 +31,7 @@
     font-weight: bold;
   }
   &:hover {
-    -webkit-box-shadow: 0 0 10px $info;
-       -moz-box-shadow: 0 0 10px $info;
-            box-shadow: 0 0 10px $info;
+    box-shadow: 0 0 10px $info;
     cursor: pointer;
   }
 }
@@ -76,16 +74,12 @@
 
 .dashboard-card {
   border-radius: $border-radius;
-  margin-bottom: 24px;
   background-color: white;
-  display: flex;
-  justify-content: space-between;
-  vertical-align: middle;
   text-decoration: none;
   overflow: hidden;
 }
 
-.dashboard-card-container a {
+.card-container a {
  text-decoration: none;
 }
 
@@ -95,9 +89,7 @@
 }
 
 .box-shadow {
-  -webkit-box-shadow: 0 0 10px $info;
-     -moz-box-shadow: 0 0 10px $info;
-          box-shadow: 0 0 10px $info;
+  box-shadow: 0 0 10px $info;
 }
 
 .avatar-guest-small {
@@ -107,13 +99,16 @@
 
 .show-guest-list-item {
   align-self: center;
-}
-
-.dashboard-info {
-  display: flex;
-  justify-content: space-between;
-  padding-left: 0px;
-  margin-right: 0px,
+  &:first-child {
+    margin-left: 0;
+    img {
+      box-shadow: none;
+    }
+  }
+  margin-left: -12px;
+  img {
+    box-shadow: -3px 0 0 $white;
+  }
 }
 
 .countdown-dashboard {
@@ -125,17 +120,16 @@
   }
 }
 
-h5 {
+h4 {
   margin: 0px;
-  font-size: 0.75rem;
   padding: 0px;
   align-self: center;
   text-transform: uppercase;
-  align-self: center;
+  font-weight: bold;
 }
 
 .tiny-tag {
-  font-size: 0.5em;
+  font-size: 0.75em;
   align-self: center;
 }
 
@@ -148,8 +142,7 @@ h5 {
   opacity: 0.8;
 }
 
-.title-card h2 {
-  font-size: 1em;
+h2 {
   align-self: center;
 }
 
@@ -158,21 +151,11 @@ h5 {
   padding: 0px;
 }
 
-
-@include media-breakpoint-up(md) {
+@include media-breakpoint-up(sm) {
   .avatar-guest-small {
     width: 45px;
-  }
-  h5 {
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
-  .title-card h2 {
-    font-size: 2em;
-    align-self: center;
   }
   .tiny-tag {
     font-size: 1em;
   }
 }
-
