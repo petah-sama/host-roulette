@@ -38,8 +38,6 @@
 
 // SEARCH BAR
 .form-inline {
-  max-height: calc(100vh - 112px);
-  overflow: auto;
   height: 40px;
   .form-control {
     display: inline-block;
@@ -54,6 +52,15 @@
   }
 }
 
+.button-clear {
+  top: 8px;
+  right: 18px;
+  i {
+    font-size: 1.5rem;
+    color: $gray;
+  }
+}
+
 @include media-breakpoint-up(md) {
   .form-inline .form-control {
     background-color: $gray;
@@ -63,12 +70,15 @@
       color: #495057;
     }
   }
+  .button-clear {
+    i {
+      transform: translateX(-100px);
+      color: $success;
+    }
+  }
 }
 
-.button-clear i {
-  font-size: 150%;
-  color: $gray;
-}
+
 
 // NOTIFICATION BELL
 .notification-div {

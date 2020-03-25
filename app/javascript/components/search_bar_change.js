@@ -1,6 +1,7 @@
 const searchBarChange = () => {
   const searchOuter = document.querySelector('.search-bar');
   const searchInput = document.querySelector('.search-bar #query');
+  const searchButton = document.querySelector('.button-submit');
   const searchClear = document.querySelector('.button-clear');
   const avatar = document.querySelector('.navbar-nav');
 
@@ -8,7 +9,8 @@ const searchBarChange = () => {
     avatar.classList.remove('d-none');
     avatar.classList.add('d-flex');
     searchOuter.classList.remove('col-9', 'col-sm-10', 'pr-4');
-    searchClear.classList.add('invisible', 'position-absolute');
+    searchInput.classList.add('mr-sm-2');
+    searchClear.classList.add('invisible');
   }
 
   const checkInput = () => {
@@ -17,18 +19,17 @@ const searchBarChange = () => {
         avatar.classList.add('d-none');
         avatar.classList.remove('d-flex');
         searchOuter.classList.add('col-9', 'col-sm-10', 'pr-4');
-        searchClear.classList.remove('invisible', 'position-absolute');
+        searchInput.classList.remove('mr-sm-2');
+        searchClear.classList.remove('invisible');
       } else {
         hideCross();
       };
-    };
-  };
-
-  const checkWindowSize = () => {
-    if (window.outerWidth < 768) {
-      checkEvents();
-    } else {
-      hideCross();
+    } else if (window.outerWidth >= 768) {
+      if (searchInput.value) {
+        searchClear.classList.remove('invisible');
+      } else {
+        hideCross();
+      };
     };
   };
 
@@ -38,15 +39,16 @@ const searchBarChange = () => {
     searchClear.addEventListener('click', event => {
       searchInput.value = "";
       checkInput();
+      searchButton.click();
     });
   };
 
   window.addEventListener('load', e => {
-    checkWindowSize();
+    checkEvents();
   });
 
   window.addEventListener('resize', e => {
-    checkWindowSize();
+    checkEvents();
   });
 };
 
