@@ -32,7 +32,6 @@ class QuestionsController < ApplicationController
 
   private
 
-
   def status_notification(from)
     @edition.event.participants.each do |user|
       next if user == @edition.host
