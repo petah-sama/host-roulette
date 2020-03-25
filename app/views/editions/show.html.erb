@@ -25,19 +25,21 @@
         <% if @edition.active? %>
           <div class="countdown m-0 p-0 text-danger">
             <% days = @edition.countdown == 1 || @edition.countdown == -1 ? 'DAY' : 'DAYS' %>
-            <% if @edition.countdown > 0 %>
-              <% if @edition.countdown == 1 %>
-                <h5><strong><i class="fas fa-hourglass-half"></i> <%= @edition.countdown %> IT'S TOMORROW!</strong></h5>
+            <% if @edition.countdown %>
+              <% if @edition.countdown > 0 %>
+                <% if @edition.countdown == 1 %>
+                  <h5><strong><i class="fas fa-hourglass-half"></i> <%= @edition.countdown %> IT'S TOMORROW!</strong></h5>
+                <% else %>
+                  <h5><strong><i class="fas fa-hourglass-half"></i> <%= @edition.countdown %> <%= days %> LEFT</strong></h5>
+                <% end %>
+              <% elsif @edition.countdown == 0 %>
+                <h5><strong><i class="fas fa-hourglass-half"></i> IT'S TODAY!</strong></h5>
               <% else %>
-                <h5><strong><i class="fas fa-hourglass-half"></i> <%= @edition.countdown %> <%= days %> LEFT</strong></h5>
-              <% end %>
-            <% elsif @edition.countdown == 0 %>
-              <h5><strong><i class="fas fa-hourglass-half"></i> IT'S TODAY!</strong></h5>
-            <% else %>
-              <% if @edition.countdown == 1 %>
-                <h5><strong><i class="fas fa-hourglass-half"></i> STARTED <%= @edition.countdown %> YESTERDAY!</strong></h5>
-              <% else %>
-                <h5><strong><i class="fas fa-hourglass-half"></i> STARTED <%= @edition.countdown * -1 %> <%= days %> AGO</strong></h5>
+                <% if @edition.countdown == 1 %>
+                  <h5><strong><i class="fas fa-hourglass-half"></i> STARTED <%= @edition.countdown %> YESTERDAY!</strong></h5>
+                <% else %>
+                  <h5><strong><i class="fas fa-hourglass-half"></i> STARTED <%= @edition.countdown * -1 %> <%= days %> AGO</strong></h5>
+                <% end %>
               <% end %>
             <% end %>
           </div>
