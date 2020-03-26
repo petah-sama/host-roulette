@@ -8,7 +8,7 @@ const searchBarChange = () => {
   const hideCross = () => {
     avatar.classList.remove('d-none');
     avatar.classList.add('d-flex');
-    searchOuter.classList.remove('col-9', 'col-sm-10', 'pr-4');
+    searchOuter.classList.remove('search-bar-larger', 'col-sm-10', 'pr-4');
     searchInput.classList.add('mr-sm-2');
     searchClear.classList.add('invisible');
   }
@@ -18,7 +18,7 @@ const searchBarChange = () => {
       if (searchInput.value) {
         avatar.classList.add('d-none');
         avatar.classList.remove('d-flex');
-        searchOuter.classList.add('col-9', 'col-sm-10', 'pr-4');
+        searchOuter.classList.add('search-bar-larger', 'col-sm-10', 'pr-4');
         searchInput.classList.remove('mr-sm-2');
         searchClear.classList.remove('invisible');
       } else {

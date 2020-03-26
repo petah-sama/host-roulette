@@ -15,16 +15,9 @@
   background-color: $red;
 }
 
-@include media-breakpoint-up(md) {
-  .navbar-main-color {
-    background-color: $gray;
-  }
-}
-
 // LOGO
 #logo-small-div {
   height: 40px;
-  overflow: hidden;
   left: -8px;
   #logo-small {
     width: 60px;
@@ -54,14 +47,54 @@
 
 .button-clear {
   top: 8px;
-  right: 18px;
+  right: 2rem;
   i {
     font-size: 1.5rem;
     color: $gray;
   }
 }
 
+
+@media (max-width: 350px) {
+  .search-bar {
+    max-width: 50%;
+  }
+  .search-bar-larger {
+    min-width: 75%;
+  }
+  #navbarSupportedContent, #logo-small-div {
+    max-width: 25%;
+  }
+}
+
+@media (min-width: 351px) and (max-width: 450px) {
+  .search-bar {
+    max-width: 60%;
+  }
+  .search-bar-larger {
+    min-width: 80%;
+  }
+  #navbarSupportedContent, #logo-small-div {
+    max-width: 20%;
+  }
+}
+
+@media (min-width: 451px) and (max-width: 575px) {
+  .search-bar {
+    max-width: 70%;
+  }
+  .search-bar-larger {
+    min-width: 85%;
+  }
+  #navbarSupportedContent, #logo-small-div {
+    max-width: 15%;
+  }
+}
+
 @include media-breakpoint-up(md) {
+  .navbar-main-color {
+    background-color: $gray;
+  }
   .form-inline .form-control {
     background-color: $gray;
     border: 1px solid #ced4da;
@@ -72,13 +105,11 @@
   }
   .button-clear {
     i {
-      transform: translateX(-100px);
+      transform: translateX(-5rem);
       color: $success;
     }
   }
 }
-
-
 
 // NOTIFICATION BELL
 .notification-div {

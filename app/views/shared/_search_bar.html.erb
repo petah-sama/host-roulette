@@ -1,21 +1,11 @@
-<div class="search-bar d-flex col-6 col-sm-8 col-md-9 px-2 px-md-4">
+<%= form_tag form_page , method: :get, class: 'form-inline flex-grow-1' do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control flex-grow-1 mr-0 mr-sm-2",
+    placeholder: "Search Event" %>
+  <%= submit_tag "Search", class: "btn btn-primary d-none d-md-inline button-submit" %>
+<% end %>
 
-  <% if controller_name == 'pages' && action_name == 'index' %>
-    <% form_page = 'dashboard' %>
-  <% elsif controller_name == 'pages' && action_name == 'past_events' %>
-    <% form_page = 'past-events' %>
-  <% end %>
-
-  <%= form_tag form_page , method: :get, class: 'form-inline flex-grow-1' do %>
-    <%= text_field_tag :query,
-      params[:query],
-      class: "form-control flex-grow-1 mr-0 mr-sm-2",
-      placeholder: "Search Event" %>
-    <%= submit_tag "Search", class: "btn btn-primary d-none d-md-inline button-submit" %>
-  <% end %>
-
-  <div class="button-clear col-1 ml-2 align-items-center justify-content-center d-flex invisible position-absolute">
-    <i class="fas fa-times"></i>
-  </div>
-
+<div class="button-clear col-1 ml-2 align-items-center justify-content-center d-flex invisible position-absolute">
+  <i class="fas fa-times"></i>
 </div>

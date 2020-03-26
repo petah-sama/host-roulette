@@ -6,6 +6,7 @@
   height: 80px;
   width: 80px;
   background-color: $primary;
+  z-index: 2;
   .corner-text {
     transform: rotate(-45deg);
     position: absolute;
