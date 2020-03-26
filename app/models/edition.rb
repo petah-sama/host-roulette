@@ -19,8 +19,6 @@ class Edition < ApplicationRecord
       tsearch: { prefix: true }
     }
 
-
-  # So I can test picking a host and code the permissions.
   def host
     User.find_by(id: host_id)
   end
