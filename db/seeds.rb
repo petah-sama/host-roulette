@@ -190,10 +190,6 @@ Edition.all[10].event.members.each do |member|
   Guest.create(edition_id: Edition.all[10].id, member_id: member.id)
 end
 
-#Edition.all[11].event.members.each do |member|
-#  Guest.create(edition_id: Edition.all[11].id, member_id: member.id)
-#end
-
 # TAGS
 puts 'TAAAAAAGZ 🏷'
 Tag.create(name: 'Sports')    #0
