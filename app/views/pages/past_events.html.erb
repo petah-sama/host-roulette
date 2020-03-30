@@ -4,7 +4,6 @@
     <div class="dashboard-card-container">
 
       <% @past_editions.each do |edition| %>
-        <div class="<%= 'hosting-card' if edition&.host != current_user %>">
           <%= link_to event_edition_path(edition.event, edition) do %>
 
           <div class="dashboard-card">
@@ -59,8 +58,6 @@
             </div>
           </div>
           <% end %>
-
-        </div>
       <% end %>
 
     </div>
