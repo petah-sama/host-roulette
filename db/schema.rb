@@ -70,6 +70,8 @@ ActiveRecord::Schema.define(version: 2020_03_20_020329) do
     t.float "avg_rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "price_cents", default: 0, null: false
+    t.string "sku"
     t.float "host_avg_rating", default: 0.0
     t.index ["event_id"], name: "index_editions_on_event_id"
   end
@@ -129,6 +131,19 @@ ActiveRecord::Schema.define(version: 2020_03_20_020329) do
     t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.string "state"
+    t.string "edition_sku"
+    t.integer "amount_cents", default: 0, null: false
+    t.string "checkout_session_id"
+    t.bigint "user_id"
+    t.bigint "edition_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["edition_id"], name: "index_orders_on_edition_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
   create_table "questions", force: :cascade do |t|
     t.bigint "edition_id"
     t.string "content", null: false
@@ -184,6 +199,8 @@ ActiveRecord::Schema.define(version: 2020_03_20_020329) do
   add_foreign_key "members", "users"
   add_foreign_key "notifications", "editions"
   add_foreign_key "notifications", "users"
+  add_foreign_key "orders", "editions"
+  add_foreign_key "orders", "users"
   add_foreign_key "questions", "editions"
   add_foreign_key "reviews", "guests"
 end

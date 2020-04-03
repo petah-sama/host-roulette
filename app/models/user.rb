@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :members
   has_many :events
   has_one_attached :photo
+  has_many :orders
 
   def friends
     events_ids = self.members.pluck(:event_id)
