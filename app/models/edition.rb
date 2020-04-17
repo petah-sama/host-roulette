@@ -11,6 +11,7 @@ class Edition < ApplicationRecord
   has_many :reviews, through: :guests
   after_validation :geocode, if: :will_save_change_to_address?
   has_one_attached :photo
+  monetize :price_cents
 
   include PgSearch::Model
   pg_search_scope :search_by_name,
@@ -19,8 +20,6 @@ class Edition < ApplicationRecord
       tsearch: { prefix: true }
     }
 
-
-  # So I can test picking a host and code the permissions.
   def host
     User.find_by(id: host_id)
   end

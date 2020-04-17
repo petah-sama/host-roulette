@@ -165,6 +165,11 @@
 
     <!-- COLUMN ON THE RIGHT !!!! -->
     <div class="show-column col-4 p-0">
+      <% if @edition.event.editions.last.archived? %>
+        <div class=" col-12 btn btn-danger past-events-pick text-center mb-3">
+          <h3> <%= link_to "Pick a new Host", new_event_edition_path(@edition.event), class: 'pick-host-link' %></h3>
+        </div>
+      <% end %>
       <% if current_user.is_guest?(@edition) %>
         <!-- Surveys Guest -->
         <%= render partial: 'editions/show-editions/show-questions-for-guest' %>
