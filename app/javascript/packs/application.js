@@ -3,8 +3,6 @@ import "../plugins/flatpickr";
 import 'select2/dist/css/select2.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
-
-
 import { eventRest } from '../components/event_form';
 import { tagFunctionality } from '../components/tag_choice';
 import { sliderBudgetValue } from '../components/event_form';
@@ -14,8 +12,7 @@ import { refreshMembers } from '../components/invite_members_refresh.js';
 import { existingEdition } from '../components/existing_edition';
 import { deleteAlert } from '../components/notifications_swal'
 import { initSelect2 } from '../components/init_select2';
-import { filterDashboard } from '../components/active_filter';
-import { anotherfilterDashboard } from '../components/host_filter';
+import { dashboardFilters } from '../components/dashboard_filter';
 import { photoUploadButton } from '../components/photo_upload_button';
 import { searchBarChange } from '../components/search_bar_change'
 
@@ -34,8 +31,7 @@ if (editionEdit) {
 // DASHBOARD FILTERS
 const dashboardPage = document.querySelector("#dashboard-page");
 if (dashboardPage) {
-  filterDashboard();
-  anotherfilterDashboard();
+  dashboardFilters();
 };
 
 // // NEW EVENT FORM TAGS / BUDGET

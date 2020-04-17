@@ -33,22 +33,6 @@
 
 }
 
-.guest-label-parent {
-  position: relative;
-
-  .guest-label {
-    visibility: hidden;
-    position: absolute;
-    z-index: 9;
-    top: 4em;
-    background-color: white;
-  }
-
-  &:hover .guest-label {
-    visibility: visible;
-  }
-}
-
 // #calendar-big {
 
 //   .simple-calendar {

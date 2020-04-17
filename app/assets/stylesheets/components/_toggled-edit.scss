@@ -2,33 +2,40 @@
     position: relative; width: 200px;
     -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
 }
+
 .onoffswitch-checkbox {
     display: none;
 }
+
 .onoffswitch-label {
     display: block; overflow: hidden; cursor: pointer;
     border: 1px solid #CED4DA; border-radius: 5px;
 }
+
 .onoffswitch-inner {
     display: block; width: 200%; margin-left: -100%;
     transition: margin 0.3s ease-in 0s;
 }
+
 .onoffswitch-inner:before, .onoffswitch-inner:after {
     display: block; float: left; width: 50%; height: 40px; padding: 0; line-height: 40px;
     font-size: 16px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
     box-sizing: border-box;
 }
+
 .onoffswitch-inner:before {
     content: "SCHEDULED";
     padding-left: 30px;
     background-color: #586A88; color: #FFFFFF;
 }
+
 .onoffswitch-inner:after {
     content: "PENDING";
     padding-right: 30px;
     background-color: #F4F6F9; color: #586A88;
     text-align: right;
 }
+
 .onoffswitch-switch {
     display: block; width: 40px; margin: 0px;
     background: #FFFFFF;
@@ -37,9 +44,11 @@
     border: 1px solid #CED4DA; border-radius: 5px;
     transition: all 0.3s ease-in 0s;
 }
+
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
     margin-left: 0;
 }
+
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
     right: 0px;
 }

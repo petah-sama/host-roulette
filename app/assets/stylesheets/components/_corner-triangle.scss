@@ -1,21 +1,14 @@
 .corner-text-wrapper {
-  -webkit-transform: rotate(45deg) translatey(-100%);
-     -moz-transform: rotate(45deg) translatey(-100%);
-      -ms-transform: rotate(45deg) translatey(-100%);
-       -o-transform: rotate(45deg) translatey(-100%);
-          transform: rotate(45deg) translatey(-100%);
+  transform: rotate(45deg) translatey(-100%);
   position: absolute;
   top: 1em;
   right: 1em;
   height: 80px;
   width: 80px;
   background-color: $primary;
+  z-index: 2;
   .corner-text {
-    -webkit-transform: rotate(-45deg);
-       -moz-transform: rotate(-45deg);
-        -ms-transform: rotate(-45deg);
-         -o-transform: rotate(-45deg);
-            transform: rotate(-45deg);
+    transform: rotate(-45deg);
     position: absolute;
     top: 3em;
     right: 2em;

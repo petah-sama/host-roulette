@@ -1,29 +1,23 @@
-<div class="d-flex justify-content-between col-8 p-0">
-
-  <% if @edition.active? %>
-    <div>
-      <!-- Start time -->
-      <div class="m-0 d-flex align-items-center">
-        <i class="far fa-calendar-check col-1 text-left mr-2 p-0"></i>
-        <div class="text-nowrap">
-          <%= @edition.start_time.strftime("%d %^b %Y, at %Hh%Mm") unless @edition.start_time.nil?%>
-        </div>
-      </div>
-      <!-- End time -->
-      <div class="m-0 d-flex align-items-center">
-        <i class="far fa-calendar-times col-1 text-left p-0 mr-2"></i>
-        <div class="text-nowrap">
-          <%= @edition.end_time.strftime("%d %^b %Y") unless @edition.end_time.nil?%>
-        </div>
-      </div>
-      <!-- Address -->
-      <div class="m-0 d-flex align-items-center">
-        <i class="far fa-compass col-1 text-left p-0 mr-2"></i>
-        <div class="text-nowrap">
-          <%= @edition.address unless @edition.address.nil?%>
-        </div>
-      </div>
+<% if @edition.active? %>
+  <!-- Start time -->
+  <div class="m-0 d-flex align-items-center show-icons">
+    <i class="far fa-calendar-check text-left p-0"></i>
+    <div class="text-nowrap overflow-auto">
+      <h4 class="m-0"><%= @edition.start_time.strftime("%d %^b %Y, at %Hh%Mm") unless @edition.start_time.nil?%></h4>
     </div>
-  <% end %>
-
-</div>
+  </div>
+  <!-- End time -->
+  <div class="m-0 d-flex align-items-center show-icons">
+    <i class="far fa-calendar-times text-left p-0"></i>
+    <div class="text-nowrap overflow-auto">
+      <h4 class="m-0"><%= @edition.end_time.strftime("%d %^b %Y") unless @edition.end_time.nil?%></h4>
+    </div>
+  </div>
+  <!-- Address -->
+  <div class="m-0 d-flex align-items-center show-icons">
+    <i class="far fa-compass text-left p-0"></i>
+    <div class="text-nowrap overflow-auto">
+      <h4 class="m-0"><%= @edition.address unless @edition.address.nil?%></h4>
+    </div>
+  </div>
+<% end %>

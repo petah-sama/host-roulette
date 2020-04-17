@@ -1,16 +1,25 @@
 <% if user_signed_in? %>
 
-  <!-- LOGO -->
   <div class="container-padding navbar navbar-expand-sm navbar-light navbar-main navbar-main-color d-flex flex-row pr-0">
-    <%= link_to dashboard_path, class: 'col-3 col-sm-2 d-md-none pl-4 pr-0 d-flex align-items-center', id: 'logo-small-div' do %>
+    <!-- LOGO -->
+    <%= link_to dashboard_path, class: 'col-sm-2 d-md-none pl-4 pr-0 d-flex align-items-center', id: 'logo-small-div' do %>
       <%= image_tag 'logo_transparent.svg', id: 'logo-small' %>
     <% end %>
 
     <!-- SEARCH BAR -->
-    <%= render 'shared/search_bar' %>
+    <div class="search-bar d-flex col-sm-8 col-md-9 px-2 px-md-4">
+      <% if controller_name == 'pages' && action_name == 'index' %>
+        <% form_page = 'dashboard' %>
+        <%= render 'shared/search_bar', form_page: form_page %>
+      <% elsif controller_name == 'pages' && action_name == 'past_events' %>
+        <% form_page = 'past-events' %>
+        <%= render 'shared/search_bar', form_page: form_page %>
+      <% end %>
+    </div>
+
 
     <!-- RIGHT PORTION -->
-    <div class="collapse navbar-collapse col-3 col-sm-2 col-md-3 d-flex justify-content-end pl-0 pr-4" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse col-sm-2 col-md-3 d-flex justify-content-end pl-0 pr-4" id="navbarSupportedContent">
       <!-- NOTIFICATIONS -->
       <div class="notification-div col-md-3 d-none d-md-inline p-0">
         <div id="notification-bell" onclick="notificationsUp()">

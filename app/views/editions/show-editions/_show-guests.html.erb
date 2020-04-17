@@ -1,70 +1,14 @@
-<div id='dots'>
-  <div class="show-guests-div d-flex flex-wrap">
-    <% @edition.guests.take(4).each do |guest| %>
-      <div class="show-guest-list-item d-flex justify-content-center guest-label-parent mr-1 mb-1">
-        <div class="guest-label border border-primary rounded p-1">
-          <p class="m-0 text-nowrap"><%= guest.member.user.first_name %> <%= guest.member.user.last_name[0] %>.</p>
-        </div>
-        <% if guest.member.user.photo.attached? %>
-          <%= cl_image_tag guest.member.user.photo.key, class: "avatar-guest" %>
-        <% else %>
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-guest" %>
-        <% end %>
-      </div>
-    <% end %>
-
-    <!-- <i class="fas fa-user-plus" id = 'adding-friends'></i> -->
-  </div>
-</div>
-
-
-<!-- <div id='more'>
-  <%# @edition.guests.each do |guest| %>
-    <div class="friend-card">
-      <%#= link_to user_path(guest.member.user) do %>
-        <%# if guest.member.user.photo.attached? %>
-          <%#= cl_image_tag guest.member.user.photo.key %>
-        <%# else %>
-          <%#= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier" %>
-        <%# end %>
-      <%# end %>
-      <div class="friend-card-infos">
-        <%# if guest.member.user.first_name && guest.member.user.last_name %>
-          <%#= link_to user_path(guest.member.user) do %>
-            <h2><%#= guest.member.user.first_name %> <%#= guest.member.user.last_name %></h2>
-          <%# end %>
-          <p>Your buddy's email is <strong><%#= guest.member.user.email %></strong></p>
-        <%# else %>
-          <%#= link_to user_path(guest.member.user) do %>
-            <h2><%#= guest.member.user.email %></h2>
-          <%# end %>
-          <p>Tell your buddy to add his first and last name 😉</p>
-        <%# end %>
-      </div>
+<% @edition.guests.each do |guest| %>
+  <div class="show-guest-list-item d-flex justify-content-center guest-label-parent mr-1 mb-1">
+    <div class="guest-label border border-primary rounded p-1">
+      <p class="m-0 text-nowrap"><%= guest.member.user.first_name %> <%= guest.member.user.last_name[0] %>.</p>
     </div>
-  <%# end %>
-</div>
-<div> -->
+    <% if guest.member.user.photo.attached? %>
+      <%= cl_image_tag guest.member.user.photo.key, class: "avatar-guest" %>
+    <% else %>
+      <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-guest" %>
+    <% end %>
+  </div>
+<% end %>
 
-  <!-- <button onclick="showMore()" id="see-all-guests" class='btn btn-info btn-sm mb-5'>
-    Guest details <i class="fas fa-caret-down"></i>
-  </button> -->
-<!-- </div> -->
-
-<!-- <script>
-  var dots = document.getElementById("dots");
-  var moreText = document.getElementById("more");
-  var btnText = document.getElementById("see-all-guests");
-  function showMore() {
-    if (dots.style.display === "none") {
-      dots.style.display = "inline";
-      btnText.innerHTML = "Guest details <i class='fas fa-caret-down'>";
-      moreText.style.display = "none";
-    } else {
-      dots.style.display = "none";
-      btnText.innerHTML = "Just faces <i class='fas fa-caret-up'></i>";
-      moreText.style.display = "inline";
-    }
-  };
-</script>
- -->
+<!-- <i class="fas fa-user-plus" id = 'adding-friends'></i> -->
