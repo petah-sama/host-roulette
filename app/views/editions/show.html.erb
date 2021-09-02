@@ -1,109 +1,132 @@
-<div class="show-main-container m-4" id="edition-show" data-ongoing="<%= params[:ongoing] %>">
+<div class="show-main-container m-4 mt-md-3" id="edition-show" data-ongoing="<%= params[:ongoing] %>">
 
-  <!-- BANNER INFO -->
-  <!-- BANNER INFO -->
+
   <!-- BANNER INFO -->
   <div id="show-banner">
 
+    <!-- RIBBON -->
+    <% if @edition.host_id == current_user.id %>
+      <div class="corner-text-wrapper">
+        <div class="corner-text">
+          <i class="fas fa-crown"></i>
+        </div>
+      </div>
+    <% end %>
 
+    <!-- BACKGROUND -->
     <% if @edition.photo.attached? %>
       <%= cl_image_tag @edition.photo.key, crop: :fill, class: 'edition-banner w-100' %>
     <% else %>
       <%= image_tag 'https://images.unsplash.com/photo-1444210971048-6130cf0c46cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1504&q=80', crop: :fill, class: 'edition-banner w-100' %>
     <% end %>
 
-    <div class="p-4 d-flex h-100">
+    <!-- CONTENT -->
+    <div class="p-3 p-md-4 d-flex flex-column justify-content-between h-100">
 
-      <!-- BANNER LEFT -->
-      <!-- BANNER LEFT -->
-      <!-- BANNER LEFT -->
-      <div class="col-8 d-flex justify-content-between flex-column p-0">
-        <!-- Edition name -->
-        <h1 class="m-0"><strong><%= @edition.name %></strong></h1>
-
-        <!-- Countdown -->
-        <% if @edition.active? %>
-          <div class="countdown m-0 p-0 text-danger">
-            <% days = @edition.countdown == 1 || @edition.countdown == -1 ? 'DAY' : 'DAYS' %>
-            <% if @edition.countdown > 0 %>
-              <% if @edition.countdown == 1 %>
-                <h5><strong><i class="fas fa-hourglass-half"></i> <%= @edition.countdown %> IT'S TOMORROW!</strong></h5>
-              <% else %>
-                <h5><strong><i class="fas fa-hourglass-half"></i> <%= @edition.countdown %> <%= days %> LEFT</strong></h5>
-              <% end %>
-            <% elsif @edition.countdown == 0 %>
-              <h5><strong><i class="fas fa-hourglass-half"></i> IT'S TODAY!</strong></h5>
-            <% else %>
-              <% if @edition.countdown == 1 %>
-                <h5><strong><i class="fas fa-hourglass-half"></i> STARTED <%= @edition.countdown %> YESTERDAY!</strong></h5>
-              <% else %>
-                <h5><strong><i class="fas fa-hourglass-half"></i> STARTED <%= @edition.countdown * -1 %> <%= days %> AGO</strong></h5>
-              <% end %>
-            <% end %>
-          </div>
-        <% end %>
-
-        <div class="d-flex justify-content-between pr-4">
-          <div>
-            <!-- Tags -->
-            <div class="m-0 d-flex align-items-center">
-              <i class="fas fa-tags col-1 text-left mr-2 p-0"></i>
-              <% @edition.event.tags.each do |tag| %>
-                <div class="text-nowrap border border-primary rounded mr-1 px-1">
-                  <%= tag.name %>
-                </div>
-              <% end %>
-            </div>
-            <!-- Budget -->
-            <div class="m-0 d-flex align-items-center">
-              <i class="fas fa-coins col-1 text-left p-0 mr-2"></i>
-              <%= @edition.event.budget %> € per person
-            </div>
-            <!-- Frequency -->
-            <div class="m-0 d-flex align-items-center">
-              <i class="fas fa-redo col-1 text-left p-0 mr-2"></i>
-              <%= @edition.event.frequency %>
-            </div>
-          </div>
-        </div>
+      <!-- Edition name -->
+      <div class="banner-top m-0">
+        <h1 class="m-0 text-nowrap"><strong><%= @edition.name %></strong></h1>
       </div>
 
-      <!-- BANNER RIGHT -->
-      <!-- BANNER RIGHT -->
-      <div class="col-4 p-0 d-flex flex-column justify-content-between">
-        <!-- HOST -->
-        <div class="show-hosting d-flex justify-content-between align-items-center">
-          <div class="m-0 col-8">
-            <h3 class="m-0"><i class="fas fa-crown"></i> <%= @edition.host.first_name + ' ' + @edition.host.last_name  %></h3>
-            <% if current_user.is_host?(@edition) %>
-              <p class="m-0 ml-5">(That's you!)</p>
-            <% end %>
+      <div class="d-flex">
+
+        <!-- BANNER LEFT -->
+        <div class="col-7 col-sm-8 d-flex justify-content-between flex-column p-0 pr-3 pr-md-4">
+
+          <div class="d-flex justify-content-between">
+            <!-- Guests for All -->
+            <div class="banner-middle show-guests-div d-flex">
+              <%= render partial: 'editions/show-editions/show-guests' %>
+            </div>
+            <!-- HOST -->
+            <div class="banner-middle show-hosting d-flex justify-content-between align-items-center col-4 p-0 avatar-host">
+              <% if User.find(@edition.host_id).photo.attached? %>
+                <%= cl_image_tag User.find(@edition.host_id).photo.key, class: "text-center p-0" %>
+              <% else %>
+                <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "text-center p-0" %>
+              <% end %>
+              <div class="d-flex justify-content-center avatar-host-tag">
+                <h3 class="my-0 mx-auto"><strong>HOST</strong></h3>
+              </div>
+              <!-- Host Photo -->
+              <!-- Host Name -->
+              <!-- <div class="m-0 p-0 col-8">
+                <h4 class="m-0"><%#= @edition.host.first_name %></h4>
+                <h4 class="m-0"><%#= @edition.host.last_name %></h4>
+              </div> -->
+            </div>
           </div>
-          <!-- Host Photo -->
-          <div class="col-4 text-center p-0">
-            <% if User.find(@edition.host_id).photo.attached? %>
-              <%= cl_image_tag User.find(@edition.host_id).photo.key, class: "avatar-host text-center p-0" %>
-            <% else %>
-              <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-host text-center p-0" %>
-            <% end %>
+
+          <!-- Guidelines -->
+          <div class="banner-bottom d-flex flex-column justify-content-between">
+            <!-- Tags -->
+            <div class="m-0 d-flex align-items-center show-icons">
+              <i class="fas fa-tags text-left p-0"></i>
+              <div class="d-flex align-items-center overflow-auto">
+                <% @edition.event.tags.each do |tag| %>
+                  <div class="text-nowrap border border-primary rounded mr-1 px-1">
+                    <h4 class="m-0"><%= tag.name %></h4>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+            <!-- Budget -->
+            <div class="m-0 d-flex align-items-center show-icons">
+              <i class="fas fa-coins text-left p-0"></i>
+              <h4 class="m-0"><%= @edition.event.budget %> € per person</h4>
+            </div>
+            <!-- Frequency -->
+            <div class="m-0 d-flex align-items-center show-icons">
+              <i class="fas fa-redo text-left p-0"></i>
+              <h4 class="m-0"><%= @edition.event.frequency %></h4>
+            </div>
           </div>
         </div>
-        <div class="d-flex justify-content-between align-items-center">
-          <!-- Shows plans -->
-          <%= render partial: 'editions/show-editions/show-plans' %>
-          <% if current_user.is_host?(@edition) && @edition.host_id.present? %>
+
+        <!-- BANNER RIGHT -->
+        <div class="col-5 col-sm-4 p-0 d-flex flex-column justify-content-between">
+
+          <!-- Countdown -->
+          <div class="banner-top countdown m-0 p-0 text-danger">
+            <% if @edition.active? %>
+              <% days = @edition.countdown == 1 || @edition.countdown == -1 ? 'DAY' : 'DAYS' %>
+              <% if @edition.countdown %>
+                <% if @edition.countdown > 0 %>
+                  <% if @edition.countdown == 1 %>
+                    <% countdown_message = "IT'S TOMORROW!" %>
+                  <% else %>
+                    <% countdown_message = "#{@edition.countdown} #{days} LEFT!" %>
+                  <% end %>
+                <% elsif @edition.countdown == 0 %>
+                  <% countdown_message = "IT'S TODAY!" %>
+                <% else %>
+                  <% if @edition.countdown == -1 %>
+                    <% countdown_message = "STARTED YESTERDAY." %>
+                  <% else %>
+                    <% countdown_message = "STARTED #{@edition.countdown * -1} #{days} AGO." %>
+                  <% end %>
+                <% end %>
+              <% end %>
+              <h2 class="m-0"><strong><i class="fas fa-hourglass-half"></i> <%= countdown_message %></strong></h2>
+            <% end %>
+          </div>
+
+          <div class="banner-bottom d-flex flex-column justify-content-between">
+            <!-- Shows plans -->
+            <%= render partial: 'editions/show-editions/show-plans' %>
+
             <!-- Edition edit -->
-            <%= link_to 'Edit event', edit_event_edition_path(@edition.event, @edition), class: 'btn btn-danger col-4 text-center' %>
-          <% end %>
+            <%# if current_user.is_host?(@edition) && @edition.host_id.present? %>
+              <%#= link_to 'Edit event', edit_event_edition_path(@edition.event, @edition), class: 'btn btn-danger col-4 text-center' %>
+            <%# end %>
+          </div>
+          <!-- Rating -->
         </div>
-        <!-- Rating -->
       </div>
     </div>
   </div>
 
 
-  <!-- EDITION INFO -->
-  <!-- EDITION INFO -->
   <!-- EDITION INFO -->
   <div class="p-4 d-flex justify-content-between">
     <% if @edition.archived? %>
@@ -111,12 +134,7 @@
       <%= render partial: 'editions/show-editions/show-reviews' %>
     <% else %>
       <!-- COLUMN ON THE LEFT !!!! -->
-      <!-- COLUMN ON THE LEFT !!!! -->
-      <!-- COLUMN ON THE LEFT !!!! -->
       <div class="show-column col-3 p-0">
-
-        <!-- Guests for All -->
-        <%= render partial: 'editions/show-editions/show-guests' %>
 
         <!-- List of items -->
         <div class="mt-3">
@@ -132,8 +150,6 @@
       </div>
 
       <!-- COLUMN IN THE MIDDLE -->
-      <!-- COLUMN IN THE MIDDLE -->
-      <!-- COLUMN IN THE MIDDLE -->
       <div class="col-5 px-4 calendar-edition">
         <% if @edition.active? || @edition.archived? %>
           <!-- Calendar -->
@@ -147,8 +163,6 @@
       </div>
     <% end %>
 
-    <!-- COLUMN ON THE RIGHT !!!! -->
-    <!-- COLUMN ON THE RIGHT !!!! -->
     <!-- COLUMN ON THE RIGHT !!!! -->
     <div class="show-column col-4 p-0">
       <% if @edition.event.editions.last.archived? %>
@@ -166,9 +180,6 @@
     </div>
   </div>
 
-
-  <!-- MAP -->
-  <!-- MAP -->
   <!-- MAP -->
   <% if @edition.active? || @edition.archived? %>
     <%= render partial: 'editions/show-editions/show-map' %>

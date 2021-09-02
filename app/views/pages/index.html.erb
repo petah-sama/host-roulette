@@ -1,32 +1,43 @@
 <div class="content-container d-flex mt-4 mt-md-3" id="dashboard-page">
   <div class="card-container col-lg-9 px-4">
 
-    <div class="active-cards" id='active-cards'>
-      <%= render 'pages/filters/active-editions' %>
+    <!-- SCHEDULED EDITIONS -->
+    <div id="scheduled-card-section">
+      <% @editions.each do |edition| %>
+        <% if edition.active? %>
+          <%= render 'shared/edition_cards', edition: edition %>
+        <% end %>
+      <% end %>
     </div>
 
-    <div class="pending-cards" id='pending-cards'>
-      <%= render 'pages/filters/pending-editions' %>
+    <!-- PENDING EDITIONS -->
+    <div id="pending-card-section">
+      <% @editions.each do |edition| %>
+        <% if edition.pending? %>
+          <%= render 'shared/edition_cards', edition: edition %>
+        <% end %>
+      <% end %>
     </div>
+
   </div>
 
   <div class="stats col-3 d-none d-lg-inline">
 
-    <div class="stats-card-hosting p-3 pb-4">
-      <h4 class="title-charts mb-3">Hosting</h4>
+    <div class="stats-card-hosting d-flex flex-column justify-content-between pt-3 px-0 pb-4">
+      <h2 class="title-charts mb-3">Hosting</h2>
       <div class="stats-chart d-flex justify-content-center align-items-center">
         <%= pie_chart [['Hosting', @hostingeditions.size], ['Guest', @alleditions.size - @hostingeditions.size]],
-        legend: false, donut: true, label: "Value", colors: ["#586a88", "#DCDCDC"], width:"200px", height: "200px" %>
-        <p class="text-inside-chart col-8"><%= @hostingeditions.size %> of <%= @alleditions.size %> events</p>
+        legend: false, donut: true, label: "Value", colors: ["#586a88", "#DCDCDC"] %>
+        <h4 class="text-inside-chart p-0 my-0 mx-0 col-8"><%= @hostingeditions.size %> of <%= @alleditions.size %> events</h4>
       </div>
     </div>
 
-    <div class="stats-card-scheduled mt-4 p-3 pb-4">
-      <h4 class="title-charts mb-3">Scheduled</h4>
-      <div class="stats-chart">
+    <div class="stats-card-scheduled d-flex flex-column justify-content-between mt-4 pt-3 px-0 pb-4">
+      <h2 class="title-charts mb-3">Scheduled</h2>
+      <div class="stats-chart d-flex justify-content-center align-items-center">
         <%= pie_chart [['Active', @alleditions.active.size],['Pending', @alleditions.pending.size]],
-        legend: false, donut: true, label: "Value", colors: ["#D95140","#DCDCDC"], width:"200px", height: "200px" %>
-        <p class="text-inside-chart col-8"><%= @alleditions.active.size %> of <%= (@alleditions.active.size + @alleditions.pending.size) %> events</p>
+        legend: false, donut: true, label: "Value", colors: ["#D95140","#DCDCDC"] %>
+        <h4 class="text-inside-chart p-0 my-0 mx-0 col-8"><%= @alleditions.active.size %> of <%= (@alleditions.active.size + @alleditions.pending.size) %> events</h4>
       </div>
     </div>
 

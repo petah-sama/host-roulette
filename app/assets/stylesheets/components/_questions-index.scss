@@ -9,7 +9,6 @@
   width:100%;
   margin-top:30px;
   transition: all 1s ease-in;
-
 }
 
 .questions-main-container {
@@ -25,16 +24,16 @@
 .delete-question {
   position:absolute;
   top: 0px;
-  right:5px;
+  right: 5px;
 }
 
 .back-button{
-  font-family:'Montserrat'
+  font-family: 'Montserrat'
 }
 
 .send-reminder-button {
   width: 94%;
-  margin-top:2px;
+  margin-top: 2px;
 }
 
 .color-container-div {
@@ -43,21 +42,21 @@
   }
 
   #yes_color {
-    font-size:30px;
-    color: darkblue ;
-    margin-right:10px;
+    font-size: 30px;
+    color: $darkblue;
+    margin-right: 10px;
   }
 
   #no_color {
-  font-size:20px;
+  font-size: 20px;
   color: #D95140;
-  font-size:30px;
-  margin-right:10px;
+  font-size: 30px;
+  margin-right: 10px;
   }
   #unanswered_color {
-    font-size:20px;
-    color: grey;
-    font-size:30px;
-    margin-right:10px;
+    font-size: 20px;
+    color: $gray;
+    font-size: 30px;
+    margin-right: 10px;
   }
 }

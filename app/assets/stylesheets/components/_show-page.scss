@@ -1,5 +1,5 @@
 #show-banner {
-  height: 240px;
+  height: 160px;
   position: relative;
 }
 
@@ -10,7 +10,7 @@
 }
 
 .show-map {
-  height: 240px;
+  height: 160px;
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -26,26 +26,66 @@
 .event-tags {
   background: #b7b7b7;
   padding: 8px;
-  font-size:15px;
+  font-size: 15px;
   border-radius: $border-radius;
   text-align: center;
   white-space: nowrap;
 }
 
+.show-icons i {
+  font-size: 0.75rem;
+  min-width: 1rem;
+}
+
 // FRIENDS
+.show-guests-div {
+  max-width: calc(100% - 88px);
+}
+
 .show-guest-list {
-  margin-left:5px;
+  margin-left: 5px;
 }
 
 .avatar-guest {
-  width:60px;
+  width: 32px;
   border-radius: 50%;
 }
 
 .avatar-host {
-  width: 80px;
-  border-radius: 50%;
-  border: 3px solid white;
+  background-color: $white;
+  border: 2px solid $white;
+  border-radius: 18px;
+  min-width: 80px;
+  .avatar-host-tag {
+    min-width: 44px;
+  }
+  img {
+    width: 32px;
+    border-radius: 50%;
+  }
+}
+
+@include media-breakpoint-up(sm) {
+  .avatar-guest {
+    width: 40px;
+  }
+  .avatar-host {
+    border-radius: 22px;
+    min-width: 96px;
+    img {
+      width: 40px;
+    }
+  }
+  #show-banner {
+    height: 240px;
+  }
+  .show-map {
+    height: 240px;
+  }
+  .show-icons i {
+    font-size: 1rem;
+    min-width: 1.5rem;
+  }
 }
 
 #see-all-guests {
@@ -63,8 +103,8 @@
   .guest-label {
     visibility: hidden;
     position: absolute;
-    z-index: 9;
-    top: 4em;
+    z-index: 2;
+    top: 3em;
     background-color: white;
   }
 
@@ -114,4 +154,16 @@ input.radio_buttons:checked + label {
     background-color: $success;
   color: white;
   }
+}
+
+.banner-top {
+  min-height: 20%;
+}
+
+.banner-middle {
+  min-height: 20%;
+}
+
+.banner-bottom {
+  min-height: 40%;
 }
